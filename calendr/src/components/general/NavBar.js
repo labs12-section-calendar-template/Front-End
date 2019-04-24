@@ -5,7 +5,7 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 // import { NavLink } from "react-router-dom";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import logo from './extras/CalendrWhite.png';
+import logo from '../../extras/CalendrWhite.png';
 
 const NavBar = () => {
   return (
@@ -23,7 +23,12 @@ const NavBar = () => {
             }}
           >
             <Typography variant="h6" color="inherit">
-         
+         <img 
+                style={{
+                    maxWidth: "90px",
+                    maxHeight: "90px"
+                }}
+                src={logo} alt="Logo" /> 
             </Typography>
             <div
               className="nav-buttons"
@@ -33,13 +38,8 @@ const NavBar = () => {
                 alignItems: "center", 
               }}
             >
-            <div>
-                <img 
-                style={{
-                    maxWidth: "120px",
-                    maxHeight: "100px"
-                }}
-                src={logo} alt="Logo" /> 
+            {/* <div> */}
+                
             </div>
                 <div
                 style={{
@@ -61,13 +61,13 @@ const NavBar = () => {
                 }}
                 color="inherit">Register</Button>
 
-                <AccountCircle 
+                {/* <AccountCircle 
                 style={{
                     margin: "0 .5rem 0",
                     fontSize: "2rem",
                     padding:"0"
-                }}/>
-              </div>
+                }}/> */}
+              {/* </div> */}
             </div>
           </Toolbar>
         </AppBar>
