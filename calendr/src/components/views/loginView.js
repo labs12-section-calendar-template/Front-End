@@ -1,13 +1,18 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
-import Login from './Login'
-import Register from './Register'
+import Login from '../login/Login'
+import Register from '../login/Register'
 
 export class loginView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {}
+}
+
   render() {
     return (
       <div>
-            <Route exact path='/login' render = {() => (<Login
+            <Route exact path='/login' render = {(...props) => (<Login
             handleChanges = {this.props.handleChanges}
             signIn = {this.props.signIn}
             password = {this.state.password}
