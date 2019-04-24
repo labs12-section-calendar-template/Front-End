@@ -35,6 +35,7 @@ button:hover{
 .marketing-container{
     font-family: "Poppins";
     margin: 0 auto;
+    opacity: .8;
 }
 
 .header-content{
