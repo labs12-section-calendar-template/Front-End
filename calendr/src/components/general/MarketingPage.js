@@ -7,7 +7,7 @@ const MarketingPage = () => {
     <div className="marketing-container">
       <header>
         <div className="header-content">
-          <h1>Create team and group calendars</h1>
+          <h1>Create solo and group calendars</h1>
           <p>Calendr is the easiest way for users/groups to plan, manage and visualize their work</p>
           <button>Sign Up</button>
           </div>
