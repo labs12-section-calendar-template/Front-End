@@ -15,7 +15,7 @@ const NavBar = () => {
         
           <Toolbar
             style={{
-              margin: "0 1%",
+              margin: "0 10%",
               maxWidth: "1280px",
               display: "flex",
               justifyContent: "space-between",
@@ -30,18 +30,14 @@ const NavBar = () => {
                 }}
                 src={logo} alt="Logo" /> 
             </Typography>
-            <div
-              className="nav-buttons"
-              style={{
-                display: "flex",
-                justifyContent:"space-between",
-                alignItems: "center", 
-              }}
-            >
-            {/* <div> */}
-                
-            </div>
+            <span
+            style={{
+              fontSize: "32px",
+              letterSpacing: "1.5px"
+            }}> CALENDR</span>
+
                 <div
+                className="nav-buttons"
                 style={{
                     display: "flex",
                     justifyContent:"space-between",
@@ -60,6 +56,7 @@ const NavBar = () => {
                     fontSize: "1.2rem"
                 }}
                 color="inherit">Register</Button>
+             
 
                 {/* <AccountCircle 
                 style={{

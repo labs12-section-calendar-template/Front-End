@@ -11,9 +11,9 @@ export class month extends Component {
         month: new Date()
     }
 
-    componentDidMount() {
+    // componentDidMount() {
         
-    }
+    // }
 
     // OnClick this function moves to the previous month
 previous = () => {
@@ -32,30 +32,6 @@ next = () => {
           month: addMonth(month, 1)
         });
       };
-
-// renderWeeks() {
-//         let weeks = [];
-//         let done = false;
-//         let date = this.state.month
-//           .startOfMonth(month)
-//           .addWeek(date, -1)
-//           .day("Sunday");
-//         let count = 0;
-//         let monthIndex = date.month();
-    
-//         const { month } = this.state;
-    
-//         while (!done) {
-//           weeks.push();
-    
-//           date.add(1, "w");
-    
-//           done = count++ > 2 && monthIndex !== date.month();
-//           monthIndex = date.month();
-//         }
-    
-//         return weeks;
-//       }
     
 
   render() {
