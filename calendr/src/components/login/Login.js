@@ -1,26 +1,28 @@
 import React from 'react'
 
-const Login = () => {
+const Login = (props) => {
   return (
     <div>
       <h2>Welcome, Please login</h2>
       <form type='submit'>
+
           <input
           type = "text"
-          value = {this.props.username}
+          value = {props.username}
           name = "username"
-          onChange = {this.props.handleChanges}
+          onChange = {props.handleChanges}
           placeholder = "Username..."
           />
+          
           <input
           type = "text"
-          value = {this.props.password}
+          value = {props.password}
           name = "password"
-          onChange = {this.props.handleChanges}
+          onChange = {props.handleChanges}
           placeholder = "Password..."
           />
       </form>
-      <button onClick = {this.props.signIn}>Login</button>
+      <button onClick = {props.signIn}>Login</button>
     </div>
   )
 }
