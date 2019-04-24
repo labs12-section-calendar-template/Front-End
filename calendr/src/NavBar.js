@@ -1,0 +1,78 @@
+import React from 'react'
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
+// import { NavLink } from "react-router-dom";
+import AccountCircle from "@material-ui/icons/AccountCircle";
+import logo from './extras/CalendrWhite.png';
+
+const NavBar = () => {
+  return (
+    <div>
+       <AppBar position="static"
+        style={{backgroundColor:"#3270EB"}}>
+        
+          <Toolbar
+            style={{
+              margin: "0 1%",
+              maxWidth: "1280px",
+              display: "flex",
+              justifyContent: "space-between",
+              padding:"0"
+            }}
+          >
+            <Typography variant="h6" color="inherit">
+         
+            </Typography>
+            <div
+              className="nav-buttons"
+              style={{
+                display: "flex",
+                justifyContent:"space-between",
+                alignItems: "center", 
+              }}
+            >
+            <div>
+                <img 
+                style={{
+                    maxWidth: "120px",
+                    maxHeight: "100px"
+                }}
+                src={logo} alt="Logo" /> 
+            </div>
+                <div
+                style={{
+                    display: "flex",
+                    justifyContent:"space-between",
+                    alignItems: "center",
+                  }}>
+                <Button 
+                style={{
+                    margin: "0 .5rem 0",
+                    fontSize: "1.2rem"
+                }}
+                color="inherit"
+                >Login</Button>
+                <Button 
+                style={{
+                    margin: "0 .5rem 0",
+                    fontSize: "1.2rem"
+                }}
+                color="inherit">Register</Button>
+
+                <AccountCircle 
+                style={{
+                    margin: "0 .5rem 0",
+                    fontSize: "2rem",
+                    padding:"0"
+                }}/>
+              </div>
+            </div>
+          </Toolbar>
+        </AppBar>
+    </div>
+  )
+}
+
+export default NavBar
