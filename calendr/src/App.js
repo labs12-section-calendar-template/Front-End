@@ -13,6 +13,7 @@ function App() {
      <NavBar/>
      <Route exact path="/" component={MarketingPage} />
      <Route path="/users" component={Users} />
+     
      {/* <Month/>
      <Day/> */}
     </div>

@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import logo from '../../extras/CalendrWhite.png';
 
+
 const NavBar = () => {
   return (
     <div>
@@ -50,6 +51,7 @@ const NavBar = () => {
                 }}
                 color="inherit"
                 >Login</Button>
+                
                 <Button 
                 style={{
                     margin: "0 .5rem 0",

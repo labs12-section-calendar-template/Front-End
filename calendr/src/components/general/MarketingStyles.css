@@ -18,6 +18,11 @@ button{
     margin-top: 2%;
 }
 
+:hover button{
+    background: #3270EB,
+    
+}
+
 .marketing-container{
     font-family: "Poppins";
     margin: 0 auto;

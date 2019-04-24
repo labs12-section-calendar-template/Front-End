@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const Login = () => {
-  return (
-    <div>
+export class Login extends Component {
+  render() {
+    return (
+      <div>
       <h2>Welcome, Please login</h2>
       <form type='submit'>
           <input
@@ -22,7 +23,9 @@ const Login = () => {
       </form>
       <button onClick = {this.props.signIn}>Login</button>
     </div>
-  )
+    )
+  }
 }
 
 export default Login
+
