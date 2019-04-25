@@ -4,6 +4,7 @@ import { withRouter } from "react-router-dom";
 import LoginView from "./components/views/loginView";
 import MainView from "./components/views/mainView";
 import Authenticate from "./components/login/Authentication";
+import Month from './components/calendar/Month'
 
 // import Month from './components/calendar/Month'
 // import Day from './components/calendar/Day'
@@ -11,10 +12,11 @@ import Authenticate from "./components/login/Authentication";
 function App() {
   return (
     // <Auth/>
-    <MainView />
+    //<MainView />
+    <Month /> 
   );
 }
 
-// const Auth = withRouter(Authenticate(mainView)(LoginView));
+ const Auth = withRouter(Authenticate(MainView)(LoginView));
 
 export default withRouter(App);
