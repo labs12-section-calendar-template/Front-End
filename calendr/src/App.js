@@ -1,21 +1,26 @@
-import React from "react";
-import "./App.css";
-import NavBar from "./components/general/NavBar";
-import MarketingPage from "./components/general/MarketingPage";
+
+import React from 'react';
+import './App.css';
+import { withRouter } from 'react-router-dom';
+import LoginView from './components/views/loginView';
+import mainView from './components/views/mainView';
+import Authenticate from './components/login/Authentication';
+
+
+
 // import Month from './components/calendar/Month'
 // import Day from './components/calendar/Day'
 import Week from "./components/calendar/Week";
 
 function App() {
   return (
-    <div className="App">
-      <NavBar />
-      {/* <MarketingPage/> */}
-      {/* <Month/>
-     <Day/> */}
-      <Week />
-    </div>
+
+    <Auth/>
+
   );
 }
 
-export default App;
+
+const Auth = withRouter(Authenticate(mainView)(LoginView));
+
+export default withRouter(App);
