@@ -8,7 +8,7 @@ export class month extends Component {
 
     // componentDidMount() {
         
-    // }
+    // } 
 
     // OnClick this function moves to the previous month
 previous = () => {
