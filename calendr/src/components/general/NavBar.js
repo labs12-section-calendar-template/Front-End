@@ -6,8 +6,7 @@ import Button from "@material-ui/core/Button";
 // import { NavLink } from "react-router-dom";
 
 // import AccountCircle from "@material-ui/icons/AccountCircle";
-import logo from '../../extras/CalendrWhite.png';
-
+import logo from "../../extras/CalendrWhite.png";
 
 const NavBar = () => {
   return (
@@ -45,7 +44,6 @@ const NavBar = () => {
           <div
             className="nav-buttons"
             style={{
-
               margin: "0 10%",
               maxWidth: "1280px",
 
@@ -54,42 +52,53 @@ const NavBar = () => {
               alignItems: "center"
             }}
           >
-
             <Typography variant="h6" color="inherit">
-         <img 
+              <img
                 style={{
-                    maxWidth: "90px",
-                    maxHeight: "90px"
+                  maxWidth: "90px",
+                  maxHeight: "90px"
                 }}
-                src={logo} alt="Logo" /> 
+                src={logo}
+                alt="Logo"
+              />
             </Typography>
             <span
-            style={{
-              fontSize: "32px",
-              letterSpacing: "1.5px"
-            }}> CALENDR</span>
+              style={{
+                fontSize: "32px",
+                letterSpacing: "1.5px"
+              }}
+            >
+              {" "}
+              CALENDR
+            </span>
 
-                <div
-                className="nav-buttons"
+            <div
+              className="nav-buttons"
+              style={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center"
+              }}
+            >
+              <Button
                 style={{
-                    display: "flex",
-                    justifyContent:"space-between",
-                    alignItems: "center",
-                  }}>
-                <Button 
-                style={{
-                    margin: "0 .5rem 0",
-                    fontSize: "1.2rem"
+                  margin: "0 .5rem 0",
+                  fontSize: "1.2rem"
                 }}
                 color="inherit"
-                >Login</Button>
-                <Button 
+              >
+                Login
+              </Button>
+              <Button
                 style={{
-                    margin: "0 .5rem 0",
-                    fontSize: "1.2rem"
+                  margin: "0 .5rem 0",
+                  fontSize: "1.2rem"
                 }}
-                color="inherit">Register</Button>
-
+                color="inherit"
+              >
+                Register
+              </Button>
+            </div>
 
             {/* <AccountCircle 
                 style={{
