@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import styled from 'styled-components';
 
 const url = "https://calendrserver.herokuapp.com/"
 export class Register extends Component {
@@ -60,40 +61,97 @@ export class Register extends Component {
     return (
         <div>
           <h2>Welcome, Please Register</h2>
-          <form type = 'submit'>
-              <input
+          <FormContainer>
+          <Form type = 'submit'>
+          <Div>
+            <H4>Fullname:</H4>
+              <Input
               type = "text"
               value = {this.props.fullName}
               name = "fullName"
               onChange = {this.props.handleChanges}
               placeholder = "Full Name..."
               />
-              <input
-             type = "email"
-             value = {this.props.email}
-             name = "email"
-             onChange = {this.props.handleChanges}
-             placeholder = "Email..."
-             />
-              <input
+          </Div>
+          <Div>
+            <H4>Email:</H4>
+              <Input
+              type = "email"
+              value = {this.props.email}
+              name = "email"
+              onChange = {this.props.handleChanges}
+              placeholder = "Email..."
+              />
+          </Div>
+          <Div>
+            <H4>Username:</H4>
+              <Input
               type = "text"
               value = {this.props.username}
               name = "username"
               onChange = {this.props.handleChanges}
               placeholder = "username..."
               />
-              <input
+          </Div>
+          <Div>
+            <H4>Password:</H4>
+              <Input
               type = "password"
               value = {this.props.password}
               name = "password"
               onChange = {this.props.handleChanges}
               placeholder = "Password..."
               />
-          </form>
-          <button onClick = {this.props.register}>Register</button>
+          </Div>
+          <Div>
+            <H4>Verify Password:</H4>
+              <Input
+              type = "verifypassword"
+              value = {this.props.verifypassword}
+              name = "verifypassword"
+              onChange = {this.props.handleChanges}
+              placeholder = "verifypassword..."
+              />
+          </Div>
+          </Form>
+          </FormContainer>
+          <Button onClick = {this.props.register}>Register</Button>
         </div>
       )
   }
 }
+const FormContainer = styled.div`
+  width:24rem;
+  margin:auto;
+  background-color:lightgrey;
+  border-radius:10px;
+  padding:2rem;
+  
+`;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items:flex-end;
+
+`;
+const Div = styled.div`
+  display: flex;
+  justify-content:center;
+  align-items:center;
+
+`;
+const H4 = styled.h4`
+  margin:0 0 .5rem 0;
+
+`;
+const Input = styled.input`
+  margin: 1rem;
+  height:3rem;
+  background: white;
+  
+`;
+const Button = styled.button`
+  margin: 1rem;
+`;
 
 export default Register

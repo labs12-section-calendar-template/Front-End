@@ -1,3 +1,6 @@
+*{
+    text-align: center;
+}
 h1{
     font-size: 60px;
 }
@@ -30,6 +33,11 @@ button:hover{
     color: white;
     cursor: pointer;
     opacity: 1;
+}
+
+:hover button{
+    background: #3270EB,
+    
 }
 
 .marketing-container{

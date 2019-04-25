@@ -7,7 +7,8 @@ import Button from "@material-ui/core/Button";
 // import AccountCircle from "@material-ui/icons/AccountCircle";
 import logo from '../../extras/CalendrWhite.png';
 
-const NavBar = () => {
+
+const MainNavBar = () => {
   return (
     <div>
        <AppBar position="static"
@@ -49,13 +50,14 @@ const NavBar = () => {
                     fontSize: "1.2rem"
                 }}
                 color="inherit"
-                >Login</Button>
+                >Route 1</Button>
+                
                 <Button 
                 style={{
                     margin: "0 .5rem 0",
                     fontSize: "1.2rem"
                 }}
-                color="inherit">Register</Button>
+                color="inherit">Route 2</Button>
              
 
                 {/* <AccountCircle 
@@ -72,4 +74,4 @@ const NavBar = () => {
   )
 }
 
-export default NavBar
+export default MainNavBar
