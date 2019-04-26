@@ -20,7 +20,7 @@ export class month extends Component {
 
     // componentDidMount() {
         
-    // }
+    // } 
 
     // OnClick this function moves to the previous month
 previous = () => {
@@ -30,15 +30,16 @@ previous = () => {
           month: format(subMonths(month, 1), "MM/DD/YYYY")
         });
       };
-        
-    // OnClick this function moves to the next month
+
+
+      // OnClick this function moves to the next month
 next = () => {
         const { month } = this.state;
         console.log(month)
         this.setState({
           month: format(addMonths(month, 1), "MM/DD/YYYY")
         });
-      };
+      };       
     
 
 
