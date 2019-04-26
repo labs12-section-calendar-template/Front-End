@@ -14,7 +14,6 @@ const MainNavBar = () => {
         <Toolbar
           style={{
             margin: "0 10%",
-            maxWidth: "1280px",
             display: "flex",
             justifyContent: "space-between",
             padding: "0"
@@ -49,15 +48,15 @@ const MainNavBar = () => {
             }}
           >
             <Button
+            component={Link} exact to="/"
               style={{
                 margin: "0 .5rem 0",
                 fontSize: "1.2rem"
               }}
               color="inherit"
             >
-              Route 1
+              Home/Temp
             </Button>
-
                 <div
                 className="nav-buttons"
                 style={{
@@ -65,6 +64,7 @@ const MainNavBar = () => {
                     justifyContent:"space-between",
                     alignItems: "center",
                   }}>
+
                 <Button 
                 component={Link} exact to="/users"
                 style={{

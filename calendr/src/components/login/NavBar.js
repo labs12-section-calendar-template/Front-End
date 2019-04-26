@@ -17,7 +17,6 @@ const NavBar = () => {
           <Toolbar
             style={{
               margin: "0 10%",
-              maxWidth: "1280px",
               display: "flex",
               justifyContent: "space-between",
               padding:"0"
