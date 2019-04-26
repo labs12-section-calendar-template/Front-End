@@ -80,7 +80,6 @@ const MainNavBar = () => {
                     fontSize: "1.2rem"
                 }}
                 color="inherit">Route 2</Button>
-             
 
             {/* <AccountCircle 
                 style={{
