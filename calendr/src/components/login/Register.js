@@ -24,7 +24,7 @@ export class Register extends Component {
     let { fullname, username, email, password } = this.state
     if(this.state.password === this.state.verifypassword){
   axios
-  .post(`${url}users/register`, {
+  .post(`${url}auth/register`, {
         fullname: fullname,
         username: username,
         email: email,

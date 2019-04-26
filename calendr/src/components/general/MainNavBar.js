@@ -3,7 +3,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-// import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import AccountCircle from "@material-ui/icons/AccountCircle";
 import logo from "../../extras/CalendrWhite.png";
 
@@ -58,15 +58,29 @@ const MainNavBar = () => {
               Route 1
             </Button>
 
-            <Button
-              style={{
-                margin: "0 .5rem 0",
-                fontSize: "1.2rem"
-              }}
-              color="inherit"
-            >
-              Route 2
-            </Button>
+                <div
+                className="nav-buttons"
+                style={{
+                    display: "flex",
+                    justifyContent:"space-between",
+                    alignItems: "center",
+                  }}>
+                <Button 
+                component={Link} exact to="/users"
+                style={{
+                    margin: "0 .5rem 0",
+                    fontSize: "1.2rem"
+                }}
+                color="inherit"
+                >Users</Button>
+                
+                <Button 
+                style={{
+                    margin: "0 .5rem 0",
+                    fontSize: "1.2rem"
+                }}
+                color="inherit">Route 2</Button>
+             
 
             {/* <AccountCircle 
                 style={{
@@ -75,6 +89,7 @@ const MainNavBar = () => {
                     padding:"0"
                 }}/> */}
             {/* </div> */}
+          </div>
           </div>
         </Toolbar>
       </AppBar>
