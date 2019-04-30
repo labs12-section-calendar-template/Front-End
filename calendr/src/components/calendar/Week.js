@@ -1,30 +1,35 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from 'react'
 
-import dateFns from "date-fns";
+import Day from './Day';
 
-class Week extends Component {
-  state = {
-    week: new Date()
-  };
-
-  weekDays = () => {
-    const days = [];
-    let startDate = dateFns.startOfWeek(this.state.week);
-    for (let i = 0; i < 7; i++) {
-      days.push(
-        <div>{dateFns.format(dateFns.addDays(startDate, i), "dd")}</div>
-      );
-    }
-    return days.map(day => <div>{day}</div>);
-  };
-
+class Week extends React.Component {
   render() {
+    let days = [];
+    let { date } = this.props;
+      
+    for (let i = 0; i <= 6; i++) {
+      let day = {
+          name: date.format("dd").substring(0, 1),
+          number: date.date(),
+          date: date
+      };
+      days.push(
+        day
+      );
+
+      date = date.clone();
+      date.add(1, "day");
+    }
+
     return (
-      <div>
-        <div className="days">{this.weekDays()}</div>
+      <div> 
+      {days.map(day =>( 
+        <Day day={day} key={day.date}/>
+      ))}
       </div>
     );
   }
+
 }
 
-export default Week;
+export default Week
