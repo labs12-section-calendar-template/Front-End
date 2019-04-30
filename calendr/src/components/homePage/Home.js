@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./Home.css"
+import Month from '../calendar/Month';
 
 export class Home extends Component {
   render() {
@@ -12,13 +13,14 @@ export class Home extends Component {
           <h5 className='buttonTitles'>Group Members</h5>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle"></i>
-          <p className='buttonDisciptions'>Invite to groups</p>
+          <p className='buttonDiscriptions'>Invite to groups</p>
         </div>
             <h5 className='buttonTitles'>Templates</h5>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle"></i>
-          <p className='buttonDisciptions'>Add Template</p>
+          <p className='buttonDiscriptions'>Add Template</p>
         </div>
+        {/* <Month/> */}
 
       </div>
     )
