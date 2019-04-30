@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import moment from "moment";
-import DayNames from "./DayNames";
-import Week from "./Week";
+import GeneralCalendar from './GeneralCalendar';
 
 export class Month extends Component {
   constructor(props) {
@@ -27,28 +26,28 @@ export class Month extends Component {
     });
   };
 
-  renderWeeks() {
-    let weeks = [];
-    let done = false;
-    let date = this.state.month
-      .clone()
-      .startOf("month")
-      .day("Sunday");
-    let count = 0;
-    let monthIndex = date.month();
+  // renderWeeks() {
+  //   let weeks = [];
+  //   let done = false;
+  //   let date = this.state.month
+  //     .clone()
+  //     .startOf("month")
+  //     .day("Sunday");
+  //   let count = 0;
+  //   let monthIndex = date.month();
 
-    const { month } = this.state;
+  //   const { month } = this.state;
 
-    while (!done) {
-      weeks.push(<Week key={date} date={date.clone()} month={month} />);
+  //   while (!done) {
+  //     weeks.push(<Week key={date} date={date.clone()} month={month} />);
 
-      date.add(1, "week");
+  //     date.add(1, "week");
 
-      done = count++ > 2 && monthIndex !== date.month();
-      monthIndex = date.month();
-    }
-    return weeks;
-  }
+  //     done = count++ > 2 && monthIndex !== date.month();
+  //     monthIndex = date.month();
+  //   }
+  //   return weeks;
+  // }
 
   MonthDays = () => {
     this.state.month.map(mon => mon.startOf("month"));
@@ -75,9 +74,8 @@ export class Month extends Component {
             <h1>{this.renderMonthLabel()}</h1>
             <i className="arrow fa fa-angle-right" onClick={this.next} />
           </div>
-          <DayNames />
         </header>
-        <div>{this.renderWeeks()}</div>
+        <GeneralCalendar/>
       </div>
     );
   }
