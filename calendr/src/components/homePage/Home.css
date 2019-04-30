@@ -1,0 +1,43 @@
+.homePageStyles{
+    align-items: flex-start;
+    display:flex;
+    flex-direction: column;
+    margin: 0 4%;
+
+}
+.GroupName{
+    margin-right:2rem;
+    font-size:2rem;
+}
+.groupNameTemplate{
+    display:flex;
+    
+}
+.allTemps{
+    font-size: 1.4rem;
+
+}
+.buttonBox{
+    display: flex;
+    align-items: center;
+}
+
+.fa-plus-circle{
+    margin:1rem;
+    font-size:1.6rem;
+    color: #3f51b5;
+    border-radius: 50%;
+    
+}
+.fa-plus-circle:hover{
+    color: white;
+    background-color:black;
+    box-shadow: 0 0 .1rem .1rem black;
+}
+.buttonTitles{
+    font-size: 1.2rem;
+    margin:.3rem;
+}
+.buttonDisciptions{
+    font-size:.9rem;
+}

@@ -15,8 +15,8 @@ function App() {
     // <Auth/>
     <div>
     <MainView />
-    <MarketingPage />
     </div>
+   // <MarketingPage />
     // <Month /> 
   );
 }
