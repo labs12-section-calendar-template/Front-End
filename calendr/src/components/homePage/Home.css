@@ -39,7 +39,7 @@
     margin:.3rem;
 }
 .buttonDiscriptions{
-    font-size:.9rem;
+    font-size:1rem;
 }
 .buttonLink{
     margin: 5rem auto 0;
@@ -47,4 +47,5 @@
 
 .firstTemplateButton{
     height:4rem;
+    font-size: 1.5rem;
 }
