@@ -41,3 +41,10 @@
 .buttonDiscriptions{
     font-size:.9rem;
 }
+.buttonLink{
+    margin: 5rem auto 0;
+}
+
+.firstTemplateButton{
+    height:4rem;
+}
