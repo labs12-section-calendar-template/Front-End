@@ -49,7 +49,7 @@ const MainNavBar = () => {
             }}
           >
             <Button
-            component={Link} exact to="/"
+            component={Link} to="/home"
               style={{
                 margin: "0 .5rem 0",
                 fontSize: "1.2rem"
