@@ -1,0 +1,46 @@
+
+.day{
+    display: inline-block;
+    width: 150px;
+    height: 110px;
+    background-color: #EEEEEE;
+    border: 1.5px solid #3270EB;
+    border-radius: 6px;
+    font-size: 1rem;
+    opacity: 0.6;
+    text-decoration: none;
+}
+
+.day:hover{
+    opacity: 1;
+    border: 1.5px solid #f36d13;
+}
+
+.dayNumber{
+    font-size: 2rem;
+    padding-top: 65px;
+    padding-left: 100px;
+    color: black;
+    font-weight: bold;
+    margin: 0px;
+
+}
+
+.dayNumber:hover{
+    color: #f36d13;
+}
+.dayNames {
+    display: flex;
+    justify-content: space-between;
+    padding: 3% 2%;
+    font-size: 1.5rem;
+    margin-right: 55px;
+    margin-left: 40px;
+}
+
+
+.wholeCalendar{
+    width: 1100px;
+    margin: 0 auto;
+}
+

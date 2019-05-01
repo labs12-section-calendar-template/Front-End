@@ -18,8 +18,8 @@ function App() {
       <GroupView/>
       <MainView />
     </div>
-   // <MarketingPage />
     // <Month /> 
+   // <MarketingPage />
   );
 }
 
