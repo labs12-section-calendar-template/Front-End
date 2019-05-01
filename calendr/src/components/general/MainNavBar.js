@@ -32,7 +32,8 @@ const MainNavBar = () => {
           <span
             style={{
               fontSize: "32px",
-              letterSpacing: "1.5px"
+              letterSpacing: "1.5px",
+              marginLeft:'16rem'
             }}
           >
             {" "}

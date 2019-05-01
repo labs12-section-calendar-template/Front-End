@@ -1,0 +1,37 @@
+.templateCreation{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.groupTemplateInfo{
+    box-sizing: border-box;
+    width:25vw;
+    padding-left:2rem;
+}
+
+.templateMain{
+    box-sizing: border-box;
+    width:75vw;
+}
+
+.templateTitle{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 5rem;
+}
+ #buttonSave{
+    padding:.7rem 1rem;
+    margin-left: 4rem;
+ }
+
+.templateEdit{
+
+}
+
+
+
+
+
+
