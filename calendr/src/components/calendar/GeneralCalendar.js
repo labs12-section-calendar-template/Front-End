@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import DayNames from "./DayNames"
 import Week from './Week'
+import './GeneralCalendar.css'
+
 
 export class GeneralCalendar extends Component {
     state ={
@@ -34,7 +36,7 @@ export class GeneralCalendar extends Component {
 
   render() {
     return (
-      <div>
+      <div className="wholeCalendar">
         <DayNames />
         <div>{this.renderWeeks()}</div>
       </div>

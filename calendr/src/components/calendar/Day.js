@@ -11,8 +11,8 @@ class Day extends React.Component {
     const { day: { date, number } } = this.props;
     
     return (
-      <NavLink to= {`/month/week/${check}`} key={date.toString()} >
-        {number} 
+      <NavLink className='day' to= {`/month/week/${check}`} key={date.toString()} >
+        <p className="dayNumber">{number}</p> 
       </NavLink>
     );
   }
