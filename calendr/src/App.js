@@ -16,8 +16,8 @@ function App() {
     <div>
     <MainView />
     </div>
-   // <MarketingPage />
     // <Month /> 
+   // <MarketingPage />
   );
 }
 
