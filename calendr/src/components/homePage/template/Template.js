@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import SideBar from '../SideBar';
 import GeneralCalendar from '../../calendar/GeneralCalendar';
-import './Template.css'
+import './Template.css';
+import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 export class Template extends Component {
   constructor(props) {
@@ -10,9 +12,12 @@ export class Template extends Component {
 this.state = {
     title: '',
     description: '',
-    value: ''
+    cycleLength: '',
+    color: '',
+    dateRange: ''
     }
 }
+
 
 handleChange = event => {
   this.setState({
@@ -26,6 +31,13 @@ handleInputChange = event => {
   })
 }
 
+delayRedirect = event => {
+  const { history: { push } } = this.props;
+  event.preventDefault();
+  setTimeout(()=>push('/'), 1500);
+}
+
+
 
   render() {
     return (
@@ -36,15 +48,31 @@ handleInputChange = event => {
         <main className="templateMain">
           <div className='templateTitle'>
             <h1>Template Creation</h1>
-            <button id="buttonSave">Save</button>
+            <Link to='/' onClick={this.delayRedirect}>
+            <button id="buttonSave" onClick={this.addTemplate}>Save</button>
+            </Link>
           </div>
           <div className='templateEdit'>
             <div className='cycleLength'>
               <h3>Cycle Length: {' '}
-              <select value={this.state.value} onChange={this.handleChange}>
+              <select value={this.state.cycleLength} onChange={this.handleChange}>
+                  <option>Select One</option>
                   <option value='four'>4 Weeks</option>
                   <option value='five'>5 Weeks</option>
                   <option value='six'>6 Weeks</option>
+              </select>
+              </h3>
+              <h3>Template Color: {' '}
+              <select value={this.state.color} onChange={this.handleChange}>
+                  <option>Select One</option>
+                  <option value='red'>Red</option>
+                  <option value='green'>Green</option>
+                  <option value='blue'>Blue</option>
+                  <option value='maroon'>Maroon</option>
+                  <option value='teal'>Teal</option>
+                  <option value='navy-blue'>Navy Blue</option>
+                  <option value='orange'>Orange</option>
+                  <option value='olive'>Olive</option>
               </select>
               </h3>
             </div>
