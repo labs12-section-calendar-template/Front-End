@@ -33,8 +33,10 @@ const NavBar = () => {
             <span
             style={{
               fontSize: "32px",
-              letterSpacing: "1.5px"
-            }}> CALENDR</span>
+              letterSpacing: "1.5px",
+              marginLeft:"16rem"
+            }}
+            > CALENDR</span>
 
                 <div
                 className="nav-buttons"
