@@ -19,9 +19,15 @@ this.state = {
 }
 
 
-handleChange = event => {
+handleCycleChange = event => {
   this.setState({
-    value: event.target.value
+    cycleLength: event.target.value
+  });
+}
+
+handleColorChange = event => {
+  this.setState({
+    color: event.target.value
   });
 }
 
@@ -55,7 +61,7 @@ delayRedirect = event => {
           <div className='templateEdit'>
             <div className='cycleLength'>
               <h3>Cycle Length: {' '}
-              <select value={this.state.cycleLength} onChange={this.handleChange}>
+              <select value={this.state.cycleLength} onChange={this.handleCycleChange}>
                   <option>Select One</option>
                   <option value='four'>4 Weeks</option>
                   <option value='five'>5 Weeks</option>
@@ -63,7 +69,7 @@ delayRedirect = event => {
               </select>
               </h3>
               <h3>Template Color: {' '}
-              <select value={this.state.color} onChange={this.handleChange}>
+              <select value={this.state.color} onChange={this.handleColorChange}>
                   <option>Select One</option>
                   <option value='red'>Red</option>
                   <option value='green'>Green</option>
