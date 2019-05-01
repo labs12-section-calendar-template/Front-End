@@ -6,6 +6,7 @@ import MainView from "./components/views/mainView";
 import Authenticate from "./components/login/Authentication";
 import MarketingPage from "./components/general/MarketingPage";
 import Month from './components/calendar/Month'
+import GroupView from "./components/views/groupView";
 
 // import Month from './components/calendar/Month'
 // import Day from './components/calendar/Day'
@@ -14,13 +15,14 @@ function App() {
   return (
     // <Auth/>
     <div>
-    <MainView />
+      <GroupView/>
+      <MainView />
     </div>
     // <Month /> 
    // <MarketingPage />
   );
 }
 
- const Auth = withRouter(Authenticate(MainView)(LoginView));
+// const Auth = withRouter(Authenticate(MainView)(LoginView));
 
 export default withRouter(App);
