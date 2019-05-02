@@ -32,7 +32,8 @@ const MainNavBar = () => {
           <span
             style={{
               fontSize: "32px",
-              letterSpacing: "1.5px"
+              letterSpacing: "1.5px",
+              marginLeft:'16rem'
             }}
           >
             {" "}
@@ -48,7 +49,7 @@ const MainNavBar = () => {
             }}
           >
             <Button
-            component={Link} exact to="/"
+            component={Link} to="/home"
               style={{
                 margin: "0 .5rem 0",
                 fontSize: "1.2rem"

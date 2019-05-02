@@ -3,7 +3,7 @@ import React from 'react'
 class DayNames extends React.Component {
     render() {
         return (
-          <div>
+          <div className="dayNames">
             <span>Sun</span>
             <span>Mon</span>
             <span>Tue</span>
