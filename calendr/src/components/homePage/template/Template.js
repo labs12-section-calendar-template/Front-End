@@ -4,6 +4,7 @@ import GeneralCalendar from '../../calendar/GeneralCalendar';
 import './Template.css';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import MainNavBar from '../../general/MainNavBar'
 
 export class Template extends Component {
   constructor(props) {
@@ -34,13 +35,15 @@ handleInputChange = event => {
 delayRedirect = event => {
   const { history: { push } } = this.props;
   event.preventDefault();
-  setTimeout(()=>push('/'), 1500);
+  setTimeout(()=>push('/home'), 1500);
 }
 
 
 
   render() {
     return (
+    <div>
+      <MainNavBar/>
       <div className="templateCreation">
         <aside className="groupTemplateInfo">
           <SideBar /> 
@@ -98,6 +101,7 @@ delayRedirect = event => {
           </div>
         </main>
       </div>
+    </div>
     )
   }
 }

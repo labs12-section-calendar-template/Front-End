@@ -15,13 +15,13 @@
 } 
 
 .joinCreateGroup{
-    margin: 2rem 0;
+    margin: 1.5rem 0;
 }
 
 .groupDescription{
     font-size:1rem;
     width:80%;
-    margin:auto auto 2rem auto;
+    margin:auto;
     border-bottom: 2px solid black;
     height:3rem;
 }
@@ -39,5 +39,5 @@
 }
 .formButton{
     width:40%;
-    margin-top:3rem;
+    margin-top:1rem;
 }

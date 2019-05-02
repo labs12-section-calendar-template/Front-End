@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { withRouter } from "react-router-dom";
+import { withRouter, Switch } from "react-router-dom";
 import LoginView from "./components/views/loginView";
 import MainView from "./components/views/mainView";
 import Authenticate from "./components/login/Authentication";
@@ -15,8 +15,10 @@ function App() {
   return (
     // <Auth/>
     <div>
-      <GroupView/>
+    <Switch>
+      {/* <GroupView /> */}
       <MainView />
+    </Switch>
     </div>
     // <Month /> 
    // <MarketingPage />
