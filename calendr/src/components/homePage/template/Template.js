@@ -84,6 +84,7 @@ delayRedirect = event => {
             </div>
               <form>
                 <li> 
+                  <h3>Title: </h3>
                   <input 
                     onChange={this.handleInputChange}
                     placeholder="Title"
@@ -92,6 +93,7 @@ delayRedirect = event => {
                     /> 
                 </li>
                 <li> 
+                  <h3>Description: </h3>
                   <input 
                     onChange={this.handleInputChange}
                     placeholder="Description"
