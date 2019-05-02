@@ -22,6 +22,7 @@ export class loginView extends Component {
             signIn = {this.props.signIn}
             password = {this.state.password}
             username = {this.state.username}
+            gmailLogin = {this.props.gmailLogin}
             {...props}
             />)}/>
             <Route exact path='/register' component = {Register}/>

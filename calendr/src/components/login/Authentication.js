@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import queryString from 'query-string';
 import axios from 'axios';
 
 const url = "http://localhost:3000/"
@@ -14,14 +15,39 @@ const Authentication = App => Login =>
             })
         }
 
+    componentWillMount(){
+        let query = queryString.parse(this.props.location.search);
+        console.log(query.userId)
+        console.log(query.token)
+        if (query.token) {
+            console.log(query.token)
+          window.localStorage.setItem("jwt", query.token);
+          window.localStorage.setItem("userId", query.userId);
+          this.props.history.push("/");
+          this.setState({
+              loggedIn: true
+          })
+       }
+    }
+
     componentDidMount(){
-      if(localStorage.getItem('userdata')){
-        const userdata = JSON.parse(localStorage.getItem('userdata'));
-        axios.post(`${url}api/users/checkauth`, {token: userdata.token}).then(res => {
-            res.data ? this.setState({ loggedIn: true}) : localStorage.clear();
-        }).catch(error => console.log(error));
+    //   if(localStorage.getItem('userdata')){
+    //     const userdata = JSON.parse(localStorage.getItem('userdata'));
+    //     axios.post(`${url}api/users/checkauth`, {token: userdata.token}).then(res => {
+    //         res.data ? this.setState({ loggedIn: true}) : localStorage.clear();
+    //     }).catch(error => console.log(error));
+    //   }
     }
-    }
+
+    gmailLogin = (event) => {
+        event.preventDefault();
+        window.location = 'https://calendrserver.herokuapp.com/auth/google'
+      }
+
+    //http://localhost:3300/auth/google
+    //https://calendrserver.herokuapp.com/auth/google
+
+
 
     handleChanges = event => {
         let { name, value } = event.target
@@ -70,6 +96,7 @@ const Authentication = App => Login =>
               signIn = {this.signIn}
               username = {this.state.username}
               password = {this.state.password}
+              gmailLogin = {this.gmailLogin}
               />
     }
   }

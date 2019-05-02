@@ -16,8 +16,7 @@ function App() {
     // <Auth/>
     <div>
     <Switch>
-      {/* <GroupView /> */}
-      <LoginView/>
+      <Auth/>
     </Switch>
     </div>
     // <Month /> 
@@ -25,6 +24,6 @@ function App() {
   );
 }
 
-// const Auth = withRouter(Authenticate(MainView)(LoginView));
+const Auth = withRouter(Authenticate(MainView)(LoginView));
 
 export default withRouter(App);
