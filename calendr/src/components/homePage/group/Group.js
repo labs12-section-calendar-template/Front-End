@@ -1,12 +1,29 @@
 import React, { Component } from 'react'
 import "./Group.css"
+import axios from 'axios'
+
 export class Group extends Component {
     state={
-        joinCode: null,
-        createdCode: null,
+        joinCode: '',
+        createdCode: '',
         name: '',
     }
 
+
+    postGroup = () => {
+      axios
+        .post(`/groups`)
+        .then(res => {
+          console.log(res.data);
+          this.setState({
+            createdCode: '',
+            name: '',
+          });
+        })
+        .catch(err => {
+          console.log(err);
+        });
+    };
 
 handleInputChange = event => {
   this.setState({
@@ -20,7 +37,7 @@ handleInputChange = event => {
         <div className="createGroup boxing">
             <h2 className="joinCreateGroup">Create Group</h2>
             <p className="groupDescription">You must be a Gold Tier Member to create a group</p>
-          <form className="formGroup">
+          <form className="formGroup" onClick={this.postGroup}>
             <h3>Enter Group Name</h3>
             <input
             className="groupInput"
@@ -28,6 +45,7 @@ handleInputChange = event => {
             placeholder="Group name..."
             value={this.state.name}
             name="name"
+            type="text"
             />
             <h3>Create 4 digit Join Code</h3>
             <input
@@ -36,6 +54,7 @@ handleInputChange = event => {
             placeholder="Join code..."
             value={this.state.createdCode}
             name="createdCode"
+            type="number"
             />
             <button className="formButton">Create</button>
           </form>
@@ -51,6 +70,7 @@ handleInputChange = event => {
             placeholder="Join code..."
             value={this.state.joinCode}
             name="joinCode" 
+            type="number"
             />
             <button className="formButton">Join</button>
            </form>

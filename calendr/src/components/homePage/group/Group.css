@@ -23,7 +23,7 @@
     width:80%;
     margin:auto;
     border-bottom: 2px solid black;
-    height:3rem;
+    padding-bottom:.3rem;
 }
 
 .formGroup{
@@ -38,6 +38,37 @@
     border:1px solid black;
 }
 .formButton{
-    width:40%;
+    width:50%;
     margin-top:1rem;
+}
+
+@media (max-width: 1099px) {
+    .boxing{
+        height:47%;
+    } 
+    
+    .groupDescription{
+        padding-bottom:2rem;
+    }
+    .formButton{
+        width:60%;
+    }
+}
+
+@media (max-width: 800px) {    
+    .joinCreateGroup{
+        margin: 1.5rem 0;
+    }
+
+    .groupDescription{
+        padding-bottom:2rem;
+    }
+
+    .groupInput{
+        width:80%;
+    }
+    .formButton{
+        width:60%;
+        padding:.6rem 0;
+    }
 }
