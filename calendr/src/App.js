@@ -16,7 +16,7 @@ function App() {
     <div>
     <Switch>
       {/* <GroupView /> */}
-      <LoginView/>
+      <MainView/>
     </Switch>
     </div>
     // <Month /> 

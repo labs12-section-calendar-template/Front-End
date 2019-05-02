@@ -44,8 +44,6 @@ delayRedirect = event => {
   setTimeout(()=>push('/home'), 1500);
 }
 
-
-
   render() {
     return (
     <div>
