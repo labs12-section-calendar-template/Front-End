@@ -1,0 +1,47 @@
+.event-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Poppins";
+  margin: 10% 20%;
+  align-content: center;
+}
+.event-view-container {
+}
+
+.weekday-container {
+  width: 375px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 30%;
+}
+.holiday-rule {
+  width: 200px;
+  margin-left: 28%;
+}
+.weekday {
+  background: white;
+  border-radius: 13px;
+  -moz-border-radius: 13px;
+  -webkit-border-radius: 18px;
+  color: #0f0d0d;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 36px;
+  margin-right: 5px;
+  text-align: center;
+  width: 36px;
+  font-size: 15px;
+  border: 0.5px solid black;
+}
+.weekday:hover {
+  background: gray;
+  cursor: pointer;
+  cursor: hand;
+}
+.headings {
+  text-align: left;
+}
+.selected-container {
+  margin: 0 30%;
+}
