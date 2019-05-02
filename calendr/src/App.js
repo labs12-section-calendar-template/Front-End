@@ -1,9 +1,9 @@
 import React from "react";
 import "./App.css";
 import { withRouter, Switch } from "react-router-dom";
-// import LoginView from "./components/views/loginView";
+import LoginView from "./components/views/loginView";
 import MainView from "./components/views/mainView";
-// import Authenticate from "./components/login/Authentication";
+import Authenticate from "./components/login/Authentication";
 // import MarketingPage from "./components/general/MarketingPage";
 // import Month from './components/calendar/Month'
 
