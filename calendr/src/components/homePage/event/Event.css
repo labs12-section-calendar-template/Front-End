@@ -3,28 +3,25 @@
   flex-direction: column;
   justify-content: center;
   font-family: "Poppins";
-  margin: 10% 20%;
+  width: 100%;
   align-content: center;
 }
-.event-view-container {
+.event-details {
+  font-size: 22px;
 }
-
 .weekday-container {
   width: 375px;
   display: flex;
   justify-content: space-evenly;
-  margin: 0 30%;
+  margin: 0 33.3%;
 }
-.holiday-rule {
-  width: 200px;
-  margin-left: 28%;
-}
+
 .weekday {
-  background: white;
+  background: #3270eb;
   border-radius: 13px;
   -moz-border-radius: 13px;
   -webkit-border-radius: 18px;
-  color: #0f0d0d;
+  color: white;
   display: inline-block;
   font-weight: bold;
   line-height: 36px;
@@ -35,13 +32,38 @@
   border: 0.5px solid black;
 }
 .weekday:hover {
-  background: gray;
+  background: #f36d13;
   cursor: pointer;
   cursor: hand;
 }
-.headings {
-  text-align: left;
+.top-section {
+  margin: 0 33.3%;
 }
 .selected-container {
-  margin: 0 30%;
+  margin: 0 33.3%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 375px;
+}
+.selected {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2%;
+  height: 32px;
+}
+.selected-day {
+  font-size: 22px;
+}
+.active {
+  background-color: #f36d13;
+}
+.time-input {
+  height: 15px;
+  margin: 8%;
+}
+.holiday-rule {
+  /* width: 200px; */
+  margin: 2% 33.3%;
+  /* display: flex; */
 }

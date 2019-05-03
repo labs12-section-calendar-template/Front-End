@@ -44,30 +44,53 @@ class Event extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <div className="headings">
-              <h2>{"New Event Title"}</h2>
-              <h4>{"Details"}</h4>
+            <div className="top-section">
+              <h2 className="event-title-heading">{"Awesome  vacation"}</h2>
+              <p className="event-details">
+                {"Greece, Italy, France, Spain, Germany, and England"}
+              </p>
             </div>
             <div className="weekday-container">
-              <div className="weekday" onClick={() => this.toggleSunday()}>
+              <div
+                className={`${this.state.Su && "active"} weekday`}
+                onClick={() => this.toggleSunday()}
+              >
                 Su
               </div>
-              <div className="weekday" onClick={() => this.toggleMonday()}>
+              <div
+                className={`${this.state.M && "active"} weekday`}
+                onClick={() => this.toggleMonday()}
+              >
                 M
               </div>
-              <div className="weekday" onClick={() => this.toggleTuesday()}>
+              <div
+                className={`${this.state.T && "active"} weekday`}
+                onClick={() => this.toggleTuesday()}
+              >
                 T
               </div>
-              <div className="weekday" onClick={() => this.toggleWednesday()}>
+              <div
+                className={`${this.state.W && "active"} weekday`}
+                onClick={() => this.toggleWednesday()}
+              >
                 W
               </div>
-              <div className="weekday" onClick={() => this.toggleThursday()}>
+              <div
+                className={`${this.state.Th && "active"} weekday`}
+                onClick={() => this.toggleThursday()}
+              >
                 Th
               </div>
-              <div className="weekday" onClick={() => this.toggleFriday()}>
+              <div
+                className={`${this.state.F && "active"} weekday`}
+                onClick={() => this.toggleFriday()}
+              >
                 F
               </div>
-              <div className="weekday" onClick={() => this.toggleSaturday()}>
+              <div
+                className={`${this.state.S && "active"} weekday`}
+                onClick={() => this.toggleSaturday()}
+              >
                 S
               </div>
             </div>

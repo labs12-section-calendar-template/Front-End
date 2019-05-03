@@ -5,12 +5,9 @@ const Selected = props => {
     return null;
   }
   return (
-    <div style={{ display: "flex" }}>
-      <h4 style={{ marginRight: "3%", width: "150px", alignSelf: "center" }}>
-        {props.children}
-      </h4>
-
-      <input style={{ height: "25px", margin: "15% 0" }} />
+    <div className="selected">
+      <p className="selected-day">{props.children}</p>
+      <input className="time-input" />
     </div>
   );
 };

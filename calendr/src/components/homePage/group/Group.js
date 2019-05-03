@@ -19,7 +19,11 @@ export class Group extends Component {
             createdCode: '',
             name: '',
           });
-          res.redirect('/home')
+          if(this.state.createdCode !== null && this.state.name !== null){
+            res.redirect('/home')
+          }else{
+            alert('Fill out all fields')
+          }
         })
         .catch(err => {
           console.log(err);
