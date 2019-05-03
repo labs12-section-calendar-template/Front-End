@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components';
-import axios from 'axios';
 
 class Login extends React.Component {
   constructor(props) {
@@ -11,18 +10,12 @@ class Login extends React.Component {
     }
   }
 
-  gmailLogin = (event) => {
-    event.preventDefault();
-    window.location = 'http://localhost:3300/auth/google';
-  }
-
-
   render() { 
     return ( 
         <div>
           <h2>Welcome, Please login</h2>
           <FormContainer>
-          <Form type='submit'>
+          {/* <Form type='submit'>
           <Div>
             <H4>Username:</H4>
               <Input
@@ -43,10 +36,10 @@ class Login extends React.Component {
               placeholder = "Password..."
               />
             </Div>
-          </Form>
+          </Form> */}
+           <button onClick = {this.props.gmailLogin}>GMAIL</button>
           </FormContainer>
-          <Button onClick = {this.props.signIn}>Login</Button>
-          <button onClick = {this.gmailLogin}>GMAIL</button>
+          {/* <Button onClick = {this.props.signIn}>Login</Button> */}
         </div>
         
      );

@@ -54,14 +54,14 @@ const NavBar = () => {
                 color="inherit"
                 >Login</Button>
                 
-                <Button 
+                {/* <Button 
                 component={Link} to="/register"
                 style={{
                     margin: "0 .5rem 0",
                     fontSize: "1.2rem"
                 }}
                 color="inherit">Register</Button>
-             
+              */}
 
                 {/* <AccountCircle 
                 style={{
