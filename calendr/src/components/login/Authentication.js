@@ -69,7 +69,7 @@ const Authentication = App => Login =>
               this.setState({
                   loggedIn: true
               });
-                 this.props.history.push('/users');
+                 this.props.history.push('/');
           })
           .catch(err => alert(err));
       }

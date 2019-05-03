@@ -1,8 +1,8 @@
 import React from "react";
 import Selected from "./Selected.js";
-import "./EventView.css";
+import "./Event.css";
 
-class EventView extends React.Component {
+class Event extends React.Component {
   constructor() {
     super();
 
@@ -117,4 +117,4 @@ class EventView extends React.Component {
     );
   }
 }
-export default EventView;
+export default Event;
