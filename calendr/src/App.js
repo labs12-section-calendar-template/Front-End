@@ -4,8 +4,10 @@ import { withRouter, Switch } from "react-router-dom";
 import LoginView from "./components/views/loginView";
 import MainView from "./components/views/mainView";
 import Authenticate from "./components/login/Authentication";
+
 // import MarketingPage from "./components/general/MarketingPage";
 // import Month from './components/calendar/Month'
+
 
 // import Month from './components/calendar/Month'
 // import Day from './components/calendar/Day'
@@ -14,12 +16,14 @@ function App() {
   return (
     // <Auth/>
     <div>
+
     <Switch>
       <Auth/>
     </Switch>
+
     </div>
-    // <Month /> 
-   // <MarketingPage />
+    // <Month />
+    // <MarketingPage />
   );
 }
 
