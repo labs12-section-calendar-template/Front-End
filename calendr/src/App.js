@@ -5,8 +5,9 @@ import LoginView from "./components/views/loginView";
 import MainView from "./components/views/mainView";
 import Authenticate from "./components/login/Authentication";
 import MarketingPage from "./components/general/MarketingPage";
-import Month from './components/calendar/Month'
+import Month from "./components/calendar/Month";
 import GroupView from "./components/views/groupView";
+import EventView from "./components/views/EventView";
 
 // import Month from './components/calendar/Month'
 // import Day from './components/calendar/Day'
@@ -15,13 +16,14 @@ function App() {
   return (
     // <Auth/>
     <div>
-    <Switch>
+      <EventView />
+      {/* <Switch> */}
       {/* <GroupView /> */}
-      <LoginView/>
-    </Switch>
+      {/* <LoginView/> */}
+      {/* </Switch> */}
     </div>
-    // <Month /> 
-   // <MarketingPage />
+    // <Month />
+    // <MarketingPage />
   );
 }
 
