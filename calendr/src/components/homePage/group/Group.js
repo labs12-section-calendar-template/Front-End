@@ -8,20 +8,20 @@ export class Group extends Component {
         createdCode: '',
         name: '',
     }
-
-
+    
     postGroup = e => {
       e.preventDefault();
-      let { name, joinCode } = this.state
+      const createdCode = this.state.joinCode
+      let { name } = this.state
       axios
-        .post(`http://localhost:3300/users/:id/groups`, { name, joinCode })
+        .post(`/users/:id/groups`, { name, createdCode })
         .then(res => {
           console.log(res.data);
           this.setState({
-            joinCode: '',
+            createdCode: '',
             name: '',
           });
-          if(this.state.joinCode !== null && this.state.name !== null){
+          if(this.state.createdCode !== null && this.state.name !== null){
             this.props.history.push('/home')
           }else{
             alert('Fill out all fields')
@@ -59,8 +59,8 @@ handleInputChange = event => {
             className="groupInput"
             onChange={this.handleInputChange}
             placeholder="Join code..."
-            value={this.state.joinCode}
-            name="joinCode"
+            value={this.state.createdCode}
+            name="createdCode"
             type="number"
             />
             <button className="formButton">Create</button>

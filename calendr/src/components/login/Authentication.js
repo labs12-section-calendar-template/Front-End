@@ -41,7 +41,7 @@ const Authentication = App => Login =>
 
     gmailLogin = (event) => {
         event.preventDefault();
-        window.location = 'http://localhost:3300/auth/google'
+        window.location = 'https://calendrserver.herokuapp.com/auth/google'
       }
 
     //http://localhost:3300/auth/google
