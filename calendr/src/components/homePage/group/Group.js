@@ -12,13 +12,14 @@ export class Group extends Component {
 
     postGroup = () => {
       axios
-        .post(`/groups`)
+        .post(`/users/:id/groups`)
         .then(res => {
           console.log(res.data);
           this.setState({
             createdCode: '',
             name: '',
           });
+          res.redirect('/home')
         })
         .catch(err => {
           console.log(err);
@@ -37,7 +38,7 @@ handleInputChange = event => {
         <div className="createGroup boxing">
             <h2 className="joinCreateGroup">Create Group</h2>
             <p className="groupDescription">You must be a Gold Tier Member to create a group</p>
-          <form className="formGroup" onClick={this.postGroup}>
+          <form className="formGroup" onSubmit={this.postGroup}>
             <h3>Enter Group Name</h3>
             <input
             className="groupInput"
