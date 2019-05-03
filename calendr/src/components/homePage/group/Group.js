@@ -8,11 +8,13 @@ export class Group extends Component {
         createdCode: '',
         name: '',
     }
-
-
-    postGroup = () => {
+    
+    postGroup = e => {
+      e.preventDefault();
+      const createdCode = this.state.joinCode
+      let { name } = this.state
       axios
-        .post(`/users/:id/groups`)
+        .post(`/users/:id/groups`, { name, createdCode })
         .then(res => {
           console.log(res.data);
           this.setState({
@@ -20,7 +22,7 @@ export class Group extends Component {
             name: '',
           });
           if(this.state.createdCode !== null && this.state.name !== null){
-            res.redirect('/home')
+            this.props.history.push('/home')
           }else{
             alert('Fill out all fields')
           }
