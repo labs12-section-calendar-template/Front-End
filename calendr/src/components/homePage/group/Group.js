@@ -14,7 +14,7 @@ export class Group extends Component {
       const createdCode = this.state.joinCode
       let { name } = this.state
       axios
-        .post(`/users/:id/groups`, { name, createdCode })
+        .post(`https://calendr.netlify.com/users/:id/groups`, { name, createdCode })
         .then(res => {
           console.log(res.data);
           this.setState({
