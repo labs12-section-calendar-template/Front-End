@@ -12,8 +12,9 @@ export class Group extends Component {
     postGroup = e => {
       e.preventDefault();
       let { name, joinCode } = this.state
+      let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendr.netlify.com/users/:id/groups`, { name, joinCode })
+        .post(`https://calendr.netlify.com/users/${user_id}/groups`, { user_id, name, joinCode })
         .then(res => {
           console.log(res.data);
           this.setState({
