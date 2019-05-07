@@ -5,10 +5,15 @@ import SideBar from '../SideBar'
 import MainNavBar from '../../general/MainNavBar'
 
 export class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {  }
+  }
+
   render() {
     return (
       <div>
-        <MainNavBar/>
+        <MainNavBar logOff = {this.props.logOff}/>
         <SideBar/>
         <Link className="buttonLink" to="/template">
         <button className="firstTemplateButton">Create your first template</button>
