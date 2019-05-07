@@ -20,10 +20,6 @@ export class Group extends Component {
         .post(`http://localhost:3300/users/${user_id}/groups`, { user_id, name, joinCode })
         // .post(`https://calendrserver.herokuapp.com/users/${user_id}/groups`, { user_id, name, joinCode })
         .then(res => {
-          this.setState({
-            joinCode: '',
-            name: '',
-          });
           if(this.state.joinCode !== null && this.state.name !== null){
             window.location =('/home')
           }else{
