@@ -7,16 +7,26 @@ import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
 
-function mainView() {
-    return (
+class mainView extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {  }
+  }
+  render() { 
+      return (
       <div className="App">
-       <Route path="/" exact component={Group} />
+       <Route path="/" exact render = {(...props) => (<Group
+            logOff = {this.props.logOff}
+            {...props}
+            />)} />
        <Route path="/home" component={Home} />
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />
        <Route path="/event" component={Event} />
       </div>
-    );
+    ); 
   }
+}
+ 
+export default mainView;
   
-  export default mainView;
