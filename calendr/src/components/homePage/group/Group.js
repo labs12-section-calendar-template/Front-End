@@ -1,13 +1,16 @@
 import React, { Component } from 'react'
-import "./Group.css"
+import "./Group.scss"
 import axios from 'axios'
 
 export class Group extends Component {
-    state={
+  constructor(props){
+    super(props);
+    this.state={
         joinCode: '',
         createdCode: '',
         name: '',
     }
+  }
     
     postGroup = e => {
       e.preventDefault();
@@ -40,6 +43,10 @@ handleInputChange = event => {
 
   render() {
     return (
+      <>
+      <div className = "groupHeader">
+          <button onClick = {this.props.logOff}> Let me Out</button>
+      </div>
       <div className="groupContainer">
         <div className="createGroup boxing">
             <h2 className="joinCreateGroup">Create Group</h2>
@@ -83,6 +90,7 @@ handleInputChange = event => {
            </form>
         </div>
       </div>
+      </>
     )
   }
 }

@@ -4,6 +4,27 @@
     background-color: lightgray;
     height: 100vh;
 }
+
+.groupHeader {
+    background: lightgrey;
+    display: flex;
+    justify-content: center;
+
+    button {
+        margin-top: 15px;
+        width: 96vw;
+        height: 19vh;
+        border-radius: 14px;
+        color: white;
+        font-size: 25px;
+        background-image: 
+        url(https://images.unsplash.com/photo-1495012379376-194a416fcc5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80);
+        background-size: cover;
+    }
+}
+
+
+
 .boxing{
     box-sizing: border-box;
     width:40%;
