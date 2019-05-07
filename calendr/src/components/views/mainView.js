@@ -6,6 +6,7 @@ import Template from '../homePage/template/Template';
 import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
+import moment from 'moment'
 
 class mainView extends React.Component {
   constructor(props) {

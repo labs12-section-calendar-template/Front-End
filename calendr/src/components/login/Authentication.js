@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
 
-const url = "http://localhost:3000/"
+const url = "http://localhost:3000/";
+const localGoogle = 'http://localhost:3300/auth/google';
+const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
 
 const Authentication = App => Login =>
     class extends Component {
@@ -43,8 +45,8 @@ const Authentication = App => Login =>
 
     gmailLogin = (event) => {
         event.preventDefault();
-        window.location = 'https://calendrserver.herokuapp.com/auth/google'
-      }
+        window.location = 'http://localhost:3300/auth/google';
+    }
 
       logOff = (event) => {
         event.preventDefault();
