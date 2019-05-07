@@ -1,6 +1,7 @@
 import React from "react";
 import Selected from "./Selected.js";
 import "./Event.css";
+import { Link } from 'react-router-dom'
 
 class Event extends React.Component {
   constructor() {
@@ -41,6 +42,15 @@ class Event extends React.Component {
   toggleSaturday() {
     this.setState({ S: !this.state.S });
   }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+  })
+  }
+
+  
+
 
   render() {
     return (
@@ -136,7 +146,9 @@ class Event extends React.Component {
                 <option>Move</option>
               </select>
             </div>
+            <Link to='/template' >
             <button className="save-event-button">Save</button>
+            </Link>
           </div>
         </div>
       </>
