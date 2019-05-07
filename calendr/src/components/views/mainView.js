@@ -8,8 +8,6 @@ import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
 import moment from 'moment'
 
-const dateFormat = moment().format('YYYY-MM-DD')
-
 class mainView extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +23,7 @@ class mainView extends React.Component {
        <Route path="/home" component={Home} />
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />
-       <Route path="/event/" component={Event} />
+       <Route path="/event/:date" component={Event} />
       </div>
     ); 
   }
