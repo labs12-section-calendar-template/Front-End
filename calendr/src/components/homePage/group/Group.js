@@ -14,17 +14,17 @@ export class Group extends Component {
     
     postGroup = e => {
       e.preventDefault();
-      const createdCode = this.state.joinCode
-      let { name } = this.state
+      let { name, joinCode } = this.state
+      let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendr.netlify.com/users/:id/groups`, { name, createdCode })
+        .post(`https://calendr.netlify.com/users/${user_id}/groups`, { user_id, name, joinCode })
         .then(res => {
           console.log(res.data);
           this.setState({
-            createdCode: '',
+            joinCode: '',
             name: '',
           });
-          if(this.state.createdCode !== null && this.state.name !== null){
+          if(this.state.joinCode !== null && this.state.name !== null){
             this.props.history.push('/home')
           }else{
             alert('Fill out all fields')
@@ -66,8 +66,8 @@ handleInputChange = event => {
             className="groupInput"
             onChange={this.handleInputChange}
             placeholder="Join code..."
-            value={this.state.createdCode}
-            name="createdCode"
+            value={this.state.joinCode}
+            name="joinCode"
             type="number"
             />
             <button className="formButton">Create</button>
