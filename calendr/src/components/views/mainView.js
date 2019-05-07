@@ -6,6 +6,7 @@ import Template from '../homePage/template/Template';
 import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
+import moment from 'moment'
 
 class mainView extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class mainView extends React.Component {
        <Route path="/home" component={Home} />
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />
-       <Route path="/event" component={Event} />
+       <Route path="/event/:date" component={Event} />
       </div>
     ); 
   }

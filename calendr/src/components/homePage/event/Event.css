@@ -13,7 +13,7 @@
   width: 375px;
   display: flex;
   justify-content: space-evenly;
-  margin: 0 33.3%;
+  margin: 0 auto 2rem;
 }
 
 .weekday {
@@ -40,27 +40,27 @@
   margin: 0 33.3%;
 }
 .selected-container {
-  margin: 0 33.3%;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
+  margin: 0 auto;
   width: 375px;
 }
+
 .selected {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin: 0 2%;
-  height: 32px;
+  height: 2.1rem;
 }
 .selected-day {
   font-size: 22px;
+  margin:auto 0;
 }
 .active {
   background-color: #f36d13;
 }
 .time-input {
   height: 15px;
-  margin: 8%;
+  margin-right: 8%;
 }
 .holiday-rule {
   /* width: 200px; */
