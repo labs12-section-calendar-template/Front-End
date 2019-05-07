@@ -13,7 +13,10 @@ class Event extends React.Component {
       W: false,
       Th: false,
       F: false,
-      S: false
+      S: false,
+      time: "",
+      title: "",
+      details: ""
     };
   }
 
@@ -44,11 +47,34 @@ class Event extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <div className="top-section">
-              <h2 className="event-title-heading">{"Awesome  vacation"}</h2>
-              <p className="event-details">
-                {"Greece, Italy, France, Spain, Germany, and England"}
-              </p>
+            <div
+              className="top-section"
+              style={{
+                display: "flex",
+                width: "450px"
+              }}
+            >
+              <form
+                type="submit"
+                style={{
+                  display: "flex",
+                  flexDirection: "column"
+                }}
+              >
+                <label>Event Title</label>
+                <input
+                  name="title"
+                  value={this.state.title}
+                  placeholder="Enter event title"
+                  onChange={this.handleChange}
+                />
+                <label>Details</label>
+                <textarea
+                  name="details"
+                  placeholder="Enter details"
+                  style={{ height: "100px" }}
+                />
+              </form>
             </div>
             <div className="weekday-container">
               <div

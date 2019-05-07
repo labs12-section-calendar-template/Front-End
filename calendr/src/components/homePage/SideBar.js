@@ -5,7 +5,7 @@ export class SideBar extends Component {
     return (
         <div className="homePageStyles">
         <div className="groupNameTemplate">
-          <h2 className="GroupName">*Group Name*</h2>
+          <h2 className="GroupName">{}</h2>
         </div>
           <h5 className='buttonTitles'>Group Members</h5>
         <div className='buttonBox'>

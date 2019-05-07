@@ -1,11 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import logo from "../../extras/CalendrWhite.png";
-import './MainNavBar.scss'
+import './NavBar.scss'
 
 const MainNavBar = (props) => {
   return (
     <div className="navBarContainer">
+    <div className="margin">
         <img src={logo} alt="Logo"/>
         <h1 className="calendrTitle">CALENDR</h1>
       <div className="nav-buttons">
@@ -13,6 +14,7 @@ const MainNavBar = (props) => {
         <NavLink activeClassName="navbuttonLink" className="navbutton" to="/users">Users</NavLink>
         <div className="logout" onClick = {props.logOff}> Logout </div>
       </div>
+    </div>
     </div>
   );
 };
