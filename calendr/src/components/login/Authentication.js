@@ -37,6 +37,10 @@ const Authentication = App => Login =>
             })
 
             this.props.history.push(window.location.pathname) //This will cause the page to refresh to it's current pathname
+        } else {
+            this.setState({
+                loggedIn: false
+            })
         }
     }
 

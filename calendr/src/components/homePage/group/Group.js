@@ -17,15 +17,11 @@ export class Group extends Component {
       let { name, joinCode } = this.state
       let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendr.netlify.com/users/${user_id}/groups`, { user_id, name, joinCode })
+        .post(`http://localhost:3300/users/${user_id}/groups`, { user_id, name, joinCode })
         .then(res => {
           console.log(res.data);
-          this.setState({
-            joinCode: '',
-            name: '',
-          });
           if(this.state.joinCode !== null && this.state.name !== null){
-            this.props.history.push('/home')
+            window.location='/home'
           }else{
             alert('Fill out all fields')
           }
