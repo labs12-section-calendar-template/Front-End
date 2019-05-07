@@ -20,14 +20,13 @@ export class Group extends Component {
         .post(`http://localhost:3300/users/${user_id}/groups`, { user_id, name, joinCode })
         // .post(`https://calendrserver.herokuapp.com/users/${user_id}/groups`, { user_id, name, joinCode })
         .then(res => {
-          console.log('success')
-          console.log(res.data);
+          window.localStorage.setItem('groupName', name)
           this.setState({
             joinCode: '',
             name: '',
           });
           if(this.state.joinCode !== null && this.state.name !== null){
-            this.props.history.push('/home')
+            window.location =('/home')
           }else{
             alert('Fill out all fields')
           }
