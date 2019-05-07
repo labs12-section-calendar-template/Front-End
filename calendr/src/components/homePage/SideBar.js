@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 export class SideBar extends Component {
   render() {
-    console.log(localStorage.getItem('groupName'));
     return (
         <div className="homePageStyles">
         <div className="groupNameTemplate">
