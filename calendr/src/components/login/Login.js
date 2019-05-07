@@ -1,38 +1,52 @@
 import React from 'react'
 import styled from 'styled-components';
 
-const Login = (props) => {
-  return (
-    <div>
-      <h2>Welcome, Please login</h2>
-      <FormContainer>
-      <Form type='submit'>
-      <Div>
-        <H4>Username:</H4>
-          <Input
-          type = "text"
-          value = {props.username}
-          name = "username"
-          onChange = {props.handleChanges}
-          placeholder = "Username..."
-          />
-        </Div>
-        <Div>
-          <H4>Password:</H4>
-          <Input
-          type = "text"
-          value = {props.password}
-          name = "password"
-          onChange = {props.handleChanges}
-          placeholder = "Password..."
-          />
-        </Div>
-      </Form>
-      </FormContainer>
-      <Button onClick = {props.signIn}>Login</Button>
-    </div>
-    )
+class Login extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      clientId: "",
+      clientSecret: "",
+    }
   }
+
+  render() { 
+    return ( 
+        <div>
+          <h2>Welcome, Please login</h2>
+          <FormContainer>
+          {/* <Form type='submit'>
+          <Div>
+            <H4>Username:</H4>
+              <Input
+              type = "text"
+              value = {this.props.username}
+              name = "username"
+              onChange = {this.props.handleChanges}
+              placeholder = "Username..."
+              />
+            </Div>
+            <Div>
+              <H4>Password:</H4>
+              <Input
+              type = "text"
+              value = {this.props.password}
+              name = "password"
+              onChange = {this.props.handleChanges}
+              placeholder = "Password..."
+              />
+            </Div>
+          </Form> */}
+           <button onClick = {this.props.gmailLogin}>GMAIL</button>
+          </FormContainer>
+          {/* <Button onClick = {this.props.signIn}>Login</Button> */}
+        </div>
+        
+     );
+  }
+}
+
+
   const FormContainer = styled.div`
   width:24rem;
   margin:auto;

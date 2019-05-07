@@ -1,0 +1,69 @@
+.event-view-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: "Poppins";
+  width: 100%;
+  align-content: center;
+}
+.event-details {
+  font-size: 22px;
+}
+.weekday-container {
+  width: 375px;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 33.3%;
+}
+
+.weekday {
+  background: #3270eb;
+  border-radius: 13px;
+  -moz-border-radius: 13px;
+  -webkit-border-radius: 18px;
+  color: white;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 36px;
+  margin-right: 5px;
+  text-align: center;
+  width: 36px;
+  font-size: 15px;
+  border: 0.5px solid black;
+}
+.weekday:hover {
+  background: #f36d13;
+  cursor: pointer;
+  cursor: hand;
+}
+.top-section {
+  margin: 0 33.3%;
+}
+.selected-container {
+  margin: 0 33.3%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  width: 375px;
+}
+.selected {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 2%;
+  height: 32px;
+}
+.selected-day {
+  font-size: 22px;
+}
+.active {
+  background-color: #f36d13;
+}
+.time-input {
+  height: 15px;
+  margin: 8%;
+}
+.holiday-rule {
+  /* width: 200px; */
+  margin: 2% 33.3%;
+  /* display: flex; */
+}
