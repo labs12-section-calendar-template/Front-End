@@ -18,6 +18,7 @@ const Authentication = App => Login =>
         }
 
     componentWillMount(){
+        
         let query = queryString.parse(this.props.location.search);
         console.log(query.userId)
         console.log(query.token)
@@ -30,15 +31,16 @@ const Authentication = App => Login =>
               loggedIn: true
           })
        }
+       
     }
 
     componentDidMount(){
-    //   if(localStorage.getItem('userdata')){
-    //     const userdata = JSON.parse(localStorage.getItem('userdata'));
-    //     axios.post(`${url}api/users/checkauth`, {token: userdata.token}).then(res => {
-    //         res.data ? this.setState({ loggedIn: true}) : localStorage.clear();
-    //     }).catch(error => console.log(error));
-    //   }
+        console.log(localStorage.getItem('jwt'))
+        if(localStorage.getItem('jwt')){
+            this.setState({
+                loggedIn: true
+            })
+        }
     }
 
     gmailLogin = (event) => {
@@ -46,8 +48,19 @@ const Authentication = App => Login =>
         window.location = 'http://localhost:3300/auth/google';
     }
 
+      logOff = (event) => {
+        event.preventDefault();
+        window.localStorage.clear();
+        this.setState({
+            loggedIn: false
+        });
+        window.location = 'https://calendrserver.herokuapp.com/auth/logout'
+      }
+
     //http://localhost:3300/auth/google
+    //http://localhost:3300/auth/logout
     //https://calendrserver.herokuapp.com/auth/google
+    //https://calendrserver.herokuapp.com/auth/logout
 
 
 
@@ -91,6 +104,7 @@ const Authentication = App => Login =>
     if(this.state.loggedIn){
       return <App signOut = {this.signOut}
       loggedIn = {this.state.loggedIn}
+      logOff = {this.logOff}
       />
    } else {
        return <Login 
