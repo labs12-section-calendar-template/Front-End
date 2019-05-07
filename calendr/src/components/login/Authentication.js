@@ -13,25 +13,20 @@ const Authentication = App => Login =>
             this.state = ({
                 username: '',
                 password: '',
-                loggedIn: false
+                loggedIn: false,
+                check: []
             })
         }
 
     componentWillMount(){
         
         let query = queryString.parse(this.props.location.search);
-        console.log(query.userId)
-        console.log(query.token)
+    
         if (query.token) {
-            console.log(query.token)
+          console.log(query.token)
           window.localStorage.setItem("jwt", query.token);
           window.localStorage.setItem("userId", query.userId);
-          this.props.history.push("/");
-          this.setState({
-              loggedIn: true
-          })
-       }
-       
+        }
     }
 
     componentDidMount(){
@@ -40,13 +35,15 @@ const Authentication = App => Login =>
             this.setState({
                 loggedIn: true
             })
+
+            this.props.history.push(window.location.pathname) //This will cause the page to refresh to it's current pathname
         }
     }
 
     gmailLogin = (event) => {
         event.preventDefault();
-        window.location = 'http://localhost:3300/auth/google';
-    }
+        window.location = 'http://localhost:3300/auth/google'
+      }
 
       logOff = (event) => {
         event.preventDefault();
@@ -54,7 +51,7 @@ const Authentication = App => Login =>
         this.setState({
             loggedIn: false
         });
-        window.location = 'https://calendrserver.herokuapp.com/auth/logout'
+        window.location = 'http://localhost:3300/auth/logout'
       }
 
     //http://localhost:3300/auth/google
