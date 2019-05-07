@@ -6,6 +6,9 @@ import Template from '../homePage/template/Template';
 import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
+import moment from 'moment'
+
+const dateFormat = moment().format('YYYY-MM-DD')
 
 function mainView() {
     return (
@@ -14,7 +17,7 @@ function mainView() {
        <Route path="/home" component={Home} />
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />
-       <Route path="/event" component={Event} />
+       <Route path="/event/" component={Event} />
       </div>
     );
   }

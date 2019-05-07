@@ -3,19 +3,21 @@ import "./Group.css"
 import axios from 'axios'
 
 export class Group extends Component {
-    state={
-        joinCode: '',
-        createdCode: '',
-        name: '',
-    }
-    
-    postGroup = e => {
-      e.preventDefault();
+  state={
+    joinCode: '',
+    createdCode: '',
+    name: '',
+  }
+  
+  postGroup = e => {
+    e.preventDefault();
       let { name, joinCode } = this.state
-      let user_id = localStorage.getItem('userId')
+      let user_id = JSON.parse(localStorage.getItem('userId'))
       axios
-        .post(`https://calendr.netlify.com/users/${user_id}/groups`, { user_id, name, joinCode })
+        .post(`http://localhost:3300/users/${user_id}/groups`, { user_id, name, joinCode })
+        // .post(`https://calendrserver.herokuapp.com/users/${user_id}/groups`, { user_id, name, joinCode })
         .then(res => {
+          console.log('success')
           console.log(res.data);
           this.setState({
             joinCode: '',
