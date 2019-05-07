@@ -12,6 +12,7 @@ class mainView extends React.Component {
     super(props);
     this.state = {  }
   }
+  
   render() { 
       return (
       <div className="App">
@@ -19,7 +20,12 @@ class mainView extends React.Component {
             logOff = {this.props.logOff}
             {...props}
             />)} />
-       <Route path="/home" component={Home} />
+
+       <Route path="/home" exact render = {(...props) => (<Home
+            logOff = {this.props.logOff}
+            {...props}
+            />)} />
+
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />
        <Route path="/event" component={Event} />
