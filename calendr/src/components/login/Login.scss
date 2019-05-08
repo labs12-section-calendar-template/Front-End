@@ -1,0 +1,26 @@
+
+.formContainer{
+      width:24rem;
+      margin:auto;
+      background-color:lightgrey;
+      border-radius:10px;
+      padding:2rem;
+}
+      
+.loginButton{
+    padding: 1rem 2rem;
+    background:linear-gradient(to left, white, white);;
+    color:black;
+    font-size:1rem;
+    font-weight:bold;
+    transition: all 2s;
+    cursor: pointer;
+}
+.loginButton:hover{
+    padding: 1rem 2rem;
+    color:white;
+    font-size:3rem;
+    font-weight:bold;
+    background: linear-gradient(to left bottom, midnightBlue, green, red, purple, pink);
+
+}
