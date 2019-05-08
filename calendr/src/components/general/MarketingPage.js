@@ -12,7 +12,7 @@ const MarketingPage = () => {
             Calendr is the easiest way for users/groups to plan, manage and
             visualize their work
           </p>
-          <button>Sign Up</button>
+          <button className="marketingButton">Sign Up</button>
         </div>
       </header>
 

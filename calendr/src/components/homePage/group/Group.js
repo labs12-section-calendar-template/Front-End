@@ -31,6 +31,8 @@ export class Group extends Component {
         });
     };
 
+    
+
 handleInputChange = event => {
   this.setState({
       [event.target.name]: event.target.value
@@ -83,6 +85,7 @@ handleInputChange = event => {
             type="number"
             />
             <button className="formButton">Join</button>
+            
            </form>
         </div>
       </div>
