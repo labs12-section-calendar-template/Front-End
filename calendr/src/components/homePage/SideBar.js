@@ -6,28 +6,32 @@ export class SideBar extends Component {
     super(props);
     this.state = {
       groupName: [],
+      group_id: []
     }
   }
 
   componentDidMount(){
     this.getGroupName();
   }
+  
   getGroupName = () => {
     let userId = localStorage.getItem('userId')
-    axios.get(`http://localhost:3300/groups/${userId}`)
+    axios.get(`http://localhost:3300/users/${userId}/groups`)
     .then(res => {
       this.setState({
-        groupName: res.data.name,
+        groupName: res.data[0].name,
+        group_id: res.data[0].id
       })
-      console.log(this.state.groups)
+      console.log(this.state.group_id)
+      window.localStorage.setItem("group_id", this.state.group_id)
     })
     .catch(err => {
-
+      console.log(err)
     })
   }
 
   render() {
-    console.log(localStorage)
+    // console.log(localStorage)
     return (
         <div className="homePageStyles">
         <div className="groupNameTemplate">
