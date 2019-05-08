@@ -1,13 +1,14 @@
 import React from "react";
 import Selected from "./Selected.js";
 import "./Event.css";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class Event extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      day: false,
       Su: false,
       M: false,
       T: false,
@@ -17,52 +18,31 @@ class Event extends React.Component {
       S: false,
       time: "",
       title: "",
-      details: "",
-
+      details: ""
     };
   }
-
-  toggleSunday() {
-    this.setState({ Su: !this.state.Su });
-  }
-  toggleMonday() {
-    this.setState({ M: !this.state.M });
-  }
-  toggleTuesday() {
-    this.setState({ T: !this.state.T });
-  }
-  toggleWednesday() {
-    this.setState({ W: !this.state.W });
-  }
-  toggleThursday() {
-    this.setState({ Th: !this.state.Th });
-  }
-  toggleFriday() {
-    this.setState({ F: !this.state.F });
-  }
-  toggleSaturday() {
-    this.setState({ S: !this.state.S });
+  toggleDay(day) {
+    this.setState({ [day]: !this.state[day] });
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-  })
-  }
+    });
+  };
 
-  toggleClose = (event) => {
-  event.preventDefault()
- this.props.history.push('/template')
-  console.log(this.props.history)
-}
-
+  toggleClose = event => {
+    event.preventDefault();
+    this.props.history.push("/template");
+    console.log(this.props.history);
+  };
 
   render() {
     return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-          <button onClick={this.toggleClose}>X</button>
+            <button onClick={this.toggleClose}>X</button>
             <div
               className="top-section"
               style={{
@@ -95,43 +75,43 @@ class Event extends React.Component {
             <div className="weekday-container">
               <div
                 className={`${this.state.Su && "active"} weekday`}
-                onClick={() => this.toggleSunday()}
+                onClick={() => this.toggleDay("S")}
               >
                 Su
               </div>
               <div
                 className={`${this.state.M && "active"} weekday`}
-                onClick={() => this.toggleMonday()}
+                onClick={() => this.toggleDay("M")}
               >
                 M
               </div>
               <div
                 className={`${this.state.T && "active"} weekday`}
-                onClick={() => this.toggleTuesday()}
+                onClick={() => this.toggleDay("T")}
               >
                 T
               </div>
               <div
                 className={`${this.state.W && "active"} weekday`}
-                onClick={() => this.toggleWednesday()}
+                onClick={() => this.toggleDay("W")}
               >
                 W
               </div>
               <div
                 className={`${this.state.Th && "active"} weekday`}
-                onClick={() => this.toggleThursday()}
+                onClick={() => this.toggleDay("Th")}
               >
                 Th
               </div>
               <div
                 className={`${this.state.F && "active"} weekday`}
-                onClick={() => this.toggleFriday()}
+                onClick={() => this.toggleDay("F")}
               >
                 F
               </div>
               <div
                 className={`${this.state.S && "active"} weekday`}
-                onClick={() => this.toggleSaturday()}
+                onClick={() => this.toggleDay("S")}
               >
                 S
               </div>
@@ -152,9 +132,10 @@ class Event extends React.Component {
                 <option>Move</option>
               </select>
             </div>
-              
-            <button className="save-event-button" onClick={this.toggleClose}>Save</button>
-            
+
+            <button className="save-event-button" onClick={this.toggleClose}>
+              Save
+            </button>
           </div>
         </div>
       </>
