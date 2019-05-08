@@ -21,7 +21,6 @@ export class Group extends Component {
         .then(res => {
           console.log(res.data);
           if(this.state.joinCode !== null && this.state.name !== null){
-            localStorage.setItem('id')
             window.location='/home'
           }else{
             alert('Fill out all fields')
@@ -31,6 +30,8 @@ export class Group extends Component {
           console.log(err);
         });
     };
+
+    
 
 handleInputChange = event => {
   this.setState({
@@ -84,6 +85,7 @@ handleInputChange = event => {
             type="number"
             />
             <button className="formButton">Join</button>
+            
            </form>
         </div>
       </div>

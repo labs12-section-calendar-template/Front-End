@@ -6,8 +6,7 @@ export class GroupEdit extends Component {
         super(props)
         this.state = {
             name:'',
-            joinCode:'',
-            group_id:this.props.group_id,
+            group_id: this.props.group_id,
         }
     }
 
@@ -17,23 +16,37 @@ export class GroupEdit extends Component {
         })
     }
 
-    updateGroup = e => {
+    updateGroup = event => {
         let userId = localStorage.getItem('userId')
         console.log(userId)
         console.log(this.state.joinCode)
+        console.log(this.state.name)
     axios
         .put(`http://localhost:3300/groups/${this.state.group_id}`,{
-            name:this.state.name,
-            joinCode:this.state.joinCode,
-            userId:userId
+            name: this.state.name,
+            user_id: userId
         })
         .then(res => {
-          res.status(200).send('it worked')
+          console.log('IT WORKED')
+          document.location.reload()
         })
         .catch(err => {
           console.log(err)
         })
       }
+
+      deleteGroup = e => {
+        e.preventDefault()
+        axios
+            .delete(`http://localhost:3300/groups/${this.props.group_id}`)
+            .then(res => {
+              console.log('group deleted')
+              window.location = '/';
+            })
+            .catch(err => {
+              console.log(err)
+            })
+          }
 
   render() {
       console.log(this.state.group_id)
@@ -53,16 +66,8 @@ export class GroupEdit extends Component {
                 onChange = {this.handleChange}
                 placeholder = "Update group name..."
             />
-            <h2>Enter new group code</h2>
-             <input
-                className="editJoinCodeInput editGroupInput"
-                type = "number"
-                value = {this.state.joinCode}
-                name = "joinCode"
-                onChange = {this.handleChange}
-                placeholder = "Update join code..."
-            />
             <button onClick={() => (this.updateGroup(), this.props.toggleModal())}>Submit</button>
+            <button onClick={this.deleteGroup}>Delete Group</button>
         </form>
       </div>
     </div>
