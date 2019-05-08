@@ -22,7 +22,8 @@ export class SideBar extends Component {
     //   window.location = '/home'
     // }
   }
-  getGroup = () => {
+  
+  getGroupName = () => {
     let userId = localStorage.getItem('userId')
     axios.get(`http://localhost:3300/users/${userId}/groups`)
     .then(res => {
@@ -31,7 +32,8 @@ export class SideBar extends Component {
         groupName: res.data[0].name,
         joinCode: res.data[0].joinCode,
       })
-      console.log(this.state.groups)
+      console.log(this.state.group_id)
+      window.localStorage.setItem("group_id", this.state.group_id)
     })
     .catch(err => {
       console.log(err)
@@ -51,9 +53,7 @@ export class SideBar extends Component {
   }
 
   render() {
-    console.log(this.state.groupName)
-
-    console.log(localStorage)
+    // console.log(localStorage)
     return (
       <>
         <div className="homePageStyles">
