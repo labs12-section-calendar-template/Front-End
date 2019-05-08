@@ -7,7 +7,6 @@ export class GroupEdit extends Component {
         this.state = {
             name:'',
             joinCode:'',
-            group_id:this.props.group_id,
         }
     }
 
@@ -22,13 +21,25 @@ export class GroupEdit extends Component {
         console.log(userId)
         console.log(this.state.joinCode)
     axios
-        .put(`http://localhost:3300/groups/${this.state.group_id}`,{
+        .put(`http://localhost:3300/groups/${this.props.group_id}`,{
             name:this.state.name,
             joinCode:this.state.joinCode,
-            userId:userId
+            user_id:userId
         })
         .then(res => {
-          res.status(200).send('it worked')
+          console.log('it works')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }
+
+      deleteGroup = e => {
+    axios
+        .delete(`http://localhost:3300/groups/${this.props.group_id}`)
+        .then(res => {
+          console.log('group deleted')
+          window.location = '/';
         })
         .catch(err => {
           console.log(err)
@@ -36,7 +47,7 @@ export class GroupEdit extends Component {
       }
 
   render() {
-      console.log(this.state.group_id)
+      console.log(this.props.group_id)
       
     return (
     <div className="popup-overlay" >
@@ -63,6 +74,7 @@ export class GroupEdit extends Component {
                 placeholder = "Update join code..."
             />
             <button onClick={() => (this.updateGroup(), this.props.toggleModal())}>Submit</button>
+            <button onClick={this.deleteGroup}>Delete Group</button>
         </form>
       </div>
     </div>

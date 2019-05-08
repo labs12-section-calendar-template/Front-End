@@ -21,7 +21,6 @@ export class Group extends Component {
         .then(res => {
           console.log(res.data);
           if(this.state.joinCode !== null && this.state.name !== null){
-            localStorage.setItem('id')
             window.location='/home'
           }else{
             alert('Fill out all fields')
