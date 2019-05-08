@@ -3,17 +3,38 @@ import "./Home.css"
 import { Link } from 'react-router-dom'
 import SideBar from '../SideBar'
 import MainNavBar from '../../general/MainNavBar'
+import axios from 'axios'
 
 export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {  
-      value:true
+       value:false,
+      templates: []
     }
   }
 
+  componentDidMount(){
+    this.getTemplate()
+  }
+
+  getTemplate = event => {
+    let group_id = localStorage.getItem("group_id")
+    console.log(group_id)
+    axios
+      .get(`http://localhost:3300/groups/${group_id}/templates` )
+      .then(res => {
+        console.log(res.data);
+        this.setState({
+          templates: res.data
+        })
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
   render() {
-    if(this.state.value = true){
+    if(this.state.templates.length < 0){
     return (
       <div>
         <MainNavBar logOff = {this.props.logOff}/>
@@ -28,6 +49,9 @@ export class Home extends Component {
         <div>
           <MainNavBar logOff = {this.props.logOff}/>
           <SideBar/>
+          <p>{this.state.templates.map(template => {
+            return <p>{template.title}</p>
+          })}</p>
         </div>
       )
     }
