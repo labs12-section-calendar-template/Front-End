@@ -4,8 +4,8 @@ import "./Event.css";
 import { Link } from 'react-router-dom'
 
 class Event extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       Su: false,
@@ -17,7 +17,8 @@ class Event extends React.Component {
       S: false,
       time: "",
       title: "",
-      details: ""
+      details: "",
+
     };
   }
 
@@ -49,7 +50,11 @@ class Event extends React.Component {
   })
   }
 
-  
+  toggleClose = (event) => {
+  event.preventDefault()
+ this.props.history.push('/template')
+  console.log(this.props.history)
+}
 
 
   render() {
@@ -57,6 +62,7 @@ class Event extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
+          <button onClick={this.toggleClose}>X</button>
             <div
               className="top-section"
               style={{
@@ -146,9 +152,9 @@ class Event extends React.Component {
                 <option>Move</option>
               </select>
             </div>
-            <Link to='/template' >
-            <button className="save-event-button">Save</button>
-            </Link>
+              
+            <button className="save-event-button" onClick={this.toggleClose}>Save</button>
+            
           </div>
         </div>
       </>
