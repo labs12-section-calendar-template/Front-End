@@ -49,7 +49,7 @@ export class GroupEdit extends Component {
           }
 
   render() {
-      console.log(this.props.group_id)
+      console.log(this.state.group_id)
       
     return (
     <div className="popup-overlay" >

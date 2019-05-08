@@ -34,7 +34,7 @@ export class Home extends Component {
       });
   }
   render() {
-    if(this.state.templates.length < 0){
+    if(this.state.templates.length < 1){
     return (
       <div>
         <MainNavBar logOff = {this.props.logOff}/>
@@ -49,9 +49,12 @@ export class Home extends Component {
         <div>
           <MainNavBar logOff = {this.props.logOff}/>
           <SideBar/>
-          <p>{this.state.templates.map(template => {
-            return <p>{template.title}</p>
-          })}</p>
+          <div>
+          
+           {this.state.templates.map((template, index) => {
+            return <p key = {index}>{template.title}</p>
+          })}</div>
+
         </div>
       )
     }
