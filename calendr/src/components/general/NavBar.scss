@@ -15,7 +15,6 @@ img{
     font-size: 2.2rem;
     color: white;
     margin:auto;
-    
 }
 
 .nav-buttons{
@@ -36,12 +35,24 @@ img{
 
 
 .navbuttonLink{
-    background-color:white;
-    color:black;
+    color:white;
     outline:none;
     padding:.8rem 1rem;    
     border-radius:1rem;
+    text-decoration: underline;
+}
+
+.logout {
     text-decoration: none;
+    color:white;
+    font-size: 1.2rem;
+    margin-left:1rem;
+    padding:1rem;
+
+    &:hover {
+        color: lightcoral;
+        cursor: pointer;
+    }
 }
 
 @media (max-width: 500px){
@@ -57,17 +68,14 @@ img{
     font-size: 0rem;
 }
 
+.logout{
+    font-size: 1rem;
+    margin-left: 0;
 }
 
-.logout {
-    text-decoration: none;
-    color:white;
-    font-size: 1.2rem;
-    margin-left:1rem;
-    padding:1rem;
-
-    &:hover {
-        color: lightcoral;
-        cursor: pointer;
-    }
+.navbutton{
+    font-size: 1rem;
+    margin-left: 0
 }
+}
+
