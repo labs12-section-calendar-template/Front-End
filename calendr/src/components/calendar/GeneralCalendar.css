@@ -10,6 +10,16 @@
     opacity: 0.6;
     text-decoration: none;
 }
+@media(max-width: 500px){
+    .day{
+        width: 100%;
+        width: 100%;
+        border: none;
+        border-radius: 0;
+        border-top: 1.5px solid #3270EB;
+        border-bottom: 1.5px solid #3270EB;
+    }
+}
 
 .day:hover{
     opacity: 1;
@@ -23,7 +33,15 @@
     color: black;
     font-weight: bold;
     margin: 0px;
+    
+}
 
+@media(max-width:500px){
+    .dayNumber{
+        font-size: 3.7rem;
+        padding-top: 35px;
+        padding-left: 310px;
+    }
 }
 
 .dayNumber:hover{
@@ -44,5 +62,23 @@
     width: 1100px;
     margin: 0 auto;
     padding-bottom: 5%;
+}
+
+@media(max-width: 500px){
+    .wholeCalendar{
+        width: 100%;
+    }
+    .day{
+        width: 100%
+    }
+    .dayNames{
+        display: none;
+    }
+    .week{
+        margin-top: 5%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
 }
 
