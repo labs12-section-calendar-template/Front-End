@@ -22,7 +22,7 @@ class Week extends React.Component {
     }
 
     return (
-      <div> 
+      <div className="week"> 
       {days.map(day =>( 
         <Day day={day} key={day.date}/>
       ))}

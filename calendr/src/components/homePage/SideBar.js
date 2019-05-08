@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios';
+import './Sidebar.scss';
 
 export class SideBar extends Component {
   constructor(props){

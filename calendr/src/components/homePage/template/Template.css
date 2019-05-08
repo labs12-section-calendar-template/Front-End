@@ -1,6 +1,7 @@
 .templateCreation{
     display: flex;
     flex-direction: row;
+    justify-content: center;
 
 }
 
@@ -12,7 +13,8 @@
 
 .templateMain{
     box-sizing: border-box;
-    width:75vw;
+    /* width:75vw; */
+    width: 100%;
 }
 
 .templateTitle{
@@ -30,6 +32,29 @@
 
 }
 
+@media (max-width: 500px) {
+    .groupTemplateInfo{
+        display: none;
+    }
+    .templateMain{
+        padding-top: 5%;
+    }
+    .templateTitle{
+        margin-right: 0;
+        justify-content: center;
+    }
+    .templateTitle h1{
+        font-size: 1.3rem;
+    }
+    #buttonSave{
+        padding: .3rem 1rem;
+        margin-left: 1rem;
+    }
+    li{
+        list-style-type: none;
+    }
+}
+  
 
 
 
