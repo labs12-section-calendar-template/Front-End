@@ -50,10 +50,9 @@ class Event extends React.Component {
   })
   }
 
-  toggleClose = (event) => {
+  toggleClose = event => {
   event.preventDefault()
  this.props.history.push('/template')
-  console.log(this.props.history)
 }
 
 
