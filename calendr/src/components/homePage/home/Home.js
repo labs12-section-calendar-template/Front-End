@@ -7,10 +7,13 @@ import MainNavBar from '../../general/MainNavBar'
 export class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {  }
+    this.state = {  
+      value:true
+    }
   }
 
   render() {
+    if(this.state.value = true){
     return (
       <div>
         <MainNavBar logOff = {this.props.logOff}/>
@@ -20,6 +23,14 @@ export class Home extends Component {
         </Link>
       </div>
     )
+    }else{
+      return(
+        <div>
+          <MainNavBar logOff = {this.props.logOff}/>
+          <SideBar/>
+        </div>
+      )
+    }
   }
 }
 

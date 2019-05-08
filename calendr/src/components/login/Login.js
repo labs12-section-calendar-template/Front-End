@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
+import './Login.scss'
 
 class Login extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class Login extends React.Component {
     return ( 
         <div>
           <h2>Welcome, Please login</h2>
-          <FormContainer>
+          <div className="formContainer">
           {/* <Form type='submit'>
           <Div>
             <H4>Username:</H4>
@@ -37,49 +37,14 @@ class Login extends React.Component {
               />
             </Div>
           </Form> */}
-           <button onClick = {this.props.gmailLogin}>GMAIL</button>
-          </FormContainer>
+           <button className="loginButton" onClick = {this.props.gmailLogin}>GMAIL</button>
+          </div>
           {/* <Button onClick = {this.props.signIn}>Login</Button> */}
         </div>
         
      );
   }
 }
-
-
-  const FormContainer = styled.div`
-  width:24rem;
-  margin:auto;
-  background-color:lightgrey;
-  border-radius:10px;
-  padding:2rem;
-  
-`;
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items:flex-end;
-
-`;
-const Div = styled.div`
-  display: flex;
-  justify-content:center;
-  align-items:center;
-
-`;
-const H4 = styled.h4`
-  margin:0 0 .5rem 0;
-
-`;
-const Input = styled.input`
-  margin: 1rem;
-  height:3rem;
-  background: white;
-  
-`;
-const Button = styled.button`
-  margin: 1rem;
-`;
 
 export default Login
 
