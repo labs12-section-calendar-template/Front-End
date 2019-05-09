@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./Home.css"
+import "./Home.scss"
 import { Link } from 'react-router-dom'
 import SideBar from '../SideBar'
 import MainNavBar from '../../general/MainNavBar'
@@ -46,13 +46,20 @@ export class Home extends Component {
     )
     }else{
       return(
-        <div>
+        <div className="populatedTemplatePage">
           <MainNavBar logOff = {this.props.logOff}/>
           <SideBar/>
-          <div>
-          
+          <div className="allTemplates">
            {this.state.templates.map((template, index) => {
-            return <p key = {index}>{template.title}</p>
+            return <div className="templateTag">
+                    <div>
+                      <h2 className="templateTitleTag" key = {index}>{template.title}</h2>
+                      <i className="far fa-edit"/>
+                      <i class="fas fa-trash"/>
+                    </div>  
+                    <h3 className="templateDescription">Description</h3>
+                    <p className="templateDescriptionTag">{template.description}</p>
+                  </div>
           })}</div>
 
         </div>

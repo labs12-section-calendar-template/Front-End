@@ -2,15 +2,17 @@
     align-items: flex-start;
     display:flex;
     flex-direction: column;
-    margin: 0 4%;
-
+    margin: 2rem 0 0 4%;
+    width:15vw;
+    height:100vh;
+    position: fixed;
 }
 .groupNameTemplate{
     display:flex;
     align-items: center;
 }
 .GroupName{
-    margin-right:.2rem;
+    margin:0 .2rem 0 0;
     font-size:2rem;
 }
 .fa-edit{
@@ -85,5 +87,36 @@
 
 }
 .editJoinCodeInput{
+
+}
+
+
+// Else section of the home page
+.populatedTemplatePage{
+
+}
+.allTemplates{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin:1rem 2% 0 23%;
+    width:75vw;
+    position: absolute;
+}
+.templateTag{
+    border: 1px solid black;
+    width:14rem;
+    height:20rem;
+    margin:1rem .2rem;
+
+}
+.templateTitleTag{
+    display: flex;
+    margin: .5rem 0 1rem .5rem;
+}
+.templateDescription{
+
+}
+.templateDescriptionTag{
 
 }
