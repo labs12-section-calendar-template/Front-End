@@ -68,7 +68,9 @@ export class Home extends Component {
           <div className="allTemplates">
            {this.state.templates.map((template) => (<div key={template.id} className="templateTag">
                     <div className="titleAndIcons">
+                    <Link to='/template/calendr'>
                       <h2 className="templateTitleTag">{template.title}</h2>
+                    </Link>
                      <div className="iconsForTemplates">
                       <i className="far fa-edit iconSize" onClick={(e) => this.edit(e, template.id)}/>
                       <i className="fas fa-trash iconSize" onClick={(e) => this.deleteTemplate(e, template.id)}/>
