@@ -4,6 +4,7 @@ import Users from '../general/Users';
 import Home from '../homePage/home/Home';
 import MemberHome from '../homePage/member/MemberHome'
 import Template from '../homePage/template/Template';
+import TemplateEdit from '../homePage/template/TemplateEdit';
 import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
@@ -34,7 +35,8 @@ class mainView extends React.Component {
             />)}/>
 
        <Route path="/users" component={Users} />
-       <Route path="/template" component={Template} />
+       <Route exact path="/template" component={Template} />
+       <Route path="/template/edit/:id" component={TemplateEdit} />
        <Route path="/event/" component={GeneralCalendar} />
        <Route path="/event/:date" component={Event} />
       </div>

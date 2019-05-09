@@ -1,45 +1,59 @@
 import React, { Component } from 'react'
 import SideBar from '../SideBar';
-import GeneralCalendar from '../../calendar/GeneralCalendar';
 import './Template.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
 import MainNavBar from '../../general/MainNavBar'
 
-export class Template extends Component {
+export class TemplateEdit extends Component {
   constructor(props) {
     super(props);
     
 this.state = {
-    title: '',
+    colortitle: '',
     description: '',
     cycleLength: '',
     color: '',
     date: '',
-    template_id:[]
+    // templates:[],
+    group_id:[]
     }
 }
 
+// getTemplate = event => {
+//   let group_id = localStorage.getItem("group_id")
+//   console.log(group_id)
+//   axios
+//     .get(`http://localhost:3300/groups/${group_id}/templates` )
+//     .then(res => {
+//       console.log(res.data);
+//       this.setState({
+//         templates: res.data
+//       })
+//     })
+//     .catch(err => {
+//       console.log(err);
+//     });
+// }
 
-
-postTemplate = event => {
-  let group_id = localStorage.getItem("group_id")
-  console.log(group_id)
-  let { title, description, cycleLength, color } = this.state
-  axios
-    .post(`http://localhost:3300/groups/${group_id}/templates`, { title, description, cycleLength, color })
-    .then(res => {
-      console.log(res.data);
-      this.setState({
-        template_id:res.data.id
-      })
-      console.log(this.state.template_id)
-      window.location = '/home'
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
+updateTemplate = (e) => {
+  let id = this.props.match.params.id
+  console.log(this.state.group_id)
+axios
+  .put(`http://localhost:3300/templates/${id}`,{
+    title: this.state.title,
+    description: this.state.description,
+    cycleLength: this.state.cycleLength,
+    color: this.state.color,
+  })
+  .then(res => {
+    console.log('IT WORKED')
+    console.log(res.data)
+    window.location = '/home';
+  })
+  .catch(err => {
+    console.log(err)
+  })
+}
 
 handleCycleChange = event => {
   this.setState({
@@ -58,8 +72,12 @@ handleInputChange = event => {
       [event.target.name]: event.target.value
   })
 }
+cancel = () => {
+  window.location = '/home'
+}
 
   render() {
+    
     return (
     <div>
       <MainNavBar/>
@@ -68,10 +86,11 @@ handleInputChange = event => {
           <SideBar /> 
         </aside>
         <main className="templateMain">
+        <button onClick={this.cancel}>Cancel</button>
           <div className='templateTitle'>
-            <h1>Template Creation</h1>
+            <h1>Update Template</h1>
            
-            <button id="buttonSave" onClick={this.postTemplate}>Save</button>
+            <button id="buttonSave" onClick={this.updateTemplate}>Update</button>
           
           </div>
           <div className='templateEdit'>
@@ -126,4 +145,4 @@ handleInputChange = event => {
   }
 }
 
-export default Template
+export default TemplateEdit
