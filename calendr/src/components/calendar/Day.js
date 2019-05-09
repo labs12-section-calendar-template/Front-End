@@ -15,7 +15,7 @@ class Day extends React.Component {
   }
 
 toggleOpen = () => {
-this.props.history.push(`/template/${this.state.check}`)
+this.props.history.push(`/event/${this.state.check}`)
 }
 
   render() {
@@ -26,8 +26,8 @@ this.props.history.push(`/template/${this.state.check}`)
       <div className='day' key={date.toString()} onClick={this.toggleOpen} >
         <p className="dayNumber">{number}</p> 
       </div>
-      <Route path={`/template/${this.state.check}`} render={() => (
-      <Popup open={true} onClose= {() => (this.props.history.push('/template'))} position='right center' className='annoying-popup'>
+      <Route path={`/event/${this.state.check}`} render={() => (
+      <Popup open={true} onClose= {() => (this.props.history.push('/event'))} position='right center' className='annoying-popup'>
         <Event history={this.props.history}/>
       </Popup>
       )} />
