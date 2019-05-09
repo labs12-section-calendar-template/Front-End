@@ -2,15 +2,17 @@
     align-items: flex-start;
     display:flex;
     flex-direction: column;
-    margin: 0 4%;
-
+    margin: 2rem 0 0 4%;
+    width:15vw;
+    height:100vh;
+    position: fixed;
 }
 .groupNameTemplate{
     display:flex;
     align-items: center;
 }
 .GroupName{
-    margin-right:.2rem;
+    margin:0 .2rem 0 0;
     font-size:2rem;
 }
 .fa-edit{
@@ -41,6 +43,7 @@
 .buttonTitles{
     font-size: 1.2rem;
     margin:.3rem;
+    text-align: start;
 }
 .buttonDiscriptions{
     font-size:1rem;
@@ -54,6 +57,10 @@
     height:4rem;
     font-size: 1.5rem;
 }
+<<<<<<< HEAD:calendr/src/components/homePage/home/Home.css
+=======
+
+>>>>>>> 893ff0aa2269c863ce8e555523cb09929b66ec6e:calendr/src/components/homePage/home/Home.scss
 .popup-overlay{
     width:100vw;
     height:100vh;
@@ -86,3 +93,47 @@
 .editJoinCodeInput{
 
 }
+<<<<<<< HEAD:calendr/src/components/homePage/home/Home.css
+=======
+
+
+// Else section of the home page
+
+.allTemplates{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin:1rem 2% 0 23%;
+    width:75vw;
+    position: absolute;
+}
+.templateTag{
+    border: 1px solid black;
+    width:14rem;
+    height:20rem;
+    margin:1rem .2rem;
+
+}
+.titleAndIcons{
+    display: flex;
+    justify-content: space-between;
+}
+.templateTitleTag{
+    display: flex;
+    margin: .5rem 0 1rem .5rem;
+}
+.iconsForTemplates{
+    margin:.5rem 0 0 0;
+}
+.iconSize{
+    font-size:1rem;
+    margin-right:.5rem;
+    cursor: pointer;
+}
+.templateDescription{
+
+}
+.templateDescriptionTag{
+
+}
+>>>>>>> 893ff0aa2269c863ce8e555523cb09929b66ec6e:calendr/src/components/homePage/home/Home.scss

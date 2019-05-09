@@ -28,14 +28,13 @@ class Event extends React.Component {
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    });
-  };
+  })
+  }
 
   toggleClose = event => {
-    event.preventDefault();
-    this.props.history.push("/template");
-    console.log(this.props.history);
-  };
+  event.preventDefault()
+ this.props.history.push('/template')
+}
 
   render() {
     return (

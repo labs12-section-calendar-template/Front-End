@@ -69,12 +69,16 @@ delayRedirect = event => {
         <main className="templateMain">
           <div className='templateTitle'>
             <h1>Template Creation</h1>
+
             <Link to='/'>
+
             <button id="buttonSave" onClick={() => {
               this.postTemplate();
               this.delayRedirect();
             }}>Save</button>
+            
             </Link>
+
           </div>
           <div className='templateEdit'>
             <div className='cycleLength'>
@@ -130,4 +134,3 @@ delayRedirect = event => {
 }
 
 export default Template
-
