@@ -34,12 +34,13 @@ export class Home extends Component {
       });
   }
 
-  deleteTemplate = e => {
+  deleteTemplate = (e, id) => {
     e.preventDefault()
     axios
-        .delete(`http://localhost:3300/templates/`)
+        .delete(`http://localhost:3300/templates/${id}`)
         .then(res => {
           console.log('template deleted')
+          document.location.reload()
         })
         .catch(err => {
           console.log(err)
@@ -47,6 +48,7 @@ export class Home extends Component {
       }
 
   render() {
+    console.log(this.state.templates.id)
     if(this.state.templates.length < 1){
     return (
       <div>
@@ -63,13 +65,12 @@ export class Home extends Component {
           <MainNavBar logOff = {this.props.logOff}/>
           <SideBar/>
           <div className="allTemplates">
-           {this.state.templates.map((template, index) => {
-            return <div className="templateTag">
+           {this.state.templates.map((template) => (<div key={template.id} className="templateTag">
                     <div className="titleAndIcons">
-                      <h2 className="templateTitleTag" key = {index}>{template.title}</h2>
+                      <h2 className="templateTitleTag">{template.title}</h2>
                      <div className="iconsForTemplates">
                       <i className="far fa-edit iconSize" onClick={this.editTemplate}/>
-                      <i className="fas fa-trash iconSize" onClick={this.deleteTemplate}/>
+                      <i className="fas fa-trash iconSize" onClick={(e) => this.deleteTemplate(e, template.id)}/>
                      </div>
                     </div>  
                     <div>
@@ -81,7 +82,7 @@ export class Home extends Component {
                       <p>{template.date}</p>
                     </div>
                   </div>
-          })}</div>
+          ))}</div>
 
         </div>
       )

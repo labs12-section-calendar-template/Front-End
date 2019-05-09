@@ -34,6 +34,7 @@ postTemplate = event => {
         template_id:res.data.id
       })
       console.log(this.state.template_id)
+      window.location = '/home'
     })
     .catch(err => {
       console.log(err);
@@ -69,11 +70,9 @@ handleInputChange = event => {
         <main className="templateMain">
           <div className='templateTitle'>
             <h1>Template Creation</h1>
-
-            <Link to='/event'>
-              <button id="buttonSave" onClick={this.postTemplate}>Save</button>
-            </Link>
-
+           
+            <button id="buttonSave" onClick={this.postTemplate}>Save</button>
+          
           </div>
           <div className='templateEdit'>
             <div className='cycleLength'>
@@ -119,7 +118,6 @@ handleInputChange = event => {
                     /> 
                 </li>
               </form>
-              <GeneralCalendar />
           </div>
         </main>
       </div>

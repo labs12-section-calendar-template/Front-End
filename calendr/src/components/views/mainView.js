@@ -7,6 +7,7 @@ import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
 import moment from 'moment'
+import GeneralCalendar from '../calendar/GeneralCalendar';
 
 class mainView extends React.Component {
   constructor(props) {
@@ -29,6 +30,7 @@ class mainView extends React.Component {
 
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />
+       <Route path="/event/" component={GeneralCalendar} />
        <Route path="/event/:date" component={Event} />
       </div>
     ); 
