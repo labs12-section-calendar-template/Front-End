@@ -72,10 +72,9 @@
   height: 15px;
   margin-right: 8%;
 }
-.holiday-rule {
-  /* width: 200px; */
-  margin: 2% 33.3%;
-  /* display: flex; */
+
+.save-event-button{
+  margin-top: 5%;
 }
 
 .eventTitle{
