@@ -8,7 +8,7 @@ export class Group extends Component {
     this.state={
         joinCode: '',
         createdCode: '',
-        name: '',
+        name: ''
     }
   }
     
@@ -64,8 +64,8 @@ handleInputChange = event => {
             className="groupInput"
             onChange={this.handleInputChange}
             placeholder="Join code..."
-            value={this.state.joinCode}
-            name="joinCode"
+            value={this.state.createdCode}
+            name="createdCode"
             type="number"
             />
             <button className="formButton">Create</button>
