@@ -33,12 +33,20 @@ export class GeneralCalendar extends Component {
         return weeks;
       }
 
+      delayRedirect = event => {
+  const { history: { push } } = this.props;
+  push('/home');
+}
+
 
   render() {
     return (
       <div className="wholeCalendar">
+      <h1>CREATE YOUR EVENTS HERE!</h1>
+      <p>Click a date to add an event.</p>
         <DayNames />
         <div>{this.renderWeeks()}</div>
+        <button onClick={this.delayRedirect}>SUBMIT</button>
       </div>
     )
   }
