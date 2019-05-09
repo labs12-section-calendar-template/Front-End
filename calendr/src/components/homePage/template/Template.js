@@ -15,7 +15,8 @@ this.state = {
     description: '',
     cycleLength: '',
     color: '',
-    date: ''
+    date: '',
+    template_id:[]
     }
 }
 
@@ -29,6 +30,10 @@ postTemplate = event => {
     .post(`http://localhost:3300/groups/${group_id}/templates`, { title, description, cycleLength, color })
     .then(res => {
       console.log(res.data);
+      this.setState({
+        template_id:res.data.id
+      })
+      console.log(this.state.template_id)
     })
     .catch(err => {
       console.log(err);
@@ -53,11 +58,6 @@ handleInputChange = event => {
   })
 }
 
-delayRedirect = event => {
-  const { history: { push } } = this.props;
-  setTimeout(()=>push('/home'), 1500);
-}
-
   render() {
     return (
     <div>
@@ -70,13 +70,8 @@ delayRedirect = event => {
           <div className='templateTitle'>
             <h1>Template Creation</h1>
 
-            <Link to='/'>
-
-            <button id="buttonSave" onClick={() => {
-              this.postTemplate();
-              this.delayRedirect();
-            }}>Save</button>
-            
+            <Link to='/event'>
+              <button id="buttonSave" onClick={this.postTemplate}>Save</button>
             </Link>
 
           </div>
