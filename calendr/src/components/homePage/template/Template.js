@@ -14,8 +14,7 @@ this.state = {
     title: '',
     description: '',
     cycleLength: '',
-    color: '',
-    date: ''
+    color: ''
     }
 }
 
@@ -29,8 +28,8 @@ postTemplate = event => {
     .post(`http://localhost:3300/groups/${group_id}/templates`, { title, description, cycleLength, color })
     .then(res => {
       console.log(res.data);
-      window.location='/home'
-    })
+      window.location='/event'
+        })
     .catch(err => {
       console.log(err);
     });
@@ -54,10 +53,6 @@ handleInputChange = event => {
   })
 }
 
-// delayRedirect = event => {
-//   const { history: { push } } = this.props;
-//   setTimeout(()=>push('/home'), 1500);
-// }
 
   render() {
     return (
@@ -70,12 +65,12 @@ handleInputChange = event => {
         <main className="templateMain">
           <div className='templateTitle'>
             <h1>Template Creation</h1>
-            <Link to='/'>
+           
             <button id="buttonSave" onClick={() => {
               this.postTemplate();
-              // this.delayRedirect();
+             // this.delayRedirect();
             }}>Save</button>
-            </Link>
+          
           </div>
           <div className='templateEdit'>
             <div className='cycleLength'>
@@ -121,7 +116,6 @@ handleInputChange = event => {
                     /> 
                 </li>
               </form>
-              <GeneralCalendar />
           </div>
         </main>
       </div>

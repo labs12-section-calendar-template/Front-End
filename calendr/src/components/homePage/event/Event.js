@@ -33,7 +33,7 @@ class Event extends React.Component {
 
   toggleClose = event => {
   event.preventDefault()
- this.props.history.push('/template')
+ this.props.history.push('/event')
 }
 
   render() {
@@ -132,7 +132,7 @@ class Event extends React.Component {
               </select>
             </div>
 
-            <button className="save-event-button" onClick={this.toggleClose}>
+            <button className="save-event-button" onClick= {() => this.props.history.push('/event')}>
               Save
             </button>
           </div>
