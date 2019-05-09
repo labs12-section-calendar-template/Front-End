@@ -29,7 +29,7 @@ postTemplate = event => {
     .then(res => {
       console.log(res.data);
       window.location='/event'
-        })
+    })
     .catch(err => {
       console.log(err);
     });
@@ -66,10 +66,7 @@ handleInputChange = event => {
           <div className='templateTitle'>
             <h1>Template Creation</h1>
            
-            <button id="buttonSave" onClick={() => {
-              this.postTemplate();
-             // this.delayRedirect();
-            }}>Save</button>
+            <button id="buttonSave" onClick={this.postTemplate}>Save</button>
           
           </div>
           <div className='templateEdit'>
@@ -125,4 +122,3 @@ handleInputChange = event => {
 }
 
 export default Template
-
