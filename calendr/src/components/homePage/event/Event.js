@@ -41,14 +41,8 @@ class Event extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <button onClick={this.toggleClose}>X</button>
-            <div
-              className="top-section"
-              style={{
-                display: "flex",
-                width: "450px"
-              }}
-            >
+            <button className='popup-close' onClick={this.toggleClose}>X</button>
+            <div className="top-section">
               <form
                 type="submit"
                 style={{
@@ -56,19 +50,23 @@ class Event extends React.Component {
                   flexDirection: "column"
                 }}
               >
-                <label>Event Title</label>
+              <div className='eventTitle'>
+                <label className='title'>Event Title</label>
                 <input
                   name="title"
                   value={this.state.title}
                   placeholder="Enter event title"
                   onChange={this.handleChange}
                 />
-                <label>Details</label>
+              </div>
+              <div className='eventDetails'>
+                <label className='details'>Details</label>
                 <textarea
                   name="details"
                   placeholder="Enter details"
                   style={{ height: "100px" }}
                 />
+              </div>
               </form>
             </div>
             <div className="weekday-container">
