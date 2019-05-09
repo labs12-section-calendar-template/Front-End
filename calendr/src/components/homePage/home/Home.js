@@ -33,6 +33,19 @@ export class Home extends Component {
         console.log(err);
       });
   }
+
+  deleteTemplate = e => {
+    e.preventDefault()
+    axios
+        .delete(`http://localhost:3300/templates/`)
+        .then(res => {
+          console.log('template deleted')
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      }
+
   render() {
     if(this.state.templates.length < 1){
     return (
@@ -46,19 +59,27 @@ export class Home extends Component {
     )
     }else{
       return(
-        <div className="populatedTemplatePage">
+        <div>
           <MainNavBar logOff = {this.props.logOff}/>
           <SideBar/>
           <div className="allTemplates">
            {this.state.templates.map((template, index) => {
             return <div className="templateTag">
-                    <div>
+                    <div className="titleAndIcons">
                       <h2 className="templateTitleTag" key = {index}>{template.title}</h2>
-                      <i className="far fa-edit"/>
-                      <i class="fas fa-trash"/>
+                     <div className="iconsForTemplates">
+                      <i className="far fa-edit iconSize" onClick={this.editTemplate}/>
+                      <i className="fas fa-trash iconSize" onClick={this.deleteTemplate}/>
+                     </div>
                     </div>  
+                    <div>
                     <h3 className="templateDescription">Description</h3>
                     <p className="templateDescriptionTag">{template.description}</p>
+                    </div>
+                    <div>
+                      <h3>Last Applied</h3>
+                      <p>{template.date}</p>
+                    </div>
                   </div>
           })}</div>
 

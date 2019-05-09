@@ -43,6 +43,7 @@
 .buttonTitles{
     font-size: 1.2rem;
     margin:.3rem;
+    text-align: start;
 }
 .buttonDiscriptions{
     font-size:1rem;
@@ -92,12 +93,10 @@
 
 
 // Else section of the home page
-.populatedTemplatePage{
 
-}
 .allTemplates{
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-wrap: wrap;
     margin:1rem 2% 0 23%;
     width:75vw;
@@ -110,9 +109,21 @@
     margin:1rem .2rem;
 
 }
+.titleAndIcons{
+    display: flex;
+    justify-content: space-between;
+}
 .templateTitleTag{
     display: flex;
     margin: .5rem 0 1rem .5rem;
+}
+.iconsForTemplates{
+    margin:.5rem 0 0 0;
+}
+.iconSize{
+    font-size:1rem;
+    margin-right:.5rem;
+    cursor: pointer;
 }
 .templateDescription{
 
