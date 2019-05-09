@@ -1,12 +1,13 @@
 import React from 'react';
-import MainNavBar from '../general/MainNavBar';
+// import MainNavBar from '../general/MainNavBar';
 import Users from '../general/Users';
 import Home from '../homePage/home/Home';
+import MemberHome from '../homePage/member/MemberHome'
 import Template from '../homePage/template/Template';
 import { Route } from 'react-router-dom';
 import Group from '../homePage/group/Group';
 import Event from '../homePage/event/Event';
-import moment from 'moment'
+// import moment from 'moment'
 import GeneralCalendar from '../calendar/GeneralCalendar';
 
 class mainView extends React.Component {
@@ -27,6 +28,10 @@ class mainView extends React.Component {
             logOff = {this.props.logOff}
             {...props}
             />)} />
+
+       <Route path = "/memberhome" exact render = {(...props) => (<MemberHome 
+            {...props} 
+            />)}/>
 
        <Route path="/users" component={Users} />
        <Route path="/template" component={Template} />

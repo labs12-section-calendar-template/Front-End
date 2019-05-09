@@ -9,7 +9,7 @@ export class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {  
-       value:false,
+      value:false,
       templates: []
     }
   }
