@@ -15,10 +15,25 @@ this.state = {
     description: '',
     cycleLength: '',
     color: '',
-    dateRange: ''
+    date: ''
     }
 }
 
+
+
+postTemplate = event => {
+  let group_id = localStorage.getItem("group_id")
+  console.log(group_id)
+  let { title, description, cycleLength, color } = this.state
+  axios
+    .post(`http://localhost:3300/groups/${group_id}/templates`, { title, description, cycleLength, color })
+    .then(res => {
+      console.log(res.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 handleCycleChange = event => {
   this.setState({
@@ -40,7 +55,6 @@ handleInputChange = event => {
 
 delayRedirect = event => {
   const { history: { push } } = this.props;
-  event.preventDefault();
   setTimeout(()=>push('/home'), 1500);
 }
 
@@ -55,8 +69,11 @@ delayRedirect = event => {
         <main className="templateMain">
           <div className='templateTitle'>
             <h1>Template Creation</h1>
-            <Link to='/' onClick={this.delayRedirect}>
-            <button id="buttonSave" onClick={this.addTemplate}>Save</button>
+            <Link to='/'>
+            <button id="buttonSave" onClick={() => {
+              this.postTemplate();
+              this.delayRedirect();
+            }}>Save</button>
             </Link>
           </div>
           <div className='templateEdit'>

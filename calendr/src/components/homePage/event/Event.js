@@ -1,13 +1,14 @@
 import React from "react";
 import Selected from "./Selected.js";
 import "./Event.css";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 class Event extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
+      day: false,
       Su: false,
       M: false,
       T: false,
@@ -20,50 +21,29 @@ class Event extends React.Component {
       details: ""
     };
   }
-
-  toggleSunday() {
-    this.setState({ Su: !this.state.Su });
-  }
-  toggleMonday() {
-    this.setState({ M: !this.state.M });
-  }
-  toggleTuesday() {
-    this.setState({ T: !this.state.T });
-  }
-  toggleWednesday() {
-    this.setState({ W: !this.state.W });
-  }
-  toggleThursday() {
-    this.setState({ Th: !this.state.Th });
-  }
-  toggleFriday() {
-    this.setState({ F: !this.state.F });
-  }
-  toggleSaturday() {
-    this.setState({ S: !this.state.S });
+  toggleDay(day) {
+    this.setState({ [day]: !this.state[day] });
   }
 
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-  })
-  }
+    });
+  };
 
-  
-
+  toggleClose = event => {
+    event.preventDefault();
+    this.props.history.push("/template");
+    console.log(this.props.history);
+  };
 
   render() {
     return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <div
-              className="top-section"
-              style={{
-                display: "flex",
-                width: "450px"
-              }}
-            >
+            <button className='popup-close' onClick={this.toggleClose}>X</button>
+            <div className="top-section">
               <form
                 type="submit"
                 style={{
@@ -71,61 +51,65 @@ class Event extends React.Component {
                   flexDirection: "column"
                 }}
               >
-                <label>Event Title</label>
+              <div className='eventTitle'>
+                <label className='title'>Event Title</label>
                 <input
                   name="title"
                   value={this.state.title}
                   placeholder="Enter event title"
                   onChange={this.handleChange}
                 />
-                <label>Details</label>
+              </div>
+              <div className='eventDetails'>
+                <label className='details'>Details</label>
                 <textarea
                   name="details"
                   placeholder="Enter details"
                   style={{ height: "100px" }}
                 />
+              </div>
               </form>
             </div>
             <div className="weekday-container">
               <div
                 className={`${this.state.Su && "active"} weekday`}
-                onClick={() => this.toggleSunday()}
+                onClick={() => this.toggleDay("S")}
               >
                 Su
               </div>
               <div
                 className={`${this.state.M && "active"} weekday`}
-                onClick={() => this.toggleMonday()}
+                onClick={() => this.toggleDay("M")}
               >
                 M
               </div>
               <div
                 className={`${this.state.T && "active"} weekday`}
-                onClick={() => this.toggleTuesday()}
+                onClick={() => this.toggleDay("T")}
               >
                 T
               </div>
               <div
                 className={`${this.state.W && "active"} weekday`}
-                onClick={() => this.toggleWednesday()}
+                onClick={() => this.toggleDay("W")}
               >
                 W
               </div>
               <div
                 className={`${this.state.Th && "active"} weekday`}
-                onClick={() => this.toggleThursday()}
+                onClick={() => this.toggleDay("Th")}
               >
                 Th
               </div>
               <div
                 className={`${this.state.F && "active"} weekday`}
-                onClick={() => this.toggleFriday()}
+                onClick={() => this.toggleDay("F")}
               >
                 F
               </div>
               <div
                 className={`${this.state.S && "active"} weekday`}
-                onClick={() => this.toggleSaturday()}
+                onClick={() => this.toggleDay("S")}
               >
                 S
               </div>
@@ -146,9 +130,10 @@ class Event extends React.Component {
                 <option>Move</option>
               </select>
             </div>
-            <Link to='/template' >
-            <button className="save-event-button">Save</button>
-            </Link>
+
+            <button className="save-event-button" onClick={this.toggleClose}>
+              Save
+            </button>
           </div>
         </div>
       </>
