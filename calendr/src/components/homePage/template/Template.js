@@ -14,7 +14,9 @@ this.state = {
     title: '',
     description: '',
     cycleLength: '',
-    color: ''
+    color: '',
+    date: '',
+    template_id:[]
     }
 }
 
@@ -28,7 +30,11 @@ postTemplate = event => {
     .post(`http://localhost:3300/groups/${group_id}/templates`, { title, description, cycleLength, color })
     .then(res => {
       console.log(res.data);
-      window.location='/event'
+      this.setState({
+        template_id:res.data.id
+      })
+      console.log(this.state.template_id)
+      window.location = '/home'
     })
     .catch(err => {
       console.log(err);
@@ -52,7 +58,6 @@ handleInputChange = event => {
       [event.target.name]: event.target.value
   })
 }
-
 
   render() {
     return (
