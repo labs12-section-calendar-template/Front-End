@@ -1,43 +1,54 @@
 .groupContainer{
     display: flex;
     justify-content: center;
-    background-color: lightgray;
-    height: 100vh;
+    align-items: center;
+    opacity: .8;
+
+    @media(max-width: 500px){
+        flex-direction: column;
+    }
 }
 
 .groupHeader {
-    background: lightgrey;
     display: flex;
     justify-content: center;
 
     button {
         margin-top: 15px;
-        width: 96vw;
-        height: 19vh;
+        width: 200px;
+        height: 40px;
         border-radius: 14px;
-        color: white;
-        font-size: 25px;
-        background-image: 
-        url(https://images.unsplash.com/photo-1495012379376-194a416fcc5f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80);
-        background-size: cover;
+        font-size: 20px;
+        font-family: "Quicksand";
+        font-weight: bold;
+
+        &:hover{
+            border: 1px solid #3270eb;
+            color: #3270eb;
+            cursor: pointer
+        }
+        
     }
 }
 
 
 
+
 .boxing{
-    box-sizing: border-box;
-    width:40%;
-    height:40vh;
     border: 1px solid black;
     margin:4rem 1rem 0 1rem;
     background-color:white;
     border-radius: 20px; 
+
+    @media(max-width: 500px){
+        margin: 3rem;
+    }
 } 
 
 .joinCreateGroup{
     margin: 1.5rem 0;
     font-size: 2.7rem;
+    font-family: "Poppins";
 }
 
 .groupDescription{
@@ -46,12 +57,17 @@
     margin:auto;
     border-bottom: 2px solid black;
     padding-bottom:.3rem;
+    font-family: "Poppins";
 }
 
 .formGroup{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    h3{
+        font-family: "Poppins";
+    }
 }
 .groupInput{
     width:15rem;
@@ -60,10 +76,20 @@
     border:1px solid black;
 }
 .formButton{
-    width:50%;
+    width:9rem;
     height:2rem;
-    border-radius:1rem;
+    border-radius:6px;
     margin-top:1rem;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    margin-bottom: 1rem;
+
+    &:hover{
+        cursor: pointer;
+        border: 1px solid #f36d13;
+        color: #f36d13;
+    }
 }
 
 @media (max-width: 1099px) {
