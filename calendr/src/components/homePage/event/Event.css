@@ -61,6 +61,12 @@
   margin: 0 2%;
   height: 2.1rem;
 }
+
+@media(max-width: 500px){
+  .selected{
+    flex-direction: column;
+  }
+}
 .selected-day {
   font-size: 22px;
   margin:auto 0;
@@ -119,3 +125,9 @@ margin-right: 95%;
 .details, .title{
   font-size: 1.5rem;
 }
+
+/* @media(max-width:500px){
+  .annoying-popup{
+    width: 75%;
+  }
+} */
