@@ -3,6 +3,7 @@ import { NavLink, Route, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Popup from 'reactjs-popup';
 import Event from '../homePage/event/Event';
+import '../homePage/event/Event.css'
 
 
 class Day extends React.Component {
