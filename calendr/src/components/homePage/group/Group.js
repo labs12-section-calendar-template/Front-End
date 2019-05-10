@@ -11,11 +11,13 @@ export class Group extends Component {
         name: ''
     }
   }
+
+
     joinGroup = event => {
       event.preventDefault();
       let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendrserver.herokuapp.com/groups/getBy/${user_id}`, {
+        .post(`https://calendrserver.herokuapp.com/groups/getby/${user_id}`, {
           joinCode: this.state.joinCode
         }).then(res => {
           console.log(res.data.id)
