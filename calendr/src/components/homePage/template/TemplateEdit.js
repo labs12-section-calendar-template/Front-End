@@ -39,7 +39,7 @@ updateTemplate = (e) => {
   let id = this.props.match.params.id
   console.log(this.state.group_id)
 axios
-  .put(`http://localhost:3300/templates/${id}`,{
+  .put(`https://calendrserver.herokuapp.com/templates/${id}`,{
     title: this.state.title,
     description: this.state.description,
     cycleLength: this.state.cycleLength,

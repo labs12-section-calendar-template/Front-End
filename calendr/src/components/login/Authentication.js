@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import queryString from "query-string";
 import axios from "axios";
 
-const url = "http://localhost:3000/";
+// const url = "http://localhost:3000/";
 // const localGoogle = 'http://localhost:3300/auth/google';
 // const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
 
@@ -45,7 +45,7 @@ const Authentication = App => Login =>
 
     gmailLogin = event => {
       event.preventDefault();
-      window.location = "http://localhost:3300/auth/google";
+      window.location = "https://calendrserver.herokuapp.com/auth/google";
     };
 
     logOff = event => {
@@ -54,7 +54,7 @@ const Authentication = App => Login =>
       this.setState({
         loggedIn: false
       });
-      window.location = "http://localhost:3300/auth/logout";
+      window.location = "https://calendrserver.herokuapp.com/auth/logout";
     };
 
     //http://localhost:3300/auth/google
@@ -69,23 +69,23 @@ const Authentication = App => Login =>
       });
     };
 
-    signIn = event => {
-      event.persist();
-      return axios
-        .post(`${url}auth/login`, {
-          username: this.state.username,
-          password: this.state.password
-        })
+    // signIn = event => {
+    //   event.persist();
+    //   return axios
+    //     .post(`${url}auth/login`, {
+    //       username: this.state.username,
+    //       password: this.state.password
+    //     })
 
-        .then(res => {
-          localStorage.setItem("userdata", JSON.stringify(res.data));
-          this.setState({
-            loggedIn: true
-          });
-          this.props.history.push("/");
-        })
-        .catch(err => alert(err));
-    };
+    //     .then(res => {
+    //       localStorage.setItem("userdata", JSON.stringify(res.data));
+    //       this.setState({
+    //         loggedIn: true
+    //       });
+    //       this.props.history.push("/");
+    //     })
+    //     .catch(err => alert(err));
+    // };
 
     signOut = event => {
       event.preventDefault();

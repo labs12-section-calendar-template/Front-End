@@ -11,6 +11,7 @@ export class GeneralCalendar extends Component {
 
     this.state = {
       month: moment(),
+      latestEvent: [],
       events: [],
       template_id: []
     };
@@ -21,14 +22,14 @@ export class GeneralCalendar extends Component {
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
-      .get(`http://localhost:3300/groups/${group_id}/templates`)
+      .get(`https://calendrserver.herokuapp.com/groups/${group_id}/templates`)
       .then(res => {
-        let value = res.data[0].id;
+        let value = res.data[res.data.length - 1].id;
         let tempIds = res.data.map(data => {
           return data.id;
         });
 
-        // console.log(group_id);
+       // console.log(group_id);
 
         this.setState({
           template_id: tempIds[tempIds.length - 1]
@@ -43,15 +44,18 @@ export class GeneralCalendar extends Component {
 
   getEvents = value => {
     axios
-      .get(`http://localhost:3300/templates/${value}/events`)
+      .get(`https://calendrserver.herokuapp.com/templates/${value}/events`)
       .then(res => {
         let events = res.data.map(event => {
           return event.title;
         });
-        // console.log(events);
+        
         this.setState({
-          events: events[events.length - 1]
+          latestEvent: events[events.length - 1],
+          events: events
         });
+        console.log(this.state.events)
+        console.log(events)
       })
       .catch(err => {
         console.log(err);
@@ -74,6 +78,7 @@ export class GeneralCalendar extends Component {
       weeks.push(
         <Week
           events={this.state.events}
+          latestEvent={this.state.latestEvent}
           template_id={this.state.template_id}
           key={date}
           date={date.clone()}
@@ -99,7 +104,7 @@ export class GeneralCalendar extends Component {
   render() {
     return (
       <div className="wholeCalendar">
-        <h1>CREATE YOUR EVENTS HERE!</h1>
+        <h1>CALENDR</h1>
         <p>Click a date to add an event.</p>
         <DayNames />
         <div>{this.renderWeeks()}</div>
