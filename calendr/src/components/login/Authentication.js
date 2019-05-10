@@ -50,7 +50,6 @@ const Authentication = App => Login =>
       }
 
       logOff = (event) => {
-        event.preventDefault();
         window.localStorage.clear();
         this.setState({
             loggedIn: false
