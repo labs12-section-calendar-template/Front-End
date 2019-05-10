@@ -1,9 +1,9 @@
-import React, { Component } from "react";
-import { NavLink, Route, withRouter } from "react-router-dom";
+import React from "react";
+import { Route, withRouter } from "react-router-dom";
 import moment from "moment";
 import Popup from "reactjs-popup";
 import Event from "../homePage/event/Event";
-import "../homePage/event/Event.css";
+import axios from "axios";
 
 class Day extends React.Component {
   constructor(props) {
