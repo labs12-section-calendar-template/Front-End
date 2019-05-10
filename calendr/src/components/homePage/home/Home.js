@@ -8,9 +8,11 @@ import axios from "axios";
 export class Home extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       templates: []
     };
+
   }
 
   componentDidMount() {
@@ -31,7 +33,12 @@ export class Home extends Component {
       .catch(err => {
         console.log(err);
       });
-  };
+
+  }
+  edit = (e, id) => {
+    window.location = `/template/edit/${id}`
+  }
+
 
   deleteTemplate = (e, id) => {
     e.preventDefault();
@@ -47,9 +54,20 @@ export class Home extends Component {
   };
 
   render() {
-    // console.log(this.state.templates.id)
-    if (this.state.templates.length < 1) {
-      return (
+
+    if(this.state.templates.length < 1){
+    return (
+      <div>
+        <MainNavBar logOff = {this.props.logOff}/>
+        <SideBar/>
+        <Link className="buttonLink" to="/template">
+        <button className="firstTemplateButton">Create your first template</button>
+        </Link>
+      </div>
+    )
+    }else{
+      return(
+
         <div>
           <MainNavBar logOff={this.props.logOff} />
           <SideBar />
@@ -66,19 +84,26 @@ export class Home extends Component {
           <MainNavBar logOff={this.props.logOff} />
           <SideBar />
           <div className="allTemplates">
-            {this.state.templates.map(template => (
-              <div key={template.id} className="templateTag">
-                <div className="titleAndIcons">
-                  <h2 className="templateTitleTag">{template.title}</h2>
-                  <div className="iconsForTemplates">
-                    <i
-                      className="far fa-edit iconSize"
-                      onClick={this.editTemplate}
-                    />
-                    <i
-                      className="fas fa-trash iconSize"
-                      onClick={e => this.deleteTemplate(e, template.id)}
-                    />
+
+           {this.state.templates.map((template) => (<div key={template.id} className="templateTag">
+                    <div className="titleAndIcons">
+                    <Link to='/template/calendr'>
+                      <h2 className="templateTitleTag">{template.title}</h2>
+                    </Link>
+                     <div className="iconsForTemplates">
+                      <i className="far fa-edit iconSize" onClick={(e) => this.edit(e, template.id)}/>
+                      <i className="fas fa-trash iconSize" onClick={(e) => this.deleteTemplate(e, template.id)}/>
+                     </div>
+                    </div>  
+                    <div>
+                    <h3 className="templateDescription">Description</h3>
+                    <p className="templateDescriptionTag">{template.description}</p>
+                    </div>
+                    <div>
+                      <h3>Last Applied</h3>
+                      <p>{template.date}</p>
+                    </div>
+
                   </div>
                 </div>
                 <div>

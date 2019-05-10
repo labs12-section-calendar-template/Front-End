@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import SideBar from "../SideBar";
 // import GeneralCalendar from '../../calendar/GeneralCalendar';
@@ -5,6 +6,7 @@ import "./Template.css";
 import axios from "axios";
 // import {Link} from 'react-router-dom';
 import MainNavBar from "../../general/MainNavBar";
+
 
 export class Template extends Component {
   constructor(props) {

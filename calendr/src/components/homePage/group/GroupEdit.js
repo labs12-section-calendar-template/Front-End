@@ -1,5 +1,7 @@
+
 import React, { Component } from "react";
 import axios from "axios";
+
 
 export class GroupEdit extends Component {
   constructor(props) {
@@ -52,31 +54,25 @@ export class GroupEdit extends Component {
     console.log(this.state.group_id);
 
     return (
-      <div className="popup-overlay">
-        <div className="popup-content">
-          <div className="pop">
-            <button className="cancel" onClick={this.props.toggleModal}>
-              Cancel
-            </button>
-            <form>
-              <h2>Enter new group name</h2>
-              <input
+
+    <div className="popup-overlay" >
+    <div className="popup-content">
+      <div className="pop">
+      <button className="cancel-button" onClick={this.props.toggleModal}>Cancel</button>
+        <form className='editGroupName'>
+            <h2>Enter new group name</h2>
+            <input
                 className="editNameInput editGroupInput"
-                type="text"
-                value={this.state.name}
-                name="name"
-                onChange={this.handleChange}
-                placeholder="Update group name..."
-              />
-              <button
-                onClick={() => (this.updateGroup(), this.props.toggleModal())}
-              >
-                Submit
-              </button>
-              <button onClick={this.deleteGroup}>Delete Group</button>
-            </form>
-          </div>
-        </div>
+                type = "text"
+                value = {this.state.name}
+                name = "name"
+                onChange = {this.handleChange}
+                placeholder = "Update group name..."
+            />
+            <button className='edit-submit-button' onClick={() => (this.updateGroup(), this.props.toggleModal())}>Submit</button>
+            <button className='edit-delete-group' onClick={this.deleteGroup}>Delete Group</button>
+        </form>
+
       </div>
     );
   }
