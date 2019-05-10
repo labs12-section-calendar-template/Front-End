@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axios from 'axios'
+import './Group.scss'
 
 export class GroupEdit extends Component {
     constructor(props){
@@ -55,8 +56,8 @@ export class GroupEdit extends Component {
     <div className="popup-overlay" >
     <div className="popup-content">
       <div className="pop">
-      <button className="cancel" onClick={this.props.toggleModal}>Cancel</button>
-        <form>
+      <button className="cancel-button" onClick={this.props.toggleModal}>Cancel</button>
+        <form className='editGroupName'>
             <h2>Enter new group name</h2>
             <input
                 className="editNameInput editGroupInput"
@@ -66,8 +67,8 @@ export class GroupEdit extends Component {
                 onChange = {this.handleChange}
                 placeholder = "Update group name..."
             />
-            <button onClick={() => (this.updateGroup(), this.props.toggleModal())}>Submit</button>
-            <button onClick={this.deleteGroup}>Delete Group</button>
+            <button className='edit-submit-button' onClick={() => (this.updateGroup(), this.props.toggleModal())}>Submit</button>
+            <button className='edit-delete-group' onClick={this.deleteGroup}>Delete Group</button>
         </form>
       </div>
     </div>
