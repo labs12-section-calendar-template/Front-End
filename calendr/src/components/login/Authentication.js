@@ -90,7 +90,6 @@ const Authentication = App => Login =>
     //   }
 
       signOut = event => {
-        event.preventDefault();
         window.localStorage.clear();
         this.setState({
             loggedIn: false
