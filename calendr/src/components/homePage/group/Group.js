@@ -28,13 +28,13 @@ export class Group extends Component {
     
     postGroup = e => {
       e.preventDefault();
-      let { name, joinCode } = this.state
+      let { name } = this.state
       let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendrserver.herokuapp.com/users/${user_id}/groups`, { user_id, name, joinCode })
+        .post(`https://calendrserver.herokuapp.com/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {
           console.log(res.data);
-          if(this.state.joinCode !== null && this.state.name !== null){
+          if(this.state.createdCode !== null && this.state.name !== null){
             window.location='/home'
           }else{
             alert('Fill out all fields')
