@@ -3,14 +3,15 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 
-export class SideBar extends Component {
+export class MainSideBar extends Component {
   constructor(props){
     super(props);
     this.state = {
       groupName: [],
       joinCode: [],
       group_id:[],
-      modalOpen: false
+      modalOpen: false,
+      templates:[]
     }
   }
 
@@ -27,17 +28,36 @@ export class SideBar extends Component {
     let userId = localStorage.getItem('userId')
     axios.get(`http://localhost:3300/users/${userId}/groups`)
     .then(res => {
+        let groupId = res.data[0].id
       this.setState({
         group_id:res.data[0].id,
         groupName: res.data[0].name,
         joinCode: res.data[0].joinCode,
       })
-      console.log(this.state.group_id)
+
+      this.getTemplate(groupId)
+
+      console.log(res.data[0].id)
       window.localStorage.setItem("group_id", this.state.group_id)
     })
     .catch(err => {
       console.log(err)
     })
+  }
+
+  getTemplate = (groupId) => {
+      
+    axios
+      .get(`http://localhost:3300/groups/${groupId}/templates` )
+      .then(res => {
+          this.setState({
+              templates: res.data
+            })
+            console.log(res.data);
+      })
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   circleAddTemplate = () => {
@@ -57,9 +77,10 @@ export class SideBar extends Component {
   }
 
   render() {
-    // console.log(localStorage)
+    console.log(this.state.templates)
     return (
       <>
+
         <div className="homePageStyles">
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
@@ -71,6 +92,12 @@ export class SideBar extends Component {
           <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>
         </div>
             <h5 className='buttonTitles'>Templates</h5>
+            <div>
+                {this.state.templates.map(template => {return <div key={template.id}>
+                    <h5>{template.title}</h5>
+                </div>
+                })} 
+            </div>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
           <p className='buttonDescriptions'>Add Template</p>
@@ -84,4 +111,4 @@ export class SideBar extends Component {
   }
 }
 
-export default SideBar
+export default MainSideBar
