@@ -44,6 +44,10 @@ export class SideBar extends Component {
     window.location = '/template'
   }
 
+  removeUsers = () => {
+    window.location = '/users'
+  }
+
   toggleModal = () => {
     if(this.state.modalOpen === false){
       this.setState({
@@ -69,6 +73,10 @@ export class SideBar extends Component {
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" />
           <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>
+        </div>
+        <div className='buttonBox'>
+        <i className="fas fa-plus-circle" onClick={this.removeUsers}/>
+          <p className='buttonDescriptions'>Remove Members</p>
         </div>
             <h5 className='buttonTitles'>Templates</h5>
         <div className='buttonBox'>

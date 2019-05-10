@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
 
-const url = "http://localhost:3000/";
-const localGoogle = 'http://localhost:3300/auth/google';
-const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
+// const url = "http://localhost:3000/";
+// const localGoogle = 'http://localhost:3300/auth/google';
+// const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
 
 const Authentication = App => Login =>
     class extends Component {
@@ -72,23 +72,23 @@ const Authentication = App => Login =>
         })
     }
 
-    signIn = event => {
-      event.persist();
-      return axios
-          .post(`${url}auth/login`,{
-              username: this.state.username,
-              password: this.state.password
-          })
+    // signIn = event => {
+    //   event.persist();
+    //   return axios
+    //       .post(`${url}auth/login`,{
+    //           username: this.state.username,
+    //           password: this.state.password
+    //       })
 
-          .then( res => {
-              localStorage.setItem("userdata", JSON.stringify(res.data));
-              this.setState({
-                  loggedIn: true
-              });
-                 this.props.history.push('/');
-          })
-          .catch(err => alert(err));
-      }
+    //       .then( res => {
+    //           localStorage.setItem("userdata", JSON.stringify(res.data));
+    //           this.setState({
+    //               loggedIn: true
+    //           });
+    //              this.props.history.push('/');
+    //       })
+    //       .catch(err => alert(err));
+    //   }
 
       signOut = event => {
         event.preventDefault();

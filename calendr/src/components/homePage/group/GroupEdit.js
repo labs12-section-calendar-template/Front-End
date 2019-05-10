@@ -23,31 +23,31 @@ export class GroupEdit extends Component {
     console.log(this.state.joinCode);
     console.log(this.state.name);
     axios
-        .put(`https://calendrserver.herokuapp.com/groups/${this.state.group_id}`,{
-            name: this.state.name,
-            user_id: userId
-        })
-        .then(res => {
-          console.log('IT WORKED')
-          document.location.reload()
-        })
-        .catch(err => {
-          console.log(err)
-        })
-      }
+      .put(`https://calendrserver.herokuapp.com/groups/${this.state.group_id}`, {
+        name: this.state.name,
+        user_id: userId
+      })
+      .then(res => {
+        console.log("IT WORKED");
+        document.location.reload();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-      deleteGroup = e => {
-        e.preventDefault()
-        axios
-            .delete(`https://calendrserver.herokuapp.com/groups/${this.props.group_id}`)
-            .then(res => {
-              console.log('group deleted')
-              window.location = '/';
-            })
-            .catch(err => {
-              console.log(err)
-            })
-          }
+  deleteGroup = e => {
+    e.preventDefault();
+    axios
+      .delete(`https://calendrserver.herokuapp.com/groups/${this.props.group_id}`)
+      .then(res => {
+        console.log("group deleted");
+        window.location = "/";
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   render() {
     console.log(this.state.group_id);
