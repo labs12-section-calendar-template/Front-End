@@ -6,7 +6,12 @@
     width:15vw;
     height:100vh;
     position: fixed;
+    
+    @media(max-width: 500px){
+        width: 9rem;
+    }
 }
+
 .groupNameTemplate{
     display:flex;
     align-items: center;
@@ -14,6 +19,10 @@
 .GroupName{
     margin:0 .2rem 0 0;
     font-size:2rem;
+
+    @media(max-width: 500px){
+        font-size: 1.1rem;
+    }
 }
 .fa-edit{
     font-size: .8rem;
@@ -23,6 +32,7 @@
     font-size: 1.4rem;
 
 }
+
 .buttonBox{
     display: flex;
     align-items: center;
@@ -44,6 +54,10 @@
     font-size: 1.2rem;
     margin:.3rem;
     text-align: start;
+
+    @media(max-width: 500px){
+        font-size: 1rem;
+    }
 }
 .buttonDescriptions{
     font-size:1rem;
@@ -53,9 +67,24 @@
 }
 
 .firstTemplateButton{
-    margin-top: 5%;
-    height:4rem;
-    font-size: 1.5rem;
+    margin-top: 8%;
+    height: 2.5rem;
+    margin-left: 10rem;
+    border-radius:6px;
+    font-size: 1.3rem;
+    font-family: "Quicksand";
+    font-weight: bold;
+
+    &:hover{
+        border: 1px solid #f36d13;
+        color: #f36d13;
+        cursor: pointer;
+    }
+
+    @media(max-width: 500px){
+        font-size: 1.1rem;
+    }
+
 }
 .popup-overlay{
     width:100vw;
@@ -100,13 +129,25 @@
     margin:1rem 2% 0 23%;
     width:75vw;
     position: absolute;
+
+    @media(max-width: 500px){
+    margin: 1rem 2% 0 33%;
+    width: 65vw;
+    position: absolute;
+    }
 }
 .templateTag{
     border: 1px solid black;
-    width:14rem;
+    border-radius: 5px;
+    width:17rem;
     height:20rem;
     margin:1rem .2rem;
 
+    @media(max-width: 500px){
+    width: 13rem;
+    height: 11rem;
+    margin: 1rem .2rem;
+    }
 }
 .titleAndIcons{
     display: flex;

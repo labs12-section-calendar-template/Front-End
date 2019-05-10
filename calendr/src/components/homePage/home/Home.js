@@ -32,6 +32,9 @@ export class Home extends Component {
         console.log(err);
       });
   };
+  edit = (e, id) => {
+    window.location = `/template/edit/${id}`;
+  };
 
   deleteTemplate = (e, id) => {
     e.preventDefault();
@@ -47,7 +50,6 @@ export class Home extends Component {
   };
 
   render() {
-    // console.log(this.state.templates.id)
     if (this.state.templates.length < 1) {
       return (
         <div>
@@ -69,11 +71,13 @@ export class Home extends Component {
             {this.state.templates.map(template => (
               <div key={template.id} className="templateTag">
                 <div className="titleAndIcons">
-                  <h2 className="templateTitleTag">{template.title}</h2>
+                  <Link to="/template/calendr">
+                    <h2 className="templateTitleTag">{template.title}</h2>
+                  </Link>
                   <div className="iconsForTemplates">
                     <i
                       className="far fa-edit iconSize"
-                      onClick={this.editTemplate}
+                      onClick={e => this.edit(e, template.id)}
                     />
                     <i
                       className="fas fa-trash iconSize"

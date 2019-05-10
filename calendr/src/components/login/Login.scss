@@ -24,3 +24,12 @@
     background: linear-gradient(to left bottom, midnightBlue, green, red, purple, pink);
 
 }
+
+.googleSignIn{
+    width: 300px;
+
+    &:hover{
+        cursor: pointer;
+    }
+}
+

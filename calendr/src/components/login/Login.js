@@ -1,5 +1,6 @@
 import React from 'react'
 import './Login.scss'
+import googleSignIn from '../../extras/googleSignIn.png'
 
 class Login extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ class Login extends React.Component {
     return ( 
         <div>
           <h2>Welcome, Please login</h2>
-          <div className="formContainer">
+          {/* <div className="formContainer"> */}
           {/* <Form type='submit'>
           <Div>
             <H4>Username:</H4>
@@ -37,8 +38,8 @@ class Login extends React.Component {
               />
             </Div>
           </Form> */}
-           <button className="loginButton" onClick = {this.props.gmailLogin}>GMAIL</button>
-          </div>
+           <img className='googleSignIn' onClick = {this.props.gmailLogin} src={googleSignIn} alt='Google Sign In'/>
+          {/* </div> */}
           {/* <Button onClick = {this.props.signIn}>Login</Button> */}
         </div>
         
