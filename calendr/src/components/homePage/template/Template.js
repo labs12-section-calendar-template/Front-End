@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 913a33a3e84c8b832dc07bfc01a1ea699855f3e2
 import React, { Component } from "react";
 import SideBar from "../SideBar";
 // import GeneralCalendar from '../../calendar/GeneralCalendar';
@@ -9,10 +5,6 @@ import "./Template.css";
 import axios from "axios";
 // import {Link} from 'react-router-dom';
 import MainNavBar from "../../general/MainNavBar";
-<<<<<<< HEAD
-=======
-
->>>>>>> 913a33a3e84c8b832dc07bfc01a1ea699855f3e2
 
 export class Template extends Component {
   constructor(props) {
