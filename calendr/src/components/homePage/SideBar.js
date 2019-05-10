@@ -25,7 +25,7 @@ export class SideBar extends Component {
   
   getGroup = () => {
     let userId = localStorage.getItem('userId')
-    axios.get(`http://localhost:3300/users/${userId}/groups`)
+    axios.get(`https://calendrserver.herokuapp.com/users/${userId}/groups`)
     .then(res => {
       this.setState({
         group_id:res.data[0].id,

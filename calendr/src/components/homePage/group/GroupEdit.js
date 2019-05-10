@@ -22,7 +22,7 @@ export class GroupEdit extends Component {
         console.log(this.state.joinCode)
         console.log(this.state.name)
     axios
-        .put(`http://localhost:3300/groups/${this.state.group_id}`,{
+        .put(`https://calendrserver.herokuapp.com/groups/${this.state.group_id}`,{
             name: this.state.name,
             user_id: userId
         })
@@ -38,7 +38,7 @@ export class GroupEdit extends Component {
       deleteGroup = e => {
         e.preventDefault()
         axios
-            .delete(`http://localhost:3300/groups/${this.props.group_id}`)
+            .delete(`https://calendrserver.herokuapp.com/groups/${this.props.group_id}`)
             .then(res => {
               console.log('group deleted')
               window.location = '/';

@@ -27,7 +27,7 @@ postTemplate = event => {
   console.log(group_id)
   let { title, description, cycleLength, color } = this.state
   axios
-    .post(`http://localhost:3300/groups/${group_id}/templates`, { title, description, cycleLength, color })
+    .post(` https://calendrserver.herokuapp.com/groups/${group_id}/templates`, { title, description, cycleLength, color })
     .then(res => {
       console.log(res.data);
       this.setState({
