@@ -72,11 +72,12 @@ export class Template extends Component {
           </aside>
           <main className="templateMain">
             <div className="templateTitle">
-              <h1>Template Creation</h1>
-
-              <button id="buttonSave" onClick={this.postTemplate}>
+            <button id="buttonSave" onClick={this.postTemplate}>
                 Save
               </button>
+              <h1>Template Creation</h1>
+
+             
             </div>
             <div className="templateEdit">
               <div className="cycleLength">
