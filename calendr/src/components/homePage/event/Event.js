@@ -47,7 +47,7 @@ class Event extends React.Component {
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
-      .get(`http://localhost:3300/groups/${group_id}/templates`)
+      .get(`https://calendrserver.herokuapp.com/groups/${group_id}/templates`)
       .then(res => {
         let tempIds = res.data.map(data => {
           return data.id;
@@ -72,7 +72,7 @@ class Event extends React.Component {
     };
     axios
       .post(
-        `http://localhost:3300/templates/${this.state.template_id}/events`,
+        `https://calendrserver.herokuapp.com/templates/${this.state.template_id}/events`,
         newEvent
       )
       .then(res => {

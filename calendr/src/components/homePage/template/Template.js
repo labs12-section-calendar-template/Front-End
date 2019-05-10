@@ -25,7 +25,7 @@ export class Template extends Component {
     console.log(group_id);
     let { title, description, cycleLength, color } = this.state;
     axios
-      .post(`http://localhost:3300/groups/${group_id}/templates`, {
+      .post(`https://calendrserver.herokuapp.com/groups/${group_id}/templates`, {
         title,
         description,
         cycleLength,
@@ -34,9 +34,9 @@ export class Template extends Component {
       .then(res => {
         console.log(res.data);
         this.setState({
-          template_id: res.data.id
+          template_id: res.data
         });
-        console.log(this.state.template_id);
+        //console.log(this.state.template_id);
         window.location = "/event";
       })
       .catch(err => {

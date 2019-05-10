@@ -63,6 +63,7 @@ class Day extends React.Component {
   // };
 
   render() {
+    //console.log(this.props.events)
     const {
       day: { date, number }
     } = this.props;
@@ -71,9 +72,10 @@ class Day extends React.Component {
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
           <p className="dayNumber">
             {/* {this.props.events} */}
+            {/* {this.props.latestEvent} */}
             {number}
           </p>
-          <div>{/* <p>{this.state.events[0].title}</p> */}</div>
+          <div><button>{this.props.events}</button></div>
         </div>
         <Route
           path={`/event/${this.state.check}`}

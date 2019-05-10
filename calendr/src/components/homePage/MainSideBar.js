@@ -26,7 +26,7 @@ export class MainSideBar extends Component {
   
   getGroup = () => {
     let userId = localStorage.getItem('userId')
-    axios.get(`http://localhost:3300/users/${userId}/groups`)
+    axios.get(`https://calendrserver.herokuapp.com/users/${userId}/groups`)
     .then(res => {
         let groupId = res.data[0].id
       this.setState({
@@ -48,7 +48,7 @@ export class MainSideBar extends Component {
   getTemplate = (groupId) => {
       
     axios
-      .get(`http://localhost:3300/groups/${groupId}/templates` )
+      .get(`https://calendrserver.herokuapp.com/groups/${groupId}/templates` )
       .then(res => {
           this.setState({
               templates: res.data
