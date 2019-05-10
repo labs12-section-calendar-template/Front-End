@@ -7,7 +7,12 @@ const Selected = props => {
   return (
     <div className="selected">
       <p className="selected-day">{props.children}</p>
-      <input className="time-input" />
+      <input
+        name="time"
+        value={props.time}
+        onChange={props.handleChange}
+        className="time-input"
+      />
     </div>
   );
 };
