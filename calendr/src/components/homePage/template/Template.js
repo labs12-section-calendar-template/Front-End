@@ -25,7 +25,7 @@ export class Template extends Component {
     console.log(group_id);
     let { title, description, cycleLength, color } = this.state;
     axios
-      .post(`https://calendrserver.herokuapp.com/groups/${group_id}/templates`, {
+      .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
         description,
         cycleLength,
@@ -65,7 +65,7 @@ export class Template extends Component {
   render() {
     return (
       <div>
-        <MainNavBar />
+        <MainNavBar logOff = {this.props.logOff}/>
         <div className="templateCreation">
           <aside className="groupTemplateInfo">
             <SideBar />

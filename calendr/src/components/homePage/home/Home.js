@@ -22,7 +22,7 @@ export class Home extends Component {
     let group_id = localStorage.getItem("group_id");
     // console.log(group_id)
     axios
-      .get(`https://calendrserver.herokuapp.com/groups/${group_id}/templates`)
+      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
         // console.log(res.data);
         this.setState({
@@ -40,7 +40,7 @@ export class Home extends Component {
   deleteTemplate = (e, id) => {
     e.preventDefault();
     axios
-      .delete(`https://calendrserver.herokuapp.com/templates/${id}`)
+      .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");
         document.location.reload();

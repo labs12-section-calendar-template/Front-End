@@ -2,9 +2,6 @@ import React from "react";
 import Day from "./Day";
 
 class Week extends React.Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     let days = [];

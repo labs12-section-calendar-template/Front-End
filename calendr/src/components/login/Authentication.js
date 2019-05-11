@@ -46,15 +46,14 @@ const Authentication = App => Login =>
 
     gmailLogin = (event) => {
         event.preventDefault();
-        window.location = 'https://calendrserver.herokuapp.com/auth/google'
+        window.location = `${process.env.REACT_APP_API}/auth/google`
       }
 
       logOff = (event) => {
         window.localStorage.clear();
         this.setState({
             loggedIn: false
-        });
-        window.location = 'https://calendrserver.herokuapp.com/auth/logout'
+        }, ()=> {window.location = `${process.env.REACT_APP_API}/auth/logout` });
       }
 
     //http://localhost:3300/auth/google
