@@ -10,6 +10,7 @@ import MemberHome from "../homePage/member/MemberHome";
 import TemplateEdit from "../homePage/template/TemplateEdit";
 // import moment from 'moment'
 import GeneralCalendar from "../calendar/GeneralCalendar";
+import MainCalendar from "../calendar/MainCalendar";
 
 class mainView extends React.Component {
   constructor(props) {
@@ -48,6 +49,7 @@ class mainView extends React.Component {
           
         <Route path="/template/edit/:id" component={TemplateEdit} />
         <Route path="/event/" component={GeneralCalendar} />
+        <Route path="/template/calendr" component={MainCalendar} />
         <Route path="/event/:date" component={Event} />
       </div>
     );
