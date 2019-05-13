@@ -63,6 +63,11 @@ class Day extends React.Component {
   // };
 
   render() {
+    const filteredEvent = this.props.events.filter(event => {
+      if (event.date === this.state.check) {
+        return event.title;
+      }
+    });
     //console.log(this.props.events)
     const {
       day: { date, number }
@@ -74,8 +79,13 @@ class Day extends React.Component {
             {/* {this.props.events} */}
             {/* {this.props.latestEvent} */}
             {number}
+            <div>
+              {filteredEvent.map(e => (
+                <div style={{ fontSize: "12px" }}>{e.title}</div>
+              ))}
+            </div>
           </p>
-          <div><button>{this.props.events}</button></div>
+
         </div>
         <Route
           path={`/event/${this.state.check}`}
@@ -86,7 +96,7 @@ class Day extends React.Component {
               position="right center"
               className="annoying-popup"
             >
-              <Event history={this.props.history} />
+              <Event check={this.state.check} history={this.props.history} />
             </Popup>
           )}
         />
