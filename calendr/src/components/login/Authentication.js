@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import queryString from 'query-string';
 import axios from 'axios';
 
-const url = "http://localhost:3000/";
-const localGoogle = 'http://localhost:3300/auth/google';
-const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
+// const url = "http://localhost:3000/";
+// const localGoogle = 'http://localhost:3300/auth/google';
+// const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
 
 const Authentication = App => Login =>
     class extends Component {
@@ -46,16 +46,14 @@ const Authentication = App => Login =>
 
     gmailLogin = (event) => {
         event.preventDefault();
-        window.location = 'http://localhost:3300/auth/google'
+        window.location = `${process.env.REACT_APP_API}/auth/google`
       }
 
       logOff = (event) => {
-        event.preventDefault();
         window.localStorage.clear();
         this.setState({
             loggedIn: false
-        });
-        window.location = 'http://localhost:3300/auth/logout'
+        }, ()=> {window.location = `${process.env.REACT_APP_API}/auth/logout` });
       }
 
     //http://localhost:3300/auth/google
@@ -72,26 +70,25 @@ const Authentication = App => Login =>
         })
     }
 
-    signIn = event => {
-      event.persist();
-      return axios
-          .post(`${url}auth/login`,{
-              username: this.state.username,
-              password: this.state.password
-          })
+    // signIn = event => {
+    //   event.persist();
+    //   return axios
+    //       .post(`${url}auth/login`,{
+    //           username: this.state.username,
+    //           password: this.state.password
+    //       })
 
-          .then( res => {
-              localStorage.setItem("userdata", JSON.stringify(res.data));
-              this.setState({
-                  loggedIn: true
-              });
-                 this.props.history.push('/');
-          })
-          .catch(err => alert(err));
-      }
+    //       .then( res => {
+    //           localStorage.setItem("userdata", JSON.stringify(res.data));
+    //           this.setState({
+    //               loggedIn: true
+    //           });
+    //              this.props.history.push('/');
+    //       })
+    //       .catch(err => alert(err));
+    //   }
 
       signOut = event => {
-        event.preventDefault();
         window.localStorage.clear();
         this.setState({
             loggedIn: false

@@ -8,19 +8,35 @@ export class Group extends Component {
     this.state={
         joinCode: '',
         createdCode: '',
-        name: '',
+        name: ''
     }
   }
+
+
+    joinGroup = event => {
+      event.preventDefault();
+      let user_id = localStorage.getItem('userId')
+      axios
+        .post(`${process.env.REACT_APP_API}/groups/getby/${user_id}`, {
+          joinCode: this.state.joinCode
+        }).then(res => {
+          console.log(res.data.id)
+          window.localStorage.setItem('memberId', res.data.group_id)
+          window.location = '/memberhome'
+        }).catch(err => {
+          console.error(err, 'there was an error')
+        })
+    }
     
     postGroup = e => {
       e.preventDefault();
-      let { name, joinCode } = this.state
+      let { name } = this.state
       let user_id = localStorage.getItem('userId')
       axios
-        .post(`http://localhost:3300/users/${user_id}/groups`, { user_id, name, joinCode })
+        .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {
           console.log(res.data);
-          if(this.state.joinCode !== null && this.state.name !== null){
+          if(this.state.createdCode !== null && this.state.name !== null){
             window.location='/home'
           }else{
             alert('Fill out all fields')
@@ -49,7 +65,7 @@ handleInputChange = event => {
         <div className="createGroup boxing">
             <h2 className="joinCreateGroup">Create Group</h2>
             <p className="groupDescription">You must be a Gold Tier Member to create a group</p>
-          <form className="formGroup" onSubmit={this.postGroup}>
+          <form className="formGroup">
             <h3>Enter Group Name</h3>
             <input
             className="groupInput"
@@ -64,28 +80,32 @@ handleInputChange = event => {
             className="groupInput"
             onChange={this.handleInputChange}
             placeholder="Join code..."
-            value={this.state.joinCode}
-            name="joinCode"
+            value={this.state.createdCode}
+            name="createdCode"
             type="number"
             />
-            <button className="formButton">Create</button>
+            <button onClick={this.postGroup} className="formButton">Create</button>
           </form>
         </div>
+
+        {/* JOINING A GROUP SECTION STARTS */}
         <div className="joinGroup boxing">
+
             <h2 className="joinCreateGroup">Join Group</h2>
             <p className="groupDescription">After you join a group you will be able to see all events created by the owner of that group</p>
+
            <form className="formGroup">
-           <h3>Enter 4 digit Join Code</h3>
-            <input
-            className="groupInput"
-            onChange={this.handleInputChange}
-            placeholder="Join code..."
-            value={this.state.joinCode}
-            name="joinCode" 
-            type="number"
-            />
-            <button className="formButton">Join</button>
-            
+              <h3>Enter 4 digit Join Code</h3>
+                <input
+                className="groupInput"
+                onChange={this.handleInputChange}
+                placeholder="Join code..."
+                value={this.state.joinCode}
+                name="joinCode" 
+                type="number"
+                />
+                <button onClick = {this.joinGroup} className="formButton">Join</button>
+                
            </form>
         </div>
       </div>
