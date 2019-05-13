@@ -22,7 +22,7 @@ export class GeneralCalendar extends Component {
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
-      .get(`https://calendrserver.herokuapp.com/groups/${group_id}/templates`)
+      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
         let value = res.data[res.data.length - 1].id;
         let tempIds = res.data.map(data => {
@@ -44,7 +44,7 @@ export class GeneralCalendar extends Component {
 
   getEvents = value => {
     axios
-      .get(`https://calendrserver.herokuapp.com/templates/${value}/events`)
+      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
         let events = res.data.map(event => {
           return event.title;

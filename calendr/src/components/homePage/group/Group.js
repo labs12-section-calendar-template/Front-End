@@ -17,7 +17,7 @@ export class Group extends Component {
       event.preventDefault();
       let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendrserver.herokuapp.com/groups/getby/${user_id}`, {
+        .post(`${process.env.REACT_APP_API}/groups/getby/${user_id}`, {
           joinCode: this.state.joinCode
         }).then(res => {
           console.log(res.data.id)
@@ -33,7 +33,7 @@ export class Group extends Component {
       let { name } = this.state
       let user_id = localStorage.getItem('userId')
       axios
-        .post(`https://calendrserver.herokuapp.com/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
+        .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {
           console.log(res.data);
           if(this.state.createdCode !== null && this.state.name !== null){

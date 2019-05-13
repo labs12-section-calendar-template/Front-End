@@ -35,11 +35,17 @@ class mainView extends React.Component {
         <Route
           path="/memberhome"
           exact
-          render={(...props) => <MemberHome {...props} />}
+          render={(...props) => <MemberHome logOff = {this.props.logOff} {...props} />}
         />
 
         <Route path="/users" component={Users} />
-        <Route exact path="/template" component={Template} />
+
+        <Route
+          path="/template" 
+          exact
+          render={(...props) => <Template logOff = {this.props.logOff} {...props} />}
+        />
+          
         <Route path="/template/edit/:id" component={TemplateEdit} />
         <Route path="/event/" component={GeneralCalendar} />
         <Route path="/event/:date" component={Event} />
