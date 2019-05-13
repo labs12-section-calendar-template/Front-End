@@ -20,7 +20,7 @@ class Event extends React.Component {
       time: "",
       title: "",
       description: "",
-      date: "",
+      date: this.props.check,
       template_id: []
     };
   }
@@ -116,12 +116,7 @@ class Event extends React.Component {
                   style={{ height: "100px" }}
                   onChange={this.handleChange}
                 />
-                <input
-                  name="date"
-                  value={this.state.date}
-                  placeholder="Enter date"
-                  onChange={this.handleChange}
-                />
+
               </form>
             </div>
             <div className="weekday-container">

@@ -29,7 +29,7 @@ export class GeneralCalendar extends Component {
           return data.id;
         });
 
-       // console.log(group_id);
+        // console.log(group_id);
 
         this.setState({
           template_id: tempIds[tempIds.length - 1]
@@ -47,9 +47,9 @@ export class GeneralCalendar extends Component {
       .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
         let events = res.data.map(event => {
-          return event.title;
+          return event;
         });
-        
+
         this.setState({
           latestEvent: events[events.length - 1],
           events: events
