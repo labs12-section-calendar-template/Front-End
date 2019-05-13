@@ -11,8 +11,6 @@ class Day extends React.Component {
     this.state = {
       modalOpen: false,
       check: moment(this.props.day.date._d).format("YYYY-MM-DD"),
-      events: [],
-      template_id: []
     };
   }
   // componentDidMount() {
@@ -75,16 +73,16 @@ class Day extends React.Component {
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
-          <p className="dayNumber">
-            {/* {this.props.events} */}
-            {/* {this.props.latestEvent} */}
-            {number}
+              <div className="dayNumber">
             <div>
               {filteredEvent.map(e => (
                 <div style={{ fontSize: "12px" }}>{e.title}</div>
               ))}
+            {/* {this.props.events} */}
+            {/* {this.props.latestEvent} */}
+            {number}
             </div>
-          </p>
+          </div>
 
         </div>
         <Route
