@@ -4,18 +4,19 @@ import DayNames from "./DayNames";
 import Week from "./Week";
 import "./GeneralCalendar.css";
 import axios from "axios";
+import MainSideBar from '../homePage/MainSideBar'
 
-export class GeneralCalendar extends Component {
+export class MainCalendar extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       month: moment(),
-      latestEvent: [],
       events: [],
       template_id: []
     };
   }
+  
   componentDidMount() {
     this.getTemplateId();
   }
@@ -78,7 +79,6 @@ export class GeneralCalendar extends Component {
       weeks.push(
         <Week
           events={this.state.events}
-          latestEvent={this.state.latestEvent}
           template_id={this.state.template_id}
           key={date}
           date={date.clone()}
@@ -94,24 +94,45 @@ export class GeneralCalendar extends Component {
     return weeks;
   }
 
-  delayRedirect = event => {
-    const {
-      history: { push }
-    } = this.props;
-    push("/home");
+  previous = () => {
+    const { month } = this.state;
+  
+    this.setState({
+      month: month.subtract(1, "month")
+    });
   };
+  
+  next = () => {
+    const { month } = this.state;
+  
+    this.setState({
+      month: month.add(1, "month")
+    });
+  };
+  renderMonthLabel() {
+    const { month } = this.state;
+    return (
+      <span className="month-label">
+        {month.startOf("month").format("MMMM YYYY")}
+      </span>
+    );
+  }
 
   render() {
     return (
+    <div>
+        <MainSideBar/>
       <div className="wholeCalendar">
-        <h1>CALENDR</h1>
         <p>Click a date to add an event.</p>
+        <div className="arrow fa fa-angle-left" onClick={this.previous}/>
+        <div>{this.renderMonthLabel()}</div>
+        <div className="arrow fa fa-angle-right" onClick={this.next} />
         <DayNames />
         <div>{this.renderWeeks()}</div>
-        <button onClick={this.delayRedirect}>SUBMIT</button>
       </div>
+    </div>
     );
   }
 }
 
-export default GeneralCalendar;
+export default MainCalendar;

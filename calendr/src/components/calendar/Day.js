@@ -12,8 +12,6 @@ class Day extends React.Component {
     this.state = {
       modalOpen: false,
       check: moment(this.props.day.date._d).format("YYYY-MM-DD"),
-      events: [],
-      template_id: []
     };
   }
   // componentDidMount() {
@@ -64,6 +62,11 @@ class Day extends React.Component {
   // };
 
   render() {
+    const filteredEvent = this.props.events.filter(event => {
+      if (event.date === this.state.check) {
+        return event.title;
+      }
+    });
     //console.log(this.props.events)
     const {
       day: { date, number }
@@ -71,12 +74,17 @@ class Day extends React.Component {
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
-          <p className="dayNumber">
+              <div className="dayNumber">
+            <div>
+              {filteredEvent.map(e => (
+                <div style={{ fontSize: "12px" }}>{e.title}</div>
+              ))}
             {/* {this.props.events} */}
             {/* {this.props.latestEvent} */}
             {number}
-          </p>
-          <div><button>{this.props.events}</button></div>
+            </div>
+          </div>
+
         </div>
         <Route
           path={`/event/${this.state.check}`}
@@ -88,7 +96,7 @@ class Day extends React.Component {
               position="right center"
               // style={{ max-width: "80%"}}
             >
-              <Event history={this.props.history} />
+              <Event check={this.state.check} history={this.props.history} />
             </Popup>
           )}
         />
