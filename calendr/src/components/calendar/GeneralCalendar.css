@@ -1,5 +1,6 @@
 
 .day{
+    position: relative;
     display: inline-block;
     width: 110px;
     height: 105px;
@@ -28,8 +29,6 @@
 
 .dayNumber{
     font-size: 1.5rem;
-    padding-top: 70px;
-    padding-left: 65px;
     color: black;
     font-weight: bold;
     margin: 0px;
