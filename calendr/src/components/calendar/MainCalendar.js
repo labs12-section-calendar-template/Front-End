@@ -20,6 +20,7 @@ export class MainCalendar extends Component {
   componentDidMount() {
     this.getTemplateId();
   }
+
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
@@ -36,6 +37,7 @@ export class MainCalendar extends Component {
           template_id: tempIds[tempIds.length - 1]
         });
         console.log(value);
+        console.log(tempIds)
         this.getEvents(value);
       })
       .catch(err => {
@@ -43,16 +45,15 @@ export class MainCalendar extends Component {
       });
   };
 
-  getEvents = value => {
+  getEvents = tempIds => {
     axios
-      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+      .get(`${process.env.REACT_APP_API}/templates/${tempIds}/events`)
       .then(res => {
         let events = res.data.map(event => {
           return event;
         });
 
         this.setState({
-          latestEvent: events[events.length - 1],
           events: events
         });
         console.log(this.state.events)

@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
+import moment from "moment";
 
 export class Home extends Component {
   constructor(props) {
@@ -94,7 +95,7 @@ export class Home extends Component {
                 </div>
                 <div>
                   <h3>Last Applied</h3>
-                  <p>{template.date}</p>
+                  <p>{moment(template.date).format("YYYY-MM-DD")}</p>
                 </div>
               </div>
             ))}

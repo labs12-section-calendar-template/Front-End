@@ -73,7 +73,10 @@ class Day extends React.Component {
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
-              <div className="dayNumber">
+          <div className="dayNumber">
+            {/* {this.props.events} */}
+            {/* {this.props.latestEvent} */}
+            {number}
             <div>
               {filteredEvent.map(e => (
                 <div style={{ fontSize: "12px" }}>{e.title}</div>
