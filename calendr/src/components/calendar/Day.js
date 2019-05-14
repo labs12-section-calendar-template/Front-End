@@ -4,6 +4,7 @@ import moment from "moment";
 import Popup from "reactjs-popup";
 import Event from "../homePage/event/Event";
 import axios from "axios";
+import "../homePage/event/Event.css"
 
 class Day extends React.Component {
   constructor(props) {
@@ -89,10 +90,11 @@ class Day extends React.Component {
           path={`/event/${this.state.check}`}
           render={() => (
             <Popup
+            className="modal-popup"
               open={true}
               onClose={() => this.props.history.push("/event")}
               position="right center"
-              className="annoying-popup"
+              // style={{ max-width: "80%"}}
             >
               <Event check={this.state.check} history={this.props.history} />
             </Popup>
