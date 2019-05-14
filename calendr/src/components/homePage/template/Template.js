@@ -13,7 +13,8 @@ export class Template extends Component {
     this.state = {
       title: "",
       description: "",
-      cycleLength: "",
+      startDate: "",
+      endDate: "",
       color: "",
       date: "",
       template_id: []
@@ -23,12 +24,13 @@ export class Template extends Component {
   postTemplate = event => {
     let group_id = localStorage.getItem("group_id");
     console.log(group_id);
-    let { title, description, cycleLength, color } = this.state;
+    let { title, description, startDate, endDate, color } = this.state;
     axios
       .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
         description,
-        cycleLength,
+        startDate,
+        endDate,
         color
       })
       .then(res => {
@@ -44,9 +46,15 @@ export class Template extends Component {
       });
   };
 
-  handleCycleChange = event => {
+  handleStartDateChange = event => {
     this.setState({
-      cycleLength: event.target.value
+      startDate: event.target.value
+    });
+  };
+
+  handleEndDateChange = event => {
+    this.setState({
+      endDate: event.target.value
     });
   };
 
@@ -79,19 +87,25 @@ export class Template extends Component {
               </button>
             </div>
             <div className="templateEdit">
-              <div className="cycleLength">
-                <h3>
-                  Cycle Length:{" "}
-                  <select
-                    value={this.state.cycleLength}
-                    onChange={this.handleCycleChange}
-                  >
-                    <option>Select One</option>
-                    <option value="four">4 Weeks</option>
-                    <option value="five">5 Weeks</option>
-                    <option value="six">6 Weeks</option>
-                  </select>
-                </h3>
+              <div className="startDate">
+                <h3>Start Date:</h3>
+                  <input
+                    value={this.state.startDate}
+                    onChange={this.handleStartDateChange}
+                    type="text"
+                    name="startDate"
+                    placeholder="YYYY-MM-DD"
+                  />
+                  <h3>End Date:</h3>
+                  <input
+                    value={this.state.endDate}
+                    onChange={this.handleEndDateChange}
+                    type="text"
+                    name="endDate"
+                    placeholder="YYYY-MM-DD"
+                  />
+                  </div>
+                  <div>
                 <h3>
                   Template Color:{" "}
                   <select
@@ -111,7 +125,7 @@ export class Template extends Component {
                 </h3>
               </div>
               <form>
-                <li>
+               
                   <h3>Title: </h3>
                   <input
                     onChange={this.handleInputChange}
@@ -119,8 +133,6 @@ export class Template extends Component {
                     value={this.state.title}
                     name="title"
                   />
-                </li>
-                <li>
                   <h3>Description: </h3>
                   <input
                     onChange={this.handleInputChange}
@@ -128,7 +140,7 @@ export class Template extends Component {
                     value={this.state.description}
                     name="description"
                   />
-                </li>
+                
               </form>
             </div>
           </main>

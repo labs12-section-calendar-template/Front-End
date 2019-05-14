@@ -75,7 +75,7 @@ class Day extends React.Component {
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
-          <p className="dayNumber">
+          <div className="dayNumber">
             {/* {this.props.events} */}
             {/* {this.props.latestEvent} */}
             {number}
@@ -84,7 +84,7 @@ class Day extends React.Component {
                 <div style={{ fontSize: "12px" }}>{e.title}</div>
               ))}
             </div>
-          </p>
+          </div>
 
         </div>
         <Route

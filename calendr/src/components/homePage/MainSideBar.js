@@ -3,6 +3,7 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 
+
 export class MainSideBar extends Component {
   constructor(props){
     super(props);
@@ -76,8 +77,16 @@ export class MainSideBar extends Component {
     }
   }
 
+  handleClick = (event) => {
+
+   this.setState({
+    [event.target.name]: event.target.value
+   })
+  }
+
   render() {
     console.log(this.state.templates)
+   
     return (
       <>
 
@@ -91,17 +100,23 @@ export class MainSideBar extends Component {
         <i className="fas fa-plus-circle" />
           <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>
         </div>
-            <h5 className='buttonTitles'>Templates</h5>
-            <div>
-                {this.state.templates.map(template => {return <div key={template.id}>
-                    <h5>{template.title}</h5>
-                </div>
-                })} 
-            </div>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
           <p className='buttonDescriptions'>Add Template</p>
         </div>
+           <h5 className='buttonTitles'>Templates</h5>
+            <div>
+                {this.state.templates.map(template => {return <div key={template.id}>
+    <input
+    type="checkbox"
+    name={template.id}
+    checked={this.state.questionMark}
+    onClick={this.handleClick}
+    />         
+<h5>{template.title}</h5>
+                </div>
+                })} 
+            </div>
       </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">
         <GroupEdit toggleModal={this.toggleModal} group_id={this.state.group_id}/>

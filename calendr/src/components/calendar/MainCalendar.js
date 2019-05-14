@@ -19,12 +19,13 @@ export class MainCalendar extends Component {
   componentDidMount() {
     this.getTemplateId();
   }
+
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
-      .get(`http://localhost:3300/groups/${group_id}/templates`)
+      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
-        let value = res.data[0].id;
+        let value = res.data[res.data.length - 1].id;
         let tempIds = res.data.map(data => {
           return data.id;
         });
@@ -35,6 +36,7 @@ export class MainCalendar extends Component {
           template_id: tempIds[tempIds.length - 1]
         });
         console.log(value);
+        console.log(tempIds)
         this.getEvents(value);
       })
       .catch(err => {
@@ -42,17 +44,19 @@ export class MainCalendar extends Component {
       });
   };
 
-  getEvents = value => {
+  getEvents = tempIds => {
     axios
-      .get(`http://localhost:3300/templates/${value}/events`)
+      .get(`${process.env.REACT_APP_API}/templates/${tempIds}/events`)
       .then(res => {
         let events = res.data.map(event => {
-          return event.title;
+          return event;
         });
-        // console.log(events);
+
         this.setState({
-          events: events[events.length - 1]
+          events: events
         });
+        console.log(this.state.events)
+        console.log(events)
       })
       .catch(err => {
         console.log(err);
