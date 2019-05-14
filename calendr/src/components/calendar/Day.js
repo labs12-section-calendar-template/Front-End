@@ -43,6 +43,7 @@ class Day extends React.Component {
     this.props.history.push(`/event/${this.state.check}`);
   };
 
+
   // getEvents = value => {
   //   axios
   //     .get(`http://localhost:3300/templates/${value}/events`)
@@ -74,9 +75,6 @@ class Day extends React.Component {
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
           <div className="dayNumber">
-            {/* {this.props.events} */}
-            {/* {this.props.latestEvent} */}
-            {number}
             <div>
               {filteredEvent.map(e => (
                 <div style={{ fontSize: "12px" }}>{e.title}</div>

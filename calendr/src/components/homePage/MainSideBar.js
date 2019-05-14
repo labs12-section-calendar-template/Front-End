@@ -77,11 +77,12 @@ export class MainSideBar extends Component {
     }
   }
 
-  handleClick = (event) => {
+  toggleSelectedTemplates = () => {
+    if(null){
 
-   this.setState({
-    [event.target.name]: event.target.value
-   })
+    }else{
+
+    }
   }
 
   render() {
@@ -106,16 +107,16 @@ export class MainSideBar extends Component {
         </div>
            <h5 className='buttonTitles'>Templates</h5>
             <div>
-                {this.state.templates.map(template => {return <div key={template.id}>
-    <input
-    type="checkbox"
-    name={template.id}
-    checked={this.state.questionMark}
-    onClick={this.handleClick}
-    />         
-<h5>{template.title}</h5>
-                </div>
-                })} 
+              {this.state.templates.map(template => {return <div key={template.id}>
+              <input
+              type="checkbox"
+              name={template.id}
+              checked={this.state.questionMark}
+              onClick={this.props.handleClick}
+              />         
+              <h5>{template.title}</h5>
+              </div>
+              })} 
             </div>
       </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">

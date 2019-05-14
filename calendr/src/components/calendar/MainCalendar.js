@@ -5,6 +5,7 @@ import Week from "./Week";
 import "./GeneralCalendar.css";
 import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
+import MainNavBar from '../general/MainNavBar'
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -13,7 +14,9 @@ export class MainCalendar extends Component {
     this.state = {
       month: moment(),
       events: [],
-      template_id: []
+      template_id: [],
+      numbers:[],
+      selectedTemp:[]
     };
   }
   
@@ -34,7 +37,8 @@ export class MainCalendar extends Component {
         // console.log(group_id);
 
         this.setState({
-          template_id: tempIds[tempIds.length - 1]
+          template_id: tempIds[tempIds.length - 1],
+          numbers: [...tempIds]
         });
         console.log(value);
         console.log(tempIds)
@@ -45,9 +49,19 @@ export class MainCalendar extends Component {
       });
   };
 
-  getEvents = tempIds => {
+  // {this.state.numbers.map(number => {
+  //   if(number === )
+  // })}
+
+  handleClick = (event) => {
+    this.setState({
+     [event.target.name]: event.target.value
+    })
+   }
+
+  getEvents = value => {
     axios
-      .get(`${process.env.REACT_APP_API}/templates/${tempIds}/events`)
+      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
         let events = res.data.map(event => {
           return event;
@@ -63,6 +77,16 @@ export class MainCalendar extends Component {
         console.log(err);
       });
   };
+
+  createSelectedEvents = () => {
+    //create your array of selected events, from your selected templates
+
+    //set selected events to a variable in state, then send that to the "Weeks"
+    //component to render only the selected events. Maybe return the selected
+    //events when you invoke the function inside the Weeks events prop.
+  }
+
+
 
   renderWeeks() {
     let weeks = [];
@@ -122,7 +146,8 @@ export class MainCalendar extends Component {
   render() {
     return (
     <div>
-        <MainSideBar/>
+      <MainNavBar/>
+        <MainSideBar handleClick = {this.handleClick}/>
       <div className="wholeCalendar">
         <p>Click a date to add an event.</p>
         <div className="arrow fa fa-angle-left" onClick={this.previous}/>
