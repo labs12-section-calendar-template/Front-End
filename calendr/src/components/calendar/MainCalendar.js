@@ -29,9 +29,7 @@ export class MainCalendar extends Component {
       .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
         //returns all templates
-        let templates = res.data.map(template => {
-          return template
-        })
+        let templates = res.data
         //returns the id of the very last template in the array
         let value = res.data[res.data.length - 1].id;
         //returns an array of all template IDS
@@ -43,72 +41,89 @@ export class MainCalendar extends Component {
           template_id: tempIds[tempIds.length - 1],
           templates: templates
         });
-        this.getEvents(value);
+
+        // this.getEvents(value);
+        this.getEvents(value).then(res => {
+          console.log(res)
+          this.setState({
+            events: res
+          })
+        }).catch(err => {
+          console.error(err)
+        })
       })
       .catch(err => {
-        console.log(err, 'error inside of get templates function');
+        console.error(err, 'error inside of get templates function');
       });
   };
 
   getEvents = value => {
-    axios
+    return new Promise ((resolve, reject) => { axios
       .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
         let events = res.data.map(event => {
           return event;
         });
 
-        this.setState({
-          latestEvent: events[events.length - 1],
-          events: events
-        });
+        // this.setState({
+        //   latestEvent: events[events.length - 1],
+        // });
+        resolve(events);
       })
       .catch(err => {
-        console.log(err);
+        reject(err)
       });
-  };
+  })};
 
   selectEvents = (something) => {
-    axios
+    return new Promise((resolve, reject) => { axios
     .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
     .then(res => {
-      let events = res.data.map(event => {
-        return event;
-      });
-
-      this.setState({
-        events: events
-      });
+     let events = res.data
+     console.log(res.data)
+      this.setState( previousState => {return {
+        events: [...previousState.events, ...events]
+      }});
     })
     .catch(err => {
-      console.log(err);
-    });
+      reject(err);
+    })});
   }
 
   
   singleCheck = event => {
-
+    let eventsArray = [];
     let temps = this.state.templates
-    temps.forEach(temp => {
 
+    temps.forEach((temp, i) => {
       if(temp.id == event.target.value && temp.isChecked === 0){
         console.log('yola')
         temp.isChecked = 1;
-        //populate the calendar with the events of temp.id
-        this.selectEvents(temp.id)
+        this.selectEvents(temp.id).then(res => {
+          console.log(res, "res")
+          eventsArray.push(...res)
+        }).catch(err => {
+          console.error(err)
+        })
         
       } else if(temp.id == event.target.value && temp.isChecked === 1){
+        console.log('yolu')
         temp.isChecked = 0
-        this.setState({
-          events: []
-        })
-      } else {
+      } else if (temp.isChecked === 1){
         console.log('yolo')
+        this.selectEvents(temp.id).then(res => {
+          eventsArray.push(...res)
+        }).catch(err => {
+          console.error(err)
+        })
       } 
-    })  
-    
-    this.setState({
-      templates: temps
+      if(i === temps.length-1){
+        console.log(eventsArray)
+        this.setState (() => {
+          return { events: eventsArray }
+        })
+         
+      }
     })
   }
   
@@ -170,15 +185,18 @@ export class MainCalendar extends Component {
   }
 
   render() {
+    
     return (
     <div>
       <MainNavBar/>
         <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
         <p>Click a date to add an event.</p>
+      <div className="arrowsAndMonth">
         <div className="arrow fa fa-angle-left" onClick={this.previous}/>
         <div>{this.renderMonthLabel()}</div>
         <div className="arrow fa fa-angle-right" onClick={this.next} />
+        </div>
         <DayNames />
         <div>{this.renderWeeks()}</div>
       </div>

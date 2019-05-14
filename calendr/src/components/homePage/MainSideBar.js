@@ -12,7 +12,6 @@ export class MainSideBar extends Component {
       joinCode: [],
       group_id:[],
       modalOpen: false,
-
       templates:[]
     }
   }
@@ -36,11 +35,11 @@ export class MainSideBar extends Component {
         joinCode: res.data[0].joinCode,
       })
 
-      console.log(res.data[0].id)
+      
       window.localStorage.setItem("group_id", this.state.group_id)
     })
     .catch(err => {
-      console.log(err)
+      console.error(err)
     })
   }
 
@@ -69,7 +68,7 @@ export class MainSideBar extends Component {
   }
 
   render() {
-    console.log(this.props.templates)
+    // console.log(this.props.templates)
     return (
       <>
 

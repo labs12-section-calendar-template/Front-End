@@ -42,7 +42,7 @@ class Day extends React.Component {
               {filteredEvent.map(event => (
                 <p key = {event.id} style={{ fontSize: "12px" }}>{event.title}</p>
               ))}
-        
+              
             </div>
             {number}
           </div>

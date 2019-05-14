@@ -13,10 +13,11 @@
 }
 @media(max-width: 500px){
     .day{
-        width: 100%;
-        width: 100%;
+        width: 59%;
+        margin-left: 10.5rem;
         border: none;
         border-radius: 0;
+        border-left: 1.5px solid #3270EB;
         border-top: 1.5px solid #3270EB;
         border-bottom: 1.5px solid #3270EB;
     }
@@ -36,8 +37,9 @@
 
 @media(max-width:500px){
     .dayNumber{
-        font-size: 3.7rem;
-
+        font-size: 3rem;
+        padding-top: 45px;
+        padding-left: 145px;
     }
 }
 
@@ -66,7 +68,7 @@
         width: 100%;
     }
     .day{
-        width: 100%
+        width: 57%
     }
     .dayNames{
         display: none;
@@ -81,4 +83,39 @@
 
 .all-events {
     size: 2px;
+}
+
+.arrowsAndMonth{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa {
+    font-size: 1.5rem;
+    margin: 0 .5rem;
+    }
+
+.month-label{
+    font-size: 2.5rem;
+    font-family: "Poppins";
+    font-weight: bold;
+    }
+
+@media(max-width: 500px){
+.arrowsAndMonth{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: .5rem;
+}
+.fa {
+    font-size: 2rem;
+    }
+
+.month-label{
+    font-size: 1.5rem;
+    font-family: "Poppins";
+    font-weight: bold;
+    }
 }
