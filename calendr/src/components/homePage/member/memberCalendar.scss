@@ -9,6 +9,7 @@
     font-size: 1rem;
     opacity: 0.6;
     text-decoration: none;
+    position: relative;
 }
 @media(max-width: 500px){
     .day{
@@ -28,12 +29,12 @@
 
 .dayNumber{
     font-size: 1.5rem;
-    padding-top: 70px;
-    padding-left: 65px;
+    position: absolute;
+    bottom:3px;
+    right:3px;
     color: black;
     font-weight: bold;
-    margin: 0px;
-    
+    margin: 0px;   
 }
 
 @media(max-width:500px){
