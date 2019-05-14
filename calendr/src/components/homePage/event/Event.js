@@ -87,12 +87,11 @@ class Event extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <button onClick={this.toggleClose}>X</button>
+            <button className='close-popup' onClick={this.toggleClose}>X</button>
             <div
               className="top-section"
               style={{
-                display: "flex",
-                width: "450px"
+                display: "flex"
               }}
             >
               <form
@@ -102,28 +101,31 @@ class Event extends React.Component {
                   flexDirection: "column"
                 }}
               >
-                <label>Event Title</label>
-                <input
-                  name="title"
-                  value={this.state.title}
-                  placeholder="Enter event title"
-                  onChange={this.handleChange}
-                />
-                <label>Description</label>
-                <textarea
-                  name="description"
-                  value={this.state.description}
-                  placeholder="Enter details"
-                  style={{ height: "100px" }}
-                  onChange={this.handleChange}
-                />
-
+              <div className= 'eventTitle'>
+                  <label>Event Title</label>
+                  <input
+                    name="title"
+                    value={this.state.title}
+                    placeholder="Enter event title"
+                    onChange={this.handleChange}
+                  />
+                </div>
+                <div className="description">
+                  <label>Description</label>
+                  <textarea
+                    name="description"
+                    value={this.state.description}
+                    placeholder="Enter details"
+                    style={{ height: "100px" }}
+                    onChange={this.handleChange}
+                  />
+                </div>
               </form>
             </div>
             <div className="weekday-container">
               <div
                 className={`${this.state.Su && "active"} weekday`}
-                onClick={() => this.toggleDay("S")}
+                onClick={() => this.toggleDay("Su")}
               >
                 Su
               </div>
