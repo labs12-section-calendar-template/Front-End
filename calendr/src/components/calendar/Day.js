@@ -21,9 +21,11 @@ class Day extends React.Component {
 
 
   render() {
+    console.log(this.props.day.date.toISOString())
     const filteredEvent = this.props.events.filter(event => {
       if (event.date === this.state.check) {
-        return event.title;
+        console.log('t')
+        return event;
       }
     });
     
@@ -41,7 +43,7 @@ class Day extends React.Component {
               {filteredEvent.map(event => (
                 <p key = {event.id} style={{ fontSize: "12px" }}>{event.title}</p>
               ))}
-        
+              
             </div>
             {number}
           </div>
