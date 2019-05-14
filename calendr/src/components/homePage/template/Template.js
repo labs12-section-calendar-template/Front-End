@@ -97,7 +97,6 @@ export class Template extends Component {
                     placeholder="YYYY-MM-DD"
                   />
                   <h3>End Date:</h3>
-
                   <input
                     value={this.state.endDate}
                     onChange={this.handleEndDateChange}
@@ -126,7 +125,7 @@ export class Template extends Component {
                 </h3>
               </div>
               <form>
-                
+               
                   <h3>Title: </h3>
                   <input
                     onChange={this.handleInputChange}
@@ -134,7 +133,6 @@ export class Template extends Component {
                     value={this.state.title}
                     name="title"
                   />
-
                   <h3>Description: </h3>
                   <input
                     onChange={this.handleInputChange}

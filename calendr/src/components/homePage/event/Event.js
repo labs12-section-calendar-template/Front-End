@@ -77,6 +77,7 @@ class Event extends React.Component {
       )
       .then(res => {
         console.log(res.data);
+        window.location = "/event";
       })
       .catch(err => console.log(err));
   };

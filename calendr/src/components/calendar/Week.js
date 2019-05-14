@@ -22,7 +22,12 @@ class Week extends React.Component {
     return (
       <div className="week">
         {days.map(day => (
-          <Day events={this.props.events} latestEvent={this.props.latestEvent} day={day} key={day.date} />
+          <Day  events={this.props.events} 
+                latestEvent={this.props.latestEvent} 
+                day={day} 
+                key={day.date} 
+                templates = {this.props.templates}
+                />
         ))}
       </div>
     );
