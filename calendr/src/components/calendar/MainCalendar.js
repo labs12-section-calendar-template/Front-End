@@ -16,6 +16,7 @@ export class MainCalendar extends Component {
       template_id: []
     };
   }
+  
   componentDidMount() {
     this.getTemplateId();
   }
@@ -128,7 +129,6 @@ export class MainCalendar extends Component {
         <div className="arrow fa fa-angle-right" onClick={this.next} />
         <DayNames />
         <div>{this.renderWeeks()}</div>
-        <button onClick={this.delayRedirect}>SUBMIT</button>
       </div>
     </div>
     );
