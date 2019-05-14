@@ -3,6 +3,7 @@ import Selected from "./Selected.js";
 import "./Event.css";
 // import { Link } from "react-router-dom";
 import axios from "axios";
+import EventBox from "./EventBox.js";
 
 class Event extends React.Component {
   constructor(props) {
@@ -83,11 +84,13 @@ class Event extends React.Component {
   };
 
   render() {
+    console.log(this.props.events)
     return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
             <button className='close-popup' onClick={this.toggleClose}>X</button>
+            <EventBox events = {this.props.events}/>
             <div
               className="top-section"
               style={{
@@ -210,11 +213,15 @@ class Event extends React.Component {
                 Friday
               </Selected>
               <Selected
-                time={this.state.time}
+                startTime={this.state.startTime}
                 handleChange={this.handleChange}
                 day={this.state.S}
-              >
-                Saturday
+              >Start Time:
+              </Selected><Selected
+                startTime={this.state.startTime}
+                handleChange={this.handleChange}
+                day={this.state.S}
+              ><span>End Time:</span>
               </Selected>
             </div>
             <div className="holiday-rule">

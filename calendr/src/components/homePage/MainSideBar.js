@@ -12,6 +12,7 @@ export class MainSideBar extends Component {
       joinCode: [],
       group_id:[],
       modalOpen: false,
+
       templates:[]
     }
   }
@@ -29,14 +30,11 @@ export class MainSideBar extends Component {
     let userId = localStorage.getItem('userId')
     axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
     .then(res => {
-        let groupId = res.data[0].id
       this.setState({
         group_id:res.data[0].id,
         groupName: res.data[0].name,
         joinCode: res.data[0].joinCode,
       })
-
-      this.getTemplate(groupId)
 
       console.log(res.data[0].id)
       window.localStorage.setItem("group_id", this.state.group_id)
@@ -44,21 +42,6 @@ export class MainSideBar extends Component {
     .catch(err => {
       console.log(err)
     })
-  }
-
-  getTemplate = (groupId) => {
-      
-    axios
-      .get(`${process.env.REACT_APP_API}/groups/${groupId}/templates` )
-      .then(res => {
-          this.setState({
-              templates: res.data
-            })
-            console.log(res.data);
-      })
-      .catch(err => {
-        console.log(err);
-      });
   }
 
   circleAddTemplate = () => {
@@ -86,8 +69,7 @@ export class MainSideBar extends Component {
   }
 
   render() {
-    console.log(this.state.templates)
-   
+    console.log(this.props.templates)
     return (
       <>
 
@@ -107,16 +89,17 @@ export class MainSideBar extends Component {
         </div>
            <h5 className='buttonTitles'>Templates</h5>
             <div>
-              {this.state.templates.map(template => {return <div key={template.id}>
-              <input
-              type="checkbox"
-              name={template.id}
-              checked={this.state.questionMark}
-              onClick={this.props.handleClick}
-              />         
-              <h5>{template.title}</h5>
-              </div>
-              })} 
+                {this.props.templates.map(template => {return <div key={template.id}>
+                  <input
+                  type="checkbox"
+                  name={template.id}
+                  check={template.isChecked}
+                  value={template.id}
+                  onClick={this.props.singleCheck}
+                  />         
+                  <h5>{template.title}</h5>
+                </div>
+                })} 
             </div>
       </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">

@@ -11,7 +11,8 @@ export class Home extends Component {
     super(props);
 
     this.state = {
-      templates: []
+      templates: [],
+      index: '',
     };
   }
 
@@ -19,13 +20,20 @@ export class Home extends Component {
     this.getTemplate();
   }
 
+  indexClick = (event) => {
+    event.preventDefault()
+     this.setState({[event.target.index]: event.target.value })
+     console.log(this.state.index)
+      }
+
+
   getTemplate = event => {
     let group_id = localStorage.getItem("group_id");
     // console.log(group_id)
     axios
       .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
-        // console.log(res.data);
+        console.log(res.data)
         this.setState({
           templates: res.data
         });
@@ -34,6 +42,7 @@ export class Home extends Component {
         console.log(err);
       });
   };
+
   edit = (e, id) => {
     window.location = `/template/edit/${id}`;
   };
@@ -70,8 +79,9 @@ export class Home extends Component {
           <MainNavBar logOff={this.props.logOff} />
           <SideBar />
           <div className="allTemplates">
+            
             {this.state.templates.map(template => (
-              <div key={template.id} className="templateTag">
+              <div key={template.id} value = {'templatename'} className="templateTag" onClick = {this.indexClick}>
                 <div className="titleAndIcons">
                   <Link to="/template/calendr">
                     <h2 className="templateTitleTag">{template.title}</h2>

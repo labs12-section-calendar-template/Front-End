@@ -15,49 +15,40 @@ export class MainCalendar extends Component {
       month: moment(),
       events: [],
       template_id: [],
-      numbers:[],
-      selectedTemp:[]
+      templates: [],
     };
   }
   
   componentDidMount() {
-    this.getTemplateId();
+    this.getTemplateData();
   }
 
-  getTemplateId = event => {
+  getTemplateData = event => {
     let group_id = localStorage.getItem("group_id");
     axios
       .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
+        //returns all templates
+        let templates = res.data.map(template => {
+          return template
+        })
+        //returns the id of the very last template in the array
         let value = res.data[res.data.length - 1].id;
+        //returns an array of all template IDS
         let tempIds = res.data.map(data => {
           return data.id;
         });
 
-        // console.log(group_id);
-
         this.setState({
           template_id: tempIds[tempIds.length - 1],
-          numbers: [...tempIds]
+          templates: templates
         });
-        console.log(value);
-        console.log(tempIds)
         this.getEvents(value);
       })
       .catch(err => {
-        console.log(err);
+        console.log(err, 'error inside of get templates function');
       });
   };
-
-  // {this.state.numbers.map(number => {
-  //   if(number === )
-  // })}
-
-  handleClick = (event) => {
-    this.setState({
-     [event.target.name]: event.target.value
-    })
-   }
 
   getEvents = value => {
     axios
@@ -68,25 +59,59 @@ export class MainCalendar extends Component {
         });
 
         this.setState({
+          latestEvent: events[events.length - 1],
           events: events
         });
-        console.log(this.state.events)
-        console.log(events)
       })
       .catch(err => {
         console.log(err);
       });
   };
 
-  createSelectedEvents = () => {
-    //create your array of selected events, from your selected templates
+  selectEvents = (something) => {
+    axios
+    .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
+    .then(res => {
+      let events = res.data.map(event => {
+        return event;
+      });
 
-    //set selected events to a variable in state, then send that to the "Weeks"
-    //component to render only the selected events. Maybe return the selected
-    //events when you invoke the function inside the Weeks events prop.
+      this.setState({
+        events: events
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
   }
 
+  
+  singleCheck = event => {
 
+    let temps = this.state.templates
+    temps.forEach(temp => {
+
+      if(temp.id == event.target.value && temp.isChecked === 0){
+        console.log('yola')
+        temp.isChecked = 1;
+        //populate the calendar with the events of temp.id
+        this.selectEvents(temp.id)
+        
+      } else if(temp.id == event.target.value && temp.isChecked === 1){
+        temp.isChecked = 0
+        this.setState({
+          events: []
+        })
+      } else {
+        console.log('yolo')
+      } 
+    })  
+    
+    this.setState({
+      templates: temps
+    })
+  }
+  
 
   renderWeeks() {
     let weeks = [];
@@ -104,6 +129,7 @@ export class MainCalendar extends Component {
       weeks.push(
         <Week
           events={this.state.events}
+          templates = {this.state.templates}
           template_id={this.state.template_id}
           key={date}
           date={date.clone()}
@@ -147,7 +173,7 @@ export class MainCalendar extends Component {
     return (
     <div>
       <MainNavBar/>
-        <MainSideBar handleClick = {this.handleClick}/>
+        <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
         <p>Click a date to add an event.</p>
         <div className="arrow fa fa-angle-left" onClick={this.previous}/>
