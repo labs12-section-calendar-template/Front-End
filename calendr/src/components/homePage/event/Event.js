@@ -18,7 +18,8 @@ class Event extends React.Component {
       Th: false,
       F: false,
       S: false,
-      time: "",
+      startTime: "",
+      endTime: "",
       title: "",
       description: "",
       date: this.props.check,
@@ -66,7 +67,8 @@ class Event extends React.Component {
 
   addEvent = () => {
     let newEvent = {
-      time: this.state.time,
+      startTime: this.state.startTime,
+      endTime: this.state.endTime,
       title: this.state.title,
       description: this.state.description,
       date: this.state.date
@@ -218,7 +220,7 @@ class Event extends React.Component {
                 day={this.state.S}
               >Start Time:
               </Selected><Selected
-                startTime={this.state.startTime}
+                endTime={this.state.endTime}
                 handleChange={this.handleChange}
                 day={this.state.S}
               ><span>End Time:</span>

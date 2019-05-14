@@ -27,7 +27,7 @@ class Day extends React.Component {
         return event;
       }
     });
-    
+    console.log(this.props.templates)
     const {
       day: { date, number }
     } = this.props;
