@@ -22,14 +22,12 @@ class Day extends React.Component {
 
 
   render() {
-    console.log(this.props.day.date.toISOString())
     const filteredEvent = this.props.events.filter(event => {
       if (event.date === this.state.check) {
-        console.log('t')
         return event;
       }
     });
-    
+    console.log(this.props.templates)
     const {
       day: { date, number }
     } = this.props;
@@ -60,7 +58,10 @@ class Day extends React.Component {
               position="right center"
               // style={{ max-width: "80%"}}
             >
-              <Event check={this.state.check} history={this.props.history} />
+              <Event 
+              check={this.state.check} 
+              history={this.props.history} 
+              events = {this.props.events}/>
             </Popup>
           )}
         />

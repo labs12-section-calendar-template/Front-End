@@ -5,6 +5,7 @@ import Week from "./Week";
 import "./GeneralCalendar.css";
 import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
+import MainNavBar from '../general/MainNavBar'
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -187,6 +188,7 @@ export class MainCalendar extends Component {
     
     return (
     <div>
+      <MainNavBar/>
         <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
         <p>Click a date to add an event.</p>
