@@ -8,7 +8,6 @@
 .groupTemplateInfo{
     box-sizing: border-box;
     width:25vw;
-    padding-left:2rem;
 }
 
 .templateMain{
@@ -20,8 +19,7 @@
 .templateTitle{
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    margin-right: 5rem;
+    justify-content: center;
 }
  #buttonSave{
     padding:.7rem 1rem;
