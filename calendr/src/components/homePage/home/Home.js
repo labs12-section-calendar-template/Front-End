@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./Home.scss";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
@@ -13,11 +13,18 @@ export class Home extends Component {
     this.state = {
       templates: [],
       index: '',
+      group_id: []
     };
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
     this.getTemplate();
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if(prevProps.match.url !== this.props.match.url) {
+      this.getTemplate()
+    }
   }
 
   indexClick = (event) => {
@@ -28,15 +35,18 @@ export class Home extends Component {
 
 
   getTemplate = event => {
-    let group_id = localStorage.getItem("group_id");
-    // console.log(group_id)
+    let urlPath = window.location.pathname;
+    let group_id = urlPath[urlPath.length-1];
+     console.log(group_id)
     axios
       .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
         console.log(res.data)
         this.setState({
-          templates: res.data
+          templates: res.data,
+          group_id: group_id
         });
+       // window.localStorage.setItem("group_id", this.state.group_id)
       })
       .catch(err => {
         console.log(err);
@@ -116,4 +126,4 @@ export class Home extends Component {
   }
 }
 
-export default Home;
+export default withRouter(Home);

@@ -28,7 +28,7 @@ class mainView extends React.Component {
         />
 
         <Route
-          path="/home"
+          path="/home/:id"
           exact
           render={(...props) => <Home logOff={this.props.logOff} {...props} />}
         />
