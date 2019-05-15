@@ -44,7 +44,7 @@ export class SideBar extends Component {
       this.getGroupById(groupId)
       console.log(groupId)
       console.log(res.data)
-     // window.localStorage.setItem("group_id", this.state.group_id)
+    
     })
     .catch(err => {
       console.log(err)
@@ -126,7 +126,7 @@ export class SideBar extends Component {
         </div>
       </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">
-        <GroupEdit toggleModal={this.toggleModal} group_id={this.state.group_id}/>
+        <GroupEdit groups={this.state.groups} toggleModal={this.toggleModal} group_id={this.state.group_id}/>
       </Popup>
       </>
     )
