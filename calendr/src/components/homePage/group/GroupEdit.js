@@ -42,7 +42,13 @@ export class GroupEdit extends Component {
       .delete(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`)
       .then(res => {
         console.log("group deleted");
-        window.location = "/";
+        if(this.props.groups.length === 1) {
+         window.location = "/"
+         } else {
+           localStorage.setItem('group_id', this.props.groups[this.props.groups.length - 2].id)
+           window.location=`/home/${this.props.groups[this.props.groups.length - 2].id}`
+        }
+        
       })
       .catch(err => {
         console.log(err);
