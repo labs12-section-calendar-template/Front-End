@@ -1,5 +1,4 @@
 import React from "react";
-import Selected from "./Selected.js";
 import "./Event.css";
 // import { Link } from "react-router-dom";
 import axios from "axios";
@@ -8,6 +7,7 @@ import moment from "moment";
 import Day from '../../calendar/Day'
 import DayNames from "../../calendar/DayNames.js";
 import { withRouter } from 'react-router-dom'
+import EventToggle from "./EventToggle.js";
 
 
 class Event extends React.Component {
@@ -29,23 +29,21 @@ class Event extends React.Component {
       description: "",
       date: this.props.check,
       template_id: [],
-      day: this.props.check,
-      week:this.getFullWeek(this.props.match.params.date),
-      clickedDay: new Date()
+      week:[],
     };
   }
 
   componentDidMount() {
     this.getTemplateId();
-    
+    this.getFullWeek(this.props.match.params.date)
   }
 
-
-  toggleDay(day, e) {
-    this.setState({ [day]: !this.state[day] });
-    
-    console.log(e.target.dataset.value)
+  componentDidUpdate = (prevProps) => {
+    if(prevProps.match.params.date !== this.props.match.params.date){
+      this.getFullWeek(this.props.match.params.date)
+    }
   }
+ 
 
   handleChange = event => {
     this.setState({
@@ -113,28 +111,21 @@ class Event extends React.Component {
       days.push(formattedNewDay)
     }
     if(days[0] !== "Invalid date"){
-      return days 
+      this.setState({
+        week:days
+      }) 
     }
   }
 
-  dateToggleInfo = () => {
-    let roundToggles = [];
-    let daysOfWeek = ['Su','M','T','W','Th','F','S']
-    for(let i = 0; i < 7; i++){
-      roundToggles.push(<div key={i} data-value={this.state.week[i]} className={`${this.state[daysOfWeek[i]] && "active"} weekday`}
-      onClick={(e) => this.toggleDay(daysOfWeek[i], e)}>
-        {daysOfWeek[i]}
-      </div>)
-      console.log(this.state.week[i])
-    }
-    return roundToggles
-  }
+
+
 
   render() {
     console.log(this.props.match)
     console.log(this.state.week)
     // console.log(this.props.events)
-    return (
+    let { Su, M, T, W, Th, F, S} = this.state
+      return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
@@ -174,64 +165,15 @@ class Event extends React.Component {
                 </div>
               </form>
             </div>
-            <div className="weekday-container">
-            {this.state.week && this.dateToggleInfo()}
-            </div>
-            <div className="selected-container">
-              <Selected
-                time={this.state.time}
-                handleChange={this.handleChange}
-                day={this.state.Su}
-              >
-                Sunday
-              </Selected>
-              <Selected
-                time={this.state.time}
-                handleChange={this.handleChange}
-                day={this.state.M}
-              >
-                Monday
-              </Selected>
-              <Selected
-                time={this.state.time}
-                handleChange={this.handleChange}
-                day={this.state.T}
-              >
-                Tuesday
-              </Selected>
-              <Selected
-                time={this.state.time}
-                handleChange={this.handleChange}
-                day={this.state.W}
-              >
-                Wednesday
-              </Selected>
-              <Selected
-                time={this.state.time}
-                handleChange={this.handleChange}
-                day={this.state.Th}
-              >
-                Thursday
-              </Selected>
-              <Selected
-                time={this.state.time}
-                handleChange={this.handleChange}
-                day={this.state.F}
-              >
-                Friday
-              </Selected>
-              <Selected
-                startTime={this.state.startTime}
-                handleChange={this.handleChange}
-                day={this.state.S}
-              >Start Time:
-              </Selected><Selected
-                endTime={this.state.endTime}
-                handleChange={this.handleChange}
-                day={this.state.S}
-              >End Time:
-              </Selected>
-            </div>
+            <EventToggle 
+            week={this.state.week} 
+            toggleDay={this.toggleDay} 
+            day={this.state.day} 
+            toggleDay={this.toggleDay}
+            Su={Su} M={M} T={T} W={W} Th={Th} F={F} S={S}
+            />
+
+            
             <div className="holiday-rule">
               <h4>{"Holiday rule"}</h4>
               <select className="event-select">
