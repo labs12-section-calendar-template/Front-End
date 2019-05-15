@@ -4,6 +4,11 @@ import "./Event.css";
 // import { Link } from "react-router-dom";
 import axios from "axios";
 import EventBox from "./EventBox.js";
+import moment from "moment";
+import Day from '../../calendar/Day'
+import DayNames from "../../calendar/DayNames.js";
+import { withRouter } from 'react-router-dom'
+
 
 class Event extends React.Component {
   constructor(props) {
@@ -23,16 +28,23 @@ class Event extends React.Component {
       title: "",
       description: "",
       date: this.props.check,
-      template_id: []
+      template_id: [],
+      day: this.props.check,
+      week:this.getFullWeek(this.props.match.params.date),
+      clickedDay: new Date()
     };
   }
 
   componentDidMount() {
     this.getTemplateId();
+    
   }
 
-  toggleDay(day) {
+
+  toggleDay(day, e) {
     this.setState({ [day]: !this.state[day] });
+    
+    console.log(e.target.dataset.value)
   }
 
   handleChange = event => {
@@ -85,8 +97,43 @@ class Event extends React.Component {
       .catch(err => console.log(err));
   };
 
+
+  getFullWeek = (yyyymmdd) => {
+    let beginningOfWeek = moment(new Date(yyyymmdd)).startOf('week')
+
+    let days = []
+
+    for (let i = 0; i < 7; i++){
+      let newDay = new Date(beginningOfWeek);
+
+      newDay.setDate(newDay.getDate() + i)
+
+      let formattedNewDay = moment(newDay).format('YYYY-MM-DD')
+
+      days.push(formattedNewDay)
+    }
+    if(days[0] !== "Invalid date"){
+      return days 
+    }
+  }
+
+  dateToggleInfo = () => {
+    let roundToggles = [];
+    let daysOfWeek = ['Su','M','T','W','Th','F','S']
+    for(let i = 0; i < 7; i++){
+      roundToggles.push(<div key={i} data-value={this.state.week[i]} className={`${this.state[daysOfWeek[i]] && "active"} weekday`}
+      onClick={(e) => this.toggleDay(daysOfWeek[i], e)}>
+        {daysOfWeek[i]}
+      </div>)
+      console.log(this.state.week[i])
+    }
+    return roundToggles
+  }
+
   render() {
-    console.log(this.props.events)
+    console.log(this.props.match)
+    console.log(this.state.week)
+    // console.log(this.props.events)
     return (
       <>
         <div className="event-view-wrapper">
@@ -128,48 +175,7 @@ class Event extends React.Component {
               </form>
             </div>
             <div className="weekday-container">
-              <div
-                className={`${this.state.Su && "active"} weekday`}
-                onClick={() => this.toggleDay("Su")}
-              >
-                Su
-              </div>
-              <div
-                className={`${this.state.M && "active"} weekday`}
-                onClick={() => this.toggleDay("M")}
-              >
-                M
-              </div>
-              <div
-                className={`${this.state.T && "active"} weekday`}
-                onClick={() => this.toggleDay("T")}
-              >
-                T
-              </div>
-              <div
-                className={`${this.state.W && "active"} weekday`}
-                onClick={() => this.toggleDay("W")}
-              >
-                W
-              </div>
-              <div
-                className={`${this.state.Th && "active"} weekday`}
-                onClick={() => this.toggleDay("Th")}
-              >
-                Th
-              </div>
-              <div
-                className={`${this.state.F && "active"} weekday`}
-                onClick={() => this.toggleDay("F")}
-              >
-                F
-              </div>
-              <div
-                className={`${this.state.S && "active"} weekday`}
-                onClick={() => this.toggleDay("S")}
-              >
-                S
-              </div>
+            {this.state.week && this.dateToggleInfo()}
             </div>
             <div className="selected-container">
               <Selected
@@ -223,7 +229,7 @@ class Event extends React.Component {
                 endTime={this.state.endTime}
                 handleChange={this.handleChange}
                 day={this.state.S}
-              ><span>End Time:</span>
+              >End Time:
               </Selected>
             </div>
             <div className="holiday-rule">
@@ -249,4 +255,4 @@ class Event extends React.Component {
     );
   }
 }
-export default Event;
+export default withRouter(Event);
