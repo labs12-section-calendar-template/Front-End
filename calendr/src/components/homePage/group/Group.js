@@ -35,9 +35,10 @@ export class Group extends Component {
       axios
         .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {
+          window.localStorage.setItem("group_id", res.data.id)
           console.log(res.data);
           if(this.state.createdCode !== null && this.state.name !== null){
-            window.location='/home'
+            window.location=`/home/${res.data.id}`
           }else{
             alert('Fill out all fields')
           }

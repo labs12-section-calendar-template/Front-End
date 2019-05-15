@@ -98,7 +98,7 @@ export class GeneralCalendar extends Component {
     const {
       history: { push }
     } = this.props;
-    push("/home");
+    push(`/home/${3}`);
   };
 
   render() {
