@@ -105,8 +105,8 @@ export class Template extends Component {
                     placeholder="YYYY-MM-DD"
                   />
                   </div>
-                  <div>
-                <h3>
+                  <div className="templateColor">
+                <h3 className="templateColor">
                   Template Color:{" "}
                   <select
                     value={this.state.color}
@@ -124,7 +124,7 @@ export class Template extends Component {
                   </select>
                 </h3>
               </div>
-              <form>
+              <form className="templateForm">
                
                   <h3>Title: </h3>
                   <input

@@ -12,6 +12,7 @@
 
 .templateMain{
     box-sizing: border-box;
+    font-family: "Poppins";
     /* width:75vw; */
     width: 100%;
 }
@@ -26,9 +27,46 @@
     margin-left: 4rem;
  }
 
-.templateEdit{
+ .startDate{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
 
+ @media(max-width: 500px){
+     .startDate{
+         flex-direction: column;
+     }
+ }
+
+ .startDate input,  .templateForm input{
+     height: 1.3rem;
+     margin: 0 .8rem;
+     width: 13rem;
+ }
+
+.startDate h3, .templateColor h3, .templateForm h3{
+font-size: 1.5rem;
 }
+
+@media(max-width: 500px){
+.startDate h3, .templateColor h3, .templateForm h3{
+    font-size: 1rem;
+    }
+}
+
+.templateColor{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.templateColor select{
+    height: 1.5rem;
+    width: 8rem;
+    margin-left: 1rem;
+}
+
 
 @media (max-width: 500px) {
     .groupTemplateInfo{
@@ -42,7 +80,7 @@
         justify-content: center;
     }
     .templateTitle h1{
-        font-size: 1.3rem;
+        font-size: 1.7rem;
     }
     #buttonSave{
         padding: .3rem 1rem;
