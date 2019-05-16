@@ -34,16 +34,14 @@ class Day extends React.Component {
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>
-          <div className="dayNumber">
-      
-            
-            <div>
+            <div className="eventInfo">
 
               {filteredEvent.map(event => (
                 <p key = {event.id} style={{ fontSize: "12px" }}>{event.title}</p>
               ))}
               
             </div>
+          <div className="dayNumber">
             {number}
           </div>
 
@@ -54,7 +52,7 @@ class Day extends React.Component {
             <Popup
             className="modal-popup"
               open={true}
-              onClose={() => this.props.history.push("/event")}
+              onClose={() => this.props.history.push(`/template/calendr/:id`)}
               position="right center"
               // style={{ max-width: "80%"}}
             >

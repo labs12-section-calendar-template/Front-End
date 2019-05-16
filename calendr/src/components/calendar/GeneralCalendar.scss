@@ -1,6 +1,14 @@
+.week{
+    // height:7rem;
+    display: flex;
+    align-content: flex-start;
+    justify-content: center;
+    width:100vw;
+}
 .day{
     position: relative;
     display: inline-block;
+    box-sizing: border-box;
     width: 110px;
     height: 105px;
     background-color: #EEEEEE;
@@ -9,6 +17,8 @@
     font-size: 1rem;
     opacity: 0.6;
     text-decoration: none;
+    overflow: hidden;
+
 }
 @media(max-width: 500px){
     .day{
@@ -32,6 +42,9 @@
     color: black;
     font-weight: bold;
     margin: 0px;
+    position: absolute;
+    bottom:3px;
+    right:3px;
 }
 
 @media(max-width:500px){
@@ -43,19 +56,28 @@
 .dayNumber:hover{
     color: #f36d13;
 }
+.eventInfo{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color:black;
+    margin-left:3px;
+}
 .dayNames {
     display: flex;
-    justify-content: space-between;
-    padding: 2.5% 13%;
+    justify-content: center;
     font-size: 1.4rem;
-    margin-right: 55px;
-    margin-left: 40px;
+    width:100vw;
     font-weight: bold;
+    margin:auto;
+    span{
+        width:110px;
+    }
 }
 
 
 .wholeCalendar{
-    width: 1100px;
+    width: 100vw;
     margin: 0 auto;
     padding-bottom: 5%;
 }

@@ -20,13 +20,13 @@ export class EventBox extends Component {
   render() {
       let urlPath = window.location.pathname.split('/');
     return (
-      <div> 
+      <div className="allEvents"> 
         {this.props.events && this.props.events.map(event => {
           if(urlPath[2] === event.date){
-            return <div key={event.id}>
-            {event.title}<br/>
-            {event.description}<br/>
-            {event.date}
+            return <div key={event.id} className="event">
+            <h5>{event.title}</h5><br/>
+            <p>{event.description}</p><br/>
+            <p>{event.date}</p>
             </div>
             }
         })}

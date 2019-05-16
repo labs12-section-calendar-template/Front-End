@@ -1,31 +1,60 @@
 import React from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import ColumnGroup from 'antd/lib/table/ColumnGroup';
 
 class CheckOutForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-          complete: false
+          complete: false,
+          premiumStatus: 0
         };
+    }
+
+    componentDidMount = () => {
+      this.getUserMembershipStatus()
+    }
+
+    getUserMembershipStatus = () => {
+      let UserId = localStorage.getItem('userId')
+      axios.get(`${process.env.REACT_APP_API}/users/${UserId}`)
+      .then(res => {
+       this.setState({
+         premiumStatus: res.data.premiumStatus
+       })
+        console.log(res.data.premiumStatus)
+       
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
 
     
   submit = async (event) => {
+    let UserId = localStorage.getItem('userId')
     let {token} = await this.props.stripe.createToken({name: "Name"});
-    // let response = await fetch (`${process.env.REACT_APP_API}/charge`, {
-    //   method: 'POST',
-    //   headers: {"Content-Type": "application/json"},
-    //   body: token.id
-    // });
-    axios.post(`${process.env.REACT_APP_API}/charge`, {tokenId: token.id}).then(res => console.log(res)).catch(err => console.log(err))
-    // if (response.ok) console.log("Purchase Complete!")
-
+    if(this.state.premiumStatus === 1) {
+      toast('You already have Premium Membership!')
+    } else {
+    axios.post(`${process.env.REACT_APP_API}/charge/${UserId}`, {tokenId: token.id})
+    .then(res => {
+     this.setState({
+       complete: true
+     })
+    })
+    .catch(err => {
+      toast('Please enter a valid credit card')
+      console.log(err)
+    })
+  }
   }
 
     render() { 
-
-      if (this.state.complete) return <h1>Purchase Complete</h1>;
+      let groupId = localStorage.getItem('group_id')
+      if (this.state.complete) return <div><h1>Purchase Complete</h1> <button onClick={()=> { window.location=`/home/${groupId}`}}>Take Me Home</button> </div>
         return ( 
 
           <div className="checkout">

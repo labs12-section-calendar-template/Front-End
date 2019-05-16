@@ -15,14 +15,6 @@ class Event extends React.Component {
     super(props);
 
     this.state = {
-      day: false,
-      Su: false,
-      M: false,
-      T: false,
-      W: false,
-      Th: false,
-      F: false,
-      S: false,
       startTime: 0,
       endTime: 0,
       title: "",
@@ -74,7 +66,7 @@ class Event extends React.Component {
 
   toggleClose = event => {
     event.preventDefault();
-    this.props.history.push("/event");
+    this.props.history.push(`/template/calendr/${this.state.template_id}`);
   };
   handleStartTimeChange = (time) => {
     this.setState({ startTime: time })
@@ -132,7 +124,7 @@ for (let i = 0; i < 4; i++){
     })
     .then(res => {
       console.log(res.data.date);
-       window.location = "/event";
+       window.location = `/template/calendr/${this.state.template_id}`;
     })
     .catch(err => console.log(err));
   }
@@ -212,7 +204,7 @@ for (let i = 0; i < 4; i++){
             className="save-event-button"
             onClick={() => {
               this.addEvent();
-              this.props.history.push("/event");
+              this.props.history.push("/template/calendr/:id");
             }}
           >
             Save

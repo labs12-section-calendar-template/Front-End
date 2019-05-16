@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import DayNames from "./DayNames";
 import Week from "./Week";
-import "./GeneralCalendar.css";
+import "./GeneralCalendar.scss";
 import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
@@ -102,6 +102,7 @@ export class MainCalendar extends Component {
         this.selectEvents(temp.id).then(res => {
           console.log(res, "res")
           eventsArray.push(...res)
+       
         }).catch(err => {
           console.error(err)
         })

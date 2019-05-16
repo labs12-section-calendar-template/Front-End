@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
+import {withRouter, Link } from 'react-router-dom';
 
 
 export class MainSideBar extends Component {
@@ -12,7 +13,8 @@ export class MainSideBar extends Component {
       joinCode: [],
       group_id:[],
       modalOpen: false,
-      templates:[]
+      templates:[],
+      navBar: true
     }
   }
 
@@ -24,6 +26,21 @@ export class MainSideBar extends Component {
     //   window.location = '/home'
     // }
   }
+
+  navAppear = (event) => {
+    event.preventDefault();
+    if(!this.state.navBar){
+        console.log('yo')
+        this.setState({
+            navBar: true
+        })
+    } else {
+        console.log('yoyo')
+        this.setState({
+            navBar: false
+        })
+    }
+}
   
   getGroup = () => {
     let userId = localStorage.getItem('userId')
@@ -67,11 +84,19 @@ export class MainSideBar extends Component {
     }
   }
 
+  switchTemplate = (templateId) => {
+    localStorage.setItem('template_id', templateId)
+    this.props.history.push(`/template/calendr/${templateId}`)
+  }
+
   render() {
     // console.log(this.props.templates)
     return (
       <>
-
+      <div className = "header">
+        <div onClick = {this.navAppear} id="navIcon"><i className = "fa fa-bars" aria-hidden="true"/></div>
+            <div className = {this.state.navBar ? "navDiv":"navOpen"}>
+                
         <div className="homePageStyles">
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
@@ -96,8 +121,10 @@ export class MainSideBar extends Component {
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
-                  />         
-                  <h5>{template.title}</h5>
+                  />    
+                  
+                  <h5 onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+          
                 </div>
                 })} 
             </div>
@@ -105,9 +132,11 @@ export class MainSideBar extends Component {
       <Popup open={this.state.modalOpen} id="groupEditPopup">
         <GroupEdit toggleModal={this.toggleModal} group_id={this.state.group_id}/>
       </Popup>
+                </div>
+          </div>  
       </>
     )
   }
 }
 
-export default MainSideBar
+export default withRouter(MainSideBar)
