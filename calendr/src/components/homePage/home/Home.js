@@ -36,15 +36,16 @@ export class Home extends Component {
 
   getTemplate = event => {
     let urlPath = window.location.pathname;
-    let group_id = urlPath[urlPath.length-1];
-     console.log(group_id)
+    let lateNight = urlPath.split('/')
+    
+    
     axios
-      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
+      .get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`)
       .then(res => {
         console.log(res.data)
         this.setState({
           templates: res.data,
-          group_id: group_id
+          group_id: lateNight[2]
         });
        // window.localStorage.setItem("group_id", this.state.group_id)
       })
@@ -71,6 +72,7 @@ export class Home extends Component {
   };
 
   render() {
+    console.log(this.state.templates)
     if (this.state.templates.length < 1) {
       return (
         <div>

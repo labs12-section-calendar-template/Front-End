@@ -107,7 +107,7 @@ for (let i = 0; i < 4; i++){
     })
     .then(res => {
       console.log(res.data.date);
-      // window.location = "/event";
+       window.location = "/event";
     })
     .catch(err => console.log(err));
   }
