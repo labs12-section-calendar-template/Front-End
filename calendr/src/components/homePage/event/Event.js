@@ -4,8 +4,8 @@ import "./Event.css";
 import axios from "axios";
 import EventBox from "./EventBox.js";
 import moment from "moment";
-import Day from '../../calendar/Day'
-import DayNames from "../../calendar/DayNames.js";
+// import Day from '../../calendar/Day'
+//import DayNames from "../../calendar/DayNames.js";
 import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
@@ -15,6 +15,14 @@ class Event extends React.Component {
     super(props);
 
     this.state = {
+      day: false,
+      Su: false,
+      M: false,
+      T: false,
+      W: false,
+      Th: false,
+      F: false,
+      S: false,
       startTime: 0,
       endTime: 0,
       title: "",
@@ -23,12 +31,14 @@ class Event extends React.Component {
       template_id: [],
       week: [],
       startDate: '',
-      endDate: ''
+      endDate: '',
+      sum: ''
     };
   }
 
   componentDidMount() {
     this.getTemplateId();
+    this.getTemplateById();
     this.getFullWeek(this.props.match.params.date)
   }
 
@@ -66,7 +76,8 @@ class Event extends React.Component {
 
   toggleClose = event => {
     event.preventDefault();
-    this.props.history.push(`/template/calendr/${this.state.template_id}`);
+    let tempId = localStorage.getItem('template_id')
+    this.props.history.push(`/template/calendr/${tempId}`);
   };
   handleStartTimeChange = (time) => {
     this.setState({ startTime: time })
@@ -97,12 +108,18 @@ class Event extends React.Component {
       });
   };
 
-  getTemplateById = (tempId) => {
-    axios.get(`${process.env.REACT_APP_API}/templates/${tempId}`)
+  getTemplateById = () => {
+    let id = localStorage.getItem('template_id')
+    axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
+        let urlPath = window.location.pathname.split('/')[2]
+        console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
+        console.log(res.data.endDate)
         this.setState({
           startDate: res.data.startDate,
-          endDate: res.data.endDate
+          endDate: res.data.endDate,
+          sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
+  
         })
       })
       .catch(err => {
@@ -111,11 +128,12 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
-    let { startTime, endTime, title, description } = this.state;
-for (let i = 0; i < 4; i++){
+    let { startTime, endTime, title, description, sum } = this.state;
+for (let i = 0; i <= sum; i++){
+  console.log(this.state.sum)
   axios
     .post(
-      `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
+      `${process.env.REACT_APP_API}/templates/${localStorage.getItem('template_id')}/events`,{
       startTime,
       endTime,
       title,
@@ -124,14 +142,13 @@ for (let i = 0; i < 4; i++){
     })
     .then(res => {
       console.log(res.data.date);
-       window.location = `/template/calendr/${this.state.template_id}`;
+       //window.location = "/event";
     })
     .catch(err => console.log(err));
   }
   };
 
   render() {
-    console.log(this.state.week)
     return (
       <>
         <div className="event-view-wrapper">
@@ -186,25 +203,17 @@ for (let i = 0; i < 4; i++){
               endTime={this.state.endTime}
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
-              startTime={this.state.startTime}
               handleChange={this.handleChange}
               day={this.state.S}>
               Saturday
               </Selected>
-          </div>
-          <div className="holiday-rule">
-            <h4>{"Holiday rule"}</h4>
-            <select className="event-select">
-              <option>Skip</option>
-              <option>Move</option>
-            </select>
           </div>
 
           <button
             className="save-event-button"
             onClick={() => {
               this.addEvent();
-              this.props.history.push("/template/calendr/:id");
+              this.props.history.push("/event");
             }}
           >
             Save
