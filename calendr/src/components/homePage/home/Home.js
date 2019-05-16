@@ -57,12 +57,14 @@ export class Home extends Component {
   };
 
   deleteTemplate = (e, id) => {
-    e.preventDefault();
+    e.stopPropagation();
+    let imDumb = localStorage.getItem('group_id')
     axios
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");
-        document.location.reload();
+        
+       this.props.history.push(`/home/${imDumb}`);
       })
       .catch(err => {
         console.log(err);

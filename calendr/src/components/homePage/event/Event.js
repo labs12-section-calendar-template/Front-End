@@ -200,13 +200,6 @@ for (let i = 0; i < 4; i++){
               Saturday
               </Selected>
           </div>
-          <div className="holiday-rule">
-            <h4>{"Holiday rule"}</h4>
-            <select className="event-select">
-              <option>Skip</option>
-              <option>Move</option>
-            </select>
-          </div>
 
           <button
             className="save-event-button"
