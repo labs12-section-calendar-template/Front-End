@@ -2,7 +2,7 @@ import React from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import ColumnGroup from 'antd/lib/table/ColumnGroup';
+// import ColumnGroup from 'antd/lib/table/ColumnGroup';
 
 class CheckOutForm extends React.Component {
     constructor(props) {

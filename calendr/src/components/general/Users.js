@@ -3,7 +3,7 @@ import axios from 'axios';
 import './Users.css'
 import MainNavBar from './MainNavBar';
 
-const url = 'https://calendrserver.herokuapp.com/'
+// const url = 'https://calendrserver.herokuapp.com/'
 const url2 = "http://localhost:3300/"
 class Users extends Component {
     constructor() {

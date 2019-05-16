@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-import axios from 'axios';
+// import axios from 'axios';
 
 // const url = "http://localhost:3000/";
 // const localGoogle = 'http://localhost:3300/auth/google';

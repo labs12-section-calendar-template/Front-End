@@ -41,7 +41,6 @@ export class Home extends Component {
     axios
       .get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`)
       .then(res => {
-        console.log(res.data)
         this.setState({
           templates: res.data,
           group_id: lateNight[2]
@@ -85,7 +84,6 @@ export class Home extends Component {
   }
 
   render() {
-    console.log(this.state.templates)
     if (this.state.templates.length < 1) {
       return (
         <div>

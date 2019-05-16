@@ -3,7 +3,7 @@ import { Route, withRouter } from "react-router-dom";
 import moment from "moment";
 import Popup from "reactjs-popup";
 import Event from "../homePage/event/Event";
-import axios from "axios";
+//import axios from "axios";
 import "../homePage/event/Event.css"
 
 class Day extends React.Component {
