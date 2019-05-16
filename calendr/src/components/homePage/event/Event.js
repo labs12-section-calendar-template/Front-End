@@ -76,7 +76,8 @@ class Event extends React.Component {
 
   toggleClose = event => {
     event.preventDefault();
-    this.props.history.push("/event");
+    let tempId = localStorage.getItem('template_id')
+    this.props.history.push(`/template/calendr/${tempId}`);
   };
   handleStartTimeChange = (time) => {
     this.setState({ startTime: time })
@@ -111,11 +112,13 @@ class Event extends React.Component {
     let id = localStorage.getItem('template_id')
     axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
-        console.log(Math.floor(moment.duration(moment(res.data.endDate).diff(moment(this.props.check))).asWeeks()))
+        let urlPath = window.location.pathname.split('/')[2]
+        console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
+        console.log(res.data.endDate)
         this.setState({
           startDate: res.data.startDate,
           endDate: res.data.endDate,
-          sum: moment.duration(moment(res.data.endDate).diff(moment(res.data.startDate))).asWeeks()
+          sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
   
         })
       })
@@ -146,7 +149,6 @@ for (let i = 0; i < sum; i++){
   };
 
   render() {
-    console.log(this.state.week)
     return (
       <>
         <div className="event-view-wrapper">

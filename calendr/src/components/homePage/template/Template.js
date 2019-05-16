@@ -42,7 +42,7 @@ export class Template extends Component {
           template_id: res.data
         });
        
-       window.location = `/template/calendr/${1}`;
+       window.location = `/template/calendr/${res.data.id}`;
       })
       .catch(err => {
         console.log(err);
