@@ -7,8 +7,8 @@ import moment from "moment";
 import Day from '../../calendar/Day'
 import DayNames from "../../calendar/DayNames.js";
 import { withRouter } from 'react-router-dom'
-import EventToggle from "./EventToggle.js";
-
+// import EventToggle from "./EventToggle.js";
+import Selected from './Selected'
 
 class Event extends React.Component {
   constructor(props) {
@@ -38,12 +38,31 @@ class Event extends React.Component {
     this.getFullWeek(this.props.match.params.date)
   }
 
-  componentDidUpdate = (prevProps) => {
-    if(prevProps.match.params.date !== this.props.match.params.date){
-      this.getFullWeek(this.props.match.params.date)
+
+  getFullWeek = (yyyymmdd) => {
+    let beginningOfWeek = moment(new Date(yyyymmdd)).startOf('week')
+
+    let days = []
+
+    for (let i = 0; i < 7; i++){
+      let newDay = new Date(beginningOfWeek);
+
+      newDay.setDate(newDay.getDate() + i)
+
+      let formattedNewDay = moment(newDay).format('YYYY-MM-DD')
+
+      days.push(formattedNewDay)
+    }
+    if(days[0] !== "Invalid date"){
+      this.setState({
+        week:days
+      }) 
     }
   }
- 
+
+  toggleDay(day) {
+    this.setState({ [day]: !this.state[day] });
+  }
 
   handleChange = event => {
     this.setState({
@@ -76,56 +95,27 @@ class Event extends React.Component {
   };
 
   addEvent = () => {
-    let newEvent = {
+for (let i = 0; i < 4; i++){
+  axios
+    .post(
+      `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
       startTime: this.state.startTime,
       endTime: this.state.endTime,
       title: this.state.title,
       description: this.state.description,
-      date: this.state.date
-    };
-    axios
-      .post(
-        `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,
-        newEvent
-      )
-      .then(res => {
-        console.log(res.data);
-        window.location = "/event";
-      })
-      .catch(err => console.log(err));
+      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+    })
+    .then(res => {
+      console.log(res.data.date);
+      // window.location = "/event";
+    })
+    .catch(err => console.log(err));
+  }
   };
 
-
-  getFullWeek = (yyyymmdd) => {
-    let beginningOfWeek = moment(new Date(yyyymmdd)).startOf('week')
-
-    let days = []
-
-    for (let i = 0; i < 7; i++){
-      let newDay = new Date(beginningOfWeek);
-
-      newDay.setDate(newDay.getDate() + i)
-
-      let formattedNewDay = moment(newDay).format('YYYY-MM-DD')
-
-      days.push(formattedNewDay)
-    }
-    if(days[0] !== "Invalid date"){
-      this.setState({
-        week:days
-      }) 
-    }
-  }
-
-
-
-
   render() {
-    console.log(this.props.match)
     console.log(this.state.week)
-    // console.log(this.props.events)
-    let { Su, M, T, W, Th, F, S} = this.state
-      return (
+    return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
@@ -165,15 +155,27 @@ class Event extends React.Component {
                 </div>
               </form>
             </div>
-            <EventToggle 
-            week={this.state.week} 
-            toggleDay={this.toggleDay} 
-            day={this.state.day} 
-            toggleDay={this.toggleDay}
-            Su={Su} M={M} T={T} W={W} Th={Th} F={F} S={S}
-            />
-
-            
+            <div className="weekday-container">
+              <div
+                className={`${this.state.S && "active"} weekday`}
+                onClick={() => this.toggleDay("S")}
+              >
+                S
+              </div>
+            </div>
+           
+              <Selected
+                startTime={this.state.startTime}
+                handleChange={this.handleChange}
+                day={this.state.S}
+              >Start Time:
+              </Selected><Selected
+                endTime={this.state.endTime}
+                handleChange={this.handleChange}
+                day={this.state.S}
+              ><span>End Time:</span>
+              </Selected>
+            </div>
             <div className="holiday-rule">
               <h4>{"Holiday rule"}</h4>
               <select className="event-select">
@@ -192,7 +194,7 @@ class Event extends React.Component {
               Save
             </button>
           </div>
-        </div>
+        
       </>
     );
   }
