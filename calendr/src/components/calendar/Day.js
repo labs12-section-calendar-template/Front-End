@@ -20,6 +20,7 @@ class Day extends React.Component {
     this.props.history.push(`/event/${this.state.check}`);
   };
 
+  
 
   render() {
     const filteredEvent = this.props.events.filter(event => {
@@ -27,7 +28,6 @@ class Day extends React.Component {
         return event;
       }
     });
-    console.log(this.props.templates)
     const {
       day: { date, number }
     } = this.props;
