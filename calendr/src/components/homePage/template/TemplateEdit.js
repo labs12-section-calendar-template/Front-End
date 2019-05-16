@@ -47,7 +47,7 @@ updateTemplate = (e) => {
   } else {
 axios
   .put(`${process.env.REACT_APP_API}/templates/${id}`,{
-     title,
+    title,
     description,
     startDate,
     endDate,
