@@ -11,6 +11,7 @@ import TemplateEdit from "../homePage/template/TemplateEdit";
 // import moment from 'moment'
 import GeneralCalendar from "../calendar/GeneralCalendar";
 import MainCalendar from "../calendar/MainCalendar";
+import BillingPage from '../billing/BillingPage';
 
 class mainView extends React.Component {
   constructor(props) {
@@ -26,6 +27,12 @@ class mainView extends React.Component {
           exact
           render={(...props) => <Group logOff={this.props.logOff} {...props} />}
         />
+
+        <Route 
+          path="/billing"
+          exact
+          render={(...props) => <BillingPage />}
+          />
 
         <Route
           path="/home/:id"
