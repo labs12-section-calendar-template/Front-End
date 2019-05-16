@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
+import {withRouter } from 'react-router-dom';
 
 
 export class MainSideBar extends Component {
@@ -67,6 +68,11 @@ export class MainSideBar extends Component {
     }
   }
 
+  switchTemplate = (templateId) => {
+    localStorage.setItem('template_id', templateId)
+    this.props.history.push(`/template/calendr/${templateId}`)
+  }
+
   render() {
     // console.log(this.props.templates)
     return (
@@ -95,8 +101,10 @@ export class MainSideBar extends Component {
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
-                  />         
-                  <h5>{template.title}</h5>
+                  />    
+                  
+                  <h5 onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+          
                 </div>
                 })} 
             </div>
@@ -109,4 +117,4 @@ export class MainSideBar extends Component {
   }
 }
 
-export default MainSideBar
+export default withRouter(MainSideBar)
