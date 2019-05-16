@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
+
 export class EventBox extends Component {
   constructor(props){
       super(props)
@@ -15,20 +16,20 @@ export class EventBox extends Component {
       })
   }
 
+
   render() {
-      console.log(this.state.displayEvents)
+      let urlPath = window.location.pathname.split('/');
     return (
       <div> 
         {this.props.events && this.props.events.map(event => {
+          if(urlPath[2] === event.date){
             return <div key={event.id}>
             {event.title}<br/>
             {event.description}<br/>
-            {event.startTime}<br/>
-            {event.endTime}<br/>
             {event.date}
             </div>
+            }
         })}
-          <h2>I am an event</h2>
       </div>
     )
   }

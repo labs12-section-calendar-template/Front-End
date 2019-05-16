@@ -95,10 +95,11 @@ export class GeneralCalendar extends Component {
   }
 
   delayRedirect = event => {
+    let takeMeHome = localStorage.getItem('group_id')
     const {
       history: { push }
     } = this.props;
-    push(`/home/${3}`);
+    push(`/home/${takeMeHome}`);
   };
 
   render() {

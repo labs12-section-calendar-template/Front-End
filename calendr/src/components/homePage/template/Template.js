@@ -5,6 +5,8 @@ import "./Template.css";
 import axios from "axios";
 // import {Link} from 'react-router-dom';
 import MainNavBar from "../../general/MainNavBar";
+import { toast } from "react-toastify";
+import moment from 'moment';
 
 export class Template extends Component {
   constructor(props) {
@@ -15,7 +17,6 @@ export class Template extends Component {
       description: "",
       startDate: "",
       endDate: "",
-      color: "",
       date: "",
       template_id: []
     };
@@ -24,27 +25,31 @@ export class Template extends Component {
   postTemplate = event => {
     let group_id = localStorage.getItem("group_id");
     console.log(group_id);
-    let { title, description, startDate, endDate, color } = this.state;
+    let { title, description, startDate, endDate } = this.state;
+     if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
+      toast('Please enter all fields to create a template')
+    } else {
     axios
       .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
         description,
         startDate,
-        endDate,
-        color
+        endDate
       })
       .then(res => {
         console.log(res.data);
         this.setState({
           template_id: res.data
         });
-        //console.log(this.state.template_id);
-        window.location = "/event";
+       
+       window.location = "/event";
       })
       .catch(err => {
         console.log(err);
       });
+    }
   };
+
 
   handleStartDateChange = event => {
     this.setState({
@@ -55,12 +60,6 @@ export class Template extends Component {
   handleEndDateChange = event => {
     this.setState({
       endDate: event.target.value
-    });
-  };
-
-  handleColorChange = event => {
-    this.setState({
-      color: event.target.value
     });
   };
 
@@ -105,25 +104,6 @@ export class Template extends Component {
                     placeholder="YYYY-MM-DD"
                   />
                   </div>
-                  <div className="templateColor">
-                <h3 className="templateColor">
-                  Template Color:{" "}
-                  <select
-                    value={this.state.color}
-                    onChange={this.handleColorChange}
-                  >
-                    <option>Select One</option>
-                    <option value="red">Red</option>
-                    <option value="green">Green</option>
-                    <option value="blue">Blue</option>
-                    <option value="maroon">Maroon</option>
-                    <option value="teal">Teal</option>
-                    <option value="navy-blue">Navy Blue</option>
-                    <option value="orange">Orange</option>
-                    <option value="olive">Olive</option>
-                  </select>
-                </h3>
-              </div>
               <form className="templateForm">
                
                   <h3>Title: </h3>
