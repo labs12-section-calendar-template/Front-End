@@ -67,6 +67,11 @@ export class MainSideBar extends Component {
     }
   }
 
+  takeMeToTemplate = (event) => {
+   //console.log(event.target.attributes.getNamedItem('value').value)
+   // window.location=`/template/calendr/${}`
+  }
+
   render() {
     // console.log(this.props.templates)
     return (
@@ -96,7 +101,7 @@ export class MainSideBar extends Component {
                   value={template.id}
                   onClick={this.props.singleCheck}
                   />         
-                  <h5>{template.title}</h5>
+                  <button onClick={this.takeMeToTemplate}>{template.title}</button>
                 </div>
                 })} 
             </div>
