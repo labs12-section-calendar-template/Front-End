@@ -13,8 +13,8 @@
 }
 @media(max-width: 500px){
     .day{
-        width: 59%;
-        margin-left: 10.5rem;
+        width: 53%;
+        margin-left: 47%;
         border: none;
         border-radius: 0;
         border-left: 1.5px solid #3270EB;
@@ -38,8 +38,6 @@
 @media(max-width:500px){
     .dayNumber{
         font-size: 3rem;
-        padding-top: 45px;
-        padding-left: 145px;
     }
 }
 
@@ -66,9 +64,6 @@
 @media(max-width: 500px){
     .wholeCalendar{
         width: 100%;
-    }
-    .day{
-        width: 57%
     }
     .dayNames{
         display: none;
