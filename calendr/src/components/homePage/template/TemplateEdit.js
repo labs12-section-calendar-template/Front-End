@@ -81,7 +81,8 @@ handleInputChange = event => {
   })
 }
 cancel = () => {
-  window.location = '/home'
+  let letMeBack = localStorage.getItem('group_id')
+  window.location = `/home/${letMeBack}`
 }
 
   render() {
