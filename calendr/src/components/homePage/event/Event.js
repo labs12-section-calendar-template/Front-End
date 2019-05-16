@@ -23,13 +23,13 @@ class Event extends React.Component {
       Th: false,
       F: false,
       S: false,
-      startTime: "",
-      endTime: "",
+      startTime: 0,
+      endTime: 0,
       title: "",
       description: "",
       date: this.props.check,
       template_id: [],
-      week:[],
+      week: [],
       startDate: '',
       endDate: ''
     };
@@ -46,7 +46,7 @@ class Event extends React.Component {
 
     let days = []
 
-    for (let i = 0; i < 7; i++){
+    for (let i = 0; i < 7; i++) {
       let newDay = new Date(beginningOfWeek);
 
       newDay.setDate(newDay.getDate() + i)
@@ -55,10 +55,10 @@ class Event extends React.Component {
 
       days.push(formattedNewDay)
     }
-    if(days[0] !== "Invalid date"){
+    if (days[0] !== "Invalid date") {
       this.setState({
-        week:days
-      }) 
+        week: days
+      })
     }
   }
 
@@ -76,6 +76,14 @@ class Event extends React.Component {
     event.preventDefault();
     this.props.history.push("/event");
   };
+  handleStartTimeChange = (time) => {
+    this.setState({ startTime: time })
+  }
+
+  handleEndTimeChange = (time) => {
+    this.setState({ endTime: time })
+  }
+
 
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
@@ -90,7 +98,7 @@ class Event extends React.Component {
         this.setState({
           template_id: tempIds[tempIds.length - 1]
         });
-       // this.getTemplateById()
+        // this.getTemplateById()
       })
       .catch(err => {
         console.log(err);
@@ -99,34 +107,34 @@ class Event extends React.Component {
 
   getTemplateById = (tempId) => {
     axios.get(`${process.env.REACT_APP_API}/templates/${tempId}`)
-    .then(res => {
-      this.setState({
-        startDate: res.data.startDate,
-        endDate: res.data.endDate
+      .then(res => {
+        this.setState({
+          startDate: res.data.startDate,
+          endDate: res.data.endDate
+        })
       })
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   addEvent = () => {
-for (let i = 0; i < 4; i++){
-  axios
-    .post(
-      `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
-      startTime: this.state.startTime,
-      endTime: this.state.endTime,
-      title: this.state.title,
-      description: this.state.description,
-      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
-    })
-    .then(res => {
-      console.log(res.data.date);
-       window.location = "/event";
-    })
-    .catch(err => console.log(err));
-  }
+    for (let i = 0; i < 4; i++) {
+      axios
+        .post(
+          `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`, {
+            startTime: this.state.startTime,
+            endTime: this.state.endTime,
+            title: this.state.title,
+            description: this.state.description,
+            date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+          })
+        .then(res => {
+          console.log(res.data.date);
+          window.location = "/event";
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
@@ -136,7 +144,7 @@ for (let i = 0; i < 4; i++){
         <div className="event-view-wrapper">
           <div className="event-view-container">
             <button className='close-popup' onClick={this.toggleClose}>X</button>
-            <EventBox events = {this.props.events}/>
+            <EventBox events={this.props.events} />
             <div
               className="top-section"
               style={{
@@ -150,7 +158,7 @@ for (let i = 0; i < 4; i++){
                   flexDirection: "column"
                 }}
               >
-              <div className= 'eventTitle'>
+                <div className='eventTitle'>
                   <label>Event Title</label>
                   <input
                     name="title"
@@ -179,38 +187,37 @@ for (let i = 0; i < 4; i++){
                 S
               </div>
             </div>
-           
-              <Selected
-                startTime={this.state.startTime}
-                handleChange={this.handleChange}
-                day={this.state.S}
-              >Start Time:
-              </Selected><Selected
-                endTime={this.state.endTime}
-                handleChange={this.handleChange}
-                day={this.state.S}
-              ><span>End Time:</span>
-              </Selected>
-            </div>
-            <div className="holiday-rule">
-              <h4>{"Holiday rule"}</h4>
-              <select className="event-select">
-                <option>Skip</option>
-                <option>Move</option>
-              </select>
-            </div>
 
-            <button
-              className="save-event-button"
-              onClick={() => {
-                this.addEvent();
-                this.props.history.push("/event");
-              }}
-            >
-              Save
-            </button>
+            <Selected
+              startTime={this.state.startTime}
+              endTime={this.state.endTime}
+              handleStartTimeChange={this.handleStartTimeChange}
+              handleEndTimeChange={this.handleEndTimeChange}
+              startTime={this.state.startTime}
+              handleChange={this.handleChange}
+              day={this.state.S}>
+              Saturday
+              </Selected>
           </div>
-        
+          <div className="holiday-rule">
+            <h4>{"Holiday rule"}</h4>
+            <select className="event-select">
+              <option>Skip</option>
+              <option>Move</option>
+            </select>
+          </div>
+
+          <button
+            className="save-event-button"
+            onClick={() => {
+              this.addEvent();
+              this.props.history.push("/event");
+            }}
+          >
+            Save
+            </button>
+        </div>
+
       </>
     );
   }

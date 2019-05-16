@@ -5,7 +5,7 @@ import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
 import moment from "moment";
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 export class Home extends Component {
   constructor(props) {
@@ -23,16 +23,16 @@ export class Home extends Component {
   }
 
   componentDidUpdate = (prevProps) => {
-    if(prevProps.match.url !== this.props.match.url) {
+    if (prevProps.match.url !== this.props.match.url) {
       this.getTemplate()
     }
   }
 
   indexClick = (event) => {
     event.preventDefault()
-     this.setState({[event.target.index]: event.target.value })
-     console.log(this.state.index)
-      }
+    this.setState({ [event.target.index]: event.target.value })
+    console.log(this.state.index)
+  }
 
 
   getTemplate = event => {
@@ -46,13 +46,12 @@ export class Home extends Component {
           templates: res.data,
           group_id: lateNight[2]
         });
-       // window.localStorage.setItem("group_id", this.state.group_id)
+        // window.localStorage.setItem("group_id", this.state.group_id)
       })
       .catch(err => {
         console.log(err);
       });
   };
-
   edit = (e, id) => {
     window.location = `/template/edit/${id}`;
   };
@@ -71,17 +70,17 @@ export class Home extends Component {
   };
 
   clickingTemplatesFunction = (templateId) => {
-    
+
     let templates = this.state.templates
     console.log(templates)
     templates.forEach(template => {
       console.log(templateId)
-    if(templateId == template.id) {
-      window.localStorage.setItem("template_id", templateId)
-     this.props.history.push(`/template/calendr/${template.id}`)
-    } 
-  })
- }
+      if (templateId == template.id) {
+        window.localStorage.setItem("template_id", templateId)
+        this.props.history.push(`/template/calendr/${template.id}`)
+      }
+    })
+  }
 
   render() {
     console.log(this.state.templates)
@@ -103,14 +102,14 @@ export class Home extends Component {
           <MainNavBar logOff={this.props.logOff} />
           <SideBar />
           <div className="allTemplates">
-            
+
             {this.state.templates.map(template => (
-              <div key={template.id} value={template.id} className="templateTag" onClick={() => {this.clickingTemplatesFunction(template.id)}}>
-              
+              <div key={template.id} value={template.id} className="templateTag" onClick={() => { this.clickingTemplatesFunction(template.id) }}>
+
                 <div className="titleAndIcons">
                   <Link to="/template/calendr">
                     <h2 className="templateTitleTag">{template.title}</h2>
-                 </Link>
+                  </Link>
                   <div className="iconsForTemplates">
                     <i
                       className="far fa-edit iconSize"
