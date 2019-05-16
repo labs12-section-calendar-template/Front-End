@@ -30,6 +30,8 @@ class Event extends React.Component {
       date: this.props.check,
       template_id: [],
       week:[],
+      startDate: '',
+      endDate: ''
     };
   }
 
@@ -88,11 +90,25 @@ class Event extends React.Component {
         this.setState({
           template_id: tempIds[tempIds.length - 1]
         });
+       // this.getTemplateById()
       })
       .catch(err => {
         console.log(err);
       });
   };
+
+  getTemplateById = (tempId) => {
+    axios.get(`${process.env.REACT_APP_API}/templates/${tempId}`)
+    .then(res => {
+      this.setState({
+        startDate: res.data.startDate,
+        endDate: res.data.endDate
+      })
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
 
   addEvent = () => {
 for (let i = 0; i < 4; i++){
@@ -107,7 +123,7 @@ for (let i = 0; i < 4; i++){
     })
     .then(res => {
       console.log(res.data.date);
-      // window.location = "/event";
+       window.location = "/event";
     })
     .catch(err => console.log(err));
   }

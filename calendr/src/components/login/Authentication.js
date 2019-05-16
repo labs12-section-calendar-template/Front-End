@@ -26,6 +26,7 @@ const Authentication = App => Login =>
           console.log(query.token)
           window.localStorage.setItem("jwt", query.token);
           window.localStorage.setItem("userId", query.userId);
+          window.localStorage.setItem('group_id', query.group_id)
         }
     }
 

@@ -5,6 +5,7 @@ import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
 import moment from "moment";
+import {toast} from 'react-toastify';
 
 export class Home extends Component {
   constructor(props) {
@@ -36,15 +37,14 @@ export class Home extends Component {
 
   getTemplate = event => {
     let urlPath = window.location.pathname;
-    let group_id = urlPath[urlPath.length-1];
-     console.log(group_id)
+    let lateNight = urlPath.split('/')
     axios
-      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
+      .get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`)
       .then(res => {
         console.log(res.data)
         this.setState({
           templates: res.data,
-          group_id: group_id
+          group_id: lateNight[2]
         });
        // window.localStorage.setItem("group_id", this.state.group_id)
       })
@@ -70,7 +70,21 @@ export class Home extends Component {
       });
   };
 
+  clickingTemplatesFunction = (templateId) => {
+    
+    let templates = this.state.templates
+    console.log(templates)
+    templates.forEach(template => {
+      console.log(templateId)
+    if(templateId == template.id) {
+      window.localStorage.setItem("template_id", templateId)
+     this.props.history.push(`/template/calendr/${template.id}`)
+    } 
+  })
+ }
+
   render() {
+    console.log(this.state.templates)
     if (this.state.templates.length < 1) {
       return (
         <div>
@@ -91,11 +105,12 @@ export class Home extends Component {
           <div className="allTemplates">
             
             {this.state.templates.map(template => (
-              <div key={template.id} value = {'templatename'} className="templateTag" onClick = {this.indexClick}>
+              <div key={template.id} value={template.id} className="templateTag" onClick={() => {this.clickingTemplatesFunction(template.id)}}>
+              
                 <div className="titleAndIcons">
                   <Link to="/template/calendr">
                     <h2 className="templateTitleTag">{template.title}</h2>
-                  </Link>
+                 </Link>
                   <div className="iconsForTemplates">
                     <i
                       className="far fa-edit iconSize"

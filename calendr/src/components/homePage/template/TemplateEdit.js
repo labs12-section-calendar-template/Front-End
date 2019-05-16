@@ -13,7 +13,6 @@ this.state = {
     description: '',
     startDate: '',
     endDate: '',
-    color: '',
     date: '',
     // templates:[],
     group_id:[]
@@ -47,7 +46,6 @@ axios
     cycleLength: this.state.cycleLength,
     startDate: this.state.startDate,
     endDate: this.state.endDate,
-    color: this.state.color,
   })
   .then(res => {
     console.log('IT WORKED')
@@ -70,12 +68,6 @@ handleEndDateChange = event => {
     endDate: event.target.value
   });
 };
-
-handleColorChange = event => {
-  this.setState({
-    color: event.target.value
-  });
-}
 
 handleInputChange = event => {
   this.setState({
@@ -122,21 +114,6 @@ cancel = () => {
                     placeholder="YYYY-MM-DD"
                   />
                   </div>
-                  <div>
-              <h3>Template Color: {' '}
-              <select value={this.state.color} onChange={this.handleColorChange}>
-                  <option>Select One</option>
-                  <option value='red'>Red</option>
-                  <option value='green'>Green</option>
-                  <option value='blue'>Blue</option>
-                  <option value='maroon'>Maroon</option>
-                  <option value='teal'>Teal</option>
-                  <option value='navy-blue'>Navy Blue</option>
-                  <option value='orange'>Orange</option>
-                  <option value='olive'>Olive</option>
-              </select>
-              </h3>
-            </div>
               <form>
                 <li> 
                   <h3>Title: </h3>
