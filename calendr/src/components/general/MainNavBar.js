@@ -10,7 +10,7 @@ const MainNavBar = (props) => {
         <img src={logo} alt="Logo"/>
         <h1 className="calendrTitle">CALENDR</h1>
       <div className="nav-buttons">
-        <NavLink activeClassName="navbuttonLink" className="navbutton" to="/home">Home</NavLink>
+        <NavLink activeClassName="navbuttonLink" className="navbutton" to="/home/:id">Home</NavLink>
         <NavLink activeClassName="navbuttonLink" className="navbutton" to="/users">Users</NavLink>
         <div className="logout" onClick = {props.logOff}> Logout </div>
       </div>

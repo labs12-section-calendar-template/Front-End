@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import DayNames from "../../calendar/DayNames"
 import MemberWeek from './MemberWeek'
-import './memberCalendar.scss'
 
 
 export class MemberCalendar extends Component {

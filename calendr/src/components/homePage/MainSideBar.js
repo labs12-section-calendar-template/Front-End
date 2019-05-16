@@ -78,6 +78,7 @@ export class MainSideBar extends Component {
           <i className="far fa-edit" onClick={this.toggleModal}/>
         </div>
           <h5 className='buttonTitles'>Group Members</h5>
+          
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" />
           <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>

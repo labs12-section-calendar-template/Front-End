@@ -108,7 +108,7 @@ export class GeneralCalendar extends Component {
         <h1>CALENDR</h1>
         <p>Click a date to add an event.</p>
         <DayNames />
-        <div>{this.renderWeeks()}</div>
+        <div className='cal'>{this.renderWeeks()}</div>
         <button onClick={this.delayRedirect}>SUBMIT</button>
       </div>
     );

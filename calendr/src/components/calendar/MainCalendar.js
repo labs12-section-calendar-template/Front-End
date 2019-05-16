@@ -191,6 +191,8 @@ export class MainCalendar extends Component {
       <MainNavBar/>
         <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
+      <div className='wholeCal'>
+        <div className="padding"></div>
         <p>Click a date to add an event.</p>
       <div className="arrowsAndMonth">
         <div className="arrow fa fa-angle-left" onClick={this.previous}/>
@@ -199,6 +201,7 @@ export class MainCalendar extends Component {
         </div>
         <DayNames />
         <div>{this.renderWeeks()}</div>
+        </div>
       </div>
     </div>
     );
