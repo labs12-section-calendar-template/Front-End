@@ -3,6 +3,8 @@ import SideBar from '../SideBar';
 import './Template.css';
 import axios from 'axios';
 import MainNavBar from '../../general/MainNavBar'
+import moment from 'moment';
+import { toast } from 'react-toastify';
 
 export class TemplateEdit extends Component {
   constructor(props) {
@@ -13,7 +15,6 @@ this.state = {
     description: '',
     startDate: '',
     endDate: '',
-    color: '',
     date: '',
     // templates:[],
     group_id:[]
@@ -39,14 +40,17 @@ this.state = {
 updateTemplate = (e) => {
   let letMeBack = localStorage.getItem('group_id')
   let id = this.props.match.params.id
+  let { title, description, startDate, endDate } = this.state;
   console.log(this.state.group_id)
+  if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
+    toast('Please enter all fields to create a template')
+  } else {
 axios
   .put(`${process.env.REACT_APP_API}/templates/${id}`,{
-    title: this.state.title,
-    description: this.state.description,
-    cycleLength: this.state.cycleLength,
-    startDate: this.state.startDate,
-    endDate: this.state.endDate
+    title,
+    description,
+    startDate,
+    endDate,
   })
   .then(res => {
     console.log('IT WORKED')
@@ -56,6 +60,7 @@ axios
   .catch(err => {
     console.log(err)
   })
+}
 }
 
 handleStartDateChange = event => {
@@ -115,8 +120,6 @@ cancel = () => {
                     placeholder="YYYY-MM-DD"
                   />
                   </div>
-                  <div>
-            </div>
               <form>
                 <li> 
                   <h3>Title: </h3>
