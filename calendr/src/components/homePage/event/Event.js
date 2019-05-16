@@ -4,8 +4,8 @@ import "./Event.css";
 import axios from "axios";
 import EventBox from "./EventBox.js";
 import moment from "moment";
-import Day from '../../calendar/Day'
-import DayNames from "../../calendar/DayNames.js";
+// import Day from '../../calendar/Day'
+//import DayNames from "../../calendar/DayNames.js";
 import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
