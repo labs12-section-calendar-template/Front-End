@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./Group.scss"
 import axios from 'axios'
+import { toast } from 'react-toastify'
 
 export class Group extends Component {
   constructor(props){
@@ -25,13 +26,18 @@ export class Group extends Component {
           window.location = '/memberhome'
         }).catch(err => {
           console.error(err, 'there was an error')
+          toast('There was an error joining a group. Please use a valid join code.')
         })
     }
     
     postGroup = e => {
       e.preventDefault();
       let { name } = this.state
+      let {joinCode} = this.state.createdCode
       let user_id = localStorage.getItem('userId')
+      if (!name || !joinCode) {
+        toast('Please Enter a Group Name and a Join Code.')
+      }
       axios
         .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {

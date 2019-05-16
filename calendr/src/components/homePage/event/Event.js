@@ -111,14 +111,15 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
+    let { startTime, endTime, title, description } = this.state;
 for (let i = 0; i < 4; i++){
   axios
     .post(
       `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
-      startTime: this.state.startTime,
-      endTime: this.state.endTime,
-      title: this.state.title,
-      description: this.state.description,
+      startTime,
+      endTime,
+      title,
+      description,
       date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
     })
     .then(res => {
