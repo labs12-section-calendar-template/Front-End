@@ -5,6 +5,7 @@ import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
 import moment from "moment";
+import {toast} from 'react-toastify';
 
 export class Home extends Component {
   constructor(props) {
@@ -37,8 +38,6 @@ export class Home extends Component {
   getTemplate = event => {
     let urlPath = window.location.pathname;
     let lateNight = urlPath.split('/')
-    
-    
     axios
       .get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`)
       .then(res => {
@@ -71,6 +70,19 @@ export class Home extends Component {
       });
   };
 
+  clickingTemplatesFunction = (templateId) => {
+    
+    let templates = this.state.templates
+    console.log(templates)
+    templates.forEach(template => {
+      console.log(templateId)
+    if(templateId == template.id) {
+      window.localStorage.setItem("template_id", templateId)
+     this.props.history.push(`/template/calendr/${template.id}`)
+    } 
+  })
+ }
+
   render() {
     console.log(this.state.templates)
     if (this.state.templates.length < 1) {
@@ -93,11 +105,12 @@ export class Home extends Component {
           <div className="allTemplates">
             
             {this.state.templates.map(template => (
-              <div key={template.id} value = {'templatename'} className="templateTag" onClick = {this.indexClick}>
+              <div key={template.id} value={template.id} className="templateTag" onClick={() => {this.clickingTemplatesFunction(template.id)}}>
+              
                 <div className="titleAndIcons">
                   <Link to="/template/calendr">
                     <h2 className="templateTitleTag">{template.title}</h2>
-                  </Link>
+                 </Link>
                   <div className="iconsForTemplates">
                     <i
                       className="far fa-edit iconSize"
