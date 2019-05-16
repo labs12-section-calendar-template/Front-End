@@ -54,8 +54,8 @@ export class GeneralCalendar extends Component {
           latestEvent: events[events.length - 1],
           events: events
         });
-        console.log(this.state.events)
-        console.log(events)
+        // console.log(this.state.events)
+        // console.log(events)
       })
       .catch(err => {
         console.log(err);

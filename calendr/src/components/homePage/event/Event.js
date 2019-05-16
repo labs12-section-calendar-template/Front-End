@@ -31,12 +31,14 @@ class Event extends React.Component {
       template_id: [],
       week: [],
       startDate: '',
-      endDate: ''
+      endDate: '',
+      sum: ''
     };
   }
 
   componentDidMount() {
     this.getTemplateId();
+    this.getTemplateById();
     this.getFullWeek(this.props.match.params.date)
   }
 
@@ -105,12 +107,16 @@ class Event extends React.Component {
       });
   };
 
-  getTemplateById = (tempId) => {
-    axios.get(`${process.env.REACT_APP_API}/templates/${tempId}`)
+  getTemplateById = () => {
+    let id = localStorage.getItem('template_id')
+    axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
+        console.log(Math.floor(moment.duration(moment(res.data.endDate).diff(moment(this.props.check))).asWeeks()))
         this.setState({
           startDate: res.data.startDate,
-          endDate: res.data.endDate
+          endDate: res.data.endDate,
+          sum: moment.duration(moment(res.data.endDate).diff(moment(res.data.startDate))).asWeeks()
+  
         })
       })
       .catch(err => {
@@ -119,8 +125,9 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
-    let { startTime, endTime, title, description } = this.state;
-for (let i = 0; i < 4; i++){
+    let { startTime, endTime, title, description, sum } = this.state;
+for (let i = 0; i < sum; i++){
+  console.log(this.state.sum)
   axios
     .post(
       `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
@@ -132,7 +139,7 @@ for (let i = 0; i < 4; i++){
     })
     .then(res => {
       console.log(res.data.date);
-       window.location = "/event";
+       //window.location = "/event";
     })
     .catch(err => console.log(err));
   }
@@ -194,18 +201,10 @@ for (let i = 0; i < 4; i++){
               endTime={this.state.endTime}
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
-              startTime={this.state.startTime}
               handleChange={this.handleChange}
               day={this.state.S}>
               Saturday
               </Selected>
-          </div>
-          <div className="holiday-rule">
-            <h4>{"Holiday rule"}</h4>
-            <select className="event-select">
-              <option>Skip</option>
-              <option>Move</option>
-            </select>
           </div>
 
           <button
