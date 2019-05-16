@@ -5,6 +5,8 @@ import "./Template.css";
 import axios from "axios";
 // import {Link} from 'react-router-dom';
 import MainNavBar from "../../general/MainNavBar";
+import { toast } from "react-toastify";
+import moment from 'moment';
 
 export class Template extends Component {
   constructor(props) {
@@ -24,6 +26,9 @@ export class Template extends Component {
     let group_id = localStorage.getItem("group_id");
     console.log(group_id);
     let { title, description, startDate, endDate } = this.state;
+     if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
+      toast('Please enter all fields to create a template')
+    } else {
     axios
       .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
@@ -36,13 +41,15 @@ export class Template extends Component {
         this.setState({
           template_id: res.data
         });
-        //console.log(this.state.template_id);
-        window.location = "/event";
+       
+       window.location = "/event";
       })
       .catch(err => {
         console.log(err);
       });
+    }
   };
+
 
   handleStartDateChange = event => {
     this.setState({

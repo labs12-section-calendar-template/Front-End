@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./Group.scss";
+import { toast } from "react-toastify";
 
 export class GroupEdit extends Component {
   constructor(props) {
@@ -29,10 +30,12 @@ export class GroupEdit extends Component {
       })
       .then(res => {
         console.log("IT WORKED");
+        toast('Your group has been updated!')
         document.location.reload();
       })
       .catch(err => {
         console.log(err);
+        toast('Please enter a new name to update your group')
       });
   };
 
@@ -42,11 +45,14 @@ export class GroupEdit extends Component {
       .delete(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`)
       .then(res => {
         console.log("group deleted");
+        
         if(this.props.groups.length === 1) {
          window.location = "/"
+    
          } else {
            localStorage.setItem('group_id', this.props.groups[this.props.groups.length - 2].id)
            window.location=`/home/${this.props.groups[this.props.groups.length - 2].id}`
+           
         }
         
       })

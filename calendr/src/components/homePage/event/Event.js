@@ -119,22 +119,23 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
-    for (let i = 0; i < 4; i++) {
-      axios
-        .post(
-          `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`, {
-            startTime: this.state.startTime,
-            endTime: this.state.endTime,
-            title: this.state.title,
-            description: this.state.description,
-            date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
-          })
-        .then(res => {
-          console.log(res.data.date);
-          window.location = "/event";
-        })
-        .catch(err => console.log(err));
-    }
+    let { startTime, endTime, title, description } = this.state;
+for (let i = 0; i < 4; i++){
+  axios
+    .post(
+      `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
+      startTime,
+      endTime,
+      title,
+      description,
+      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+    })
+    .then(res => {
+      console.log(res.data.date);
+       window.location = "/event";
+    })
+    .catch(err => console.log(err));
+  }
   };
 
   render() {
