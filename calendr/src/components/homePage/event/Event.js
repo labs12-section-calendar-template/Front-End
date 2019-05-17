@@ -15,14 +15,6 @@ class Event extends React.Component {
     super(props);
 
     this.state = {
-      day: false,
-      Su: false,
-      M: false,
-      T: false,
-      W: false,
-      Th: false,
-      F: false,
-      S: false,
       startTime: 0,
       endTime: 0,
       title: "",
@@ -33,7 +25,6 @@ class Event extends React.Component {
       startDate: '',
       endDate: '',
       sum: '',
-      event:this.props.events
     };
   }
 
@@ -150,7 +141,7 @@ for (let i = 0; i <= sum; i++){
   };
 
   render() {
-    console.log(this.state.event)
+    console.log(this.props.events)
     return (
       <>
         <div className="event-view-wrapper">
@@ -191,14 +182,6 @@ for (let i = 0; i <= sum; i++){
                 </div>
               </form>
             </div>
-            <div className="weekday-container">
-              <div
-                className={`${this.state.S && "active"} weekday`}
-                onClick={() => this.toggleDay("S")}
-              >
-                S
-              </div>
-            </div>
 
             <Selected
               startTime={this.state.startTime}
@@ -206,8 +189,8 @@ for (let i = 0; i <= sum; i++){
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
               handleChange={this.handleChange}
-              day={this.state.S}>
-              Saturday
+             >
+            
               </Selected>
           </div>
 
@@ -215,8 +198,7 @@ for (let i = 0; i <= sum; i++){
             className="save-event-button"
             onClick={() => {
               this.addEvent();
-              this.props.history.push("/event");
-            }}
+              this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)            }}
           >
             Save
             </button>
