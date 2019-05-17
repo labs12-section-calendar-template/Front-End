@@ -138,7 +138,7 @@ for (let i = 0; i <= sum; i++){
       endTime,
       title,
       description,
-      date: moment(this.props.match.params.date).add(i, 'week').format('YYYY-MM-DD')
+      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
     })
     .then(res => {
       console.log(res.data.date);
@@ -149,7 +149,10 @@ for (let i = 0; i <= sum; i++){
   };
 
   render() {
-    console.log(this.props.match.params.date)
+              console.log(this.props.check) 
+              console.log(this.props.history) 
+              console.log(this.props.events)
+              console.log(this.state.date)
     return (
       <>
         <div className="event-view-wrapper">
