@@ -106,9 +106,8 @@ export class SideBar extends Component {
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
           <i className="far fa-edit" onClick={this.toggleModal}/>
-       
-          <p className='buttonDescriptions'>Join Code {this.state.joinCode}</p>
         </div>
+          <p className='buttonDescriptions'>Join Code: {this.state.joinCode}</p>
         <div>
         <h5 className='buttonTitles'>Groups</h5>
        {this.state.groups.map(group => (
