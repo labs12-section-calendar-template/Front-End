@@ -19,20 +19,21 @@ export class MemberSideBar extends Component {
   }
   
   getGroup = () => {
-    let memberId = localStorage.getItem('memberId')
-    axios.get(`${process.env.REACT_APP_API}/members/${memberId}/groups`)
+    let joinCode = localStorage.getItem('joinCode')
+
+    axios.post(`${process.env.REACT_APP_API}/groups/getby/joincode`, {joinCode})
     .then(res => {
         console.log(res.data)
-        let groupID = res.data[0].id
+        let groupID = res.data.id
       this.setState({
-        group_id: res.data[0].id,
-        groupName: res.data[0].name,
-        joinCode: res.data[0].joinCode,
+        group_id: res.data.id,
+        groupName: res.data.name,
+        joinCode: res.data.joinCode,
       })
       
       this.getGroupTemplates(groupID)
 
-      console.log(this.state.group_id)
+      console.log(this.state.groupName)
       window.localStorage.setItem("group_id", this.state.group_id)
     })
     .catch(err => {
@@ -76,7 +77,6 @@ export class MemberSideBar extends Component {
             <div className='buttonBox'>
                 <h3 className = "groupName">{this.state.groupName}</h3>
             </div>
-          <h5 className='buttonTitles'>Group Members</h5>
 
         <div className='buttonBox'>
           <ul>

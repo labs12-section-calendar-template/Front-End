@@ -41,7 +41,7 @@ export class Template extends Component {
         this.setState({
           template_id: res.data
         });
-       window.localStorage.setItem('template_id', res.data.id)
+       localStorage.setItem('template_id', res.data.id)
        window.location = `/template/calendr/${res.data.id}`;
       })
       .catch(err => {

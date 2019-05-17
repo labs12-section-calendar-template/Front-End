@@ -13,7 +13,8 @@ export class MainSideBar extends Component {
       joinCode: [],
       group_id:[],
       modalOpen: false,
-      templates:[]
+      templates:[],
+      navBar: true
     }
   }
 
@@ -25,6 +26,21 @@ export class MainSideBar extends Component {
     //   window.location = '/home'
     // }
   }
+
+  navAppear = (event) => {
+    event.preventDefault();
+    if(!this.state.navBar){
+        console.log('yo')
+        this.setState({
+            navBar: true
+        })
+    } else {
+        console.log('yoyo')
+        this.setState({
+            navBar: false
+        })
+    }
+}
   
   getGroup = () => {
     let userId = localStorage.getItem('userId')
@@ -83,13 +99,17 @@ export class MainSideBar extends Component {
     // console.log(this.props.templates)
     return (
       <>
-
+      <div className = "header">
+        <div onClick = {this.navAppear} id="navIcon"><i className = "fa fa-bars" aria-hidden="true"/></div>
+            <div className = {this.state.navBar ? "navDiv":"navOpen"}>
+                
         <div className="homePageStyles">
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
           <i className="far fa-edit" onClick={this.toggleModal}/>
         </div>
           <h5 className='buttonTitles'>Group Members</h5>
+          
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" />
           <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>
@@ -118,6 +138,8 @@ export class MainSideBar extends Component {
       <Popup open={this.state.modalOpen} id="groupEditPopup">
         <GroupEdit toggleModal={this.toggleModal} group_id={this.state.group_id}/>
       </Popup>
+                </div>
+          </div>  
       </>
     )
   }
