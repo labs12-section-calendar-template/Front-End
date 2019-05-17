@@ -31,6 +31,7 @@ class Day extends React.Component {
     const {
       day: { date, number }
     } = this.props;
+    console.log(this.props.events)
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>

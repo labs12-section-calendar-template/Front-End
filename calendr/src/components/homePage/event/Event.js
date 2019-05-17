@@ -32,14 +32,15 @@ class Event extends React.Component {
       week: [],
       startDate: '',
       endDate: '',
-      sum: ''
+      sum: '',
+      event:this.props.events
     };
   }
 
   componentDidMount() {
     this.getTemplateId();
     this.getTemplateById();
-    this.getFullWeek(this.props.match.params.date)
+    this.getFullWeek(this.props.match.params.date);
   }
 
 
@@ -149,6 +150,7 @@ for (let i = 0; i <= sum; i++){
   };
 
   render() {
+    console.log(this.state.event)
     return (
       <>
         <div className="event-view-wrapper">
