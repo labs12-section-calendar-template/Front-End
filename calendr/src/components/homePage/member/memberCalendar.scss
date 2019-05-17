@@ -38,6 +38,7 @@
     margin: 0px;   
 }
 
+
 .dayNumber:hover{
     color: #f36d13;
 }
@@ -58,6 +59,7 @@
     padding-bottom: 5%;
 }
 
+
 @media(max-width: 500px){
     .wholeCalendar{
         width: 100%;
@@ -76,3 +78,13 @@
     }
 }
 
+.arrow{
+    width: 15px;
+    position: relative;
+    top: 20px
+    }
+@media(max-width: 500px) {
+    .arrow {
+        top: 3px
+    }
+}

@@ -15,7 +15,7 @@ class Event extends React.Component {
     super(props);
 
     this.state = {
-      day: false,
+      day: true,
       Su: false,
       M: false,
       T: false,
@@ -138,7 +138,7 @@ class Event extends React.Component {
   };
 
   render() {
-    console.log(this.state.week)
+    console.log(this.props.events)
     return (
       <>
         <div className="event-view-wrapper">
@@ -180,12 +180,12 @@ class Event extends React.Component {
               </form>
             </div>
             <div className="weekday-container">
-              <div
+              {/* <div
                 className={`${this.state.S && "active"} weekday`}
                 onClick={() => this.toggleDay("S")}
               >
                 S
-              </div>
+              </div> */}
             </div>
 
             <Selected
@@ -195,17 +195,17 @@ class Event extends React.Component {
               handleEndTimeChange={this.handleEndTimeChange}
               startTime={this.state.startTime}
               handleChange={this.handleChange}
-              day={this.state.S}>
-              Saturday
-              </Selected>
+              day={this.state.day} />
+
+
           </div>
-          <div className="holiday-rule">
+          {/* <div className="holiday-rule">
             <h4>{"Holiday rule"}</h4>
             <select className="event-select">
               <option>Skip</option>
               <option>Move</option>
             </select>
-          </div>
+          </div> */}
 
           <button
             className="save-event-button"
