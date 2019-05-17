@@ -15,14 +15,6 @@ class Event extends React.Component {
     super(props);
 
     this.state = {
-      day: false,
-      Su: false,
-      M: false,
-      T: false,
-      W: false,
-      Th: false,
-      F: false,
-      S: false,
       startTime: 0,
       endTime: 0,
       title: "",
@@ -32,14 +24,16 @@ class Event extends React.Component {
       week: [],
       startDate: '',
       endDate: '',
-      sum: ''
+      sum: '',
+
+      repeat: 1
     };
   }
 
   componentDidMount() {
     this.getTemplateId();
     this.getTemplateById();
-    this.getFullWeek(this.props.match.params.date)
+    this.getFullWeek(this.props.match.params.date);
   }
 
 
@@ -119,7 +113,7 @@ class Event extends React.Component {
           startDate: res.data.startDate,
           endDate: res.data.endDate,
           sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
-  
+
         })
       })
       .catch(err => {
@@ -128,27 +122,52 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
+    let temppId = localStorage.getItem('template_id')
     let { startTime, endTime, title, description, sum } = this.state;
-for (let i = 0; i < sum; i++){
-  console.log(this.state.sum)
-  axios
-    .post(
-      `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
-      startTime,
-      endTime,
-      title,
-      description,
-      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
-    })
-    .then(res => {
-      console.log(res.data.date);
-       //window.location = "/event";
-    })
-    .catch(err => console.log(err));
-  }
+    let newStart = moment(new Date(startTime)).format("LT")
+    let newEnd = moment(new Date(endTime)).format("LT")
+    if(this.state.repeat === 1){
+    console.log(newStart)
+    for (let i = 0; i <= sum; i++) {
+      console.log(this.state.sum)
+      axios
+        .post(
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
+            startTime: newStart,
+            endTime: newEnd,
+            title,
+            description,
+            date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+          })
+        .then(res => {
+          // console.log(res.data.date);
+          //window.location = "/event";
+        })
+        .catch(err => console.log(err));
+    }
+    } else {
+
+      axios
+        .post(
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
+            startTime: newStart,
+            endTime: newEnd,
+            title,
+            description,
+            date: moment(this.state.date).add(0, 'week').format('YYYY-MM-DD')
+          })
+        .then(res => {
+          // console.log(res.data.date);
+          //window.location = "/event";
+        })
+        .catch(err => console.log(err));
+    }
+    
   };
 
   render() {
+    console.log(this.props.match.params.date)
+    console.log(this.props.events)
     return (
       <>
         <div className="event-view-wrapper">
@@ -186,15 +205,14 @@ for (let i = 0; i < sum; i++){
                     onChange={this.handleChange}
                   />
                 </div>
+                <div>
+                  <label>repeat: </label>
+                  <select name = "repeat" value = {this.state.repeat} onChange = {this.handleChange}> 
+                    <option value = {1}>yes</option> 
+                    <option value = {0}>no</option>
+                  </select>
+                </div>
               </form>
-            </div>
-            <div className="weekday-container">
-              <div
-                className={`${this.state.S && "active"} weekday`}
-                onClick={() => this.toggleDay("S")}
-              >
-                S
-              </div>
             </div>
 
             <Selected
@@ -203,16 +221,16 @@ for (let i = 0; i < sum; i++){
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
               handleChange={this.handleChange}
-              day={this.state.S}>
-              Saturday
-              </Selected>
+            />
+
+
           </div>
 
           <button
             className="save-event-button"
             onClick={() => {
               this.addEvent();
-              this.props.history.push("/event");
+              this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)
             }}
           >
             Save

@@ -1,3 +1,48 @@
+#navIcon{
+    display: flex;
+    margin:.5rem;
+}
+.homePageStyles{
+    align-items: flex-start;
+    display:flex;
+    flex-direction: column;
+    margin: 2rem 0 0 4%;
+    font-family: "Poppins";
+    
+    @media(max-width: 500px){
+        width: 11rem;
+        margin: 1.5rem 0 0 0;
+    }
+
+    .GroupName{
+        margin:0 .2rem 0 0;
+        font-size:1.8rem;
+
+        @media(max-width: 500px){
+            font-size: 1.2rem;
+        }
+    }
+
+    .buttonTitles{
+        font-size: 1.2rem;
+        margin:.3rem;
+        text-align: start;
+    
+        @media(max-width: 500px){
+            font-size: 1rem;
+        }
+    }
+
+    .buttonDescriptions{
+        font-size:1rem;
+
+        @media(max-width: 500px){
+            font-size: .8rem;
+        }
+    }
+    
+}
+
 .navDiv {
     display: flex;
     flex-direction: row;
@@ -26,6 +71,9 @@
 .fa-edit{
     font-size: 1.2rem;
     margin-right: .5rem;
+    height: 0vh;
+    transition: .5s ease-in;
+    overflow: hidden;
 }
 
 .navOpen{
@@ -100,4 +148,88 @@
     .desktopNav{
         display: none;
     }
+}
+
+.groupNameTemplate{
+    display:flex;
+    align-items: center;
+}
+.fa-edit{
+    font-size: .8rem;
+    cursor: pointer;
+}
+.allTemps{
+    font-size: 1.4rem;
+
+}
+
+.buttonBox{
+    display: flex;
+    align-items: center;
+}
+
+.fa-plus-circle{
+    margin:1rem;
+    font-size:1.6rem;
+    color: #3f51b5;
+    border-radius: 50%;
+    
+}
+.fa-plus-circle:hover{
+    color: white;
+    background-color:black;
+    box-shadow: 0 0 .1rem .1rem black;
+}
+
+.buttonLink{
+    margin: 5rem auto 0;
+}
+
+.firstTemplateButton{
+    margin-top: 8%;
+    height: 2.5rem;
+    margin-left: 10rem;
+    border-radius:6px;
+    font-size: 1.3rem;
+    font-family: "Quicksand";
+    font-weight: bold;
+
+    &:hover{
+        border: 1px solid #f36d13;
+        color: #f36d13;
+        cursor: pointer;
+    }
+
+    @media(max-width: 500px){
+        font-size: .8rem;
+        font-weight: bold;
+    }
+
+}
+
+.popup-overlay{
+    width:100vw;
+    height:100vh;
+    margin:0;
+    position: fixed;
+    top: 0px;
+    bottom: 0px; 
+    left: 0px; 
+    right: 0px; 
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    z-index: 999;
+}
+.popup-content{
+    position: relative; 
+    background: rgb(255, 255, 255); 
+    width: 100%; 
+    height:100%;
+    margin: auto; 
+    border: 1px solid rgb(187, 187, 187); 
+    padding: 5px;
+}
+.editGroupInput{
+    width:30%;
+    height:2rem;
 }
