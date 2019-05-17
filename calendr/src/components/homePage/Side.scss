@@ -44,15 +44,14 @@
 }
 
 .navDiv {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background:rgba(32, 31, 31, 0.904);
-    height: vh;
-    width: 100vw;
-    transition: .5s ease-in;
-    overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        background:rgba(32, 31, 31, 0.904);
+        height: 0vh;
+        transition: .5s ease-in;
+        overflow: hidden;
     display: none;
 }
 
@@ -77,17 +76,15 @@
 }
 
 .navOpen{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    // height: 75vh;
-    // width: 20vw;
-    transition: .5s ease-in;
-    overflow: hidden;
-    position: fixed;
-    z-index: 1;
-    opacity: .9;
+        display: flex;
+        justify-content: center;
+        background:rgba(235, 162, 162, 0.904);
+        transition: .5s ease-in;
+        overflow: hidden;
+        position: fixed;
+        border-radius: 10px;
+        z-index: 10;
+        padding:0 1rem;
 
     @media(max-width: 500px){
         justify-content: flex-start;
@@ -98,41 +95,6 @@
         overflow: hidden;
         position: fixed;
         top: 20%;
-    }
-}
-
-.homePageStyles {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    margin: 2rem 0 0 2%;
-    width: 20vw;
-    height: 70vh;
-    position: fixed;
-    font-family: "Poppins";
-
-    @media(max-width: 500px){
-        margin: 3rem 0rem 0 4%;
-        width: 40vw;
-     
-
-        .buttonDescriptions{
-            font-size: 1rem;
-            margin-bottom: 0;
-        }
-        .GroupName{
-            font-size: 1.5rem;
-        }
-        .groupName {
-            font-size: 1rem;
-            padding: 0 .5rem;
-            border: 1px dashed black;
-            border-radius: 5px;
-        }
-        .buttonTitles{
-            font-size: 1.3rem;
-            margin: 1rem 0;
-        }
     }
 }
 
