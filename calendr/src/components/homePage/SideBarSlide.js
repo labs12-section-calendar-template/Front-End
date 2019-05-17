@@ -3,8 +3,9 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
+import './Side.scss';
 
-export class SideBar extends Component {
+export class SideBarSlide extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -12,6 +13,7 @@ export class SideBar extends Component {
       joinCode: [],
       group_id:[],
       modalOpen: false,
+      navBar: true,
       groups: []
     }
   }
@@ -92,16 +94,34 @@ export class SideBar extends Component {
     if(event.target.attributes.getNamedItem('value').value == group.id) {
       window.localStorage.setItem("group_id", event.target.attributes.getNamedItem('value').value)
     this.props.history.push(`/home/${group.id}`)
- 
-    } 
-  })
-   
+        } 
+    })
   }
+
+  navAppear = (event) => {
+    event.preventDefault();
+    console.log('click')
+    if(!this.state.navBar){
+        console.log('yo')
+        this.setState({
+            navBar: true
+        })
+    } else {
+        console.log('yoyo')
+        this.setState({
+            navBar: false
+        })
+    }
+}
 
   render() {
     return (
       <>
-      <div className="desktopNav"> 
+        <i onClick = {this.navAppear} className = "fa fa-plus" aria-hidden="true" />
+            
+        <div className = {this.state.navBar ? "navDiv":"navOpen"}>
+        
+           
         <div className="homePageStyles">
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
@@ -126,13 +146,13 @@ export class SideBar extends Component {
           <p className='buttonDescriptions'>Add Template</p>
         </div>
       </div>
-      </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">
         <GroupEdit groups={this.state.groups} toggleModal={this.toggleModal} group_id={this.state.group_id}/>
       </Popup>
+      </div>
       </>
     )
   }
 }
 
-export default withRouter(SideBar)
+export default withRouter(SideBarSlide)
