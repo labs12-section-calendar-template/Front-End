@@ -4,6 +4,7 @@ import Day from "./Day";
 class Week extends React.Component {
 
   render() {
+    console.log(this.props.events)
     let days = [];
     let { date } = this.props;
 

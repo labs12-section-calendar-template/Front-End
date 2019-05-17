@@ -55,8 +55,10 @@ class mainView extends React.Component {
         />
           
         <Route path="/template/edit/:id" component={TemplateEdit} />
+        <Route path="/event" component={GeneralCalendar} />
         <Route path="/template/calendr/:id" component={MainCalendar} />
         <Route path="/event/:date" component={Event} />
+        <Route exact path="/ZechsHappyPlace" component={GeneralCalendar}/>
       </div>
     );
   }

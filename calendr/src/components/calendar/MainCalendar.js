@@ -186,7 +186,7 @@ export class MainCalendar extends Component {
   }
 
   render() {
-    
+    console.log(this.state.events)
     return (
     <div>
       <MainNavBar/>
