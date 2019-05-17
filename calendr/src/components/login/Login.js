@@ -10,6 +10,8 @@ class Login extends React.Component {
       clientSecret: "",
     }
   }
+  
+// Login page with google login
 
   render() { 
     return ( 

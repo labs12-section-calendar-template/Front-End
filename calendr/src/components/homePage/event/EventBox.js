@@ -5,19 +5,10 @@ import axios from 'axios'
 export class EventBox extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      displayEvents: []
-    }
   }
 
-  componentDidMount = () => {
-    this.setState({
-      displayEvents: this.props.events
-    })
-  }
-
+  // Delete events  
   deleteEvent = (e, id) => {
-
     let groupID = localStorage.getItem('group_id')
     axios
       .delete(`${process.env.REACT_APP_API}/events/${id}`)

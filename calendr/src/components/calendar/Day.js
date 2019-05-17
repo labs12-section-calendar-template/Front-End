@@ -12,26 +12,23 @@ class Day extends React.Component {
     this.state = {
       modalOpen: false,
       check: moment(this.props.day.date._d).format("YYYY-MM-DD"),
-      
     };
   }
   
-
+  // For opening the event creation page by clicking on a given day
   toggleOpen = () => {
     this.props.history.push(`/event/${this.state.check}`);
   };
 
-  
 
   render() {
+    // for making sure that the date an event is created for populates the correct date
     const filteredEvent = this.props.events.filter(event => {
       if (event.date === this.state.check) {
         return event;
        }
     });
-    const {
-      day: { date, number }
-    } = this.props;
+    const { day: { date, number } } = this.props;
     return (
       <>
         <div className="day" key={date.toString()} onClick={this.toggleOpen}>

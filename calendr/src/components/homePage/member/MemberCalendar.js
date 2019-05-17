@@ -9,7 +9,8 @@ export class MemberCalendar extends Component {
   state = {
     month: moment()
   }
-
+  
+  // Previous month button function
   previous = () => {
     const { month } = this.state;
 
@@ -18,6 +19,7 @@ export class MemberCalendar extends Component {
     });
   };
 
+    // Next month button function
   next = () => {
     const { month } = this.state;
 
@@ -25,6 +27,8 @@ export class MemberCalendar extends Component {
       month: month.add(1, "month")
     });
   };
+
+  // Month label above calendr
   renderMonthLabel() {
     const { month } = this.state;
     return (
@@ -34,6 +38,7 @@ export class MemberCalendar extends Component {
     );
   }
 
+  // Renders all weeks that populate the calendr
   renderWeeks() {
     let weeks = [];
     let done = false;
@@ -45,7 +50,7 @@ export class MemberCalendar extends Component {
     let monthIndex = date.month();
 
     const { month } = this.state;
-
+  // Pulls in weeks and loops over until calendar is complete 
     while (!done) {
       weeks.push(<MemberWeek 
                   key={date} 

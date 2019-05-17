@@ -21,7 +21,8 @@ this.state = {
     }
 }
 
-// getTemplate = event => {
+// Probably not needed
+getTemplate = event => {
 //   let group_id = localStorage.getItem("group_id")
 //   console.log(group_id)
 //   axios
@@ -35,8 +36,9 @@ this.state = {
 //     .catch(err => {
 //       console.log(err);
 //     });
-// }
+}
 
+// updating template information
 updateTemplate = (e) => {
   let letMeBack = localStorage.getItem('group_id')
   let id = this.props.match.params.id
@@ -63,30 +65,34 @@ axios
 }
 }
 
+// handles input for startDate and sets to state
 handleStartDateChange = event => {
   this.setState({
     startDate: event.target.value
   });
 };
 
+// handles input for endDate and sets to state
 handleEndDateChange = event => {
   this.setState({
     endDate: event.target.value
   });
 };
 
+// handles input and sets to state
 handleInputChange = event => {
   this.setState({
       [event.target.name]: event.target.value
   })
 }
+
+// cancel the update and return to previous page
 cancel = () => {
   let letMeBack = localStorage.getItem('group_id')
   window.location = `/home/${letMeBack}`
 }
 
   render() {
-  
     return (
     <div>
       <MainNavBar/>

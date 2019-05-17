@@ -13,6 +13,8 @@ import GeneralCalendar from "../calendar/GeneralCalendar";
 import MainCalendar from "../calendar/MainCalendar";
 import BillingPage from '../billing/BillingPage';
 
+// All views once logged in
+
 class mainView extends React.Component {
   constructor(props) {
     super(props);

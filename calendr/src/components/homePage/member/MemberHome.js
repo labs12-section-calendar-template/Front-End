@@ -20,11 +20,13 @@ class MemberHome extends React.Component {
         }
     }
 
+    // Mounts getGroup and checkUsersGroups
     componentDidMount(){
         this.getGroup()
         this.checkUsersGroups()
     }
 
+    // Allows a member to join a group
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
@@ -47,6 +49,7 @@ class MemberHome extends React.Component {
     })
     }
 
+    // Gets all the templates for the group joined
     getGroupTemplates = (groupID) => {
         axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
@@ -61,7 +64,8 @@ class MemberHome extends React.Component {
           })
       }
 
-      // getEvents = value => {
+      // Probably not needed
+      getEvents = value => {
       //   return new Promise ((resolve, reject) => { axios
       //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       //     .then(res => {
@@ -89,31 +93,33 @@ class MemberHome extends React.Component {
       //     .catch(err => {
       //       reject(err)
       //     });
-      // })};
+    //  })
+    };
 
-      selectEvents = (something) => {
-        return new Promise((resolve, reject) => { axios
-        .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
-        .then(res => {
-         let events = res.data
-         console.log(res.data)
-          this.setState( previousState => {return {
-            events: [...previousState.events, ...events].sort((a,b) => {
-              if(a.startTime > b.startTime){
-                          return 1
-                        } else if (a.startTime < b.startTime){
-                          return -1
-                        } else {
-                          return 0
-                        }
-            })
-          }});
+    // Gets all events for the template id. To be run when a toggle is clicked
+  selectEvents = (something) => {
+    return new Promise((resolve, reject) => { axios
+    .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
+    .then(res => {
+      let events = res.data
+      console.log(res.data)
+      this.setState( previousState => {return {
+        events: [...previousState.events, ...events].sort((a,b) => {
+          if(a.startTime > b.startTime){
+            return 1
+          } else if (a.startTime < b.startTime){
+            return -1
+          } else {
+            return 0
+          }
+        })
+      }});
         })
         .catch(err => {
           reject(err);
         })});
       }
-
+    // Takes in the selectEvents and confirms if a template isChecked or not
       singleCheck = event => {
         let eventsArray = [];
         let temps = this.state.templates
@@ -151,6 +157,7 @@ class MemberHome extends React.Component {
         })
       }
 
+      // Gets all groups for the user
       checkUsersGroups = () => {
           let userId = localStorage.getItem('userId')
           axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
@@ -167,9 +174,6 @@ class MemberHome extends React.Component {
               console.log(err)
           })
       }
-
-
-
 
     //Groupname needs to be displayed based off of joincode
     //templates for the group above need to be displayed

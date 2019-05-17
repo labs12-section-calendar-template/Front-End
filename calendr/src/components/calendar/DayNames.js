@@ -1,5 +1,6 @@
 import React from 'react'
 
+// Renders all Day titles for the calendar
 class DayNames extends React.Component {
     render() {
         return (

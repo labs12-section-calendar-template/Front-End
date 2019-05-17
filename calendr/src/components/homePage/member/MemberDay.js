@@ -16,6 +16,7 @@ class MemberDay extends React.Component {
 
 
   render() {
+    // for making sure that the date an event is created for populates the correct date
     const filteredEvent = this.props.events.filter(event => {
       if (event.date === this.state.check) {
         return event;

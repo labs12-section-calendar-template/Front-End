@@ -16,9 +16,11 @@ export class GeneralCalendar extends Component {
       template_id: []
     };
   }
+
   componentDidMount() {
     this.getTemplateId();
   }
+  // Get template by its corresponding group id
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
@@ -42,6 +44,7 @@ export class GeneralCalendar extends Component {
       });
   };
 
+// Get events by its corresponding template id
   getEvents = value => {
     axios
       .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
@@ -62,6 +65,7 @@ export class GeneralCalendar extends Component {
       });
   };
 
+  // Renders all weeks that populate the calendr
   renderWeeks() {
     let weeks = [];
     let done = false;
@@ -74,6 +78,7 @@ export class GeneralCalendar extends Component {
 
     const { month } = this.state;
 
+    // Pulls in weeks and loops over until calendar is complete 
     while (!done) {
       weeks.push(
         <Week
@@ -93,7 +98,7 @@ export class GeneralCalendar extends Component {
     }
     return weeks;
   }
-
+// On confirming your events, this delays the return so data can populate
   delayRedirect = event => {
     let takeMeHome = localStorage.getItem('group_id')
     const {

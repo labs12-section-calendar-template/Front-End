@@ -13,7 +13,7 @@ export class Group extends Component {
     }
   }
 
-
+  // Join group based on the joinCode
     joinGroup = event => {
       event.preventDefault();
       let user_id = localStorage.getItem('userId')
@@ -29,7 +29,7 @@ export class Group extends Component {
           toast('There was an error joining a group. Please use a valid join code.')
         })
     }
-    
+    // Create a group with a name and joinCode
     postGroup = e => {
       e.preventDefault();
       let { name } = this.state
@@ -55,12 +55,12 @@ export class Group extends Component {
     };
 
     
-
-handleInputChange = event => {
-  this.setState({
-      [event.target.name]: event.target.value
-  })
-}
+    // Takes in inputs and sets them to state
+    handleInputChange = event => {
+      this.setState({
+          [event.target.name]: event.target.value
+      })
+    }
 
   render() {
     return (

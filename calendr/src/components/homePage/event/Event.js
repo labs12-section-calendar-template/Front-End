@@ -36,7 +36,7 @@ class Event extends React.Component {
     this.getFullWeek(this.props.match.params.date);
   }
 
-
+  // gets the full week starting from monday when a day is clicked on
   getFullWeek = (yyyymmdd) => {
     let beginningOfWeek = moment(new Date(yyyymmdd)).startOf('week')
 
@@ -58,30 +58,36 @@ class Event extends React.Component {
     }
   }
 
+  // Probably don't need this
   toggleDay(day) {
-    this.setState({ [day]: !this.state[day] });
+    // this.setState({ [day]: !this.state[day] });
   }
 
+  // reads the input of the event inputs and sets them to state
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
+  // x button on the event creation page to close the page
   toggleClose = event => {
     event.preventDefault();
     let tempId = localStorage.getItem('template_id')
     this.props.history.push(`/template/calendr/${tempId}`);
   };
+
+  // StartTime handle change setting startTime to state
   handleStartTimeChange = (time) => {
     this.setState({ startTime: time })
   }
-
+  
+  // EndTime handle change setting endTime to state 
   handleEndTimeChange = (time) => {
     this.setState({ endTime: time })
   }
 
-
+  // gets the template information based on the group to be used for getTemplateById
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
     axios
@@ -102,6 +108,7 @@ class Event extends React.Component {
       });
   };
 
+  // gets the events created to cover multiple weeks 
   getTemplateById = () => {
     let id = localStorage.getItem('template_id')
     axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
@@ -121,6 +128,7 @@ class Event extends React.Component {
       })
   }
 
+  // adding event, add a single event or add events coving the total length of the template
   addEvent = () => {
     let temppId = localStorage.getItem('template_id')
     let { startTime, endTime, title, description, sum } = this.state;

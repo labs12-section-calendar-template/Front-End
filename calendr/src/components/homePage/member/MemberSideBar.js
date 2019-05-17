@@ -14,7 +14,8 @@ export class MemberSideBar extends Component {
     }
   }
 
-  // componentDidMount() {
+  // Probably not needed
+  componentDidMount() {
   //   this.getGroup();
   // }
 
@@ -51,18 +52,19 @@ export class MemberSideBar extends Component {
   //     }).catch(err => {
   //       console.log(err)
   //     })
-  // }
+  }
 
+// Probably not needed
   toggleModal = () => {
-    if (this.state.modalOpen === false) {
-      this.setState({
-        modalOpen: true,
-      })
-    } else {
-      this.setState({
-        modalOpen: false
-      })
-    }
+    // if (this.state.modalOpen === false) {
+    //   this.setState({
+    //     modalOpen: true,
+    //   })
+    // } else {
+    //   this.setState({
+    //     modalOpen: false
+    //   })
+    // }
   }
 
   render() {
