@@ -29,7 +29,7 @@ class Day extends React.Component {
       console.log(event.date)
        console.log(moment(this.props.day.date._d).format("YYYY-MM-DD"))
        console.log(moment(this.props.day.date._d))
-      if (event.date === moment(this.props.day.date._d).format("YYYY-MM-DD")) {
+      if (moment(event.date).format('YYYY-MM-DD') === moment(this.props.day.date._d).format("YYYY-MM-DD")) {
         return event;
        }
     });
