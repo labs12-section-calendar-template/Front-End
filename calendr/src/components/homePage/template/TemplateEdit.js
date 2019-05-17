@@ -11,7 +11,7 @@ export class TemplateEdit extends Component {
     super(props);
     
 this.state = {
-    colortitle: '',
+    title: '',
     description: '',
     startDate: '',
     endDate: '',

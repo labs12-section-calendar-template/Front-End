@@ -23,9 +23,8 @@ export class EventBox extends Component {
       .delete(`${process.env.REACT_APP_API}/events/${id}`)
       .then(res => {
         console.log("event deleted");
-        
-       this.props.history.push(`/templates/calendr/${groupID}`);
-      })
+        document.location.reload();
+        })
       .catch(err => {
         console.log(err);
       });
@@ -43,6 +42,10 @@ export class EventBox extends Component {
                     <i
                       className="fas fa-trash iconSize"
                       onClick={e => this.deleteEvent(e, event.id)}
+                    />
+                    <i
+                      className="far fa-edit iconSize"
+                      onClick={e => this.edit(e, event.id)}
                     />
             <h5>{event.title}</h5><br/>
             <p>{event.description}</p><br/>
