@@ -16,7 +16,7 @@ import BillingPage from '../billing/BillingPage';
 class mainView extends React.Component {
   constructor(props) {
     super(props);
-    
+
   }
 
   render() {
@@ -28,11 +28,11 @@ class mainView extends React.Component {
           render={(...props) => <Group logOff={this.props.logOff} {...props} />}
         />
 
-        <Route 
+        <Route
           path="/billing"
           exact
-          render={(...props) => <BillingPage />}
-          />
+          render={(...props) => <BillingPage logOff={this.props.logOff} />}
+        />
 
         <Route
           path="/home/:id"
@@ -43,22 +43,26 @@ class mainView extends React.Component {
         <Route
           path="/memberhome"
           exact
-          render={(...props) => <MemberHome logOff = {this.props.logOff} {...props} />}
+          render={(...props) => <MemberHome logOff={this.props.logOff} {...props} />}
         />
 
         <Route path="/users" component={Users} />
 
         <Route
-          path="/template" 
+          path="/template"
           exact
-          render={(...props) => <Template logOff = {this.props.logOff} {...props} />}
+          render={(...props) => <Template logOff={this.props.logOff} {...props} />}
         />
-          
+
+        <Route path="/template/calendr/:id" 
+         exact
+         render={(...props) =>  <MainCalendar logOff={this.props.logOff} {...props} />} />
+      
+
         <Route path="/template/edit/:id" component={TemplateEdit} />
         <Route path="/event" component={GeneralCalendar} />
-        <Route path="/template/calendr/:id" component={MainCalendar} />
-        <Route path="/event/:date" component={Event} />
-        <Route exact path="/ZechsHappyPlace" component={GeneralCalendar}/>
+        {/* <Route path="/event/:date" component={Event} /> */}
+        <Route exact path="/ZechsHappyPlace" component={GeneralCalendar} />
       </div>
     );
   }

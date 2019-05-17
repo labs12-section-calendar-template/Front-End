@@ -24,7 +24,11 @@ class MemberWeek extends React.Component {
     return (
       <div className="week"> 
       {days.map(day =>( 
-        <MemberDay day={day} key={day.date}/>
+        <MemberDay day={day} 
+                   key={day.date}
+                   events = {this.props.events}
+                   templates = {this.props.templates}
+                   />
       ))}
       </div>
     );

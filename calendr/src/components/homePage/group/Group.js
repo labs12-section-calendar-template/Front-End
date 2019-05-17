@@ -21,8 +21,8 @@ export class Group extends Component {
         .post(`${process.env.REACT_APP_API}/groups/getby/${user_id}`, {
           joinCode: this.state.joinCode
         }).then(res => {
-          console.log(res.data.id)
-          window.localStorage.setItem('memberId', res.data.group_id)
+          console.log(res.data)
+          window.localStorage.setItem('joinCode', this.state.joinCode)
           window.location = '/memberhome'
         }).catch(err => {
           console.error(err, 'there was an error')

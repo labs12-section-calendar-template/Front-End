@@ -12,6 +12,7 @@ const MainNavBar = (props) => {
         <h1 className="calendrTitle">CALENDR</h1>
       <div className="nav-buttons">
         <NavLink activeClassName="navbuttonLink" className="navbutton" to={`/home/${takeMeHome}`}>Home</NavLink>
+        <NavLink activeClassName="navbuttonLink" className="navbutton" to={`/billing`}>Billing</NavLink>
         <div className="logout" onClick = {props.logOff}> Logout </div>
       </div>
     </div>

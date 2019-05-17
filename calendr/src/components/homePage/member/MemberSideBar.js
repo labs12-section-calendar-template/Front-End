@@ -3,63 +3,64 @@ import axios from 'axios';
 // import Popup from 'reactjs-popup';
 
 export class MemberSideBar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      groupName: [],
-      joinCode: [],
-      group_id:[],
-      tamplates: [],
+      // groupName: [],
+      // joinCode: [],
+      // group_id: [],
+      // templates: [],
       modalOpen: false
     }
   }
 
-  componentDidMount(){
-    this.getGroup();
-  }
-  
-  getGroup = () => {
-    let memberId = localStorage.getItem('memberId')
-    axios.get(`${process.env.REACT_APP_API}/members/${memberId}/groups`)
-    .then(res => {
-        console.log(res.data)
-        let groupID = res.data[0].id
-      this.setState({
-        group_id: res.data[0].id,
-        groupName: res.data[0].name,
-        joinCode: res.data[0].joinCode,
-      })
+  // componentDidMount() {
+  //   this.getGroup();
+  // }
+
+  // getGroup = () => {
+  //   let joinCode = localStorage.getItem('joinCode')
+
+  //   axios.post(`${process.env.REACT_APP_API}/groups/getby/joincode`, {joinCode})
+  //   .then(res => {
+  //       console.log(res.data)
+  //       let groupID = res.data.id
+  //     this.setState({
+  //       group_id: res.data.id,
+  //       groupName: res.data.name,
+  //       joinCode: res.data.joinCode,
+  //     })
       
-      this.getGroupTemplates(groupID)
+  //     this.getGroupTemplates(groupID)
 
-      console.log(this.state.group_id)
-      window.localStorage.setItem("group_id", this.state.group_id)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
+  //     console.log(this.state.groupName)
+  //     window.localStorage.setItem("group_id", this.state.group_id)
+  //   })
+  //   .catch(err => {
+  //     console.log(err)
+  //   })
+  // }
 
-  getGroupTemplates = (groupID) => {
-    axios.get(`${process.env.REACT_APP_API}/members/${groupID}/groups`)
-    .then(res => {
-        console.log(res.data)
-        this.setState({
-            templates: res.data
-        })
-    }).catch(err => {
-        console.log(err)
-    })
-  }
+  // getGroupTemplates = (groupID) => {
+  //   axios.get(`${process.env.REACT_APP_API}/members/${groupID}/groups`)
+  //     .then(res => {
+  //       console.log(res.data)
+  //       this.setState({
+  //         templates: res.data
+  //       })
+  //     }).catch(err => {
+  //       console.log(err)
+  //     })
+  // }
 
   toggleModal = () => {
-    if(this.state.modalOpen === false){
+    if (this.state.modalOpen === false) {
       this.setState({
         modalOpen: true,
       })
-    }else{
+    } else {
       this.setState({
-        modalOpen:false
+        modalOpen: false
       })
     }
   }
@@ -70,30 +71,32 @@ export class MemberSideBar extends Component {
       <>
         <div className="memberHomeWrapper">
 
-        <div className="groupNameTemplate">
-        </div>
+          <div className="groupNameTemplate">
+          </div>
           <h5 className='buttonTitles'>Group Name</h5>
             <div className='buttonBox'>
-                <h3 className = "groupName">{this.state.groupName}</h3>
+                <h3 className = "groupName">{this.props.group.name}</h3>
             </div>
-          <h5 className='buttonTitles'>Group Members</h5>
 
-        <div className='buttonBox'>
-          <ul>
-              <li>member 1</li>
-          </ul>
+          <h5 className='buttonTitles'>Templates</h5>
+            <div>
+                {this.props.templates.map(template => {return <div key={template.id} value = {template.id}>
+                  <input
+                  type="checkbox"
+                  name={template.id}
+                  check={template.isChecked}
+                  value={template.id}
+                  onClick={this.props.singleCheck}
+                  />    
+                  
+                  <h5>{template.title}</h5>
+          
+                </div>
+                })} 
+            </div>
+
         </div>
-
-            <h5 className='buttonTitles'>Templates</h5>
-
-        <div className='buttonBox'>
-            <ul>
-              <li>template 1</li>
-          </ul>
-        </div>
-
-      </div>
-      {/* <Popup open={this.state.modalOpen} id="groupEditPopup">
+        {/* <Popup open={this.state.modalOpen} id="groupEditPopup">
         <div toggleModal={this.toggleModal} group_id={this.state.group_id}/>
       </Popup> */}
       </>
