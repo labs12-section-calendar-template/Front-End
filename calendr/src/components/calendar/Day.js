@@ -29,7 +29,7 @@ class Day extends React.Component {
         return event;
        }
     });
-    console.log(filteredEvent)
+    console.log(this.props.events)
     const {
       day: { date, number }
     } = this.props;
