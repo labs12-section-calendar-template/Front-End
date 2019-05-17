@@ -25,10 +25,11 @@ class Day extends React.Component {
 
   render() {
     const filteredEvent = this.props.events.filter(event => {
-      if (event.date === this.state.check) {
+      if (event.date === moment(this.props.day.date._d).format("YYYY-MM-DD")) {
         return event;
        }
     });
+    console.log(filteredEvent)
     const {
       day: { date, number }
     } = this.props;
