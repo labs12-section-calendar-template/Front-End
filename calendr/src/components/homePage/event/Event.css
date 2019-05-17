@@ -156,3 +156,10 @@
 Popup{
   width: 80%;
 }
+
+.allEvents{
+margin-top:4px;
+}
+.event{
+  border: 1px solid black;
+}

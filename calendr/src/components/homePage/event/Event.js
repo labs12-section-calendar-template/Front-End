@@ -129,16 +129,16 @@ class Event extends React.Component {
 
   addEvent = () => {
     let { startTime, endTime, title, description, sum } = this.state;
-for (let i = 0; i < sum; i++){
+for (let i = 0; i <= sum; i++){
   console.log(this.state.sum)
   axios
     .post(
-      `${process.env.REACT_APP_API}/templates/${this.state.template_id}/events`,{
+      `${process.env.REACT_APP_API}/templates/${localStorage.getItem('template_id')}/events`,{
       startTime,
       endTime,
       title,
       description,
-      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+      date: moment(this.props.match.params.date).add(i, 'week').format('YYYY-MM-DD')
     })
     .then(res => {
       console.log(res.data.date);
@@ -149,6 +149,7 @@ for (let i = 0; i < sum; i++){
   };
 
   render() {
+    console.log(this.props.match.params.date)
     return (
       <>
         <div className="event-view-wrapper">
@@ -189,14 +190,6 @@ for (let i = 0; i < sum; i++){
                 </div>
               </form>
             </div>
-            <div className="weekday-container">
-              <div
-                className={`${this.state.S && "active"} weekday`}
-                onClick={() => this.toggleDay("S")}
-              >
-                S
-              </div>
-            </div>
 
             <Selected
               startTime={this.state.startTime}
@@ -204,8 +197,8 @@ for (let i = 0; i < sum; i++){
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
               handleChange={this.handleChange}
-              day={this.state.S}>
-              Saturday
+             >
+            
               </Selected>
           </div>
 
@@ -213,8 +206,7 @@ for (let i = 0; i < sum; i++){
             className="save-event-button"
             onClick={() => {
               this.addEvent();
-              this.props.history.push("/event");
-            }}
+              this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)            }}
           >
             Save
             </button>

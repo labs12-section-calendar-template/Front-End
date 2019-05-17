@@ -16,7 +16,7 @@ import BillingPage from '../billing/BillingPage';
 class mainView extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    
   }
 
   render() {
@@ -55,7 +55,6 @@ class mainView extends React.Component {
         />
           
         <Route path="/template/edit/:id" component={TemplateEdit} />
-        <Route path="/event/" component={GeneralCalendar} />
         <Route path="/template/calendr/:id" component={MainCalendar} />
         <Route path="/event/:date" component={Event} />
       </div>

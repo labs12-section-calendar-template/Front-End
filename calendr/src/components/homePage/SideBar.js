@@ -3,6 +3,7 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
+import './Side.scss'
 
 export class SideBar extends Component {
   constructor(props){
@@ -116,9 +117,6 @@ export class SideBar extends Component {
       </div>
         ))}
         </div>
-          
-       
-       
             <h5 className='buttonTitles'>Templates</h5>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
