@@ -15,7 +15,7 @@ class MemberHome extends React.Component {
         return ( 
 
         <div>
-            <h1> This is where members get routed</h1>
+            <h1>View Your Group's Events Here</h1>
             <MemberSideBar/>
             <MemberCalendar/>
         </div> 

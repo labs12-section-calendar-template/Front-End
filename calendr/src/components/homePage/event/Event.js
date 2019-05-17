@@ -120,12 +120,14 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
+    let temppId = localStorage.getItem('template_id')
     let { startTime, endTime, title, description, sum } = this.state;
+
     for (let i = 0; i <= sum; i++) {
       console.log(this.state.sum)
       axios
         .post(
-          `${process.env.REACT_APP_API}/templates/${localStorage.getItem('template_id')}/events`, {
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime,
             endTime,
             title,
