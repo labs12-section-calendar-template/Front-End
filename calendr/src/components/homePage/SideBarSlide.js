@@ -124,8 +124,8 @@ export class SideBarSlide extends Component {
            
         <div className="homePageStyles">
         <div className="groupNameTemplate">
-          <h2 className="GroupName">{this.state.groupName}</h2>
           <i className="far fa-edit" onClick={this.toggleModal}/>
+          <h2 className="GroupName">{this.state.groupName}</h2>
         </div>
           <p className='buttonDescriptions'>Join Code: {this.state.joinCode}</p>
         <div>
