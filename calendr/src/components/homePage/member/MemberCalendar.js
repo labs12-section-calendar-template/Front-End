@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import DayNames from "../../calendar/DayNames"
 import MemberWeek from './MemberWeek'
+import "./memberCalendar.scss"
 
 
 export class MemberCalendar extends Component {
@@ -60,7 +61,7 @@ export class MemberCalendar extends Component {
   render() {
     return (
       <div className="wholeCalendar">
-        <div style={{ width: '45%', display: 'flex', marginLeft: "40%" }} className="month-display">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="arrowsAndMonth-members">
           <div className="arrow fa fa-angle-left" onClick={this.previous} />
           <div>{this.renderMonthLabel()}</div>
           <div className="arrow fa fa-angle-right" onClick={this.next} />
