@@ -5,13 +5,11 @@ import moment from 'moment'
 // const format = 'HH:mm'
 
 const Selected = props => {
-  if (!props.day) {
-    return null;
-  }
+
   return (
     <div className="selected">
 
-      {/* <p className="selected-day">{props.children}</p> */}
+      <p className="selected-day">{props.children}</p>
       <span className="event-time">Start time:</span>
       <TimePicker
 
