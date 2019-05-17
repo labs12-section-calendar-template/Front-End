@@ -181,7 +181,6 @@ class Event extends React.Component {
               }}
             >
               <form
-                type="submit"
                 style={{
                   display: "flex",
                   flexDirection: "column"
