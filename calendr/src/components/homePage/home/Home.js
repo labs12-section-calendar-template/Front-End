@@ -41,7 +41,6 @@ export class Home extends Component {
     axios
       .get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`)
       .then(res => {
-        console.log(res.data)
         this.setState({
           templates: res.data,
           group_id: lateNight[2]
@@ -57,12 +56,14 @@ export class Home extends Component {
   };
 
   deleteTemplate = (e, id) => {
-    e.preventDefault();
+    e.stopPropagation();
+    let groupID = localStorage.getItem('group_id')
     axios
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");
-        document.location.reload();
+        
+       this.props.history.push(`/home/${groupID}`);
       })
       .catch(err => {
         console.log(err);
@@ -83,7 +84,6 @@ export class Home extends Component {
   }
 
   render() {
-    console.log(this.state.templates)
     if (this.state.templates.length < 1) {
       return (
         <div>

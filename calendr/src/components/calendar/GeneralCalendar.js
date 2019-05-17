@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import DayNames from "./DayNames";
 import Week from "./Week";
-import "./GeneralCalendar.css";
+import "./GeneralCalendar.scss";
 import axios from "axios";
 
 export class GeneralCalendar extends Component {
@@ -54,8 +54,8 @@ export class GeneralCalendar extends Component {
           latestEvent: events[events.length - 1],
           events: events
         });
-        console.log(this.state.events)
-        console.log(events)
+        // console.log(this.state.events)
+        // console.log(events)
       })
       .catch(err => {
         console.log(err);
@@ -108,7 +108,7 @@ export class GeneralCalendar extends Component {
         <h1>CALENDR</h1>
         <p>Click a date to add an event.</p>
         <DayNames />
-        <div>{this.renderWeeks()}</div>
+        <div className='cal'>{this.renderWeeks()}</div>
         <button onClick={this.delayRedirect}>SUBMIT</button>
       </div>
     );
