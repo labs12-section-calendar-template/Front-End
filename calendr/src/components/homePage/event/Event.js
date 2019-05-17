@@ -111,7 +111,7 @@ class Event extends React.Component {
           startDate: res.data.startDate,
           endDate: res.data.endDate,
           sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
-  
+
         })
       })
       .catch(err => {
@@ -121,26 +121,27 @@ class Event extends React.Component {
 
   addEvent = () => {
     let { startTime, endTime, title, description, sum } = this.state;
-for (let i = 0; i <= sum; i++){
-  console.log(this.state.sum)
-  axios
-    .post(
-      `${process.env.REACT_APP_API}/templates/${localStorage.getItem('template_id')}/events`,{
-      startTime,
-      endTime,
-      title,
-      description,
-      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
-    })
-    .then(res => {
-      console.log(res.data.date);
-       //window.location = "/event";
-    })
-    .catch(err => console.log(err));
-  }
+    for (let i = 0; i <= sum; i++) {
+      console.log(this.state.sum)
+      axios
+        .post(
+          `${process.env.REACT_APP_API}/templates/${localStorage.getItem('template_id')}/events`, {
+            startTime,
+            endTime,
+            title,
+            description,
+            date: moment(this.props.match.params.date).add(i, 'week').format('YYYY-MM-DD')
+          })
+        .then(res => {
+          console.log(res.data.date);
+          //window.location = "/event";
+        })
+        .catch(err => console.log(err));
+    }
   };
 
   render() {
+    console.log(this.props.match.params.date)
     console.log(this.props.events)
     return (
       <>
@@ -189,16 +190,17 @@ for (let i = 0; i <= sum; i++){
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
               handleChange={this.handleChange}
-             >
-            
-              </Selected>
+            >
+
+            </Selected>
           </div>
 
           <button
             className="save-event-button"
             onClick={() => {
               this.addEvent();
-              this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)            }}
+              this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)
+            }}
           >
             Save
             </button>

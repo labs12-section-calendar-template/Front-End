@@ -3,28 +3,28 @@ import axios from 'axios'
 
 
 export class EventBox extends Component {
-  constructor(props){
-      super(props)
-      this.state ={
-          displayEvents: []
-      }
+  constructor(props) {
+    super(props)
+    this.state = {
+      displayEvents: []
+    }
   }
 
   componentDidMount = () => {
-      this.setState({
-          displayEvents:this.props.events
-      })
+    this.setState({
+      displayEvents: this.props.events
+    })
   }
 
   deleteEvent = (e, id) => {
- 
+
     let groupID = localStorage.getItem('group_id')
     axios
       .delete(`${process.env.REACT_APP_API}/events/${id}`)
       .then(res => {
         console.log("event deleted");
-        
-       this.props.history.push(`/templates/calendr/${groupID}`);
+
+        this.props.history.push(`/templates/calendr/${groupID}`);
       })
       .catch(err => {
         console.log(err);
@@ -34,21 +34,21 @@ export class EventBox extends Component {
 
   render() {
     console.log(this.props.events)
-      let urlPath = window.location.pathname.split('/');
+    let urlPath = window.location.pathname.split('/');
     return (
-      <div className="allEvents"> 
+      <div className="allEvents">
         {this.props.events && this.props.events.map(event => {
-          if(urlPath[2] === event.date){
+          if (urlPath[2] === event.date) {
             return <div key={event.id} className="event">
-                    <i
-                      className="fas fa-trash iconSize"
-                      onClick={e => this.deleteEvent(e, event.id)}
-                    />
-            <h5>{event.title}</h5><br/>
-            <p>{event.description}</p><br/>
-            <p>{event.date}</p>
+              <i
+                className="fas fa-trash iconSize"
+                onClick={e => this.deleteEvent(e, event.id)}
+              />
+              <h5>{event.title}</h5><br />
+              <p>{event.description}</p><br />
+              <p>{event.date}</p>
             </div>
-            }
+          }
         })}
       </div>
     )

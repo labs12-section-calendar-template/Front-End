@@ -6,9 +6,10 @@
     width:15vw;
     height:100vh;
     position: fixed;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    // border-right: 1px solid black;
+    // border-top: 1px solid black;
 }
+
 
 .groupNameTemplate{
     display:flex;
@@ -31,12 +32,24 @@
     margin:.3rem;
     text-align: start;
 }
+@media(max-width: 500px) {
+    .buttonTitles{
+        font-size: 14px;
+    }
+}
 .buttonDescriptions{
     font-size:1rem;
 }
 
 li {
-    font-size: 18px;    ;
+    font-size: 18px;  
+  
+}
+@media(max-width: 500px) {
+    li{
+        font-size: 14px;
+        
+    }
 }
 
 .groupName {
