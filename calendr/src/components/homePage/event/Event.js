@@ -130,7 +130,7 @@ class Event extends React.Component {
             endTime,
             title,
             description,
-            date: moment(this.props.match.params.date).add(i, 'week').format('YYYY-MM-DD')
+            date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
           })
         .then(res => {
           console.log(res.data.date);
@@ -190,9 +190,9 @@ class Event extends React.Component {
               handleStartTimeChange={this.handleStartTimeChange}
               handleEndTimeChange={this.handleEndTimeChange}
               handleChange={this.handleChange}
-            >
+            />
 
-            </Selected>
+
           </div>
 
           <button
