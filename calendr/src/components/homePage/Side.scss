@@ -68,11 +68,12 @@
 }
 
 .fa-edit{
-    font-size: 1.2rem;
+    font-size: 1rem;
     margin-right: .5rem;
-    height: 0vh;
     transition: .5s ease-in;
     overflow: hidden;
+    cursor: pointer;
+
 }
 
 .navOpen{
@@ -116,10 +117,7 @@
     display:flex;
     align-items: center;
 }
-.fa-edit{
-    font-size: .8rem;
-    cursor: pointer;
-}
+
 .allTemps{
     font-size: 1.4rem;
 
