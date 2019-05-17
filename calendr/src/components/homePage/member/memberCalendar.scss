@@ -60,6 +60,7 @@
 }
 
 
+
 @media(max-width: 500px){
     .wholeCalendar{
         width: 100%;
@@ -75,16 +76,5 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-    }
-}
-
-.arrow{
-    width: 15px;
-    position: relative;
-    top: 20px
-    }
-@media(max-width: 500px) {
-    .arrow {
-        top: 3px
     }
 }
