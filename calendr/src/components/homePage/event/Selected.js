@@ -11,9 +11,10 @@ const Selected = props => {
   return (
     <div className="selected">
 
-      <p className="selected-day">{props.children}</p>
-
+      {/* <p className="selected-day">{props.children}</p> */}
+      <span className="event-time">Start time:</span>
       <TimePicker
+
         size="small"
         use12Hours format="h:mm a"
         name="startTime"
@@ -22,8 +23,9 @@ const Selected = props => {
         onChange={props.handleStartTimeChange}
         className="time-input"
       />
-
+      <span className="event-time">End time:</span>
       <TimePicker
+
         size="small"
         use12Hours format="h:mm a"
         name="endTime"

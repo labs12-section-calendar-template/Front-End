@@ -3,21 +3,21 @@ import axios from 'axios';
 // import Popup from 'reactjs-popup';
 
 export class MemberSideBar extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       groupName: [],
       joinCode: [],
-      group_id:[],
-      tamplates: [],
+      group_id: [],
+      templates: [],
       modalOpen: false
     }
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getGroup();
   }
-  
+
   getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
@@ -43,24 +43,24 @@ export class MemberSideBar extends Component {
 
   getGroupTemplates = (groupID) => {
     axios.get(`${process.env.REACT_APP_API}/members/${groupID}/groups`)
-    .then(res => {
+      .then(res => {
         console.log(res.data)
         this.setState({
-            templates: res.data
+          templates: res.data
         })
-    }).catch(err => {
+      }).catch(err => {
         console.log(err)
-    })
+      })
   }
 
   toggleModal = () => {
-    if(this.state.modalOpen === false){
+    if (this.state.modalOpen === false) {
       this.setState({
         modalOpen: true,
       })
-    }else{
+    } else {
       this.setState({
-        modalOpen:false
+        modalOpen: false
       })
     }
   }
@@ -71,29 +71,30 @@ export class MemberSideBar extends Component {
       <>
         <div className="memberHomeWrapper">
 
-        <div className="groupNameTemplate">
-        </div>
+          <div className="groupNameTemplate">
+          </div>
           <h5 className='buttonTitles'>Group Name</h5>
             <div className='buttonBox'>
                 <h3 className = "groupName">{this.state.groupName}</h3>
             </div>
 
-        <div className='buttonBox'>
-          <ul>
+
+          <div className='buttonBox'>
+            <ul>
               <li>member 1</li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-            <h5 className='buttonTitles'>Templates</h5>
+          <h5 className='buttonTitles'>Templates</h5>
 
-        <div className='buttonBox'>
+          <div className='buttonBox'>
             <ul>
               <li>template 1</li>
-          </ul>
-        </div>
+            </ul>
+          </div>
 
-      </div>
-      {/* <Popup open={this.state.modalOpen} id="groupEditPopup">
+        </div>
+        {/* <Popup open={this.state.modalOpen} id="groupEditPopup">
         <div toggleModal={this.toggleModal} group_id={this.state.group_id}/>
       </Popup> */}
       </>
