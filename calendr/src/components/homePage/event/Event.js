@@ -120,24 +120,26 @@ class Event extends React.Component {
   }
 
   addEvent = () => {
+    let temppId = localStorage.getItem('template_id')
     let { startTime, endTime, title, description, sum } = this.state;
-    for (let i = 0; i <= sum; i++) {
-      console.log(this.state.sum)
-      axios
-        .post(
-          `${process.env.REACT_APP_API}/templates/${localStorage.getItem('template_id')}/events`, {
-            startTime,
-            endTime,
-            title,
-            description,
-            date: moment(this.props.match.params.date).add(i, 'week').format('YYYY-MM-DD')
-          })
-        .then(res => {
-          console.log(res.data.date);
-          //window.location = "/event";
-        })
-        .catch(err => console.log(err));
-    }
+
+for (let i = 0; i <= sum; i++){
+  console.log(this.state.sum)
+  axios
+    .post(
+      `${process.env.REACT_APP_API}/templates/${temppId}/events`,{
+      startTime,
+      endTime,
+      title,
+      description,
+      date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+    })
+    .then(res => {
+      console.log(res.data.date);
+       //window.location = "/event";
+    })
+    .catch(err => console.log(err));
+  }
   };
 
   render() {
