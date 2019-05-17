@@ -142,7 +142,6 @@ class MemberHome extends React.Component {
             })
           } 
           if(i === temps.length-1){
-            console.log(eventsArray)
             this.setState (() => {
               return { events: eventsArray }
             })
