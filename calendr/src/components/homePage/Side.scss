@@ -23,6 +23,9 @@
         }
     }
 
+    .groupName{
+        padding: 0 1rem;
+    }
     .buttonTitles{
         font-size: 1.2rem;
         margin:.3rem;
@@ -83,7 +86,6 @@
         transition: .5s ease-in;
         overflow: hidden;
         position: fixed;
-        border-radius: 10px;
         z-index: 10;
         padding:0 1rem;
 
