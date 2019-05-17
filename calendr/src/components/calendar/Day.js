@@ -23,6 +23,7 @@ class Day extends React.Component {
   
 
   render() {
+    console.log(this.state.check)
     const filteredEvent = this.props.events.filter(event => {
       if (event.date === this.state.check) {
         return event;
@@ -52,14 +53,15 @@ class Day extends React.Component {
             <Popup
             className="modal-popup"
               open={true}
-              onClose={() => this.props.history.push(`/template/calendr/:id`)}
+              onClose={() => this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)}
               position="right center"
               // style={{ max-width: "80%"}}
             >
               <Event 
               check={this.state.check} 
               history={this.props.history} 
-              events = {this.props.events}/>
+              events = {this.props.events}
+              />
             </Popup>
           )}
         />
