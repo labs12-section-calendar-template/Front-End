@@ -47,7 +47,13 @@ export class MemberCalendar extends Component {
     const { month } = this.state;
 
     while (!done) {
-      weeks.push(<MemberWeek key={date} date={date.clone()} month={month} />);
+      weeks.push(<MemberWeek 
+                  key={date} 
+                  date={date.clone()} 
+                  month={month}
+                  events = {this.props.events}
+                  templates = {this.props.events}
+                  />);
 
       date.add(1, "week");
 

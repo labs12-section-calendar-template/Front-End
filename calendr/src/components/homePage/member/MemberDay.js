@@ -16,14 +16,28 @@ class MemberDay extends React.Component {
 
 
   render() {
+    const filteredEvent = this.props.events.filter(event => {
+      if (event.date === this.state.check) {
+        return event;
+       }
+    });
   
     const { day: { date, number } } = this.props;
     return (
       <>
-      
-      <div className='day' key={date.toString()} >
-        <p className="dayNumber">{number}</p> 
-      </div>
+      <div className="day" key={date.toString()} onClick={this.toggleOpen}>
+            <div className="eventInfo">
+
+              {filteredEvent.map(event => (
+                <p key = {event.id} style={{ fontSize: "12px" }}> {event.startTime} - {event.title}</p>
+              ))}
+              
+            </div>
+          <div className="dayNumber">
+            {number}
+          </div>
+
+        </div>
 
       </>
     );

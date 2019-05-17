@@ -16,6 +16,7 @@ export class MainCalendar extends Component {
       events: [],
       template_id: [],
       templates: [],
+      sortedStartTimes: []
     };
   }
   
@@ -44,7 +45,6 @@ export class MainCalendar extends Component {
 
         // this.getEvents(value);
         this.getEvents(value).then(res => {
-          console.log(res)
           this.setState({
             events: res
           })
@@ -61,13 +61,25 @@ export class MainCalendar extends Component {
     return new Promise ((resolve, reject) => { axios
       .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
-        let events = res.data.map(event => {
-          return event;
-        });
+        let events = res.data
+        // let eventTimes = res.data.map(event => {
+        //   return event.startTime
+        // })
 
-        // this.setState({
-        //   latestEvent: events[events.length - 1],
-        // });
+        let sortedTime = events.sort((a, b) => {
+          if(a.startTime > b.startTime){
+            return 1
+          } else if (a.startTime < b.startTime){
+            return -1
+          } else {
+            return 0
+          }
+        })
+
+        this.setState({
+          events: sortedTime
+        })
+       
         resolve(events);
       })
       .catch(err => {
@@ -186,10 +198,11 @@ export class MainCalendar extends Component {
   }
 
   render() {
-    console.log(this.state.events)
+    // console.log(this.state.events)
+    // console.log(this.state.sortedStartTimes)
     return (
     <div>
-      <MainNavBar/>
+      <MainNavBar logOff={this.props.logOff}/>
         <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
       <div className='wholeCal'>

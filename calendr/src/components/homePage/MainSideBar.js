@@ -106,7 +106,7 @@ export class MainSideBar extends Component {
         <div className="homePageStyles">
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
-          <i className="far fa-edit" onClick={this.toggleModal}/>
+          {/* <i className="far fa-edit" onClick={this.toggleModal}/> */}
         </div>
           <h5 className='buttonTitles'>Group Members</h5>
           
