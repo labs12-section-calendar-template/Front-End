@@ -3,6 +3,10 @@ import axios from 'axios';
 import MemberSideBar from './MemberSideBar';
 import MemberCalendar from './MemberCalendar'
 import './memberHome.scss'
+import { NavLink } from "react-router-dom";
+import logo from "../../../extras/CalendrWhite.png";
+import { toast } from 'react-toastify';
+// import './NavBar.scss'
 
 class MemberHome extends React.Component {
     constructor(props) {
@@ -11,12 +15,14 @@ class MemberHome extends React.Component {
             group: [],
             joinCode: [],
             templates: [],
-            events: []
+            events: [],
+            usersGroups: []
         }
     }
 
     componentDidMount(){
         this.getGroup()
+        this.checkUsersGroups()
     }
 
     getGroup = () => {
@@ -32,8 +38,9 @@ class MemberHome extends React.Component {
       })
       
       this.getGroupTemplates(groupID)
+      
 
-      window.localStorage.setItem("group_id", this.state.group_id)
+      window.localStorage.setItem("group_id", res.data.group.id)
     })
     .catch(err => {
       console.log(err)
@@ -143,14 +150,48 @@ class MemberHome extends React.Component {
           }
         })
       }
+
+      checkUsersGroups = () => {
+          let userId = localStorage.getItem('userId')
+          axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+          .then(res => {
+              console.log(res.data)
+            this.setState({
+                usersGroups: res.data
+            })
+            //   if(res.data.length > 0) {
+            //       window.location=`/home/${}`
+            //   }
+          })
+          .catch(err => {
+              console.log(err)
+          })
+      }
+
+
+
+
     //Groupname needs to be displayed based off of joincode
     //templates for the group above need to be displayed
     //clicking on the templates that are displayed need to display all of the events
 
     render() { 
+        console.log(this.state.usersGroups)
         return ( 
             
         <div>
+            <div className="navBarContainer">
+    <div className="margin">
+        <img src={logo} alt="Logo"/>
+        <h1 className="calendrTitle">CALENDR</h1>
+      <div className="nav-buttons">
+      
+        <NavLink activeClassName="navbuttonLink" className="navbutton" to={this.state.usersGroups.length > 0 ? `/home/${this.state.usersGroups[0].id}` : '/' }>Home</NavLink>
+        <NavLink activeClassName="navbuttonLink" className="navbutton" to={`/`}>Create/Join</NavLink>
+        <div className="logout" onClick = {this.props.logOff}> Logout </div>
+      </div>
+    </div>
+    </div>
             <h1>View Your Group's Events Here</h1>
             <MemberSideBar singleCheck = {this.singleCheck} group = {this.state.group} templates = {this.state.templates} />
             <MemberCalendar events = {this.state.events}

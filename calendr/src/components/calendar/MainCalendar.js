@@ -202,7 +202,7 @@ export class MainCalendar extends Component {
     // console.log(this.state.sortedStartTimes)
     return (
     <div>
-      <MainNavBar/>
+      <MainNavBar logOff={this.props.logOff}/>
         <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
       <div className='wholeCal'>
