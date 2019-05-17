@@ -17,50 +17,50 @@ export class GeneralCalendar extends Component {
     };
   }
   componentDidMount() {
-   // this.getTemplateId();
+    this.getTemplateId();
   }
-  // getTemplateId = event => {
-  //   let group_id = localStorage.getItem("group_id");
-  //   axios
-  //     .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
-  //     .then(res => {
-  //       let value = res.data[res.data.length - 1].id;
-  //       let tempIds = res.data.map(data => {
-  //         return data.id;
-  //       });
+  getTemplateId = event => {
+    let group_id = localStorage.getItem("group_id");
+    axios
+      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
+      .then(res => {
+        let value = res.data[res.data.length - 1].id;
+        let tempIds = res.data.map(data => {
+          return data.id;
+        });
 
-  //       // console.log(group_id);
+        // console.log(group_id);
 
-  //       this.setState({
-  //         template_id: tempIds[tempIds.length - 1]
-  //       });
-  //       console.log(value);
-  //       this.getEvents(value);
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
+        this.setState({
+          template_id: tempIds[tempIds.length - 1]
+        });
+        console.log(value);
+        this.getEvents(value);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-  // getEvents = value => {
-  //   axios
-  //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-  //     .then(res => {
-  //       let events = res.data.map(event => {
-  //         return event;
-  //       });
+  getEvents = value => {
+    axios
+      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+      .then(res => {
+        let events = res.data.map(event => {
+          return event;
+        });
 
-  //       this.setState({
-  //         latestEvent: events[events.length - 1],
-  //         events: events
-  //       });
-  //       // console.log(this.state.events)
-  //       // console.log(events)
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
+        this.setState({
+          latestEvent: events[events.length - 1],
+          events: events
+        });
+        // console.log(this.state.events)
+        // console.log(events)
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   renderWeeks() {
     let weeks = [];
