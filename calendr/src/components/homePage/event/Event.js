@@ -166,8 +166,7 @@ class Event extends React.Component {
   };
 
   render() {
-    console.log(this.props.match.params.date)
-    console.log(this.props.events)
+    
     return (
       <>
         <div className="event-view-wrapper">
