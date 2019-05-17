@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
+import { withRouter } from 'react-router-dom';
 
 
 export class MainSideBar extends Component {
@@ -67,6 +68,17 @@ export class MainSideBar extends Component {
     }
   }
 
+  // takeMeToTemplate = (event) => {
+  // let mikesEasy = event.target.attributes.value.value
+  // console.log(event.target.attributes.value.value)
+  // localStorage.setItem('template_id', mikesEasy)
+  // window.location=`/template/calendr/${mikesEasy}`
+  // }
+  switchTemplate = (templateId) => {
+    localStorage.setItem('template_id', templateId)
+    this.props.history.push(`/template/calendr/${templateId}`)
+  }
+
   render() {
     // console.log(this.props.templates)
     return (
@@ -88,15 +100,17 @@ export class MainSideBar extends Component {
         </div>
            <h5 className='buttonTitles'>Templates</h5>
             <div>
-                {this.props.templates.map(template => {return <div key={template.id}>
+                {this.props.templates.map(template => {return <div key={template.id} value = {template.id}>
                   <input
                   type="checkbox"
                   name={template.id}
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
-                  />         
-                  <h5>{template.title}</h5>
+                  />    
+                  
+                  <h5 onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+          
                 </div>
                 })} 
             </div>
@@ -109,4 +123,4 @@ export class MainSideBar extends Component {
   }
 }
 
-export default MainSideBar
+export default withRouter(MainSideBar)
