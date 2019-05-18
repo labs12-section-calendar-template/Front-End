@@ -94,7 +94,15 @@ export class MainCalendar extends Component {
      let events = res.data
      console.log(res.data)
       this.setState( previousState => {return {
-        events: [...previousState.events, ...events]
+        events: [...previousState.events, ...events].sort((a,b) => {
+          if(a.startTime > b.startTime){
+                      return 1
+                    } else if (a.startTime < b.startTime){
+                      return -1
+                    } else {
+                      return 0
+                    }
+        })
       }});
     })
     .catch(err => {

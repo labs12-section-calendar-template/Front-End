@@ -48,7 +48,7 @@ class MemberHome extends React.Component {
             this.setState({
               templates: res.data
             })
-            this.getEvents(value)
+            // this.getEvents(value)
           }).catch(err => {
             console.log(err)
           })
