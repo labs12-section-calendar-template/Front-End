@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./Home.scss";
 import { Link, withRouter } from "react-router-dom";
+import SideBarSlide from "../SideBarSlide";
 import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
@@ -100,6 +101,7 @@ export class Home extends Component {
       return (
         <div>
           <MainNavBar logOff={this.props.logOff} />
+          <SideBarSlide />
           <SideBar />
           <div className="allTemplates">
 

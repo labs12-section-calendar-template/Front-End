@@ -139,7 +139,6 @@ export class MainCalendar extends Component {
         })
       } 
       if(i === temps.length-1){
-        console.log(eventsArray)
         this.setState (() => {
           return { events: eventsArray }
         })
@@ -210,7 +209,7 @@ export class MainCalendar extends Component {
     // console.log(this.state.sortedStartTimes)
     return (
     <div>
-      <MainNavBar/>
+      <MainNavBar logOff={this.props.logOff}/>
         <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
       <div className="wholeCalendar">
       <div className='wholeCal'>
