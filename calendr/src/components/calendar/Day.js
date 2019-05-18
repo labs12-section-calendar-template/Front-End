@@ -25,7 +25,8 @@ class Day extends React.Component {
 
   render() {
     const filteredEvent = this.props.events.filter(event => {
-     
+      let currentDate = window.location.pathname.split('/')[2]
+      console.log('DATES', moment(event.date).format('YYYY-MM-DD'), moment(this.props.day.date._d).format("YYYY-MM-DD"), currentDate )
       if (moment(event.date).format('YYYY-MM-DD') === moment(this.props.day.date._d).format("YYYY-MM-DD")) {
         return event;
        }
