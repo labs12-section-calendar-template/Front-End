@@ -49,7 +49,7 @@ const Authentication = App => Login =>
         event.preventDefault();
         let url = window.location = `${process.env.REACT_APP_API}/auth/google`
         console.log(url)
-        window.location = `${process.env.REACT_APP_API}/auth/google`
+        //window.location = `${process.env.REACT_APP_API}/auth/google`
       }
 
       logOff = (event) => {
