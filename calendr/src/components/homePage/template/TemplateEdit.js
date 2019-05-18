@@ -101,12 +101,12 @@ cancel = () => {
           <SideBar /> 
         </aside>
         <main className="templateMain">
-        <button onClick={this.cancel}>Cancel</button>
           <div className='templateTitle'>
             <h1>Update Template</h1>
-           
-            <button id="buttonSave" onClick={this.updateTemplate}>Update</button>
-          
+           <div className="cancel-save">
+              <button id="buttonSave" onClick={this.updateTemplate}>Update</button>
+              <button id="buttonSave" onClick={this.cancel}>Cancel</button>
+            </div>
           </div>
           <div className='templateEdit'>
           <div className="startDate">
@@ -128,24 +128,20 @@ cancel = () => {
                   />
                   </div>
               <form>
-                <li> 
                   <h3>Title: </h3>
                   <input 
                     onChange={this.handleInputChange}
                     placeholder="Title"
                     value={this.state.title}
                     name="title" 
-                    /> 
-                </li>
-                <li> 
+                    />
                   <h3>Description: </h3>
                   <input 
                     onChange={this.handleInputChange}
                     placeholder="Description"
                     value={this.state.description}
                     name="description"
-                    /> 
-                </li>
+                    />
               </form>
           </div>
         </main>

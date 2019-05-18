@@ -5,6 +5,8 @@ import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
 import './Side.scss'
 
+
+///////////////////   URL => HOME      ///////////////////////
 export class SideBar extends Component {
   constructor(props){
     super(props);

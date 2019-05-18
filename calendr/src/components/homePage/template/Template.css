@@ -21,10 +21,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width:75vw;
+    
 }
+@media(max-width:1000px){
+    .templateTitle{
+        flex-direction: column;
+    }
+}
+@media(max-width:500px){
+    .templateTitle{
+        width:100vw;
+    }
+}
+.cancel-save{
+    display:flex;
+}
+
  #buttonSave{
     padding:.7rem 1rem;
-    margin-left: 4rem;
+    margin-left: 4%;
  }
 
  .startDate{
@@ -33,7 +49,7 @@
      justify-content: center;
  }
 
- @media(max-width: 500px){
+ @media(max-width: 1000px){
      .startDate{
          flex-direction: column;
      }
