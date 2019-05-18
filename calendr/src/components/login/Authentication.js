@@ -46,9 +46,9 @@ const Authentication = App => Login =>
     }
 
     gmailLogin = (event) => {
-        // event.preventDefault();
-        // let url = window.location = `${process.env.REACT_APP_API}/auth/google`
-        // console.log(url)
+        event.preventDefault();
+        let url = window.location = `${process.env.REACT_APP_API}/auth/google`
+        console.log(url)
         //window.location = `${process.env.REACT_APP_API}/auth/google`
       }
 
