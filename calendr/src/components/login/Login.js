@@ -38,11 +38,11 @@ class Login extends React.Component {
               />
             </Div>
           </Form> */}
-           <img className='googleSignIn' onClick = {this.props.gmailLogin} alt='Google Sign In'/>
+           <img className='googleSignIn' onClick = {this.props.gmailLogin} src={googleSignIn} alt='Google Sign In'/>
           {/* </div> */}
           {/* <Button onClick = {this.props.signIn}>Login</Button> */}
         </div>
-        // src={googleSignIn}
+        
      );
   }
 }
