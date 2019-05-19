@@ -26,7 +26,7 @@ class Day extends React.Component {
   render() {
     
     const filteredEvent = this.props.events.filter(event => {
-      if (moment(this.props.day.date._d).add(2, 'hours').format("YYYY-MM-DD") === moment(event.date).add(2, 'hours').format('YYYY-MM-DD')) {
+      if (moment.utc(this.props.day.date._d).format("YYYY-MM-DD") === moment.utc(event.date).format('YYYY-MM-DD')) {
         return event; 
        }
     });
