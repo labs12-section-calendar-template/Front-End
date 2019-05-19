@@ -87,7 +87,8 @@ class MemberHome extends React.Component {
         console.log(event.target.attributes.value.value)
     
         temps.forEach((temp, i) => {
-          if(event.target.attributes.value.value && temp.isChecked === 0){
+          console.log(temp.isChecked)
+          if(event.target.attributes.value.value && temp.isChecked == false){
             console.log('yola')
             temp.isChecked = 1;
             this.selectEvents(temp.id).then(res => {
