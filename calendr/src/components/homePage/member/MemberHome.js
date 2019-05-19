@@ -28,19 +28,19 @@ class MemberHome extends React.Component {
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
-    axios.get(`${process.env.REACT_APP_API}/groups/getwith/joincode`, {joinCode})
+    axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, { joinCode } )
     .then(res => {
         console.log(res.data)
-        let groupID = res.data.group.id
+        let groupID = res.data.id
       this.setState({
-        group: res.data.group,
-        joinCode: res.data.group.joinCode,
+        group: res.data,
+        joinCode: res.data.joinCode,
       })
       
       this.getGroupTemplates(groupID)
       
 
-      window.localStorage.setItem("group_id", res.data.group.id)
+      window.localStorage.setItem("group_id", res.data.id)
     })
     .catch(err => {
       console.log(err)
@@ -51,45 +51,13 @@ class MemberHome extends React.Component {
         axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
             console.log(res.data)
-            let value = res.data[res.data.length - 1].id;
             this.setState({
               templates: res.data
             })
-            // this.getEvents(value)
           }).catch(err => {
             console.log(err)
           })
       }
-
-      // getEvents = value => {
-      //   return new Promise ((resolve, reject) => { axios
-      //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-      //     .then(res => {
-      //       let events = res.data
-      //       // let eventTimes = res.data.map(event => {
-      //       //   return event.startTime
-      //       // })
-    
-      //       let sortedTime = events.sort((a, b) => {
-      //         if(a.startTime > b.startTime){
-      //           return 1
-      //         } else if (a.startTime < b.startTime){
-      //           return -1
-      //         } else {
-      //           return 0
-      //         }
-      //       })
-    
-      //       this.setState({
-      //         events: sortedTime
-      //       })
-           
-      //       resolve(events);
-      //     })
-      //     .catch(err => {
-      //       reject(err)
-      //     });
-      // })};
 
       selectEvents = (something) => {
         return new Promise((resolve, reject) => { axios
