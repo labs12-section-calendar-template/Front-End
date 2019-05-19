@@ -154,7 +154,7 @@ class Event extends React.Component {
             endTime: newEnd,
             title,
             description,
-            date: moment(this.state.date).add(0, 'week').format('YYYY-MM-DD')
+            date: moment(this.state.date).format('YYYY-MM-DD')
           })
         .then(res => {
           // console.log(res.data.date);
