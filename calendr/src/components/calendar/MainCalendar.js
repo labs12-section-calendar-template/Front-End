@@ -119,6 +119,7 @@ export class MainCalendar extends Component {
       if(temp.id == event.target.value && temp.isChecked == false){
         console.log('yola')
         temp.isChecked = 1;
+        console.log(temp.isChecked, 'temp')
         this.selectEvents(temp.id).then(res => {
           console.log(res, "res")
           eventsArray.push(...res)
