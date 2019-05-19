@@ -88,7 +88,7 @@ class MemberHome extends React.Component {
     
         temps.forEach((temp, i) => {
           console.log(temp.isChecked)
-          if(event.target.attributes.value.value && temp.isChecked == false){
+          if(temp.id == event.target.attributes.value.value && temp.isChecked == false){
             console.log('yola')
             temp.isChecked = 1;
             this.selectEvents(temp.id).then(res => {
@@ -99,7 +99,7 @@ class MemberHome extends React.Component {
               console.error(err)
             })
             
-          } else if(event.target.attributes.value.value && temp.isChecked === 1){
+          } else if(temp.id == event.target.attributes.value.value && temp.isChecked == true){
             console.log('yolu')
             temp.isChecked = 0
           } else if (temp.isChecked === 1){

@@ -116,7 +116,7 @@ export class MainCalendar extends Component {
     let temps = this.state.templates
 
     temps.forEach((temp, i) => {
-      if(temp.id == event.target.value && temp.isChecked === 0){
+      if(temp.id == event.target.value && temp.isChecked == false){
         console.log('yola')
         temp.isChecked = 1;
         this.selectEvents(temp.id).then(res => {
@@ -127,7 +127,7 @@ export class MainCalendar extends Component {
           console.error(err)
         })
         
-      } else if(temp.id == event.target.value && temp.isChecked === 1){
+      } else if(temp.id == event.target.value && temp.isChecked == true){
         console.log('yolu')
         temp.isChecked = 0
       } else if (temp.isChecked === 1){
