@@ -24,10 +24,10 @@ class Day extends React.Component {
   
 
   render() {
+    console.log("events", this.props.events)
     const filteredEvent = this.props.events.filter(event => {
-      let currentDate = window.location.pathname.split('/')[2]
-      console.log('DATES', moment(event.date).format('YYYY-MM-DD'), moment(this.props.day.date._d).format("YYYY-MM-DD"), this.state.check,  currentDate )
-      if (this.state.check === currentDate) {
+  
+      if (moment(this.props.day.date._d).format("YYYY-MM-DD") === moment(event.date).format('YYYY-MM-DD')) {
         return event;
        }
     });
