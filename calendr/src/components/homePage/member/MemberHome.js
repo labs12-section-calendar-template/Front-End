@@ -28,7 +28,7 @@ class MemberHome extends React.Component {
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
-    axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, {joinCode: 3562})
+    axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, {joinCode})
     .then(res => {
         console.log(res.data)
         let groupID = res.data.group.id
