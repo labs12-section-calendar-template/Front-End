@@ -82,9 +82,12 @@ class MemberHome extends React.Component {
       singleCheck = event => {
         let eventsArray = [];
         let temps = this.state.templates
+        console.log(event.target.value)
+        console.log(event.target.atrributes)
+        console.log(event.target.attributes.value.value)
     
         temps.forEach((temp, i) => {
-          if(temp.id == event.target.value && temp.isChecked === 0){
+          if(temp.id == event.target.attributes.value.value && temp.isChecked === 0){
             console.log('yola')
             temp.isChecked = 1;
             this.selectEvents(temp.id).then(res => {
@@ -95,7 +98,7 @@ class MemberHome extends React.Component {
               console.error(err)
             })
             
-          } else if(temp.id == event.target.value && temp.isChecked === 1){
+          } else if(temp.id == event.target.attributes.value.value && temp.isChecked === 1){
             console.log('yolu')
             temp.isChecked = 0
           } else if (temp.isChecked === 1){
@@ -117,7 +120,6 @@ class MemberHome extends React.Component {
 
 
     render() { 
-            console.log(this.state.templates)
         return ( 
           
             
