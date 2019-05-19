@@ -66,7 +66,7 @@ export class MemberSideBar extends Component {
   }
 
   render() {
-    // console.log(localStorage)
+    console.log(this.props.templates)
     return (
       <>
         <div className="memberHomeWrapper">

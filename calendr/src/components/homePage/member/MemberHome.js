@@ -22,7 +22,6 @@ class MemberHome extends React.Component {
 
     componentDidMount(){
         this.getGroup()
-        this.checkUsersGroups()
     }
 
     getGroup = () => {
@@ -30,7 +29,6 @@ class MemberHome extends React.Component {
 
     axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, { joinCode } )
     .then(res => {
-        console.log(res.data)
         let groupID = res.data.id
       this.setState({
         group: res.data,
@@ -50,7 +48,6 @@ class MemberHome extends React.Component {
     getGroupTemplates = (groupID) => {
         axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
-            console.log(res.data)
             this.setState({
               templates: res.data
             })
@@ -63,8 +60,8 @@ class MemberHome extends React.Component {
         return new Promise((resolve, reject) => { axios
         .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
         .then(res => {
+          console.log(res.data)
          let events = res.data
-         console.log(res.data)
           this.setState( previousState => {return {
             events: [...previousState.events, ...events].sort((a,b) => {
               if(a.startTime > b.startTime){
@@ -118,33 +115,11 @@ class MemberHome extends React.Component {
         })
       }
 
-      checkUsersGroups = () => {
-          let userId = localStorage.getItem('userId')
-          axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
-          .then(res => {
-              console.log(res.data)
-            this.setState({
-                usersGroups: res.data
-            })
-            //   if(res.data.length > 0) {
-            //       window.location=`/home/${}`
-            //   }
-          })
-          .catch(err => {
-              console.log(err)
-          })
-      }
-
-
-
-
-    //Groupname needs to be displayed based off of joincode
-    //templates for the group above need to be displayed
-    //clicking on the templates that are displayed need to display all of the events
 
     render() { 
-        console.log(this.state.usersGroups)
+            console.log(this.state.templates)
         return ( 
+          
             
         <div>
             <div className="navBarContainer">
