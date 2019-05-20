@@ -17,7 +17,7 @@ class MemberDay extends React.Component {
 
   render() {
     const filteredEvent = this.props.events.filter(event => {
-      if (event.date === this.state.check) {
+      if (moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD") === moment.parseZone(event.date).format('YYYY-MM-DD')) {
         return event;
        }
     });

@@ -17,25 +17,26 @@ class Day extends React.Component {
   }
   
 
-  toggleOpen = () => {
-    this.props.history.push(`/event/${this.state.check}`);
+  toggleOpen = (e) => {
+    e.preventDefault();
+    console.log(moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD"))
+    this.props.history.push(`/template/calendr/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
   };
 
   
 
   render() {
     const filteredEvent = this.props.events.filter(event => {
-      if (event.date === moment(this.props.day.date._d).format("YYYY-MM-DD")) {
-        return event;
+      if (moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD") === moment.parseZone(event.date).format('YYYY-MM-DD')) {
+        return event; 
        }
     });
-    console.log(this.props.events)
     const {
       day: { date, number }
     } = this.props;
     return (
       <>
-        <div className="day" key={date.toString()} onClick={this.toggleOpen}>
+        <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
 
               {filteredEvent.map(event => (
@@ -49,13 +50,15 @@ class Day extends React.Component {
 
         </div>
         <Route
-          path={`/event/${this.state.check}`}
-          render={() => (
+          path={`/template/calendr/${this.state.check}`}
+          render={(...props) => (
             <Popup
+            
             className="modal-popup"
               open={true}
               onClose={() => this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)}
               position="right center"
+              {...props}
               // style={{ max-width: "80%"}}
             >
               <Event 
