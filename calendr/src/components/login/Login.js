@@ -13,8 +13,8 @@ class Login extends React.Component {
 
   render() { 
     return ( 
-        <div>
-          <h2>Welcome, Please login</h2>
+        <div className="loginContainer">
+          <h2 className="login">Welcome, Please login</h2>
           {/* <div className="formContainer"> */}
           {/* <Form type='submit'>
           <Div>

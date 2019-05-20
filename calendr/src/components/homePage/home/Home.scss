@@ -7,10 +7,14 @@
     flex-wrap: wrap;
     margin:1rem 2% 0 23%;
     width:75vw;
-    position: absolute;
+
+    @media(max-width: 650px){
+        flex-direction: column;
+    }
 
     @media(max-width: 500px){
     width: 55vw;
+    margin-left: 7.5rem;
     }
 }
 .templateTag{
