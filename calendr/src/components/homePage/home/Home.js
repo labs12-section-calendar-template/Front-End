@@ -57,7 +57,7 @@ export class Home extends Component {
   };
 
   deleteTemplate = (e, id) => {
-    e.stopPropagation();
+    //e.preventDefault();
     let groupID = localStorage.getItem('group_id')
     axios
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)

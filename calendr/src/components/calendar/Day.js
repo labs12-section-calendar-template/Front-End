@@ -17,8 +17,10 @@ class Day extends React.Component {
   }
   
 
-  toggleOpen = () => {
-    this.props.history.push(`/event/${this.state.check}`);
+  toggleOpen = (e) => {
+    e.preventDefault();
+    console.log(moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD"))
+    this.props.history.push(`/event/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
   };
 
   
@@ -34,7 +36,7 @@ class Day extends React.Component {
     } = this.props;
     return (
       <>
-        <div className="day" key={date.toString()} onClick={this.toggleOpen}>
+        <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
 
               {filteredEvent.map(event => (
@@ -49,12 +51,13 @@ class Day extends React.Component {
         </div>
         <Route
           path={`/event/${this.state.check}`}
-          render={() => (
+          render={(...props) => (
             <Popup
             className="modal-popup"
               open={true}
               onClose={() => this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)}
               position="right center"
+              {...props}
               // style={{ max-width: "80%"}}
             >
               <Event 

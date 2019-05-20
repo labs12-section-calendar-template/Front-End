@@ -6,6 +6,7 @@ import "./GeneralCalendar.scss";
 import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
+import { withRouter } from 'react-router-dom'
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -44,48 +45,48 @@ export class MainCalendar extends Component {
         });
 
         // this.getEvents(value);
-        this.getEvents(value).then(res => {
-          this.setState({
-            events: res
-          })
-        }).catch(err => {
-          console.error(err)
-        })
+        // this.getEvents(value).then(res => {
+        //   this.setState({
+        //     events: res
+        //   })
+        // }).catch(err => {
+        //   console.error(err)
+        // })
       })
       .catch(err => {
         console.error(err, 'error inside of get templates function');
       });
   };
 
-  getEvents = value => {
-    return new Promise ((resolve, reject) => { axios
-      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-      .then(res => {
-        let events = res.data
-        // let eventTimes = res.data.map(event => {
-        //   return event.startTime
-        // })
+  // getEvents = value => {
+  //   return new Promise ((resolve, reject) => { axios
+  //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+  //     .then(res => {
+  //       let events = res.data
+  //       // let eventTimes = res.data.map(event => {
+  //       //   return event.startTime
+  //       // })
 
-        let sortedTime = events.sort((a, b) => {
-          if(a.startTime > b.startTime){
-            return 1
-          } else if (a.startTime < b.startTime){
-            return -1
-          } else {
-            return 0
-          }
-        })
+  //       let sortedTime = events.sort((a, b) => {
+  //         if(a.startTime > b.startTime){
+  //           return 1
+  //         } else if (a.startTime < b.startTime){
+  //           return -1
+  //         } else {
+  //           return 0
+  //         }
+  //       })
 
-        this.setState({
-          events: sortedTime
-        })
+  //       this.setState({
+  //         events: sortedTime
+  //       })
        
-        resolve(events);
-      })
-      .catch(err => {
-        reject(err)
-      });
-  })};
+  //       resolve(events);
+  //     })
+  //     .catch(err => {
+  //       reject(err)
+  //     });
+  // })};
 
   selectEvents = (something) => {
     return new Promise((resolve, reject) => { axios
@@ -152,7 +153,7 @@ export class MainCalendar extends Component {
   renderWeeks() {
     let weeks = [];
     let done = false;
-    let date = this.state.month
+    let date = moment(this.props.match.params.date || this.state.date)
       .clone()
       .startOf("month")
       .day("Sunday");
@@ -182,22 +183,19 @@ export class MainCalendar extends Component {
   }
 
   previous = () => {
-    const { month } = this.state;
-  
-    this.setState({
-      month: month.subtract(1, "month")
-    });
+    this.setState( previousState => {return {
+      month: previousState.month.subtract(1, "month")
+    }});
   };
   
   next = () => {
-    const { month } = this.state;
-  
-    this.setState({
-      month: month.add(1, "month")
-    });
+    this.setState( previousState => { return{
+      month: previousState.month.add(1, "month")
+    }});
   };
+
   renderMonthLabel() {
-    const { month } = this.state;
+    const month = moment(this.props.match.params.date) || this.state.date
     return (
       <span className="month-label">
         {month.startOf("month").format("MMMM YYYY")}
@@ -230,4 +228,4 @@ export class MainCalendar extends Component {
   }
 }
 
-export default MainCalendar;
+export default withRouter(MainCalendar);
