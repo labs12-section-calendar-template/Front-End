@@ -23,6 +23,7 @@ export class Group extends Component {
         }).then(res => {
           console.log(res.data)
           window.localStorage.setItem('joinCode', this.state.joinCode)
+          window.localStorage.setItem('group_id', res.data.group.id)
           window.location = '/memberhome'
         }).catch(err => {
           console.error(err, 'there was an error')

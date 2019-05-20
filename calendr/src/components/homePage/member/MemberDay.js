@@ -18,7 +18,7 @@ class MemberDay extends React.Component {
   render() {
     // for making sure that the date an event is created for populates the correct date
     const filteredEvent = this.props.events.filter(event => {
-      if (event.date === this.state.check) {
+      if (moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD") === moment.parseZone(event.date).format('YYYY-MM-DD')) {
         return event;
        }
     });

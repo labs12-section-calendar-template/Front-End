@@ -9,7 +9,7 @@ import Event from "../homePage/event/Event";
 import MemberHome from "../homePage/member/MemberHome";
 import TemplateEdit from "../homePage/template/TemplateEdit";
 // import moment from 'moment'
-import GeneralCalendar from "../calendar/GeneralCalendar";
+// import GeneralCalendar from "../calendar/GeneralCalendar";
 import MainCalendar from "../calendar/MainCalendar";
 import BillingPage from '../billing/BillingPage';
 
@@ -62,9 +62,9 @@ class mainView extends React.Component {
       
 
         <Route path="/template/edit/:id" component={TemplateEdit} />
-        <Route path="/event" component={GeneralCalendar} />
+         <Route path="/event" component={MainCalendar} />
         {/* <Route path="/event/:date" component={Event} /> */}
-        <Route exact path="/ZechsHappyPlace" component={GeneralCalendar} />
+        {/* <Route exact path="/ZechsHappyPlace" component={GeneralCalendar} /> */}
       </div>
     );
   }

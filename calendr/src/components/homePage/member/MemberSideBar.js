@@ -6,13 +6,10 @@ export class MemberSideBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // groupName: [],
-      // joinCode: [],
-      // group_id: [],
-      // templates: [],
       modalOpen: false
     }
   }
+
 
   // Probably not needed
   componentDidMount() {
@@ -55,6 +52,7 @@ export class MemberSideBar extends Component {
   }
 
 // Probably not needed
+
   toggleModal = () => {
     // if (this.state.modalOpen === false) {
     //   this.setState({
@@ -68,7 +66,6 @@ export class MemberSideBar extends Component {
   }
 
   render() {
-    // console.log(localStorage)
     return (
       <>
         <div className="memberHomeWrapper">
@@ -98,9 +95,6 @@ export class MemberSideBar extends Component {
             </div>
 
         </div>
-        {/* <Popup open={this.state.modalOpen} id="groupEditPopup">
-        <div toggleModal={this.toggleModal} group_id={this.state.group_id}/>
-      </Popup> */}
       </>
     )
   }

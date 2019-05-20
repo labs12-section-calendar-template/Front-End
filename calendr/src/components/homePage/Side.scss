@@ -68,6 +68,9 @@ display: none;
         }
     }
 
+    .groupName{
+        padding: 0 1rem;
+    }
     .buttonTitles{
         font-size: 1.2rem;
         text-align: start;
@@ -109,9 +112,11 @@ display: none;
 
 }
 
+
 .desktopNav{
     width:30vw;
     position: absolute;
+
 }
 @media(max-width:500px){
     .desktopNav{

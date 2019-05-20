@@ -23,26 +23,24 @@ class MemberHome extends React.Component {
     // Mounts getGroup and checkUsersGroups
     componentDidMount(){
         this.getGroup()
-        this.checkUsersGroups()
     }
 
     // Allows a member to join a group
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
-    axios.post(`${process.env.REACT_APP_API}/groups/getby/joincode`, {joinCode})
+    axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, { joinCode } )
     .then(res => {
-        console.log(res.data)
-        let groupID = res.data.group.id
+        let groupID = res.data.id
       this.setState({
-        group: res.data.group,
-        joinCode: res.data.group.joinCode,
+        group: res.data,
+        joinCode: res.data.joinCode,
       })
       
       this.getGroupTemplates(groupID)
       
 
-      window.localStorage.setItem("group_id", res.data.group.id)
+      window.localStorage.setItem("group_id", res.data.id)
     })
     .catch(err => {
       console.log(err)
@@ -53,12 +51,9 @@ class MemberHome extends React.Component {
     getGroupTemplates = (groupID) => {
         axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
-            console.log(res.data)
-            let value = res.data[res.data.length - 1].id;
             this.setState({
               templates: res.data
             })
-            this.getEvents(value)
           }).catch(err => {
             console.log(err)
           })
@@ -114,6 +109,7 @@ class MemberHome extends React.Component {
           }
         })
       }});
+
         })
         .catch(err => {
           reject(err);
@@ -123,9 +119,13 @@ class MemberHome extends React.Component {
       singleCheck = event => {
         let eventsArray = [];
         let temps = this.state.templates
+        console.log(event.target.value)
+        console.log(event.target.attributes)
+        console.log(event.target.attributes.value.value)
     
         temps.forEach((temp, i) => {
-          if(temp.id == event.target.value && temp.isChecked === 0){
+          console.log(temp.isChecked)
+          if(temp.id == event.target.attributes.value.value && temp.isChecked == false){
             console.log('yola')
             temp.isChecked = 1;
             this.selectEvents(temp.id).then(res => {
@@ -136,7 +136,7 @@ class MemberHome extends React.Component {
               console.error(err)
             })
             
-          } else if(temp.id == event.target.value && temp.isChecked === 1){
+          } else if(temp.id == event.target.attributes.value.value && temp.isChecked == true){
             console.log('yolu')
             temp.isChecked = 0
           } else if (temp.isChecked === 1){
@@ -148,7 +148,6 @@ class MemberHome extends React.Component {
             })
           } 
           if(i === temps.length-1){
-            console.log(eventsArray)
             this.setState (() => {
               return { events: eventsArray }
             })
@@ -156,6 +155,7 @@ class MemberHome extends React.Component {
           }
         })
       }
+
 
       // Gets all groups for the user
       checkUsersGroups = () => {
@@ -179,9 +179,10 @@ class MemberHome extends React.Component {
     //templates for the group above need to be displayed
     //clicking on the templates that are displayed need to display all of the events
 
+
     render() { 
-        console.log(this.state.usersGroups)
         return ( 
+          
             
         <div>
             <div className="navBarContainer">

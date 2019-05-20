@@ -95,7 +95,6 @@ export class SideBar extends Component {
   something = (event) => {
     let groups = this.state.groups
     groups.forEach(group => {
-      console.log(event.target.attributes.getNamedItem('value').value)
     if(event.target.attributes.getNamedItem('value').value == group.id) {
       window.localStorage.setItem("group_id", event.target.attributes.getNamedItem('value').value)
     this.props.history.push(`/home/${group.id}`)

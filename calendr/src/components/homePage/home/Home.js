@@ -69,9 +69,17 @@ export class Home extends Component {
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");
+
         
        this.props.history.push(`/home/${groupID}`);
        document.location.reload();
+        let newTemps = this.state.templates.filter(temp => {
+          return temp.id !== id
+        })
+       this.setState({
+         templates: newTemps
+       }, () =>  toast.success('Template Deleted'));
+       
       })
       .catch(err => {
         console.log(err);
