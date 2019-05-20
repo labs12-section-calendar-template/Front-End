@@ -2,6 +2,16 @@
     margin: 0 auto;
     margin-top: 5rem;
     padding: 1rem;
-    max-width: 30%;
+    max-width: 35rem;
     border: 1px solid black;
+    border-radius: 20px;
+    font-family: "Poppins";
+
+    @media(max-width: 500px){
+    max-width: 95%;
+    }
+}
+
+.instructions{
+    font-family: "Poppins"
 }
