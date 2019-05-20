@@ -3,7 +3,7 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
-import './Side.scss';
+import '../../App.scss';
 
 export class SideBarSlide extends Component {
   constructor(props){

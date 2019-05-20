@@ -29,7 +29,6 @@
 
 .buttonTitles{
     font-size: 1.4rem;
-    margin:.3rem;
     text-align: start;
 }
 @media(max-width: 500px) {
@@ -53,7 +52,7 @@ li {
 }
 
 .groupName {
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    border: 2px solid blue;
+    font-size: 1rem;
+    display: flex;
+    margin-bottom:.8rem;
 }

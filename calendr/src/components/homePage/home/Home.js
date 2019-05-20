@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Home.scss";
+import "../../../App.scss";
 import { Link, withRouter } from "react-router-dom";
 import SideBarSlide from "../SideBarSlide";
 import SideBar from "../SideBar";
@@ -14,28 +14,31 @@ export class Home extends Component {
 
     this.state = {
       templates: [],
-      index: '',
+     // index: '',
       group_id: []
     };
   }
 
+  // mounts get template function
   componentDidMount = () => {
     this.getTemplate();
   }
 
+  // updates get template if the url changes 
   componentDidUpdate = (prevProps) => {
     if (prevProps.match.url !== this.props.match.url) {
       this.getTemplate()
     }
   }
 
+  // Probably not needed
   indexClick = (event) => {
-    event.preventDefault()
-    this.setState({ [event.target.index]: event.target.value })
-    console.log(this.state.index)
+    // event.preventDefault()
+    // this.setState({ [event.target.index]: event.target.value })
+    // console.log(this.state.index)
   }
 
-
+  // Gets current template info, based on the most recent created
   getTemplate = event => {
     let urlPath = window.location.pathname;
     let lateNight = urlPath.split('/')
@@ -52,10 +55,13 @@ export class Home extends Component {
         console.log(err);
       });
   };
+
+  // onClick redirect to edit window for templates
   edit = (e, id) => {
     window.location = `/template/edit/${id}`;
   };
 
+  // remove all information of template selected
   deleteTemplate = (e, id) => {
     e.stopPropagation();
     let groupID = localStorage.getItem('group_id')
@@ -63,6 +69,9 @@ export class Home extends Component {
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");
+        
+       this.props.history.push(`/home/${groupID}`);
+       document.location.reload();
         let newTemps = this.state.templates.filter(temp => {
           return temp.id !== id
         })
@@ -76,8 +85,8 @@ export class Home extends Component {
       });
   };
 
+  // on clicking a template name, localStorage changes to new template ID
   clickingTemplatesFunction = (templateId) => {
-
     let templates = this.state.templates
     console.log(templates)
     templates.forEach(template => {

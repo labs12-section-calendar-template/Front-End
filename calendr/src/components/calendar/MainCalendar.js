@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import DayNames from "./DayNames";
 import Week from "./Week";
-import "./GeneralCalendar.scss";
+import "../../App.scss";
 import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
@@ -25,6 +25,7 @@ export class MainCalendar extends Component {
     this.getTemplateData();
   }
 
+  // Get template by its corresponding group id
   getTemplateData = event => {
     let group_id = localStorage.getItem("group_id");
     axios
@@ -88,12 +89,14 @@ export class MainCalendar extends Component {
   //     });
   // })};
 
-  selectEvents = (something) => {
-    return new Promise((resolve, reject) => { axios
-    .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
-    .then(res => {
-     let events = res.data
-     console.log(res.data)
+  // Gets all events for the template id. To be run when a toggle is clicked
+  selectEvents = (id) => {
+    return new Promise((resolve, reject) => { 
+    axios
+      .get(`${process.env.REACT_APP_API}/templates/${id}/events`)
+      .then(res => {
+      let events = res.data
+      console.log(res.data)
       this.setState( previousState => {return {
         events: [...previousState.events, ...events].sort((a,b) => {
           if(a.startTime > b.startTime){
@@ -111,7 +114,7 @@ export class MainCalendar extends Component {
     })});
   }
 
-  
+  // Takes in the selectEvents and confirms if a template isChecked or not
   singleCheck = event => {
     let eventsArray = [];
     let temps = this.state.templates
@@ -149,7 +152,7 @@ export class MainCalendar extends Component {
     })
   }
   
-
+  // Renders all weeks that populate the calendr
   renderWeeks() {
     let weeks = [];
     let done = false;
@@ -162,6 +165,7 @@ export class MainCalendar extends Component {
 
     const { month } = this.state;
 
+    // Pulls in weeks and loops over until calendar is complete 
     while (!done) {
       weeks.push(
         <Week
@@ -182,6 +186,7 @@ export class MainCalendar extends Component {
     return weeks;
   }
 
+  // Previous month button function
   previous = () => {
     let { month } = this.state;
     this.setState({
@@ -189,6 +194,7 @@ export class MainCalendar extends Component {
     });
   };
   
+  // Next month button function
   next = () => {
     let { month } = this.state;
     this.setState({

@@ -2,6 +2,43 @@
     display: flex;
     margin:.5rem;
 }
+
+.navDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background:rgba(32, 31, 31, 0.904);
+    height: 0vh;
+    transition: .5s ease-in;
+    overflow: hidden;
+display: none;
+}
+
+
+.navOpen{
+    display: flex;
+    justify-content: center;
+    background:rgba(235, 162, 162, 0.904);
+    transition: .5s ease-in;
+    overflow: hidden;
+    position: fixed;
+    border-radius: 10px;
+    z-index: 10;
+    padding:0 1rem;
+
+@media(max-width: 500px){
+    justify-content: flex-start;
+    background: #3270eb;
+    height: 65vh;
+    width: 55%;
+    transition: margin-left .5s;
+    overflow: hidden;
+    position: fixed;
+    top: 20%;
+}
+}
+
 .homePageStyles{
     align-items: flex-start;
     display:flex;
@@ -12,6 +49,14 @@
     @media(max-width: 500px){
         width: 11rem;
         margin: 1.5rem 0 0 0;
+    }
+
+    .groupNameTemplate{
+        @media(max-width: 500px){
+        &:hover{
+            cursor: pointer;
+           }
+        }
     }
 
     .GroupName{
@@ -39,9 +84,8 @@
     }
     .buttonTitles{
         font-size: 1.2rem;
-        margin:.3rem;
         text-align: start;
-    
+        margin:0;
         @media(max-width: 500px){
             font-size: 1rem;
         }
@@ -49,25 +93,17 @@
 
     .buttonDescriptions{
         font-size:1rem;
-
+        margin:0;
         @media(max-width: 500px){
             font-size: .8rem;
         }
     }
+    .pointer{
+        cursor: pointer;
+    }
     
 }
 
-.navDiv {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        background:rgba(32, 31, 31, 0.904);
-        height: 0vh;
-        transition: .5s ease-in;
-        overflow: hidden;
-    display: none;
-}
 
 .fa-plus {
     margin-right: 100%;
@@ -104,34 +140,9 @@
 
 }
 
-.navOpen{
-        display: flex;
-        justify-content: center;
-        background:rgba(235, 162, 162, 0.904);
-        transition: .5s ease-in;
-        overflow: hidden;
-        position: fixed;
-        z-index: 10;
-        padding:0 1rem;
-
-    @media(max-width: 500px){
-        justify-content: flex-start;
-        background: #3270eb;
-        height: 65vh;
-        width: 55%;
-        transition: margin-left .5s;
-        overflow: hidden;
-        position: fixed;
-        top: 20%;
-    }
-}
-
-.groupNameTemplate{
-    @media(max-width: 500px){
-    &:hover{
-        cursor: pointer;
-       }
-    }
+.desktopNav{
+    width:30vw;
+    position: absolute;
 }
 
 @media(max-width:500px){
@@ -148,11 +159,6 @@
 .allTemps{
     font-size: 1.4rem;
 
-}
-
-.buttonBox{
-    display: flex;
-    align-items: center;
 }
 
 .fa-plus-circle{
