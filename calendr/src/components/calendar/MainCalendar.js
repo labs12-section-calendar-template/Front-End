@@ -6,6 +6,7 @@ import "./GeneralCalendar.scss";
 import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
+import { withRouter } from 'react-router-dom'
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -44,48 +45,48 @@ export class MainCalendar extends Component {
         });
 
         // this.getEvents(value);
-        this.getEvents(value).then(res => {
-          this.setState({
-            events: res
-          })
-        }).catch(err => {
-          console.error(err)
-        })
+        // this.getEvents(value).then(res => {
+        //   this.setState({
+        //     events: res
+        //   })
+        // }).catch(err => {
+        //   console.error(err)
+        // })
       })
       .catch(err => {
         console.error(err, 'error inside of get templates function');
       });
   };
 
-  getEvents = value => {
-    return new Promise ((resolve, reject) => { axios
-      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-      .then(res => {
-        let events = res.data
-        // let eventTimes = res.data.map(event => {
-        //   return event.startTime
-        // })
+  // getEvents = value => {
+  //   return new Promise ((resolve, reject) => { axios
+  //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+  //     .then(res => {
+  //       let events = res.data
+  //       // let eventTimes = res.data.map(event => {
+  //       //   return event.startTime
+  //       // })
 
-        let sortedTime = events.sort((a, b) => {
-          if(a.startTime > b.startTime){
-            return 1
-          } else if (a.startTime < b.startTime){
-            return -1
-          } else {
-            return 0
-          }
-        })
+  //       let sortedTime = events.sort((a, b) => {
+  //         if(a.startTime > b.startTime){
+  //           return 1
+  //         } else if (a.startTime < b.startTime){
+  //           return -1
+  //         } else {
+  //           return 0
+  //         }
+  //       })
 
-        this.setState({
-          events: sortedTime
-        })
+  //       this.setState({
+  //         events: sortedTime
+  //       })
        
-        resolve(events);
-      })
-      .catch(err => {
-        reject(err)
-      });
-  })};
+  //       resolve(events);
+  //     })
+  //     .catch(err => {
+  //       reject(err)
+  //     });
+  // })};
 
   selectEvents = (something) => {
     return new Promise((resolve, reject) => { axios
@@ -94,7 +95,15 @@ export class MainCalendar extends Component {
      let events = res.data
      console.log(res.data)
       this.setState( previousState => {return {
-        events: [...previousState.events, ...events]
+        events: [...previousState.events, ...events].sort((a,b) => {
+          if(a.startTime > b.startTime){
+                      return 1
+                    } else if (a.startTime < b.startTime){
+                      return -1
+                    } else {
+                      return 0
+                    }
+        })
       }});
     })
     .catch(err => {
@@ -108,9 +117,10 @@ export class MainCalendar extends Component {
     let temps = this.state.templates
 
     temps.forEach((temp, i) => {
-      if(temp.id == event.target.value && temp.isChecked === 0){
+      if(temp.id == event.target.value && temp.isChecked == false){
         console.log('yola')
         temp.isChecked = 1;
+        console.log(temp.isChecked, 'temp')
         this.selectEvents(temp.id).then(res => {
           console.log(res, "res")
           eventsArray.push(...res)
@@ -119,7 +129,7 @@ export class MainCalendar extends Component {
           console.error(err)
         })
         
-      } else if(temp.id == event.target.value && temp.isChecked === 1){
+      } else if(temp.id == event.target.value && temp.isChecked == true){
         console.log('yolu')
         temp.isChecked = 0
       } else if (temp.isChecked === 1){
@@ -143,10 +153,10 @@ export class MainCalendar extends Component {
   renderWeeks() {
     let weeks = [];
     let done = false;
-    let date = this.state.month
+    let date = moment(this.state.month)
       .clone()
       .startOf("month")
-      .day("Sunday");
+      .day("Sunday")
     let count = 0;
     let monthIndex = date.month();
 
@@ -173,22 +183,21 @@ export class MainCalendar extends Component {
   }
 
   previous = () => {
-    const { month } = this.state;
-  
+    let { month } = this.state;
     this.setState({
       month: month.subtract(1, "month")
     });
   };
   
   next = () => {
-    const { month } = this.state;
-  
+    let { month } = this.state;
     this.setState({
       month: month.add(1, "month")
     });
   };
+
   renderMonthLabel() {
-    const { month } = this.state;
+    const month = moment(this.state.month)
     return (
       <span className="month-label">
         {month.startOf("month").format("MMMM YYYY")}
@@ -221,4 +230,4 @@ export class MainCalendar extends Component {
   }
 }
 
-export default MainCalendar;
+export default withRouter(MainCalendar);
