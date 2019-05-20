@@ -104,8 +104,8 @@ cancel = () => {
           <div className='templateTitle'>
             <h1>Update Template</h1>
            <div className="cancel-save">
-              <button id="buttonSave" onClick={this.updateTemplate}>Update</button>
-              <button id="buttonSave" onClick={this.cancel}>Cancel</button>
+              <button id="buttonSaveCancel" onClick={this.updateTemplate}>Update</button>
+              <button id="buttonSaveCancel" onClick={this.cancel}>Cancel</button>
             </div>
           </div>
           <div className='templateEdit'>

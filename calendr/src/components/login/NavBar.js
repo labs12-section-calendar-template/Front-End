@@ -9,7 +9,9 @@ const NavBar = () => {
     <div className="navBarContainer">
     <div className="margin">
         <img src={logo} alt="Logo"/>
+        <div className="calendrTitleContainer">
         <h1 className="calendrTitle">CALENDR</h1>
+        </div>
       <div className="nav-buttons">
         <NavLink activeClassName="navbuttonLink" className="navbutton" to="/login">Login</NavLink>
       </div>

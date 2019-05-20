@@ -71,6 +71,7 @@ export class Home extends Component {
         console.log("template deleted");
         
        this.props.history.push(`/home/${groupID}`);
+       document.location.reload();
       })
       .catch(err => {
         console.log(err);

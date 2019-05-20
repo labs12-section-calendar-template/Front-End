@@ -18,21 +18,21 @@ img{
 .calendrTitleContainer{
     display:flex;
     align-items: center;
+    position: fixed;
+    z-index: 100;
+    right:44%;
+    left:44%;
 }
 .calendrTitle{
     font-size: 2.2rem;
     color: white;
     display: flex;
-    width:16vw;
+    width:14vw;
     position: absolute;
     z-index: 100;
     margin:auto;
 }
-@media(max-width:800px){
-.calendrTitle{
-    visibility: hidden;
-}
-}
+
 .nav-buttons{
     margin: auto 0;
     display: flex;
@@ -71,6 +71,21 @@ img{
     }
 }
 
+
+
+
+// max-800
+@media(max-width:800px){
+    .calendrTitle{
+        visibility: hidden;
+    }
+    }
+
+
+
+
+    
+// max-500
 @media (max-width: 500px){
     .NavLinkB{
         margin:0 .2rem;
