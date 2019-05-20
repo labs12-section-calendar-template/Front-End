@@ -1,5 +1,5 @@
 import React from "react";
-import "./MarketingStyles.css";
+import "../../App.scss";
 import placeHolder from "../../extras/filler.jpg";
 
 const MarketingPage = () => {

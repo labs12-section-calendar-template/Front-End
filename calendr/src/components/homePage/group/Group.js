@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import "./Group.scss"
+import "../../../App.scss"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "./Event.css";
+import '../../../App.scss'
 // import { Link } from "react-router-dom";
 import axios from "axios";
 import EventBox from "./EventBox.js";

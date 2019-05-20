@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from "react-router-dom";
 import logo from '../../extras/CalendrWhite.png';
-import '../general/NavBar.scss';
+import '../../App.scss';
 
 // Navigation page pre-login
 const NavBar = () => {

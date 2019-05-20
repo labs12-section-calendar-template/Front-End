@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import { withRouter, Switch } from "react-router-dom";
 import LoginView from "./components/views/loginView";
 import MainView from "./components/views/mainView";

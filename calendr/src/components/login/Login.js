@@ -1,5 +1,5 @@
 import React from 'react'
-import './Login.scss'
+import '../../App.scss'
 import googleSignIn from '../../extras/googleSignIn.png'
 
 class Login extends React.Component {

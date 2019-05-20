@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import DayNames from "./DayNames";
 import Week from "./Week";
-import "./GeneralCalendar.scss";
+import "../../App.scss";
 import axios from "axios";
 
 export class GeneralCalendar extends Component {

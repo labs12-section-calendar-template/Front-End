@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./Home.scss";
+import "../../../App.scss";
 import { Link, withRouter } from "react-router-dom";
 import SideBarSlide from "../SideBarSlide";
 import SideBar from "../SideBar";

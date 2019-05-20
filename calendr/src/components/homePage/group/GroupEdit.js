@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./Group.scss";
+import "../../../App.scss";
 import { toast } from "react-toastify";
 
 export class GroupEdit extends Component {

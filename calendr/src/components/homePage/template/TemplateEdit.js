@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SideBar from '../SideBar';
-import './Template.css';
+import "../../../App.scss";
 import axios from 'axios';
 import MainNavBar from '../../general/MainNavBar'
 import moment from 'moment';

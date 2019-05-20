@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import MemberSideBar from './MemberSideBar';
 import MemberCalendar from './MemberCalendar'
-import './memberHome.scss'
+import '../../../App.scss'
 import { NavLink } from "react-router-dom";
 import logo from "../../../extras/CalendrWhite.png";
 import { toast } from 'react-toastify';
-// import './NavBar.scss'
 
 class MemberHome extends React.Component {
     constructor(props) {

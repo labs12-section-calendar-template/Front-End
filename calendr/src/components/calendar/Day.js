@@ -4,7 +4,7 @@ import moment from "moment";
 import Popup from "reactjs-popup";
 import Event from "../homePage/event/Event";
 //import axios from "axios";
-import "../homePage/event/Event.css"
+import "../../App.scss"
 
 class Day extends React.Component {
   constructor(props) {
@@ -47,19 +47,21 @@ class Day extends React.Component {
         <Route
           path={`/event/${this.state.check}`}
           render={() => (
-            <Popup
-            className="modal-popup"
+            <div className="popup-overlay">
+            <div className="popup-content modal-popup" 
               open={true}
               onClose={() => this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)}
               position="right center"
-              // style={{ max-width: "80%"}}
-            >
+              >
+
               <Event 
               check={this.state.check} 
               history={this.props.history} 
               events={this.props.events}
               />
-            </Popup>
+            
+            </div>
+            </div>
           )}
         />
       </>
