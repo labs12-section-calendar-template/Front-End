@@ -10,6 +10,8 @@ export class Month extends Component {
       month: moment(),
     };
   }
+
+  // Previous month button function
   previous = () => {
     const { month } = this.state;
 
@@ -18,6 +20,7 @@ export class Month extends Component {
     });
   };
 
+  // Next month button function
   next = () => {
     const { month } = this.state;
 
@@ -26,7 +29,8 @@ export class Month extends Component {
     });
   };
 
-  // renderWeeks() {
+  // Probably not needed
+  renderWeeks() {
   //   let weeks = [];
   //   let done = false;
   //   let date = this.state.month
@@ -47,12 +51,14 @@ export class Month extends Component {
   //     monthIndex = date.month();
   //   }
   //   return weeks;
-  // }
+  }
 
+  // determines the start of the month - Probably not needed
   MonthDays = () => {
-    this.state.month.map(mon => mon.startOf("month"));
+   // this.state.month.map(mon => mon.startOf("month"));
   };
 
+  // Month label for top of calendr
   renderMonthLabel() {
     const { month } = this.state;
     return (

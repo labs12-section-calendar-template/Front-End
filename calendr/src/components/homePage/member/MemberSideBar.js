@@ -11,15 +11,15 @@ export class MemberSideBar extends Component {
   }
 
   toggleModal = () => {
-    if (this.state.modalOpen === false) {
-      this.setState({
-        modalOpen: true,
-      })
-    } else {
-      this.setState({
-        modalOpen: false
-      })
-    }
+    // if (this.state.modalOpen === false) {
+    //   this.setState({
+    //     modalOpen: true,
+    //   })
+    // } else {
+    //   this.setState({
+    //     modalOpen: false
+    //   })
+    // }
   }
 
   render() {

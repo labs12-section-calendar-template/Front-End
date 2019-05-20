@@ -1,7 +1,7 @@
 import React from 'react';
 import {Elements, StripeProvider} from 'react-stripe-elements';
 import CheckOutForm from './CheckOutForm';
-import './billing.scss'
+import '../../App.scss'
 import MainNavBar from '../general/MainNavBar'
 
 

@@ -21,10 +21,27 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width:80vw;
+    margin:0;
 }
- #buttonSave{
+@media(max-width:1000px){
+    .templateTitle{
+        flex-direction: column;
+    }
+}
+@media(max-width:500px){
+    .templateTitle{
+        width:100vw;
+    }
+}
+.cancel-save{
+    display:flex;
+    
+}
+
+ #buttonSaveCancel{
     padding:.7rem 1rem;
-    margin-left: 4rem;
+    margin-left: 4%;
  }
 
  .startDate{
@@ -33,7 +50,7 @@
      justify-content: center;
  }
 
- @media(max-width: 500px){
+ @media(max-width: 1000px){
      .startDate{
          flex-direction: column;
      }
@@ -53,18 +70,6 @@ font-size: 1.5rem;
 .startDate h3, .templateColor h3, .templateForm h3{
     font-size: 1rem;
     }
-}
-
-.templateColor{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.templateColor select{
-    height: 1.5rem;
-    width: 8rem;
-    margin-left: 1rem;
 }
 
 

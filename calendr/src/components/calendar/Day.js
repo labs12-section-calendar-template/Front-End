@@ -4,7 +4,7 @@ import moment from "moment";
 import Popup from "reactjs-popup";
 import Event from "../homePage/event/Event";
 //import axios from "axios";
-import "../homePage/event/Event.css"
+import "../../App.scss"
 
 class Day extends React.Component {
   constructor(props) {
@@ -12,7 +12,6 @@ class Day extends React.Component {
     this.state = {
       modalOpen: false,
       check: moment(this.props.day.date._d).format("YYYY-MM-DD"),
-      
     };
   }
   
@@ -23,17 +22,15 @@ class Day extends React.Component {
     this.props.history.push(`/template/calendr/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
   };
 
-  
 
   render() {
+    // for making sure that the date an event is created for populates the correct date
     const filteredEvent = this.props.events.filter(event => {
       if (moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD") === moment.parseZone(event.date).format('YYYY-MM-DD')) {
         return event; 
        }
     });
-    const {
-      day: { date, number }
-    } = this.props;
+    const { day: { date, number } } = this.props;
     return (
       <>
         <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
@@ -50,23 +47,23 @@ class Day extends React.Component {
 
         </div>
         <Route
-          path={`/template/calendr/${this.state.check}`}
-          render={(...props) => (
-            <Popup
-            
-            className="modal-popup"
+          path={`/event/${this.state.check}`}
+          render={() => (
+            <div className="popup-overlay">
+            <div className="popup-content modal-popup" 
               open={true}
               onClose={() => this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)}
               position="right center"
-              {...props}
-              // style={{ max-width: "80%"}}
-            >
+              >
+
               <Event 
               check={this.state.check} 
               history={this.props.history} 
               events={this.props.events}
               />
-            </Popup>
+            
+            </div>
+            </div>
           )}
         />
       </>
