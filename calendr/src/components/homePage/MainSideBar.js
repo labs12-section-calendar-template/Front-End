@@ -132,7 +132,7 @@ export class MainSideBar extends Component {
                   onClick={this.props.singleCheck}
                   />    
                   
-                  <h5 onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+                  <h5 className="pointer" onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
           
                 </div>
                 })} 

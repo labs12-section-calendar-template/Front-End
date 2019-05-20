@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import "../../../App.scss"
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import MainNavBar from '../../general/MainNavBar'
 
 export class Group extends Component {
   constructor(props){
@@ -66,13 +67,14 @@ export class Group extends Component {
   render() {
     return (
       <>
+      <MainNavBar/>
       <div className = "groupHeader">
           <button onClick = {this.props.logOff}> Let me Out</button>
       </div>
       <div className="groupContainer">
         <div className="createGroup boxing">
             <h2 className="joinCreateGroup">Create Group</h2>
-            <p className="groupDescription">You must be a Gold Tier Member to create a group</p>
+            <p className="groupDescription">You must be a Gold Tier Member to create more than one group</p>
           <form className="formGroup">
             <h3>Enter Group Name</h3>
             <input
@@ -83,7 +85,7 @@ export class Group extends Component {
             name="name"
             type="text"
             />
-            <h3>Create 4 digit Join Code</h3>
+            <h3>Create 4-8 digit Join Code</h3>
             <input
             className="groupInput"
             onChange={this.handleInputChange}
@@ -103,7 +105,7 @@ export class Group extends Component {
             <p className="groupDescription">After you join a group you will be able to see all events created by the owner of that group</p>
 
            <form className="formGroup">
-              <h3>Enter 4 digit Join Code</h3>
+              <h3>Enter 4-8 digit Join Code</h3>
                 <input
                 className="groupInput"
                 onChange={this.handleInputChange}
