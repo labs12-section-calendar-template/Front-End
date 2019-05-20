@@ -8,6 +8,7 @@
     flex-direction: column;
     margin: 2rem 0 0 4%;
     font-family: "Poppins";
+    position: fixed;
     
     @media(max-width: 500px){
         width: 11rem;
@@ -25,6 +26,10 @@
 
     .groupName{
         padding: 0 1rem;
+
+        &:hover{
+            cursor: pointer;
+        }
     }
     .buttonTitles{
         font-size: 1.2rem;
@@ -67,6 +72,15 @@
         position: fixed;
         left: 1%;
         top: 15%;
+    }
+}
+
+.fa-bars { 
+    @media(max-width: 500px){
+    display: inline-block;
+    position: fixed;
+    left: 1%;
+    top: 15%;
     }
 }
 
@@ -141,6 +155,7 @@
     color: white;
     background-color:black;
     box-shadow: 0 0 .1rem .1rem black;
+    cursor: pointer;
 }
 
 .buttonLink{

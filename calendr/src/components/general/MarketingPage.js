@@ -99,7 +99,7 @@ const MarketingPage = () => {
             lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis aute
             irure dolor in reprehenderit.
           </p>
-          <button>Sign Up </button>
+          <button href="/login">Sign Up </button>
         </div>
       </div>
 
