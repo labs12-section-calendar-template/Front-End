@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import SideBar from "../SideBar";
 // import GeneralCalendar from '../../calendar/GeneralCalendar';
-import "./Template.css";
+import "../../../App.scss";
 import axios from "axios";
 // import {Link} from 'react-router-dom';
 import MainNavBar from "../../general/MainNavBar";
@@ -22,6 +22,7 @@ export class Template extends Component {
     };
   }
 
+  // Creating a template
   postTemplate = event => {
     let group_id = localStorage.getItem("group_id");
     console.log(group_id);
@@ -50,19 +51,21 @@ export class Template extends Component {
     }
   };
 
-
+  // handle StartDate input and set to state
   handleStartDateChange = event => {
     this.setState({
       startDate: event.target.value
     });
   };
 
+// handle EndDate input and set to state
   handleEndDateChange = event => {
     this.setState({
       endDate: event.target.value
     });
   };
 
+// handle input and set to state
   handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value

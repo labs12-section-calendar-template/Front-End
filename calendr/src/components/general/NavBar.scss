@@ -1,19 +1,35 @@
 .navBarContainer{
     background-color: #3270eb;
-    padding: .9rem;
+    padding: .5rem;
+    position: relative;
+    width:100vw;
+    margin-bottom:1rem;
 }
 .margin{
     display: flex;    
     justify-content: space-between;
+    align-items: center;
 }
 img{
     width:7rem;
     height:5%;
     margin-left:2%;
 }
+.calendrTitleContainer{
+    display:flex;
+    align-items: center;
+    position: fixed;
+    z-index: 100;
+    right:44%;
+    left:44%;
+}
 .calendrTitle{
     font-size: 2.2rem;
     color: white;
+    display: flex;
+    width:14vw;
+    position: absolute;
+    z-index: 100;
     margin:auto;
 }
 
@@ -55,6 +71,21 @@ img{
     }
 }
 
+
+
+
+// max-800
+@media(max-width:800px){
+    .calendrTitle{
+        visibility: hidden;
+    }
+    }
+
+
+
+
+    
+// max-500
 @media (max-width: 500px){
     .NavLinkB{
         margin:0 .2rem;

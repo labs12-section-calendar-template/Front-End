@@ -18,15 +18,12 @@ export class MainSideBar extends Component {
     }
   }
 
+  // mounting getGroup
   componentDidMount(){
     this.getGroup();
-    // if(this.state.groupName.length < 0){
-    //   window.location = '/'
-    // }else{
-    //   window.location = '/home'
-    // }
   }
 
+  // sideBar nav toggle on and off 
   navAppear = (event) => {
     event.preventDefault();
     if(!this.state.navBar){
@@ -42,6 +39,7 @@ export class MainSideBar extends Component {
     }
 }
   
+  // get group information for display purposes 
   getGroup = () => {
     let userId = localStorage.getItem('userId')
     axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
@@ -60,10 +58,12 @@ export class MainSideBar extends Component {
     })
   }
 
+  // onClick funtion to redirect to add template
   circleAddTemplate = () => {
     window.location = '/template'
   }
 
+  // group edit popup 
   toggleModal = () => {
     if(this.state.modalOpen === false){
       this.setState({
@@ -76,12 +76,13 @@ export class MainSideBar extends Component {
     }
   }
 
+  // probably not needed
   toggleSelectedTemplates = () => {
-    if(null){
+    // if(null){
 
-    }else{
+    // }else{
 
-    }
+    // }
   }
 
   // takeMeToTemplate = (event) => {
@@ -90,6 +91,8 @@ export class MainSideBar extends Component {
   // localStorage.setItem('template_id', mikesEasy)
   // window.location=`/template/calendr/${mikesEasy}`
   // }
+
+  // sets template id in localStorage based on the one clicked
   switchTemplate = (templateId) => {
     localStorage.setItem('template_id', templateId)
     this.props.history.push(`/template/calendr/${templateId}`)
@@ -129,7 +132,7 @@ export class MainSideBar extends Component {
                   onClick={this.props.singleCheck}
                   />    
                   
-                  <h5 onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+                  <h5 className="pointer" onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
           
                 </div>
                 })} 

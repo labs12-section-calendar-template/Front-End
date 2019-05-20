@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-import "./Group.scss";
+import "../../../App.scss";
 import { toast } from "react-toastify";
 
 export class GroupEdit extends Component {
@@ -8,23 +8,25 @@ export class GroupEdit extends Component {
     super(props);
     this.state = {
       name: "",
-      group_id: this.props.group_id
+      group_id: []
     };
   }
 
+  // Takes in the inputs and sets them to state
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
     });
   };
 
+  // update group page to change current information on group
   updateGroup = event => {
     let userId = localStorage.getItem("userId");
     console.log(userId);
     console.log(this.state.joinCode);
     console.log(this.state.name);
     axios
-      .put(`${process.env.REACT_APP_API}/groups/${this.state.group_id}`, {
+      .put(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`, {
         name: this.state.name,
         user_id: userId
       })
@@ -39,6 +41,7 @@ export class GroupEdit extends Component {
       });
   };
 
+  // removes all information on group including templates and events
   deleteGroup = e => {
     e.preventDefault();
     axios
@@ -62,7 +65,7 @@ export class GroupEdit extends Component {
   };
 
   render() {
-    console.log(this.state.group_id);
+    console.log(this.props.group_id);
 
     return (
       <div className="popup-overlay">

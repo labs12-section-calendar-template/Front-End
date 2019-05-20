@@ -2,11 +2,10 @@ import React from 'react';
 import axios from 'axios';
 import MemberSideBar from './MemberSideBar';
 import MemberCalendar from './MemberCalendar'
-import './memberHome.scss'
+import '../../../App.scss'
 import { NavLink } from "react-router-dom";
 import logo from "../../../extras/CalendrWhite.png";
 import { toast } from 'react-toastify';
-// import './NavBar.scss'
 
 class MemberHome extends React.Component {
     constructor(props) {
@@ -20,10 +19,12 @@ class MemberHome extends React.Component {
         }
     }
 
+    // Mounts getGroup and checkUsersGroups
     componentDidMount(){
         this.getGroup()
     }
 
+    // Allows a member to join a group
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
@@ -45,6 +46,7 @@ class MemberHome extends React.Component {
     })
     }
 
+    // Gets all the templates for the group joined
     getGroupTemplates = (groupID) => {
         axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
@@ -78,7 +80,7 @@ class MemberHome extends React.Component {
           reject(err);
         })});
       }
-
+    // Takes in the selectEvents and confirms if a template isChecked or not
       singleCheck = event => {
         let eventsArray = [];
         let temps = this.state.templates

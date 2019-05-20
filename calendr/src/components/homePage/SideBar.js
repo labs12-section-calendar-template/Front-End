@@ -3,8 +3,10 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
-import './Side.scss'
+import '../../App.scss'
 
+
+///////////////////   URL => HOME      ///////////////////////
 export class SideBar extends Component {
   constructor(props){
     super(props);
