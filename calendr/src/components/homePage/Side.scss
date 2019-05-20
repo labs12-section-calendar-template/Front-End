@@ -68,6 +68,9 @@ display: none;
         }
     }
 
+    .groupName{
+        padding: 0 1rem;
+    }
     .buttonTitles{
         font-size: 1.2rem;
         text-align: start;
@@ -112,6 +115,27 @@ display: none;
 .desktopNav{
     width:30vw;
     position: absolute;
+}
+.navOpen{
+        display: flex;
+        justify-content: center;
+        background:rgba(235, 162, 162, 0.904);
+        transition: .5s ease-in;
+        overflow: hidden;
+        position: fixed;
+        z-index: 10;
+        padding:0 1rem;
+
+    @media(max-width: 500px){
+        justify-content: flex-start;
+        background: #3270eb;
+        height: 65vh;
+        width: 55%;
+        transition: margin-left .5s;
+        overflow: hidden;
+        position: fixed;
+        top: 20%;
+    }
 }
 @media(max-width:500px){
     .desktopNav{

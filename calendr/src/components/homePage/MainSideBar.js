@@ -14,7 +14,7 @@ export class MainSideBar extends Component {
       group_id:[],
       modalOpen: false,
       templates:[],
-      navBar: true
+      navBar: false
     }
   }
 

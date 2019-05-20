@@ -37,7 +37,7 @@ class CheckOutForm extends React.Component {
     let UserId = localStorage.getItem('userId')
     let {token} = await this.props.stripe.createToken({name: "Name"});
     if(this.state.premiumStatus === 1) {
-      toast('You already have Premium Membership!')
+      toast.error('Please enter a valid credit card')
     } else {
     axios.post(`${process.env.REACT_APP_API}/charge/${UserId}`, {tokenId: token.id})
     .then(res => {
@@ -46,7 +46,7 @@ class CheckOutForm extends React.Component {
      })
     })
     .catch(err => {
-      toast('Please enter a valid credit card')
+     
       console.log(err)
     })
   }

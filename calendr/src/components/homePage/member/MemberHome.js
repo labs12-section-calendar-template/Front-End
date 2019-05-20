@@ -22,26 +22,24 @@ class MemberHome extends React.Component {
     // Mounts getGroup and checkUsersGroups
     componentDidMount(){
         this.getGroup()
-        this.checkUsersGroups()
     }
 
     // Allows a member to join a group
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
-    axios.post(`${process.env.REACT_APP_API}/groups/getby/joincode`, {joinCode})
+    axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, { joinCode } )
     .then(res => {
-        console.log(res.data)
-        let groupID = res.data.group.id
+        let groupID = res.data.id
       this.setState({
-        group: res.data.group,
-        joinCode: res.data.group.joinCode,
+        group: res.data,
+        joinCode: res.data.joinCode,
       })
       
       this.getGroupTemplates(groupID)
       
 
-      window.localStorage.setItem("group_id", res.data.group.id)
+      window.localStorage.setItem("group_id", res.data.id)
     })
     .catch(err => {
       console.log(err)
@@ -52,67 +50,31 @@ class MemberHome extends React.Component {
     getGroupTemplates = (groupID) => {
         axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
-            console.log(res.data)
-            let value = res.data[res.data.length - 1].id;
             this.setState({
               templates: res.data
             })
-            this.getEvents(value)
           }).catch(err => {
             console.log(err)
           })
       }
 
-      // Probably not needed
-      getEvents = value => {
-      //   return new Promise ((resolve, reject) => { axios
-      //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-      //     .then(res => {
-      //       let events = res.data
-      //       // let eventTimes = res.data.map(event => {
-      //       //   return event.startTime
-      //       // })
-    
-      //       let sortedTime = events.sort((a, b) => {
-      //         if(a.startTime > b.startTime){
-      //           return 1
-      //         } else if (a.startTime < b.startTime){
-      //           return -1
-      //         } else {
-      //           return 0
-      //         }
-      //       })
-    
-      //       this.setState({
-      //         events: sortedTime
-      //       })
-           
-      //       resolve(events);
-      //     })
-      //     .catch(err => {
-      //       reject(err)
-      //     });
-    //  })
-    };
-
-    // Gets all events for the template id. To be run when a toggle is clicked
-  selectEvents = (something) => {
-    return new Promise((resolve, reject) => { axios
-    .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
-    .then(res => {
-      let events = res.data
-      console.log(res.data)
-      this.setState( previousState => {return {
-        events: [...previousState.events, ...events].sort((a,b) => {
-          if(a.startTime > b.startTime){
-            return 1
-          } else if (a.startTime < b.startTime){
-            return -1
-          } else {
-            return 0
-          }
-        })
-      }});
+      selectEvents = (something) => {
+        return new Promise((resolve, reject) => { axios
+        .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
+        .then(res => {
+          console.log(res.data)
+         let events = res.data
+          this.setState( previousState => {return {
+            events: [...previousState.events, ...events].sort((a,b) => {
+              if(a.startTime > b.startTime){
+                          return 1
+                        } else if (a.startTime < b.startTime){
+                          return -1
+                        } else {
+                          return 0
+                        }
+            })
+          }});
         })
         .catch(err => {
           reject(err);
@@ -122,9 +84,13 @@ class MemberHome extends React.Component {
       singleCheck = event => {
         let eventsArray = [];
         let temps = this.state.templates
+        console.log(event.target.value)
+        console.log(event.target.attributes)
+        console.log(event.target.attributes.value.value)
     
         temps.forEach((temp, i) => {
-          if(temp.id == event.target.value && temp.isChecked === 0){
+          console.log(temp.isChecked)
+          if(temp.id == event.target.attributes.value.value && temp.isChecked == false){
             console.log('yola')
             temp.isChecked = 1;
             this.selectEvents(temp.id).then(res => {
@@ -135,7 +101,7 @@ class MemberHome extends React.Component {
               console.error(err)
             })
             
-          } else if(temp.id == event.target.value && temp.isChecked === 1){
+          } else if(temp.id == event.target.attributes.value.value && temp.isChecked == true){
             console.log('yolu')
             temp.isChecked = 0
           } else if (temp.isChecked === 1){
@@ -147,7 +113,6 @@ class MemberHome extends React.Component {
             })
           } 
           if(i === temps.length-1){
-            console.log(eventsArray)
             this.setState (() => {
               return { events: eventsArray }
             })
@@ -156,31 +121,10 @@ class MemberHome extends React.Component {
         })
       }
 
-      // Gets all groups for the user
-      checkUsersGroups = () => {
-          let userId = localStorage.getItem('userId')
-          axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
-          .then(res => {
-              console.log(res.data)
-            this.setState({
-                usersGroups: res.data
-            })
-            //   if(res.data.length > 0) {
-            //       window.location=`/home/${}`
-            //   }
-          })
-          .catch(err => {
-              console.log(err)
-          })
-      }
-
-    //Groupname needs to be displayed based off of joincode
-    //templates for the group above need to be displayed
-    //clicking on the templates that are displayed need to display all of the events
 
     render() { 
-        console.log(this.state.usersGroups)
         return ( 
+          
             
         <div>
             <div className="navBarContainer">
