@@ -106,9 +106,10 @@ class Event extends React.Component {
     let id = localStorage.getItem('template_id')
     axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
-        let urlPath = window.location.pathname.split('/')[2]
+        let urlPath = window.location.pathname.split('/')[3]
         console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
         console.log(res.data.endDate)
+        console.log(urlPath)
         this.setState({
           startDate: res.data.startDate,
           endDate: res.data.endDate,

@@ -20,7 +20,7 @@ class Day extends React.Component {
   toggleOpen = (e) => {
     e.preventDefault();
     console.log(moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD"))
-    this.props.history.push(`/event/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
+    this.props.history.push(`/template/calendr/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
   };
 
   
@@ -50,9 +50,10 @@ class Day extends React.Component {
 
         </div>
         <Route
-          path={`/event/${this.state.check}`}
+          path={`/template/calendr/${this.state.check}`}
           render={(...props) => (
             <Popup
+            
             className="modal-popup"
               open={true}
               onClose={() => this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)}

@@ -153,10 +153,10 @@ export class MainCalendar extends Component {
   renderWeeks() {
     let weeks = [];
     let done = false;
-    let date = moment(this.props.match.params.date || this.state.date)
+    let date = moment(this.state.month)
       .clone()
       .startOf("month")
-      .day("Sunday");
+      .day("Sunday")
     let count = 0;
     let monthIndex = date.month();
 
@@ -183,19 +183,21 @@ export class MainCalendar extends Component {
   }
 
   previous = () => {
-    this.setState( previousState => {return {
-      month: previousState.month.subtract(1, "month")
-    }});
+    let { month } = this.state;
+    this.setState({
+      month: month.subtract(1, "month")
+    });
   };
   
   next = () => {
-    this.setState( previousState => { return{
-      month: previousState.month.add(1, "month")
-    }});
+    let { month } = this.state;
+    this.setState({
+      month: month.add(1, "month")
+    });
   };
 
   renderMonthLabel() {
-    const month = moment(this.props.match.params.date) || this.state.date
+    const month = moment(this.state.month)
     return (
       <span className="month-label">
         {month.startOf("month").format("MMMM YYYY")}

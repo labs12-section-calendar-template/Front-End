@@ -37,7 +37,7 @@ export class EventBox extends Component {
     return (
       <div className="allEvents">
         {this.props.events && this.props.events.map(event => {
-          if (urlPath[2] === event.date) {
+          if (urlPath[3] === event.date) {
             return <div key={event.id} className="event">
                     <i
                       className="fas fa-trash iconSize"

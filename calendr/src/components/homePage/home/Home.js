@@ -57,14 +57,19 @@ export class Home extends Component {
   };
 
   deleteTemplate = (e, id) => {
-    //e.preventDefault();
+    e.stopPropagation();
     let groupID = localStorage.getItem('group_id')
     axios
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");
-        
-       this.props.history.push(`/home/${groupID}`);
+        let newTemps = this.state.templates.filter(temp => {
+          return temp.id !== id
+        })
+       this.setState({
+         templates: newTemps
+       }, () =>  toast.success('Template Deleted'));
+       
       })
       .catch(err => {
         console.log(err);
