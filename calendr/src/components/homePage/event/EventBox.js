@@ -34,6 +34,7 @@ export class EventBox extends Component {
   render() {
     console.log(this.props.events)
     let urlPath = window.location.pathname.split('/');
+    console.log(urlPath)
     return (
       <div className="allEvents">
         {this.props.events && this.props.events.map(event => {
