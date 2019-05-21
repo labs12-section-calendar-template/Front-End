@@ -27,6 +27,7 @@ export class EventBox extends Component {
         {this.props.events && this.props.events.map(event => {
           if (urlPath[3] === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             return <div key={event.id} className="event">
+                  <div className="event-icons">
                     <i
                       className="far fa-edit iconSize"
                       onClick={e => this.editEvent(e, event.id)}
