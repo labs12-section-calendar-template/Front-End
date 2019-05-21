@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
 import moment from 'moment';
 import axios from 'axios'
+import Popup from 'reactjs-popup'
+import EventEdit from './EventEdit'
 
 
 export class EventBox extends Component {
@@ -22,6 +25,10 @@ export class EventBox extends Component {
       });
   };
 
+  editEvent = (e, id) => {
+    // window.location = `/event/edit/${id}`;
+  };
+
 
   render() {
     console.log(this.props.events)
@@ -36,13 +43,16 @@ export class EventBox extends Component {
                       className="fas fa-trash iconSize"
                       onClick={e => this.deleteEvent(e, event.id)}
                     />
+                  
                     <i
                       className="far fa-edit iconSize"
-                      onClick={e => this.edit(e, event.id)}
+                      onClick={e => this.editEvent(e, event.id)}
+                      
                     />
             <h5>{event.title}</h5><br/>
             <p>{event.description}</p><br/>
-            <p>{event.date}</p>
+            <p>{moment(event.date).format('dddd, MMM Do')}</p>
+            <p>{event.startTime} - {event.endTime}</p>
             </div>
           }
         })}
