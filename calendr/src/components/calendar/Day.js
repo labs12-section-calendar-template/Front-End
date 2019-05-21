@@ -63,6 +63,8 @@ class Day extends React.Component {
               check={this.state.check} 
               history={this.props.history} 
               events={this.props.events}
+              deleteEvent={this.props.deleteEvent}
+              getEvents={this.props.getEvents}
               />
             
             </div>
