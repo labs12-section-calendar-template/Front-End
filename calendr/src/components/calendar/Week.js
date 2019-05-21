@@ -26,6 +26,7 @@ class Week extends React.Component {
                 day={day} 
                 key={day.date} 
                 templates = {this.props.templates}
+                colors={this.props.colors}
                 />
         ))}
       </div>

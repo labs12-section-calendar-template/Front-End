@@ -25,7 +25,6 @@ class Event extends React.Component {
       startDate: '',
       endDate: '',
       sum: '',
-
       repeat: 1
     };
   }

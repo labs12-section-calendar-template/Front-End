@@ -26,6 +26,12 @@ display: none;
     border-radius: 10px;
     z-index: 10;
     padding:0 1rem;
+    top:17.7rem;
+    height:32.8rem;
+    margin-left: .6rem;
+    overflow-y: scroll;
+    box-shadow: inset 1px 1px 5px black,
+    inset -1px -1px 5px black;
 
 @media(max-width: 500px){
     justify-content: flex-start;
@@ -86,8 +92,25 @@ display: none;
         font-size: 1.2rem;
         text-align: start;
         margin:0;
+        
         @media(max-width: 500px){
             font-size: 1rem;
+        }
+    }
+
+    .template-list-items{
+        display: flex;
+        margin-bottom:.4rem;
+
+        .each-template-input{
+            cursor: pointer;
+            margin:auto .5rem;
+            font-size: .9rem;
+        }
+        .each-template-name{
+            cursor: pointer;
+            margin:auto .5rem;
+            font-size: .9rem;
         }
     }
 
@@ -97,9 +120,6 @@ display: none;
         @media(max-width: 500px){
             font-size: .8rem;
         }
-    }
-    .pointer{
-        cursor: pointer;
     }
     
 }

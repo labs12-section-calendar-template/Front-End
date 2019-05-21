@@ -39,18 +39,18 @@ export class EventBox extends Component {
         {this.props.events && this.props.events.map(event => {
           if (urlPath[3] === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             return <div key={event.id} className="event">
+                  <div className="event-icons">
+                    <i
+                      className="far fa-edit iconSize"
+                      onClick={e => this.editEvent(e, event.id)}
+                    />
                     <i
                       className="fas fa-trash iconSize"
                       onClick={e => this.deleteEvent(e, event.id)}
                     />
-                  
-                    <i
-                      className="far fa-edit iconSize"
-                      onClick={e => this.editEvent(e, event.id)}
-                      
-                    />
-            <h5>{event.title}</h5><br/>
-            <p>{event.description}</p><br/>
+                  </div>
+            <h5>{event.title}</h5>
+            <p>{event.description}</p>
             <p>{moment(event.date).format('dddd, MMM Do')}</p>
             <p>{event.startTime} - {event.endTime}</p>
             </div>
