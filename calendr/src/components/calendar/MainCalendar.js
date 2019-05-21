@@ -17,7 +17,8 @@ export class MainCalendar extends Component {
       events: [],
       template_id: [],
       templates: [],
-      sortedStartTimes: []
+      sortedStartTimes: [],
+      
     };
   }
   

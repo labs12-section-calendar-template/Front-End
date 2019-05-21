@@ -37,7 +37,10 @@ class Day extends React.Component {
             <div className="eventInfo">
 
               {filteredEvent.map(event => (
-                <p key = {event.id} style={{ fontSize: "12px" }}> {event.startTime}{' '}{event.title}</p>
+               <div className='event-div'>
+               <li></li>
+               <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}-{event.title}</p>
+               </div>
               ))}
               
             </div>
