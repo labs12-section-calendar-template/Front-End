@@ -38,6 +38,7 @@ export class EventBox extends Component {
                       onClick={e => this.editEvent(e, event.id)}
                       
                     />
+                  </div>
             <h5>{event.title}</h5><br/>
             <p>{event.description}</p><br/>
             <p>{moment(event.date).format('dddd, MMM Do')}</p>
