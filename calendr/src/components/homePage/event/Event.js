@@ -9,6 +9,7 @@ import moment from "moment";
 import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
+import { toast } from "react-toastify";
 
 class Event extends React.Component {
   constructor(props) {
@@ -136,6 +137,7 @@ class Event extends React.Component {
     let newEnd = moment(new Date(endTime)).format("LT")
     if(this.state.repeat === 1){
     console.log(newStart)
+    toast.success('Your events are loading')
     for (let i = 0; i <= sum; i++) {
       console.log(this.state.sum)
       axios
@@ -148,8 +150,8 @@ class Event extends React.Component {
             date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
           })
         .then(res => {
-          // console.log(res.data.date);
-          //window.location = "/event";
+          this.props.getEvents(temppId) 
+          
         })
         .catch(err => console.log(err));
     }
@@ -165,8 +167,8 @@ class Event extends React.Component {
             date: moment(this.state.date).format('YYYY-MM-DD')
           })
         .then(res => {
-          // console.log(res.data.date);
-          //window.location = "/event";
+          this.props.getEvents(temppId) 
+          toast.success('Your event was added!')
         })
         .catch(err => console.log(err));
     }
@@ -180,7 +182,9 @@ class Event extends React.Component {
         <div className="event-view-wrapper">
           <div className="event-view-container">
             <button className='close-popup' onClick={this.toggleClose}>X</button>
-            <EventBox events={this.props.events} />
+            <EventBox events={this.props.events}
+                      deleteEvent={this.props.deleteEvent}
+            />
             <div
               className="top-section"
               style={{

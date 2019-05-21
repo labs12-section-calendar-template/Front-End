@@ -130,7 +130,7 @@ class EventEdit extends React.Component {
   }
 
   // adding event, add a single event or add events coving the total length of the template
-  addEvent = () => {
+  updateEvent = () => {
     let urlPath = window.location.pathname.split('/')[3] - 1;
 
     let { startTime, endTime, title, description, sum } = this.state;
@@ -241,7 +241,7 @@ class EventEdit extends React.Component {
           <button
             className="save-event-button"
             onClick={() => {
-              this.addEvent();
+              this.updateEvent();
               this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)
             }}
           >

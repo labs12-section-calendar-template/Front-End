@@ -12,7 +12,7 @@
     height: 0vh;
     transition: .5s ease-in;
     overflow: hidden;
-display: none;
+    display: none;
 }
 
 
@@ -42,8 +42,18 @@ display: none;
     overflow: hidden;
     position: fixed;
     top: 20%;
+    opacity: 0;
+    animation: fadeIn .3s ease-in-out .3s forwards;
+    }
 }
-}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }  
 
 .homePageStyles{
     align-items: flex-start;
@@ -71,6 +81,7 @@ display: none;
 
         @media(max-width: 500px){
             font-size: 1.2rem;
+            color: white;
         }
     }
 
@@ -95,6 +106,7 @@ display: none;
         
         @media(max-width: 500px){
             font-size: 1rem;
+            color: white;
         }
     }
 
@@ -119,9 +131,9 @@ display: none;
         margin:0;
         @media(max-width: 500px){
             font-size: .8rem;
+            color: white;
         }
     }
-    
 }
 
 
@@ -147,7 +159,7 @@ display: none;
     position: fixed;
     left: 1%;
     top: 15%;
-     
+    z-index: 1;
     }
 }
 
