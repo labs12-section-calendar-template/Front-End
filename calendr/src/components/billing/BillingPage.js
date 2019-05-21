@@ -28,7 +28,7 @@ class BillingPage extends React.Component {
      <StripeProvider apiKey="pk_test_Nz6oYTpIVthIS5W8jol7pd9Y00gIlzGMsm">
         <div className="billing-card">
          
-          <h1>React Stripe</h1>
+         
           <Elements>
             <CheckOutForm />
           </Elements>

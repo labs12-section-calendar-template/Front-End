@@ -37,7 +37,7 @@ class Day extends React.Component {
             <div className="eventInfo">
 
               {filteredEvent.map(event => (
-                <p key = {event.id} style={{ fontSize: "12px" }}> {event.startTime} - {event.title}</p>
+                <p key = {event.id} style={{ fontSize: "12px" }}> {event.startTime}{' '}{event.title}</p>
               ))}
               
             </div>
@@ -47,7 +47,7 @@ class Day extends React.Component {
 
         </div>
         <Route
-          path={`/event/${this.state.check}`}
+          path={`/template/calendr/${this.state.check}`}
           render={() => (
             <div className="popup-overlay">
             <div className="popup-content modal-popup" 

@@ -54,6 +54,9 @@ class CheckOutForm extends React.Component {
 
     render() { 
       let groupId = localStorage.getItem('group_id')
+      if(this.state.premiumStatus === 1) {
+        return <h1>YOU HAVE ALREADY PAID FOR PREMIUM MEMBERSHIP</h1>
+      } else {
       if (this.state.complete) return <div><h1>Purchase Complete</h1> <button onClick={()=> { window.location=`/home/${groupId}`}}>Take Me Home</button> </div>
         return ( 
 
@@ -65,6 +68,7 @@ class CheckOutForm extends React.Component {
 
          );
     }
+  }
 }
  
 export default injectStripe(CheckOutForm);

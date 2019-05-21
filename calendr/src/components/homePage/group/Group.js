@@ -67,9 +67,9 @@ export class Group extends Component {
   render() {
     return (
       <>
-      <MainNavBar/>
+      <MainNavBar logOff={this.props.logOff}/>
       <div className = "groupHeader">
-          <button onClick = {this.props.logOff}> Let me Out</button>
+         
       </div>
       <div className="groupContainer">
         <div className="createGroup boxing">
