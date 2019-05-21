@@ -19,7 +19,7 @@ class EventEdit extends React.Component {
       endTime: 0,
       title: "",
       description: "",
-      date: this.props.check,
+      date: document.referrer.split('/')[5],
       template_id: [],
       week: [],
       startDate: '',
@@ -113,7 +113,7 @@ class EventEdit extends React.Component {
     let id = localStorage.getItem('template_id')
     axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
-        let urlPath = window.location.pathname.split('/')[3]
+        let urlPath = document.referrer.split('/')[5]
         console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
         console.log(res.data.endDate)
         console.log(urlPath)
@@ -131,17 +131,19 @@ class EventEdit extends React.Component {
 
   // adding event, add a single event or add events coving the total length of the template
   addEvent = () => {
-    let temppId = localStorage.getItem('template_id')
+    let urlPath = window.location.pathname.split('/')[3] - 1;
+
     let { startTime, endTime, title, description, sum } = this.state;
     let newStart = moment(new Date(startTime)).format("LT")
     let newEnd = moment(new Date(endTime)).format("LT")
     if(this.state.repeat === 1){
     console.log(newStart)
     for (let i = 0; i <= sum; i++) {
+        urlPath += 1
       console.log(this.state.sum)
       axios
         .put(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
+          `${process.env.REACT_APP_API}/events/${urlPath}`, {
             startTime: newStart,
             endTime: newEnd,
             title,
@@ -158,7 +160,7 @@ class EventEdit extends React.Component {
 
       axios
         .put(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
+          `${process.env.REACT_APP_API}/events/${urlPath + 1}`, {
             startTime: newStart,
             endTime: newEnd,
             title,
@@ -175,19 +177,21 @@ class EventEdit extends React.Component {
   };
 
   render() {
-    console.log(this.props.events)
+    console.log(window.location.pathname.split('/'))
+    console.log(document.referrer.split('/')[5])
     return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
             <button className='close-popup' onClick={this.toggleClose}>X</button>
+            <h1>Update Your Event Below</h1>
             <div
               className="top-section"
               style={{
                 display: "flex"
               }}
             >
-            <h1>Update Your Event Below</h1>
+           
               <form
                 style={{
                   display: "flex",

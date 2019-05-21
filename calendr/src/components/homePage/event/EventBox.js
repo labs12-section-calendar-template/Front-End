@@ -26,7 +26,7 @@ export class EventBox extends Component {
   };
 
   editEvent = (e, id) => {
-    // window.location = `/event/edit/${id}`;
+     window.location = `/event/edit/${id}`;
   };
 
 
