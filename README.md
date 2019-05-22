@@ -13,27 +13,38 @@
 <br>
 <br>
 
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://en.wikipedia.org/wiki/MIT_License)    [![Netlify Status](https://api.netlify.com/api/v1/badges/97d60185-6561-4760-8da7-d65bd8f824ba/deploy-status)](https://app.netlify.com/sites/calendr/deploys)    [![React badge](https://img.shields.io/badge/react-v16.8.6-blue.svg)](https://reactjs.org/)   [![moment badge](https://img.shields.io/badge/moment.js-v2.24.0-orange.svg)](https://momentjs.com/)
+
+
+
+
 ## Overview
-Calendr allows users, both small and large, to create timeline based templates and populate them with
-events. <br>
+Our product, Calendr,  allows both small and large users, to create timeline based templates and populate them with
+events. The events are conveniently displayed on the user's calendar, filtered by template, for easy viewing and editing. <br>
 
 The project can be viewed here, [https://calendr.netlify.com/](https://calendr.netlify.com/)
 
 
 ### Features
 
+  * Login with OAuth 
   * Create a new calendar template
+  * Update and edit template
   * Add events to the template, including name, day, time, and description
+  * Update and edit events
+  * Repeat event for cycle of template
   * Add a group
-  * Join groups and view and edit them
-  * Set a start date to apply to the template
+  * Join a group
+  * Mobile responsiveness
+  * Payments using the Stripe API
 
 
-## Tech Stack
+## Frameworks and Libraries 
 
 #### React
 
-* Robust, popular front-end framework
+* Robust, popular JavaScript front-end library
+* Reusable components
 * Un-opinionated
 * React Router great for building single page applications
 
@@ -74,6 +85,6 @@ The project can be viewed here, [https://calendr.netlify.com/](https://calendr.n
 * Comes with React components out of the box
 
 
-#### Front end deployed to  Netlify.com
+#### Front end deployed to Netlify
 
-#### [Back end]()
+#### [Back end](https://github.com/labs12-section-calendar-template/Backend)
