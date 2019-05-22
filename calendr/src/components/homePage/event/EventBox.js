@@ -14,12 +14,12 @@ export class EventBox extends Component {
 
   editEvent = (e, id) => {
     //Added the events repeat value to the end of the url to use in the update event function
-    console.log(e.target.attributes.value.value)
-    // if(e.target.attributes.value.value == true || e.target.attributes.value.value == 1){
-    //   window.location = `/event/edit/${id}${1}`;
-    // } else {
-    //   window.location = `/event/edit/${id}${0}`;
-    // }
+    console.log(e.target.attributes.value.value, true)
+    if(e.target.attributes.value.value == "true" || e.target.attributes.value.value == 1){
+      window.location = `/event/edit/${id}${1}`;
+    } else {
+      window.location = `/event/edit/${id}${0}`;
+    }
   };
 
   render() {
