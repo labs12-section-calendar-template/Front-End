@@ -23,9 +23,24 @@ class Week extends React.Component {
       <div className="week">
         {days.map(day => (
           <Day  events={this.props.events} 
+                deleteEvent={this.props.deleteEvent}
                 day={day} 
                 key={day.date} 
                 templates = {this.props.templates}
+                getEvents={this.props.getEvents}
+                colors={this.props.colors} 
+                check = {this.props.check} 
+                startTime = {this.props.startTime} 
+                endTime = {this.props.endTime} 
+                startDate = {this.props.startDate} 
+                endDate = {this.props.endDate} 
+                sum = {this.props.sum}
+                repeat = {this.props.repeat}
+
+                handleChange = {this.props.handleChange} 
+                handleStartTimeChange = {this.props.handleStartTimeChange} 
+                handleEndTimeChange = {this.props.handleEndTimeChange}
+                setStateToEmpty = {this.props.setStateToEmpty}
                 />
         ))}
       </div>

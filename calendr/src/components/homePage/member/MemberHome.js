@@ -140,10 +140,11 @@ class MemberHome extends React.Component {
     </div>
     </div>
             <h1>View Your Group's Events Here</h1>
-            <MemberSideBar singleCheck = {this.singleCheck} group = {this.state.group} templates = {this.state.templates} />
+
             <MemberCalendar events = {this.state.events}
                             templates = {this.state.templates}
-                            
+                            singleCheck = {this.singleCheck} 
+                            group = {this.state.group}
                             />
         </div> 
 

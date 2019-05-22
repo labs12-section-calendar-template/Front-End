@@ -36,9 +36,12 @@ class Day extends React.Component {
         <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
 
-              {filteredEvent.map(event => (
-                <p key = {event.id} style={{ fontSize: "12px" }}> {event.startTime} - {event.title}</p>
-              ))}
+            {filteredEvent.map((event) => {
+                return <div className='event-div'>
+               <li style={{color:this.props.colors[event.template_id % 6]}}/>
+               <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
+               </div>
+            })}
               
             </div>
           <div className="dayNumber">
@@ -47,7 +50,7 @@ class Day extends React.Component {
 
         </div>
         <Route
-          path={`/event/${this.state.check}`}
+          path={`/template/calendr/${this.state.check}`}
           render={() => (
             <div className="popup-overlay">
             <div className="popup-content modal-popup" 
@@ -57,9 +60,23 @@ class Day extends React.Component {
               >
 
               <Event 
-              check={this.state.check} 
+              colors={this.props.colors}
               history={this.props.history} 
               events={this.props.events}
+              deleteEvent={this.props.deleteEvent}
+              getEvents={this.props.getEvents}
+              check = {this.state.check} 
+              startTime = {this.props.startTime} 
+              endTime = {this.props.endTime} 
+              startDate = {this.props.startDate} 
+              endDate = {this.props.endDate} 
+              sum = {this.props.sum}
+              repeat = {this.props.repeat}
+
+              handleChange = {this.props.handleChange} 
+              handleStartTimeChange = {this.props.handleStartTimeChange} 
+              handleEndTimeChange = {this.props.handleEndTimeChange}
+              setStateToEmpty = {this.props.setStateToEmpty}
               />
             
             </div>

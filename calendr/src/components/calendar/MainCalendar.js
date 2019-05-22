@@ -7,6 +7,7 @@ import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
 import { withRouter } from 'react-router-dom'
+import { toast } from "react-toastify";
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -17,12 +18,22 @@ export class MainCalendar extends Component {
       events: [],
       template_id: [],
       templates: [],
-      sortedStartTimes: []
+      sortedStartTimes: [],
+      colors:['purple', 'teal', 'dodgerblue', 'darkorchid', 'red', 'green'],
+      deleteAll: false,
+      // all of this state below needs to be passed down to events.js and further
+      startTime: 0,
+      endTime: 0,
+      startDate: '',
+      endDate: '',
+      sum: '',
+      repeat: 1
     };
   }
-  
+
   componentDidMount() {
     this.getTemplateData();
+    this.getTemplateById();
   }
 
   // Get template by its corresponding group id
@@ -33,6 +44,12 @@ export class MainCalendar extends Component {
       .then(res => {
         //returns all templates
         let templates = res.data
+        if(templates.length > 0 ){
+
+        
+        templates[0].isChecked = 1
+        }
+        console.log(templates)
         //returns the id of the very last template in the array
         let value = res.data[res.data.length - 1].id;
         //returns an array of all template IDS
@@ -43,6 +60,9 @@ export class MainCalendar extends Component {
         this.setState({
           template_id: tempIds[tempIds.length - 1],
           templates: templates
+        }, () => { if(this.state.templates.length > 0 ){
+            this.selectEvents(this.state.templates[0].id)
+        }
         });
 
         // this.getEvents(value);
@@ -59,35 +79,55 @@ export class MainCalendar extends Component {
       });
   };
 
-  // getEvents = value => {
-  //   return new Promise ((resolve, reject) => { axios
-  //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-  //     .then(res => {
-  //       let events = res.data
-  //       // let eventTimes = res.data.map(event => {
-  //       //   return event.startTime
-  //       // })
 
-  //       let sortedTime = events.sort((a, b) => {
-  //         if(a.startTime > b.startTime){
-  //           return 1
-  //         } else if (a.startTime < b.startTime){
-  //           return -1
-  //         } else {
-  //           return 0
-  //         }
-  //       })
-
-  //       this.setState({
-  //         events: sortedTime
-  //       })
+    // Delete events 
+  deleteEvent = (e, id) => {
+    // e.preventDefault();
+    let groupID = localStorage.getItem('group_id')
+    axios
+      .delete(`${process.env.REACT_APP_API}/events/${id}`)
+      .then(res => {
+        console.log("event deleted");
+       let filteredStuffMikesIdea = this.state.events.filter(event => {
+       return event.id !== id
+       })
        
-  //       resolve(events);
-  //     })
-  //     .catch(err => {
-  //       reject(err)
-  //     });
-  // })};
+       this.setState({
+        events: filteredStuffMikesIdea
+       })
+       toast.success('Event Deleted!')
+        })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  getEvents = value => {
+    return new Promise ((resolve, reject) => { axios
+      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+      .then(res => {
+        let events = res.data
+
+        let sortedTime = events.sort((a, b) => {
+          if(a.startTime > b.startTime){
+            return 1
+          } else if (a.startTime < b.startTime){
+            return -1
+          } else {
+            return 0
+          }
+        })
+
+        this.setState({
+          events: sortedTime
+        })
+       
+        resolve(events);
+      })
+      .catch(err => {
+        reject(err)
+      });
+  })};
 
   // Gets all events for the template id. To be run when a toggle is clicked
   selectEvents = (id) => {
@@ -120,7 +160,7 @@ export class MainCalendar extends Component {
     let temps = this.state.templates
 
     temps.forEach((temp, i) => {
-      if(temp.id == event.target.value && temp.isChecked == false){
+     if(temp.id == event.target.value && temp.isChecked == false){
         console.log('yola')
         temp.isChecked = 1;
         console.log(temp.isChecked, 'temp')
@@ -151,6 +191,52 @@ export class MainCalendar extends Component {
       }
     })
   }
+
+   // StartTime handle change setting startTime to state
+  handleStartTimeChange = (time) => {
+    this.setState({ startTime: time })
+  }
+  
+  // EndTime handle change setting endTime to state 
+  handleEndTimeChange = (time) => {
+    this.setState({ endTime: time })
+  }
+
+  handleChange = event => {
+
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+
+  };
+
+  // gets the events created to cover multiple weeks 
+  getTemplateById = () => {
+    let id = localStorage.getItem('template_id')
+    axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
+      .then(res => {
+        let urlPath = window.location.pathname.split('/')[3]
+        console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
+        console.log(res.data.endDate)
+        console.log(urlPath)
+        this.setState({
+          startDate: res.data.startDate,
+          endDate: res.data.endDate,
+          sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
+
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  setStateToEmpty = () => {
+    this.setState({
+      repeat: 1
+    })
+  }
+
   
   // Renders all weeks that populate the calendr
   renderWeeks() {
@@ -169,12 +255,27 @@ export class MainCalendar extends Component {
     while (!done) {
       weeks.push(
         <Week
+          colors={this.state.colors}
           events={this.state.events}
           templates = {this.state.templates}
           template_id={this.state.template_id}
           key={date}
           date={date.clone()}
           month={month}
+          deleteEvent={this.deleteEvent}
+          getEvents={this.getEvents}
+          check = {this.state.check} 
+          startTime = {this.state.startTime} 
+          endTime = {this.state.endTime} 
+          startDate = {this.state.startDate} 
+          endDate = {this.state.endDate} 
+          sum = {this.state.sum}
+          repeat = {this.state.repeat}
+
+          handleChange = {this.handleChange} 
+          handleStartTimeChange = {this.handleStartTimeChange} 
+          handleEndTimeChange = {this.handleEndTimeChange}
+          setStateToEmpty = {this.setStateToEmpty}
         />
       );
 
@@ -217,15 +318,15 @@ export class MainCalendar extends Component {
     return (
     <div>
       <MainNavBar logOff={this.props.logOff}/>
-        <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
+        <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates} colors={this.state.colors} />
       <div className="wholeCalendar">
       <div className='wholeCal'>
         <div className="padding"></div>
         <p>Click a date to add an event.</p>
       <div className="arrowsAndMonth">
-        <div className="arrow fa fa-angle-left" onClick={this.previous}/>
+        <div className="arrow fa fa-angle-left leftArrow" onClick={this.previous}/>
         <div>{this.renderMonthLabel()}</div>
-        <div className="arrow fa fa-angle-right" onClick={this.next} />
+        <div className="arrow fa fa-angle-right rightArrow" onClick={this.next} />
         </div>
         <DayNames />
         <div>{this.renderWeeks()}</div>

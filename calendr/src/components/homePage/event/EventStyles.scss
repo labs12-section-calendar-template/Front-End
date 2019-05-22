@@ -15,6 +15,12 @@
     margin: auto; 
     border: 1px solid rgb(187, 187, 187); 
     padding: 5px;
+    overflow-y: scroll;
+    cursor: all-scroll;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
   }
   
   @media(max-width:500px){
@@ -195,8 +201,32 @@
   }
   
   .allEvents{
+  display: flex;
+  justify-content: space-evenly;
   margin-top:4px;
+
+
   }
   .event{
+    width: 20%;
     border: 1px solid black;
+    margin: 1rem;
+    white-space: wrap;
+    overflow-y: scroll;
+    height: 13rem;
+    padding:.2rem .7rem 0;
+
+    .event-icons{
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      i{
+        margin: 0 0 0 5px;
+
+      }
+    }
+    h5{
+      font-size: 1.6rem;
+    }
+
   }

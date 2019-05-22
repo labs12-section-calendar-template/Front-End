@@ -8,6 +8,7 @@ import Group from "../homePage/group/Group";
 import Event from "../homePage/event/Event";
 import MemberHome from "../homePage/member/MemberHome";
 import TemplateEdit from "../homePage/template/TemplateEdit";
+import EventEdit from '../homePage/event/EventEdit';
 // import moment from 'moment'
 // import GeneralCalendar from "../calendar/GeneralCalendar";
 import MainCalendar from "../calendar/MainCalendar";
@@ -62,7 +63,8 @@ class mainView extends React.Component {
       
 
         <Route path="/template/edit/:id" component={TemplateEdit} />
-         <Route path="/event" component={MainCalendar} />
+        <Route path="/event/edit/:id" component={EventEdit} />
+         <Route exact path="/event" component={MainCalendar} />
         {/* <Route path="/event/:date" component={Event} /> */}
         {/* <Route exact path="/ZechsHappyPlace" component={GeneralCalendar} /> */}
       </div>

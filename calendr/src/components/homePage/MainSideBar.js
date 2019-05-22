@@ -123,16 +123,22 @@ export class MainSideBar extends Component {
         </div>
            <h5 className='buttonTitles'>Templates</h5>
             <div>
-                {this.props.templates.map(template => {return <div key={template.id} value = {template.id}>
+                {this.props.templates.map(template => {
+                  return <div key={template.id} value = {template.id} className="template-list-items">
                   <input
+                  className="each-template-input"
                   type="checkbox"
                   name={template.id}
+                  checked={template.isChecked > 0}
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
                   />    
                   
-                  <h5 className="pointer" onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+                  <h5 className="each-template-name" 
+                  style={{color:this.props.colors[template.id % 6]}}  
+                  onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+
           
                 </div>
                 })} 
