@@ -9,9 +9,8 @@ import moment from "moment";
 import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
-import { toast } from "react-toastify";
 
-class Event extends React.Component {
+class EventEdit extends React.Component {
   constructor(props) {
     super(props);
 
@@ -20,12 +19,13 @@ class Event extends React.Component {
       endTime: 0,
       title: "",
       description: "",
-      date: this.props.check,
+      date: document.referrer.split('/')[5],
       template_id: [],
       week: [],
       startDate: '',
       endDate: '',
       sum: '',
+
       repeat: 1
     };
   }
@@ -113,7 +113,7 @@ class Event extends React.Component {
     let id = localStorage.getItem('template_id')
     axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
-        let urlPath = window.location.pathname.split('/')[3]
+        let urlPath = document.referrer.split('/')[5]
         console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
         console.log(res.data.endDate)
         console.log(urlPath)
@@ -130,19 +130,20 @@ class Event extends React.Component {
   }
 
   // adding event, add a single event or add events coving the total length of the template
-  addEvent = () => {
-    let temppId = localStorage.getItem('template_id')
+  updateEvent = () => {
+    let urlPath = window.location.pathname.split('/')[3] - 1;
+
     let { startTime, endTime, title, description, sum } = this.state;
     let newStart = moment(new Date(startTime)).format("LT")
     let newEnd = moment(new Date(endTime)).format("LT")
     if(this.state.repeat === 1){
     console.log(newStart)
-    toast.success('Your events are loading')
     for (let i = 0; i <= sum; i++) {
+        urlPath += 1
       console.log(this.state.sum)
       axios
-        .post(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
+        .put(
+          `${process.env.REACT_APP_API}/events/${urlPath}`, {
             startTime: newStart,
             endTime: newEnd,
             title,
@@ -150,16 +151,16 @@ class Event extends React.Component {
             date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
           })
         .then(res => {
-          this.props.getEvents(temppId) 
-          
+          // console.log(res.data.date);
+          //window.location = "/event";
         })
         .catch(err => console.log(err));
     }
     } else {
 
       axios
-        .post(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
+        .put(
+          `${process.env.REACT_APP_API}/events/${urlPath + 1}`, {
             startTime: newStart,
             endTime: newEnd,
             title,
@@ -167,8 +168,8 @@ class Event extends React.Component {
             date: moment(this.state.date).format('YYYY-MM-DD')
           })
         .then(res => {
-          this.props.getEvents(temppId) 
-          toast.success('Your event was added!')
+          // console.log(res.data.date);
+          //window.location = "/event";
         })
         .catch(err => console.log(err));
     }
@@ -176,21 +177,21 @@ class Event extends React.Component {
   };
 
   render() {
-    console.log(this.props.events)
+    console.log(window.location.pathname.split('/'))
+    console.log(document.referrer.split('/')[5])
     return (
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
             <button className='close-popup' onClick={this.toggleClose}>X</button>
-            <EventBox events={this.props.events}
-                      deleteEvent={this.props.deleteEvent}
-            />
+            <h1>Update Your Event Below</h1>
             <div
               className="top-section"
               style={{
                 display: "flex"
               }}
             >
+           
               <form
                 style={{
                   display: "flex",
@@ -240,11 +241,11 @@ class Event extends React.Component {
           <button
             className="save-event-button"
             onClick={() => {
-              this.addEvent();
+              this.updateEvent();
               this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)
             }}
           >
-            Save
+            Update
             </button>
         </div>
 
@@ -252,4 +253,4 @@ class Event extends React.Component {
     );
   }
 }
-export default withRouter(Event);
+export default withRouter(EventEdit);

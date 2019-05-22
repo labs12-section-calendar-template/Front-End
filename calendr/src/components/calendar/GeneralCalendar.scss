@@ -132,3 +132,24 @@
     }
 }
 
+.hidden-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    list-style-type: circle;
+    margin: 0;
+    display: flex;
+    margin-top: 3px;
+}
+
+.event-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.4rem;
+}
+
+li{
+    width: 11px;
+}
+

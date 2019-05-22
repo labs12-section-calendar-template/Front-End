@@ -7,6 +7,7 @@ import axios from "axios";
 import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
 import { withRouter } from 'react-router-dom'
+import { toast } from "react-toastify";
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -17,7 +18,8 @@ export class MainCalendar extends Component {
       events: [],
       template_id: [],
       templates: [],
-      sortedStartTimes: []
+      sortedStartTimes: [],
+
     };
   }
   
@@ -33,6 +35,12 @@ export class MainCalendar extends Component {
       .then(res => {
         //returns all templates
         let templates = res.data
+        if(templates.length > 0 ){
+
+        
+        templates[0].isChecked = 1
+        }
+        console.log(templates)
         //returns the id of the very last template in the array
         let value = res.data[res.data.length - 1].id;
         //returns an array of all template IDS
@@ -43,6 +51,9 @@ export class MainCalendar extends Component {
         this.setState({
           template_id: tempIds[tempIds.length - 1],
           templates: templates
+        }, () => { if(this.state.templates.length > 0 ){
+            this.selectEvents(this.state.templates[0].id)
+        }
         });
 
         // this.getEvents(value);
@@ -59,35 +70,58 @@ export class MainCalendar extends Component {
       });
   };
 
-  // getEvents = value => {
-  //   return new Promise ((resolve, reject) => { axios
-  //     .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
-  //     .then(res => {
-  //       let events = res.data
-  //       // let eventTimes = res.data.map(event => {
-  //       //   return event.startTime
-  //       // })
 
-  //       let sortedTime = events.sort((a, b) => {
-  //         if(a.startTime > b.startTime){
-  //           return 1
-  //         } else if (a.startTime < b.startTime){
-  //           return -1
-  //         } else {
-  //           return 0
-  //         }
-  //       })
-
-  //       this.setState({
-  //         events: sortedTime
-  //       })
+    // Delete events 
+  deleteEvent = (e, id) => {
+    // e.preventDefault();
+    let groupID = localStorage.getItem('group_id')
+    axios
+      .delete(`${process.env.REACT_APP_API}/events/${id}`)
+      .then(res => {
+        console.log("event deleted");
+       let filteredStuffMikesIdea = this.state.events.filter(event => {
+       return event.id !== id
+       })
        
-  //       resolve(events);
-  //     })
-  //     .catch(err => {
-  //       reject(err)
-  //     });
-  // })};
+       this.setState({
+        events: filteredStuffMikesIdea
+       })
+       toast.success('Event Deleted!')
+        })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  getEvents = value => {
+    return new Promise ((resolve, reject) => { axios
+      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+      .then(res => {
+        let events = res.data
+        // let eventTimes = res.data.map(event => {
+        //   return event.startTime
+        // })
+
+        let sortedTime = events.sort((a, b) => {
+          if(a.startTime > b.startTime){
+            return 1
+          } else if (a.startTime < b.startTime){
+            return -1
+          } else {
+            return 0
+          }
+        })
+
+        this.setState({
+          events: sortedTime
+        })
+       
+        resolve(events);
+      })
+      .catch(err => {
+        reject(err)
+      });
+  })};
 
   // Gets all events for the template id. To be run when a toggle is clicked
   selectEvents = (id) => {
@@ -120,7 +154,7 @@ export class MainCalendar extends Component {
     let temps = this.state.templates
 
     temps.forEach((temp, i) => {
-      if(temp.id == event.target.value && temp.isChecked == false){
+     if(temp.id == event.target.value && temp.isChecked == false){
         console.log('yola')
         temp.isChecked = 1;
         console.log(temp.isChecked, 'temp')
@@ -175,6 +209,8 @@ export class MainCalendar extends Component {
           key={date}
           date={date.clone()}
           month={month}
+          deleteEvent={this.deleteEvent}
+          getEvents={this.getEvents}
         />
       );
 

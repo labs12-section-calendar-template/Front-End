@@ -127,6 +127,7 @@ export class MainSideBar extends Component {
                   <input
                   type="checkbox"
                   name={template.id}
+                  checked={template.isChecked > 0}
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
