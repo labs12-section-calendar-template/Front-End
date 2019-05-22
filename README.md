@@ -87,4 +87,30 @@ The project can be viewed here, [https://calendr.netlify.com/](https://calendr.n
 
 #### Front end deployed to Netlify
 
-#### [Back end](https://github.com/labs12-section-calendar-template/Backend)
+#### [Back end](https://github.com/labs12-section-calendar-template/Backend) built with:
+
+#### Node.js
+
+  * JavaScript run-time environment
+  * Easily scalable
+  * Easy to learn
+  * Write server-side applications in JavaScript
+  * Large support community
+
+#### Express.js
+
+  * Node web application framework
+  * Fast and un-opinionated
+  * Large support community
+  * Ships with a number of methods and middleware
+
+#### PostgreSQL
+
+* Free,open-source RDBMS
+* Efficient and multi-functional
+* Easy deployment to Heroku
+* Large community
+
+
+## APIs
+
