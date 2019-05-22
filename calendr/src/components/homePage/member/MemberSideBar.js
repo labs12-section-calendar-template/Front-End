@@ -6,32 +6,32 @@ export class MemberSideBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpen: false
+      modalOpen: true
     }
   }
 
   toggleModal = () => {
-    // if (this.state.modalOpen === false) {
-    //   this.setState({
-    //     modalOpen: true,
-    //   })
-    // } else {
-    //   this.setState({
-    //     modalOpen: false
-    //   })
-    // }
+    if (this.state.modalOpen === false) {
+      this.setState({
+        modalOpen: true,
+      })
+    } else {
+      this.setState({
+        modalOpen: false
+      })
+    }
   }
 
   render() {
     return (
       <>
-        <div className="memberHomeWrapper">
+        <div className = "buttn" onClick = {this.toggleModal}> <i className = "fa fa-bars" aria-hidden="true"/> Templates </div>
+        
+        <div className={this.state.modalOpen ? "SideBarOpen": "closes"}>
 
-          <div className="groupNameTemplate">
-          </div>
           <h5 className='buttonTitles'>Group Name</h5>
             <div className='buttonBox'>
-                <h3 className = "groupName">{this.props.group.name}</h3>
+                <h3 className = "GroupName">{this.props.group.name}</h3>
             </div>
 
           <h5 className='buttonTitles'>Templates</h5>
@@ -50,8 +50,8 @@ export class MemberSideBar extends Component {
                 </div>
                 })} 
             </div>
-
         </div>
+
       </>
     )
   }

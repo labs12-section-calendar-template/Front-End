@@ -47,7 +47,7 @@ class Day extends React.Component {
 
         </div>
         <Route
-          path={`/event/${this.state.check}`}
+          path={`/template/calendr/${this.state.check}`}
           render={() => (
             <div className="popup-overlay">
             <div className="popup-content modal-popup" 
