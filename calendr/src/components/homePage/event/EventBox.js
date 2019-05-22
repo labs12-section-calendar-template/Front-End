@@ -6,17 +6,20 @@ import Popup from 'reactjs-popup'
 import EventEdit from './EventEdit'
 
 
+
 export class EventBox extends Component {
   constructor(props) {
     super(props);
-
   } 
- 
 
   editEvent = (e, id) => {
-     window.location = `/event/edit/${id}`;
+    //Added the events repeat value to the end of the url to use in the update event function
+    if(e.target.attributes.value.value == true){
+      window.location = `/event/edit/${id}${1}`;
+    } else {
+      window.location = `/event/edit/${id}${0}`;
+    }
   };
-
 
   render() {
     console.log(this.props.events)
@@ -32,11 +35,13 @@ export class EventBox extends Component {
               
                     <i
                       className="far fa-edit iconSize"
+                      value = {event.repeat}
                       onClick={e => this.editEvent(e, event.id)}
                     />
 
                       <i
                       className="fas fa-trash iconSize"
+                      value = {event.repeat}
                       onClick={e => this.props.deleteEvent(e, event.id)}
                     />
 

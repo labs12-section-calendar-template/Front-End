@@ -16,7 +16,6 @@ const Authentication = App => Login =>
         // componentWillMount sets authentication items to localStorage
     componentWillMount(){
         let query = queryString.parse(this.props.location.search);
-    
         if (query.token) {
           console.log(query.token)
           window.localStorage.setItem("jwt", query.token);
