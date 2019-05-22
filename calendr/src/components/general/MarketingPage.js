@@ -1,6 +1,8 @@
 import React from "react";
 import "../../App.scss";
 import placeHolder from "../../extras/filler.jpg";
+import iphonex from "../../extras/iphone-screen-cap.gif"
+import desktop from "../../extras/desktop-screen-cap.gif"
 
 const MarketingPage = () => {
   return (
@@ -28,11 +30,26 @@ const MarketingPage = () => {
               est laborum.
             </p>
           </div>
+
           <img
-            className="placeholder"
-            src={placeHolder}
+            className="placeholder iphoneX"
+            src={iphonex}
             alt="something random"
           />
+          
+          {/* <div className="iphoneContainer">
+          <img
+            className="placeholder iphoneX"
+            src={iphonex}
+            alt="something random"
+          />
+          <img
+            className="screenCap"
+            src={screenCap1}
+            alt="something random"
+          />
+          </div> */}
+
         </div>
 
         <div className="middle-section-top">
@@ -75,8 +92,8 @@ const MarketingPage = () => {
 
         <div className="middle-section-bottom">
           <img
-            className="placeholder"
-            src={placeHolder}
+            className="placeholder desktop"
+            src={desktop}
             alt="something random"
           />
           <div className="card">
