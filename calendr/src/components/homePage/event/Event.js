@@ -131,6 +131,8 @@ class Event extends React.Component {
     let newEnd = moment(new Date(endTime)).format("LT")
     let urlPath = window.location.pathname.split('/')[3]
     let sum = moment.duration(moment(this.props.endDate).diff(moment(urlPath))).asWeeks()
+    let jwtoken = localStorage.getItem('jwt');
+    console.log(jwtoken)
     console.log("YOOO", sum, this.props.repeat)
     if(this.props.repeat === 1){
     console.log(newStart)
@@ -139,14 +141,17 @@ class Event extends React.Component {
       console.log(this.props.sum)
       axios
         .post(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`,{ headers: { Authorization: localStorage.getItem('jwt')}}, {
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
             endTime: newEnd,
             title,
             description,
             date: moment(this.props.check).add(i, 'week').format('YYYY-MM-DD'),
             repeat: true
-          })
+          },
+          { 
+            headers: { Authorization: jwtoken 
+          }})
         .then(res => {
           this.props.getEvents(temppId)
           this.props.setStateToEmpty() 
@@ -157,14 +162,17 @@ class Event extends React.Component {
 
       axios
         .post(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`, { headers: { Authorization: localStorage.getItem('jwt')}}, {
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
             endTime: newEnd,
             title,
             description,
             date: moment(this.props.check).format('YYYY-MM-DD'),
             repeat: false
-          })
+          },
+          { 
+          headers: { Authorization: jwtoken}}
+          )
         .then(res => {
           this.props.getEvents(temppId) 
           toast.success('Your event was added!')

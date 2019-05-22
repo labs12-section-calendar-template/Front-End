@@ -51,7 +51,7 @@ export class MainCalendar extends Component {
         }
         console.log(templates)
         //returns the id of the very last template in the array
-        let value = res.data[res.data.length - 1].id;
+        // let value = res.data[res.data.length - 1].id;
         //returns an array of all template IDS
         let tempIds = res.data.map(data => {
           return data.id;
