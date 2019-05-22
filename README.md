@@ -66,11 +66,6 @@ The project can be viewed here, [https://calendr.netlify.com/](https://calendr.n
 * Notification library
 * Easy setup and use
 * Easily customizable
-
-#### React-stripe-elements
-
-* Stripe Allows us to receive payments from users
-* React components for Stripe.js and Stripe Elements
   
 
 #### Node-sass
@@ -114,3 +109,23 @@ The project can be viewed here, [https://calendr.netlify.com/](https://calendr.n
 
 ## APIs
 
+#### Passport (google-oauth20)
+
+* Authentication middleware for Node
+* Easily integrates into an app
+* Allows users to login with a Google account 
+* Authenticates Google users with OAuth 2.0 tokens
+
+
+#### Stripe (react-stripe-elements)
+
+* React-stripe-elements is a plugin for Stripe
+* Stripe lets our users pay for the service through our website
+* User's payment information is saved as a token
+* Safe method for dealing with sensitive payment details
+
+
+
+# Installation
+
+Installing this project involves a couple steps. First, Node.js needs to be installed on your machine. Then, clone both the Frontend and Backend repositories from https://github.com/labs12-section-calendar-template and download on your local machine.  In the Backend, run yarn to install the needed dependencies. Then, run yarn server from the root of the directory to start the backend server on http://localhost:3300. In the Frontend, cd into the calendr directory and run yarn. While still in the calendr directory, run yarn start. Navigate to http://localhost:3000 to view the locally deployed site. 
