@@ -261,9 +261,9 @@ export class MainCalendar extends Component {
         <div className="padding"></div>
         <p>Click a date to add an event.</p>
       <div className="arrowsAndMonth">
-        <div className="arrow fa fa-angle-left" onClick={this.previous}/>
+        <div className="arrow fa fa-angle-left leftArrow" onClick={this.previous}/>
         <div>{this.renderMonthLabel()}</div>
-        <div className="arrow fa fa-angle-right" onClick={this.next} />
+        <div className="arrow fa fa-angle-right rightArrow" onClick={this.next} />
         </div>
         <DayNames />
         <div>{this.renderWeeks()}</div>
