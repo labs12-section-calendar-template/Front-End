@@ -32,7 +32,7 @@ class CheckOutForm extends React.Component {
       })
     }
 
-    
+    //submit
   submit = async (event) => {
     let UserId = localStorage.getItem('userId')
     let {token} = await this.props.stripe.createToken({name: "Name"});
