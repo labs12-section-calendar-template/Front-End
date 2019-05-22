@@ -17,7 +17,7 @@ export class EventBox extends Component {
     console.log(e.target.attributes.value.value)
     if(e.target.attributes.value.value === true || e.target.attributes.value.value === 1){
       window.location = `/event/edit/${id}${1}`;
-    } else if(e.target.attributes.value.value === false || e.target.attributes.value.value === 0){
+    } else {
       window.location = `/event/edit/${id}${0}`;
     }
   };
