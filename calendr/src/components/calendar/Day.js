@@ -36,12 +36,12 @@ class Day extends React.Component {
         <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
 
-              {filteredEvent.map(event => (
-               <div className='event-div'>
-               <li></li>
+            {filteredEvent.map((event) => {
+                return <div className='event-div'>
+               <li style={{color:this.props.colors[event.template_id % 6]}}/>
                <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}-{event.title}</p>
                </div>
-              ))}
+            })}
               
             </div>
           <div className="dayNumber">
@@ -60,6 +60,7 @@ class Day extends React.Component {
               >
 
               <Event 
+              colors={this.props.colors}
               check={this.state.check} 
               history={this.props.history} 
               events={this.props.events}

@@ -151,7 +151,6 @@ class Event extends React.Component {
           })
         .then(res => {
           this.props.getEvents(temppId) 
-          
         })
         .catch(err => console.log(err));
     }

@@ -19,6 +19,7 @@ export class MainCalendar extends Component {
       template_id: [],
       templates: [],
       sortedStartTimes: [],
+      colors:['purple', 'teal', 'dodgerblue', 'darkorchid', 'red', 'green']
 
     };
   }
@@ -203,6 +204,7 @@ export class MainCalendar extends Component {
     while (!done) {
       weeks.push(
         <Week
+          colors={this.state.colors}
           events={this.state.events}
           templates = {this.state.templates}
           template_id={this.state.template_id}
@@ -253,7 +255,7 @@ export class MainCalendar extends Component {
     return (
     <div>
       <MainNavBar logOff={this.props.logOff}/>
-        <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates}/>
+        <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates} colors={this.state.colors} />
       <div className="wholeCalendar">
       <div className='wholeCal'>
         <div className="padding"></div>
