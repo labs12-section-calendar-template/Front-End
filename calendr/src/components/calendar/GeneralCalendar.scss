@@ -110,6 +110,26 @@
     margin: 0 .5rem;
     }
 
+    .leftArrow {
+        font-size: 3rem;
+        position: absolute;
+        left: 33%;
+
+        @media(max-width: 1000px){
+            left: 23%;
+        }
+        }
+    
+    .rightArrow {
+        font-size: 3rem;
+        position: absolute;
+        right: 33%;
+
+        @media(max-width: 1000px){
+            right: 23%;
+        }
+        }
+
 .month-label{
     font-size: 2.5rem;
     font-family: "Poppins";

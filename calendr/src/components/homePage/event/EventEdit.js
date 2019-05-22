@@ -9,6 +9,8 @@ import moment from "moment";
 import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
+import queryString from 'query-string';
+import { toast } from "react-toastify";
 
 class EventEdit extends React.Component {
   constructor(props) {
@@ -29,6 +31,7 @@ class EventEdit extends React.Component {
       repeat: 1
     };
   }
+
 
   componentDidMount() {
     this.getTemplateId();
@@ -131,16 +134,41 @@ class EventEdit extends React.Component {
 
   // adding event, add a single event or add events coving the total length of the template
   updateEvent = () => {
-    let urlPath = window.location.pathname.split('/')[3] - 1;
+    //Gets the last section of the url path
+    let eventIDAndRepeat = window.location.pathname.split('/')[3]
+    //Gets the true or false value of the event being updated
+    let eventRepeat = Number(eventIDAndRepeat[eventIDAndRepeat.length - 1])
+    //Gets the id of the event being updated
+    let urlPath = Number(eventIDAndRepeat.slice(0, eventIDAndRepeat.length - 1))
 
     let { startTime, endTime, title, description, sum } = this.state;
     let newStart = moment(new Date(startTime)).format("LT")
     let newEnd = moment(new Date(endTime)).format("LT")
-    if(this.state.repeat === 1){
-    console.log(newStart)
+    //This if statement ensures that a user cannot repeat update unless
+    //The event being update was created by repeat aswell
+    if(this.state.repeat === 1 && eventRepeat === 1){
+    toast.success('Your events are updating')
     for (let i = 0; i <= sum; i++) {
         urlPath += 1
       console.log(this.state.sum)
+      axios
+        .put(
+          `${process.env.REACT_APP_API}/events/${urlPath-1}`, {
+            startTime: newStart,
+            endTime: newEnd,
+            title,
+            description,
+            date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD'),
+            repeat: true
+          })
+        .then(res => {
+          // console.log(res.data.date);
+          //window.location = "/event";
+        })
+        .catch(err => console.log(err));
+    }
+    } else if (this.state.repeat === 1 && eventRepeat === 0){
+
       axios
         .put(
           `${process.env.REACT_APP_API}/events/${urlPath}`, {
@@ -148,33 +176,31 @@ class EventEdit extends React.Component {
             endTime: newEnd,
             title,
             description,
-            date: moment(this.state.date).add(i, 'week').format('YYYY-MM-DD')
+            date: moment(this.state.date).format('YYYY-MM-DD'),
+            repeat: false
           })
         .then(res => {
-          // console.log(res.data.date);
-          //window.location = "/event";
+          toast.success('Only the selected event could be updated')
         })
         .catch(err => console.log(err));
-    }
-    } else {
-
-      axios
+      } else {
+        axios
         .put(
-          `${process.env.REACT_APP_API}/events/${urlPath + 1}`, {
+          `${process.env.REACT_APP_API}/events/${urlPath}`, {
             startTime: newStart,
             endTime: newEnd,
             title,
             description,
-            date: moment(this.state.date).format('YYYY-MM-DD')
+            date: moment(this.state.date).format('YYYY-MM-DD'),
+            repeat: false
           })
         .then(res => {
-          // console.log(res.data.date);
-          //window.location = "/event";
+          toast.success('The event was updated')
         })
         .catch(err => console.log(err));
-    }
-    
-  };
+      }
+    } 
+   
 
   render() {
     console.log(window.location.pathname.split('/'))

@@ -214,5 +214,19 @@
     white-space: wrap;
     overflow-y: scroll;
     height: 13rem;
-    padding: 1rem;
+    padding:.2rem .7rem 0;
+
+    .event-icons{
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      i{
+        margin: 0 0 0 5px;
+
+      }
+    }
+    h5{
+      font-size: 1.6rem;
+    }
+
   }

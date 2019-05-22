@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import moment from 'moment'
 import DayNames from "../../calendar/DayNames"
 import MemberWeek from './MemberWeek'
+import MemberSideBar from './MemberSideBar'
 import "../../../App.scss"
 
 
@@ -71,6 +72,11 @@ export class MemberCalendar extends Component {
 
   render() {
     return (
+      <>
+      <div className = "rapper">
+        
+      <MemberSideBar singleCheck = {this.props.singleCheck} group = {this.props.group} templates = {this.props.templates} />
+      
       <div className="wholeCalendar">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="arrowsAndMonth-members">
           <div className="arrow fa fa-angle-left" onClick={this.previous} />
@@ -80,6 +86,9 @@ export class MemberCalendar extends Component {
         <DayNames />
         <div>{this.renderWeeks()}</div>
       </div>
+
+      </div>
+      </>
     )
   }
 }
