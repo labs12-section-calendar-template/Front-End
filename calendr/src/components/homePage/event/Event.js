@@ -139,7 +139,7 @@ class Event extends React.Component {
       console.log(this.props.sum)
       axios
         .post(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`,{ headers: { Authorization: localStorage.get('jwt')}}, {
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`,{ headers: { Authorization: localStorage.getItem('jwt')}}, {
             startTime: newStart,
             endTime: newEnd,
             title,
@@ -157,7 +157,7 @@ class Event extends React.Component {
 
       axios
         .post(
-          `${process.env.REACT_APP_API}/templates/${temppId}/events`, { headers: { Authorization: localStorage.get('jwt')}}, {
+          `${process.env.REACT_APP_API}/templates/${temppId}/events`, { headers: { Authorization: localStorage.getItem('jwt')}}, {
             startTime: newStart,
             endTime: newEnd,
             title,
