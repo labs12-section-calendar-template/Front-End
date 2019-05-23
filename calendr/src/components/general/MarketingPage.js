@@ -3,8 +3,7 @@ import "../../App.scss";
 import { Link } from "react-router-dom";
 import iphonex from "../../extras/iphone-screen-cap.gif"
 import desktop from "../../extras/desktop-screen-cap.gif"
-import {Template} from '../homePage/template/Template'
-import {Calendar} from 'antd'
+
 
 const MarketingPage = () => {
   return (
