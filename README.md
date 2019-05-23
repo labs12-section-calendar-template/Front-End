@@ -13,13 +13,13 @@
 <br>
 <br>
 
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://en.wikipedia.org/wiki/MIT_License)    [![Netlify Status](https://api.netlify.com/api/v1/badges/97d60185-6561-4760-8da7-d65bd8f824ba/deploy-status)](https://app.netlify.com/sites/calendr/deploys)    [![React badge](https://img.shields.io/badge/react-v16.8.6-blue.svg)](https://reactjs.org/)   [![moment badge](https://img.shields.io/badge/moment.js-v2.24.0-orange.svg)](https://momentjs.com/)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://en.wikipedia.org/wiki/MIT_License)    [![Netlify Status](https://api.netlify.com/api/v1/badges/97d60185-6561-4760-8da7-d65bd8f824ba/deploy-status)](https://app.netlify.com/sites/calendr/deploys)    [![React badge](https://img.shields.io/badge/react-v16.8.6-blue.svg)](https://reactjs.org/)   [![moment badge](https://img.shields.io/badge/moment.js-v2.24.0-orange.svg)](https://momentjs.com/)[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
 
 
 
 
 ## Overview
-Our product, Calendr,  allows both small and large users, to create timeline based templates and populate them with
+Our product, Calendr,  allows users, to create timeline based templates and populate them with
 events. The events are conveniently displayed on the user's calendar, filtered by template, for easy viewing and editing. <br>
 
 The project can be viewed here, [https://calendr.netlify.com/](https://calendr.netlify.com/)
@@ -33,6 +33,7 @@ The project can be viewed here, [https://calendr.netlify.com/](https://calendr.n
   * Add events to the template, including name, day, time, and description
   * Update and edit events
   * Repeat event for cycle of template
+  * Display events on calendar filtered by template
   * Add a group
   * Join a group
   * Mobile responsiveness
@@ -126,6 +127,21 @@ The project can be viewed here, [https://calendr.netlify.com/](https://calendr.n
 
 
 
+
+
 # Installation
 
-Installing this project involves a couple steps. First, Node.js needs to be installed on your machine. Then, clone both the Frontend and Backend repositories from https://github.com/labs12-section-calendar-template and download on your local machine.  In the Backend, run yarn to install the needed dependencies. Then, run yarn server from the root of the directory to start the backend server on http://localhost:3300. In the Frontend, cd into the calendr directory and run yarn. While still in the calendr directory, run yarn start. Navigate to http://localhost:3000 to view the locally deployed site. 
+Installing this project involves a couple steps. First, Node.js needs to be installed on your machine. To begin, clone both the Frontend and Backend repositories from https://github.com/labs12-section-calendar-template and download them on your local machine.  In the Backend, run yarn to install the needed dependencies. Then, run yarn server from the root of the directory to start the backend server on http://localhost:3300. In the Frontend, cd into the calendr directory and run yarn. While still in the calendr directory, run yarn start. Navigate to http://localhost:3000 to view the locally deployed site.
+
+ ## Environment Variables
+
+To use the app properly, please set up environment variables on your end. In the root of the Backend 
+directory, create a .env file with the text below:
+
+```
+PORT=3300
+NODE_ENV=development
+#FRONT_END_URL=https://calendr.netlify.com
+FRONT_END_URL=http://localhost:3000
+
+```
