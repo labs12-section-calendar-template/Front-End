@@ -209,7 +209,7 @@ class EventEdit extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <button className='close-popup' onClick={this.toggleClose}>X</button>
+            <h3 className='close-popup' onClick={this.toggleClose}>X</h3>
             <h1>Update Your Event Below</h1>
             <div
               className="top-section"

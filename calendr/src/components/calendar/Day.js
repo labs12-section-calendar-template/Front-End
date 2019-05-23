@@ -5,6 +5,7 @@ import Popup from "reactjs-popup";
 import Event from "../homePage/event/Event";
 //import axios from "axios";
 import "../../App.scss"
+import ColumnGroup from "antd/lib/table/ColumnGroup";
 
 class Day extends React.Component {
   constructor(props) {
@@ -26,8 +27,11 @@ class Day extends React.Component {
   render() {
     // for making sure that the date an event is created for populates the correct date
     const filteredEvent = this.props.events.filter(event => {
+      
       if (moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD") === moment.parseZone(event.date).format('YYYY-MM-DD')) {
-        return event; 
+       
+        return event;
+        
        }
     });
     const { day: { date, number } } = this.props;
@@ -35,13 +39,19 @@ class Day extends React.Component {
       <>
         <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
-
-            {filteredEvent.map((event) => {
+              {filteredEvent.length < 3 ? filteredEvent.map((event) => {
                 return <div className='event-div'>
-               <li style={{color:this.props.colors[event.template_id % 6]}}/>
-               <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
-               </div>
-            })}
+              <li style={{color:this.props.colors[event.template_id % 6]}}/>
+              <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
+              </div>
+              })
+              :
+              filteredEvent.splice(0, 3).map((event) => {
+              return <div className='event-div'>
+              <li style={{color:this.props.colors[event.template_id % 6]}}/>
+              <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
+              </div>
+              })}
               
             </div>
           <div className="dayNumber">
@@ -49,7 +59,7 @@ class Day extends React.Component {
           </div>
 
         </div>
-        <Route
+        <Route 
           path={`/template/calendr/${this.state.check}`}
           render={() => (
             <div className="popup-overlay">

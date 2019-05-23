@@ -32,12 +32,12 @@ export class GroupEdit extends Component {
       })
       .then(res => {
         console.log("IT WORKED");
-        toast('Your group has been updated!')
+        toast.success('Your group has been updated!')
         document.location.reload();
       })
       .catch(err => {
         console.log(err);
-        toast('Please enter a new name to update your group')
+        toast.error('Please enter a new name to update your group')
       });
   };
 
@@ -48,6 +48,7 @@ export class GroupEdit extends Component {
       .delete(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`)
       .then(res => {
         console.log("group deleted");
+      
         
         if(this.props.groups.length === 1) {
          window.location = "/"
@@ -61,6 +62,7 @@ export class GroupEdit extends Component {
       })
       .catch(err => {
         console.log(err);
+        toast.error('There was an error deleting your group')
       });
   };
 
