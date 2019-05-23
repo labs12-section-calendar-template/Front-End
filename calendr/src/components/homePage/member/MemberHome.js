@@ -2,11 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import MemberSideBar from './MemberSideBar';
 import MemberCalendar from './MemberCalendar'
-import './memberHome.scss'
+import '../../../App.scss'
 import { NavLink } from "react-router-dom";
 import logo from "../../../extras/CalendrWhite.png";
 import { toast } from 'react-toastify';
-// import './NavBar.scss'
+import axiosCustom from '../../../axiosCustom';
 
 class MemberHome extends React.Component {
     constructor(props) {
@@ -20,14 +20,31 @@ class MemberHome extends React.Component {
         }
     }
 
+    // Mounts getGroup and checkUsersGroups
     componentDidMount(){
         this.getGroup()
+        this.getUsersGroup()
     }
 
+
+    getUsersGroup = () => {
+      let userId = localStorage.getItem('userId')
+      axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+      .then(res => {
+        this.setState({
+          usersGroups:res.data,
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+    }
+
+    // Allows a member to join a group
     getGroup = () => {
     let joinCode = localStorage.getItem('joinCode')
 
-    axios.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, { joinCode } )
+    axiosCustom.post(`${process.env.REACT_APP_API}/groups/getwith/joincode`, { joinCode } )
     .then(res => {
         let groupID = res.data.id
       this.setState({
@@ -45,8 +62,9 @@ class MemberHome extends React.Component {
     })
     }
 
+    // Gets all the templates for the group joined
     getGroupTemplates = (groupID) => {
-        axios.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
+        axiosCustom.get(`${process.env.REACT_APP_API}/groups/${groupID}/templates`)
           .then(res => {
             this.setState({
               templates: res.data
@@ -57,7 +75,7 @@ class MemberHome extends React.Component {
       }
 
       selectEvents = (something) => {
-        return new Promise((resolve, reject) => { axios
+        return new Promise((resolve, reject) => { axiosCustom
         .get(`${process.env.REACT_APP_API}/templates/${something}/events`)
         .then(res => {
           console.log(res.data)
@@ -78,7 +96,7 @@ class MemberHome extends React.Component {
           reject(err);
         })});
       }
-
+    // Takes in the selectEvents and confirms if a template isChecked or not
       singleCheck = event => {
         let eventsArray = [];
         let temps = this.state.templates
@@ -138,10 +156,11 @@ class MemberHome extends React.Component {
     </div>
     </div>
             <h1>View Your Group's Events Here</h1>
-            <MemberSideBar singleCheck = {this.singleCheck} group = {this.state.group} templates = {this.state.templates} />
+
             <MemberCalendar events = {this.state.events}
                             templates = {this.state.templates}
-                            
+                            singleCheck = {this.singleCheck} 
+                            group = {this.state.group}
                             />
         </div> 
 

@@ -1,19 +1,56 @@
-.memberHomeWrapper{
-    align-items: flex-start;
-    display:flex;
-    flex-direction: column;
-    margin: 2rem 0 0 4%;
-    width:15vw;
-    height:100vh;
-    position: fixed;
-    // border-right: 1px solid black;
-    // border-top: 1px solid black;
+.wrapper {
+    display: flex;
+    flex-direction:row;
 }
 
-
-.groupNameTemplate{
-    display:flex;
+.buttn {
+    position: fixed;
+    font-size: 1.1rem;
+    left: 10rem;
+    top: 15rem;
+    z-index: 999;
+    padding: .9rem 5rem;
+    border-radius: 15px;
+    text-align: center;
     align-items: center;
+}
+
+.SideBarOpen{
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 0 0 2%;
+    min-width:18rem;
+    height:55.2%;
+    position: fixed;
+    top: 19rem;
+    left: 12rem;
+    background:#3270eb;
+    transition: .5s ease-in;
+    overflow-y: scroll;
+    box-shadow: 2px 2px 5px black inset, -2px -2px 5px black inset;
+    cursor: move;
+}
+
+::-webkit-scrollbar { 
+    display: none; 
+}
+
+.closes {
+    display:flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 0 0 2%;
+    min-width:18rem;
+    height: 0vh;
+    height:0vh;
+    position: fixed;
+    top: 19rem;
+    left: 12rem;
+    background:#3270eb;
+    opacity: .7;
+    overflow: hidden;
+    transition: .5s ease-in;
 }
 
 .GroupName{
@@ -29,8 +66,7 @@
 
 .buttonTitles{
     font-size: 1.4rem;
-    margin:.3rem;
-    text-align: start;
+    text-align: center;
 }
 @media(max-width: 500px) {
     .buttonTitles{
@@ -53,7 +89,11 @@ li {
 }
 
 .groupName {
-    font-size: 1.2rem;
-    padding-left: 1rem;
-    border: 2px solid blue;
+    font-size: 1rem;
+    display: flex;
+    margin-bottom:.8rem;
+}
+
+.calendrTitle {
+   
 }

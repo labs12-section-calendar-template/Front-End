@@ -1,0 +1,155 @@
+.template-container {
+    &:hover #buttonSave {
+        background: #3270eb;
+    }
+}
+
+.template-edit-container {
+    &:hover #buttonSaveCancel {
+        background: #3270eb;
+    }
+}
+
+.templateCreation{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.groupTemplateInfo{
+    box-sizing: border-box;
+    width:25vw;
+}
+
+.templateMain{
+    box-sizing: border-box;
+    font-family: "Poppins";
+    /* width:75vw; */
+    width: 100%;
+}
+
+.templateTitle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width:80vw;
+    margin:0;
+}
+@media(max-width:1000px){
+    .templateTitle{
+        flex-direction: column;
+    }
+}
+@media(max-width:500px){
+    .templateTitle{
+        width:100vw;
+    }
+}
+.cancel-save{
+    display:flex;
+    
+    
+}
+
+ .startDate{
+     display: flex;
+     align-items: center;
+     justify-content: center;
+ }
+
+ @media(max-width: 1000px){
+     .startDate{
+         flex-direction: column;
+     }
+ }
+
+ .startDate input,  .templateForm input{
+     height: 1.3rem;
+     margin: 0 .8rem;
+     width: 13rem;
+ }
+
+.startDate h3, .templateColor h3, .templateForm h3{
+font-size: 1.5rem;
+}
+
+@media(max-width: 500px){
+.startDate h3, .templateColor h3, .templateForm h3{
+    font-size: 1rem;
+    }
+}
+
+
+@media (max-width: 500px) {
+    .groupTemplateInfo{
+        display: none;
+    }
+    .templateMain{
+        padding-top: 5%;
+    }
+    .templateTitle{
+        margin-right: 0;
+        justify-content: center;
+    }
+    .templateTitle h1{
+        font-size: 1.7rem;
+    }
+    #buttonSave{
+        padding: .3rem 1rem;
+        margin-left: 1rem;
+    }
+    li{
+        list-style-type: none;
+    }
+}
+
+#buttonSave{
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    margin-top: 2%;
+    opacity: 0.7;
+
+    &:hover {
+        background: #3270eb;
+        border-color: white;
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+
+#buttonSaveCancel{
+    margin: 2% auto 0;
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    opacity: 0.7;
+
+    &:hover {
+        background: #3270eb;
+        border-color: white;
+        cursor: pointer;
+        opacity: 1;
+    }
+  
+ }
+
+
+  
+
+
+
+
+

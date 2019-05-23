@@ -5,6 +5,7 @@ import Register from '../login/Register'
 import NavBar from '../login/NavBar'
 import MarketingPage from '../general/MarketingPage'
 
+// All views pre-login
 
 export class loginView extends Component {
   constructor(props) {

@@ -1,7 +1,78 @@
 #navIcon{
+    position: absolute;
+    left: 1rem;
+    top: 13rem;
     display: flex;
-    margin:.5rem;
+  
+    p {
+        font-size: 1.2rem;
+        margin: 0;
+    }
+    .fa-bars{
+        padding: 0
+    }
 }
+
+.navDiv {
+    display: flex;
+    justify-content: center;
+    background:rgba(235, 162, 162, 0.904);
+    transition: .75s ease-in;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 10;
+    padding:0 1rem;
+    top:14.95rem;
+    height: 0vh;
+    width: 14.5rem;
+    margin-left: .6rem;
+    overflow-y: scroll;
+    box-shadow: inset 1px 1px 5px black,
+    inset -1px -1px 5px black;
+}
+
+
+.navOpen{
+    display: flex;
+    justify-content: center;
+    background: #e3f3f3;
+    transition: .75s ease-in;
+    overflow: hidden;
+    position: absolute;
+    border-radius: 10px;
+    z-index: 10;
+    padding:0 1rem;
+    top:14.95rem;
+    height:32.8rem;
+    width: 14.5rem;
+    margin-left: .6rem;
+    overflow-y: scroll;
+    box-shadow: inset 1px 1px 5px black,
+    inset -1px -1px 5px black;
+
+@media(max-width: 500px){
+    justify-content: flex-start;
+    background: #3270eb;
+    height: 65vh;
+    width: 55%;
+    transition: margin-left .5s;
+    overflow: hidden;
+    position: fixed;
+    top: 20%;
+    opacity: 0;
+    animation: fadeIn .3s ease-in-out .3s forwards;
+    }
+}
+@keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 0.9;
+    }
+  }  
+
 .homePageStyles{
     align-items: flex-start;
     display:flex;
@@ -14,49 +85,85 @@
         margin: 1.5rem 0 0 0;
     }
 
+    .groupNameTemplate{
+        @media(max-width: 500px){
+        &:hover{
+            cursor: pointer;
+           }
+        }
+    }
+
     .GroupName{
         margin:0 .2rem 0 0;
         font-size:1.8rem;
 
         @media(max-width: 500px){
             font-size: 1.2rem;
+            color: white;
         }
     }
 
     .groupName{
         padding: 0 1rem;
+        border: none;
+        color: #3270eb;
+
+        &:hover{
+            cursor: pointer;
+            color: #f36d13;
+            font-size: 1.3rem;
+        }
+        @media(max-width: 500px){
+            color: #f36d13;
+        }
     }
+
+    .template-list-items{
+        display: flex;
+        margin-bottom:.4rem;
+
+        .each-template-input{
+            cursor: pointer;
+            margin:auto .5rem;
+            font-size: .9rem;
+        }
+        .each-template-name{
+            cursor: pointer;
+            margin:auto .5rem;
+            font-size: .9rem;
+            
+            &:focus{
+                font-size: 1.1rem;
+                font-weight: bolder;
+            }
+
+
+            @media(max-width: 500px){
+                color: white;
+                }
+        }
+    }
+
     .buttonTitles{
         font-size: 1.2rem;
-        margin:.3rem;
         text-align: start;
-    
+        margin:0;
         @media(max-width: 500px){
             font-size: 1rem;
+            color: white;
         }
     }
 
     .buttonDescriptions{
         font-size:1rem;
-
+        margin:0;
         @media(max-width: 500px){
             font-size: .8rem;
+            color: white;
         }
     }
-    
 }
 
-.navDiv {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        background:rgba(32, 31, 31, 0.904);
-        height: 0vh;
-        transition: .5s ease-in;
-        overflow: hidden;
-    display: none;
-}
 
 .fa-plus {
     margin-right: 100%;
@@ -70,6 +177,20 @@
     }
 }
 
+.fa-bars { 
+    &:hover{
+         cursor: pointer;
+     }
+
+    @media(max-width: 500px){
+    display: inline-block;
+    position: fixed;
+    left: 1%;
+    top: 15%;
+    z-index: 1;
+    }
+}
+
 .fa-edit{
     font-size: 1rem;
     margin-right: .5rem;
@@ -79,34 +200,9 @@
 
 }
 
-.navOpen{
-        display: flex;
-        justify-content: center;
-        background:rgba(235, 162, 162, 0.904);
-        transition: .5s ease-in;
-        overflow: hidden;
-        position: fixed;
-        z-index: 10;
-        padding:0 1rem;
-
-    @media(max-width: 500px){
-        justify-content: flex-start;
-        background: #3270eb;
-        height: 65vh;
-        width: 55%;
-        transition: margin-left .5s;
-        overflow: hidden;
-        position: fixed;
-        top: 20%;
-    }
-}
-
-.groupNameTemplate{
-    @media(max-width: 500px){
-    &:hover{
-        cursor: pointer;
-       }
-    }
+.desktopNav{
+    width:30vw;
+    position: absolute;
 }
 
 @media(max-width:500px){
@@ -125,48 +221,26 @@
 
 }
 
-.buttonBox{
-    display: flex;
-    align-items: center;
-}
-
 .fa-plus-circle{
     margin:1rem;
     font-size:1.6rem;
     color: #3f51b5;
     border-radius: 50%;
+
+    @media(max-width: 500px){
+        color: white;
+    }
     
 }
 .fa-plus-circle:hover{
     color: white;
     background-color:black;
     box-shadow: 0 0 .1rem .1rem black;
+    cursor: pointer;
 }
 
 .buttonLink{
     margin: 5rem auto 0;
-}
-
-.firstTemplateButton{
-    margin-top: 8%;
-    height: 2.5rem;
-    margin-left: 10rem;
-    border-radius:6px;
-    font-size: 1.3rem;
-    font-family: "Quicksand";
-    font-weight: bold;
-
-    &:hover{
-        border: 1px solid #f36d13;
-        color: #f36d13;
-        cursor: pointer;
-    }
-
-    @media(max-width: 500px){
-        font-size: .8rem;
-        font-weight: bold;
-    }
-
 }
 
 .popup-overlay{

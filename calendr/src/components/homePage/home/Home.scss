@@ -1,3 +1,13 @@
+.home-container {
+
+    height: 100vh;
+    
+    &:hover .firstTemplateButton {
+        background: #3270eb;
+    }
+}
+
+
 
 // Else section of the home page
 
@@ -5,12 +15,17 @@
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
-    margin:1rem 2% 0 23%;
-    width:75vw;
+    margin:1rem 2% 0 31%;
+    width:67vw;
     position: absolute;
+
+    @media(max-width: 650px){
+        flex-direction: column;
+    }
 
     @media(max-width: 500px){
     width: 55vw;
+    margin-left: 7.5rem;
     }
 }
 .templateTag{
@@ -38,7 +53,7 @@
     display: flex;
     margin: .5rem 0 1rem .5rem;
     font-size: 1.7rem;
-    text-decoration: underline;
+    text-decoration: none;
     color: #3270eb;
 
     &:hover{
@@ -51,9 +66,80 @@
 }
 .iconsForTemplates{
     margin:.5rem 0 0 0;
+    display: flex;
 }
-.iconSize{
+.iconSizeEdit{
     font-size:1rem;
     margin-right:.5rem;
     cursor: pointer;
-}
+    position: relative;
+        
+    }
+
+
+    .firstTemplateButton{
+        margin-top: 12%;
+        height: 3.2rem;
+        border-radius:6px;
+        font-family: "Quicksand";
+        font-weight: bolder;
+        padding: 10px 65px;
+        border-radius: 5px;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        background: #f36d13;
+        opacity: 0.7;
+    
+        &:hover{
+            background: #3270eb;
+            border-color: white;
+            cursor: pointer;
+            opacity: 1;
+        }
+    
+        @media(max-width: 500px){
+            font-size: .8rem;
+            font-weight: bold;
+            margin-top: 40%;
+        }
+    
+    }
+
+
+// .iconSizeDelete {
+//     font-size:1rem;
+//     margin-right:.5rem;
+//     cursor: pointer;
+//     position: relative;
+
+//         .delete-temp{
+//             visibility: hidden;
+//             position: absolute;
+//             z-index: 10;
+//             top: -3rem;
+//             left: 1.3rem;
+//         }
+
+//         &:hover .delete-temp {
+//             visibility: visible;
+//         }
+//     }
+       
+
+//  .update-temp{
+//         visibility: hidden;
+//        position: absolute;
+//        z-index: 10;
+//        top: -3rem;
+//        right: 2.9rem;
+      
+//    }
+//  .update-temp:hover {
+//     visibility: visible; 
+//  }
+
+// .welcome-message {
+//    color: #3270eb;
+// }

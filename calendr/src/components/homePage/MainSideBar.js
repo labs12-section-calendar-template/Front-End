@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axiosCustom from '.././../axiosCustom';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 
 export class MainSideBar extends Component {
@@ -14,19 +14,60 @@ export class MainSideBar extends Component {
       group_id:[],
       modalOpen: false,
       templates:[],
-      navBar: false
+      navBar: false,
+      groups: []
     }
   }
 
+  // mounting getGroup
   componentDidMount(){
     this.getGroup();
-    // if(this.state.groupName.length < 0){
-    //   window.location = '/'
-    // }else{
-    //   window.location = '/home'
-    // }
   }
 
+  componentDidUpdate = (prevProps) => {
+    if(prevProps.match.url !== this.props.match.url) {
+      this.getGroup()
+    }
+  }
+
+  componentWillUnmount(){
+    this.getGroup();
+  }
+  
+  getGroup = () => {
+    let userId = localStorage.getItem('userId')
+    let groupId = localStorage.getItem("group_id")
+    axiosCustom.get(`/users/${userId}/groups`, { headers:{Authorization: localStorage.getItem('jwt')}},)
+    .then(res => {
+      this.setState({
+        group_id: groupId,
+        groups: res.data
+      })
+      this.getGroupById(groupId)
+      console.log(groupId)
+      console.log(res.data)
+    
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  getGroupById = (something) => {
+    
+    axiosCustom.get(`/groups/${something}`)
+    .then(res => {
+      this.setState({
+        groupName: res.data.name,
+        joinCode: res.data.joinCode,
+      })
+  })
+  .catch(err => {
+    console.log(err)
+  })
+  }
+
+  // sideBar nav toggle on and off 
   navAppear = (event) => {
     event.preventDefault();
     if(!this.state.navBar){
@@ -42,28 +83,31 @@ export class MainSideBar extends Component {
     }
 }
   
-  getGroup = () => {
-    let userId = localStorage.getItem('userId')
-    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
-    .then(res => {
-      this.setState({
-        group_id:res.data[0].id,
-        groupName: res.data[0].name,
-        joinCode: res.data[0].joinCode,
-      })
+  // get group information for display purposes 
+  // getGroup = () => {
+  //   let userId = localStorage.getItem('userId')
+  //   axiosCustom.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+  //   .then(res => {
+  //     this.setState({
+  //       group_id:res.data[0].id,
+  //       groupName: res.data[0].name,
+  //       joinCode: res.data[0].joinCode,
+  //     })
 
       
-      window.localStorage.setItem("group_id", this.state.group_id)
-    })
-    .catch(err => {
-      console.error(err)
-    })
-  }
+  //     window.localStorage.setItem("group_id", this.state.group_id)
+  //   })
+  //   .catch(err => {
+  //     console.error(err)
+  //   })
+  // }
 
+  // onClick funtion to redirect to add template
   circleAddTemplate = () => {
     window.location = '/template'
   }
 
+  // group edit popup 
   toggleModal = () => {
     if(this.state.modalOpen === false){
       this.setState({
@@ -76,12 +120,11 @@ export class MainSideBar extends Component {
     }
   }
 
-  toggleSelectedTemplates = () => {
-    if(null){
-
-    }else{
-
-    }
+  // probably not needed
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.value]: e.target.name
+    })
   }
 
   // takeMeToTemplate = (event) => {
@@ -90,6 +133,8 @@ export class MainSideBar extends Component {
   // localStorage.setItem('template_id', mikesEasy)
   // window.location=`/template/calendr/${mikesEasy}`
   // }
+
+  // sets template id in localStorage based on the one clicked
   switchTemplate = (templateId) => {
     localStorage.setItem('template_id', templateId)
     this.props.history.push(`/template/calendr/${templateId}`)
@@ -100,7 +145,7 @@ export class MainSideBar extends Component {
     return (
       <>
       <div className = "header">
-        <div onClick = {this.navAppear} id="navIcon"><i className = "fa fa-bars" aria-hidden="true"/></div>
+        <div id="navIcon"><i onClick = {this.navAppear} className = "fa fa-bars" aria-hidden="true"/><p>Menu</p></div>
             <div className = {this.state.navBar ? "navDiv":"navOpen"}>
                 
         <div className="homePageStyles">
@@ -120,16 +165,22 @@ export class MainSideBar extends Component {
         </div>
            <h5 className='buttonTitles'>Templates</h5>
             <div>
-                {this.props.templates.map(template => {return <div key={template.id} value = {template.id}>
+                {this.props.templates.map(template => {
+                  return <div key={template.id} value = {template.id} className="template-list-items">
                   <input
+                  className="each-template-input"
                   type="checkbox"
                   name={template.id}
+                  checked={template.isChecked > 0 } 
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
+                  onChange = {this.onChangeHandler}
                   />    
-                  
-                  <h5 onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+                  <NavLink className="each-template-name" 
+                  style={{color:this.props.colors[template.id % 6]}}  
+                  onClick={() => {this.switchTemplate(template.id)}}
+                  >{template.title}</NavLink>
           
                 </div>
                 })} 

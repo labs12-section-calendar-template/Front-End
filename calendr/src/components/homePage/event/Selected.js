@@ -4,6 +4,7 @@ import 'antd/dist/antd.css';
 import moment from 'moment'
 // const format = 'HH:mm'
 
+// Time selection for creating events
 const Selected = props => {
 
   return (

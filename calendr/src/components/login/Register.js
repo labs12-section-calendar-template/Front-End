@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import styled from 'styled-components';
 
+// Currently not being used. Meant for manual registration
+
 const url = "https://calendrserver.herokuapp.com/"
 export class Register extends Component {
     state = {

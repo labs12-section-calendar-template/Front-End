@@ -1,5 +1,5 @@
 import React from 'react'
-import './Login.scss'
+import '../../App.scss'
 import googleSignIn from '../../extras/googleSignIn.png'
 
 class Login extends React.Component {
@@ -10,11 +10,13 @@ class Login extends React.Component {
       clientSecret: "",
     }
   }
+  
+// Login page with google login
 
   render() { 
     return ( 
-        <div>
-          <h2>Welcome, Please login</h2>
+        <div className="loginContainer">
+          <h2 className="login">Welcome, Please login</h2>
           {/* <div className="formContainer"> */}
           {/* <Form type='submit'>
           <Div>

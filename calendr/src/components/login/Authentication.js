@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-// import axios from 'axios';
-
-// const url = "http://localhost:3000/";
-// const localGoogle = 'http://localhost:3300/auth/google';
-// const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
 
 const Authentication = App => Login =>
     class extends Component {
@@ -18,10 +13,9 @@ const Authentication = App => Login =>
             })
         }
 
+        // componentWillMount sets authentication items to localStorage
     componentWillMount(){
-        
         let query = queryString.parse(this.props.location.search);
-    
         if (query.token) {
           console.log(query.token)
           window.localStorage.setItem("jwt", query.token);
@@ -30,14 +24,15 @@ const Authentication = App => Login =>
         }
     }
 
+    // componentDidMount confirms if a user is logged in or not
     componentDidMount(){
         console.log(localStorage.getItem('jwt'))
         if(localStorage.getItem('jwt')){
             this.setState({
                 loggedIn: true
             })
-
-            this.props.history.push(window.location.pathname) //This will cause the page to refresh to it's current pathname
+            //This will cause the page to refresh to it's current pathname
+            this.props.history.push(window.location.pathname) 
         } else {
             this.setState({
                 loggedIn: false
@@ -45,6 +40,7 @@ const Authentication = App => Login =>
         }
     }
 
+    // login function and redirect
     gmailLogin = (event) => {
         event.preventDefault();
         let url = window.location = `${process.env.REACT_APP_API}/auth/google`
@@ -52,6 +48,7 @@ const Authentication = App => Login =>
         window.location = `${process.env.REACT_APP_API}/auth/google`
       }
 
+      // Log out function and redirect
       logOff = (event) => {
         window.localStorage.clear();
         this.setState({
@@ -65,7 +62,7 @@ const Authentication = App => Login =>
     //https://calendrserver.herokuapp.com/auth/logout
 
 
-
+      // Takes input and sets them to state
     handleChanges = event => {
         let { name, value } = event.target
         this.setState({
@@ -73,7 +70,8 @@ const Authentication = App => Login =>
         })
     }
 
-    // signIn = event => {
+    // Probably not needed
+    signIn = event => {
     //   event.persist();
     //   return axios
     //       .post(`${url}auth/login`,{
@@ -89,8 +87,9 @@ const Authentication = App => Login =>
     //              this.props.history.push('/');
     //       })
     //       .catch(err => alert(err));
-    //   }
+    }
 
+    // Probably not needed
       signOut = event => {
         window.localStorage.clear();
         this.setState({

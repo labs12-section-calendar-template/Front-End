@@ -110,6 +110,26 @@
     margin: 0 .5rem;
     }
 
+    .leftArrow {
+        font-size: 3rem;
+        position: absolute;
+        left: 33%;
+
+        @media(max-width: 1000px){
+            left: 23%;
+        }
+        }
+    
+    .rightArrow {
+        font-size: 3rem;
+        position: absolute;
+        right: 33%;
+
+        @media(max-width: 1000px){
+            right: 23%;
+        }
+        }
+
 .month-label{
     font-size: 2.5rem;
     font-family: "Poppins";
@@ -132,3 +152,49 @@
     }
 }
 
+.hidden-text {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    list-style-type: circle;
+    margin: 0;
+    display: flex;
+    margin-top: 3px;
+}
+
+.event-div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.4rem;
+}
+
+li{
+    width: 11px;
+}
+
+.test {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+    height: 102px;
+
+    div {
+        display: flex;
+
+    }
+
+    :nth-child(2){
+       padding-bottom: 0;
+       margin-bottom: 0;
+    }
+
+    :nth-child(3){
+        color: red;
+        margin-bottom: 0;
+        font-size: .8rem;
+        text-align: center;
+        padding-left: .5rem;
+     }
+}

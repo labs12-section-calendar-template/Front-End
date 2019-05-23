@@ -3,7 +3,8 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
-import './Side.scss';
+import '../../App.scss';
+import axiosCustom from '.././../axiosCustom';
 
 export class SideBarSlide extends Component {
   constructor(props){
@@ -20,12 +21,6 @@ export class SideBarSlide extends Component {
 
   componentDidMount(){
     this.getGroup();
-    
-    // if(this.state.groupName.length < 0){
-    //   window.location = '/'
-    // }else{
-    //   window.location = '/home'
-    // }
   }
 
   componentDidUpdate = (prevProps) => {
@@ -37,7 +32,7 @@ export class SideBarSlide extends Component {
   getGroup = () => {
     let userId = localStorage.getItem('userId')
     let groupId = localStorage.getItem("group_id")
-    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`, {headers: { Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         group_id: groupId,
@@ -55,7 +50,7 @@ export class SideBarSlide extends Component {
 
   getGroupById = (something) => {
     
-    axios.get(`${process.env.REACT_APP_API}/groups/${something}`)
+    axios.get(`${process.env.REACT_APP_API}/groups/${something}`, {headers: { Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         groupName: res.data.name,
@@ -69,6 +64,10 @@ export class SideBarSlide extends Component {
 
   circleAddTemplate = () => {
     window.location = '/template'
+  }
+
+  groupPage = () =>{
+    window.location='/'
   }
 
   removeUsers = () => {
@@ -135,13 +134,15 @@ export class SideBarSlide extends Component {
       </div>
         ))}
         </div>
-          
-       
-       
-            <h5 className='buttonTitles'>Templates</h5>
+        
+          <h5 className='buttonTitles'>Templates</h5>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
           <p className='buttonDescriptions'>Add Template</p>
+        </div>
+        <div className='buttonBox'>
+        <i className="fas fa-plus-circle" onClick={this.groupPage}/>
+          <p className='buttonDescriptions'>Create/Join Group</p>
         </div>
       </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">

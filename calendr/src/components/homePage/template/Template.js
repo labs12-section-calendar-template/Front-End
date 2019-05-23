@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import SideBar from "../SideBar";
 // import GeneralCalendar from '../../calendar/GeneralCalendar';
-import "./Template.css";
+import "../../../App.scss";
 import axios from "axios";
 // import {Link} from 'react-router-dom';
 import MainNavBar from "../../general/MainNavBar";
 import { toast } from "react-toastify";
 import moment from 'moment';
+import axiosCustom from '../../../axiosCustom';
 
 export class Template extends Component {
   constructor(props) {
@@ -22,15 +23,17 @@ export class Template extends Component {
     };
   }
 
+  // Creating a template
   postTemplate = event => {
     let group_id = localStorage.getItem("group_id");
     console.log(group_id);
     let { title, description, startDate, endDate } = this.state;
-     if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
-      toast('Please enter all fields to create a template')
+    if(title < 1 || description < 1) {
+      toast.error('Please enter all fields to create a template')
+    } else if(startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD')) {
+     toast.error('Please input the date fields correctly')
     } else {
-    axios
-      .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
+    axiosCustom.post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
         description,
         startDate,
@@ -43,26 +46,30 @@ export class Template extends Component {
         });
        localStorage.setItem('template_id', res.data.id)
        window.location = `/template/calendr/${res.data.id}`;
+      
       })
       .catch(err => {
         console.log(err);
+        toast.error('There was an error creating your template')
       });
     }
   };
 
-
+  // handle StartDate input and set to state
   handleStartDateChange = event => {
     this.setState({
       startDate: event.target.value
     });
   };
 
+// handle EndDate input and set to state
   handleEndDateChange = event => {
     this.setState({
       endDate: event.target.value
     });
   };
 
+// handle input and set to state
   handleInputChange = event => {
     this.setState({
       [event.target.name]: event.target.value
@@ -71,7 +78,7 @@ export class Template extends Component {
 
   render() {
     return (
-      <div>
+      <div className='template-container'>
         <MainNavBar logOff = {this.props.logOff}/>
         <div className="templateCreation">
           <aside className="groupTemplateInfo">
@@ -80,10 +87,6 @@ export class Template extends Component {
           <main className="templateMain">
             <div className="templateTitle">
               <h1>Template Creation</h1>
-
-              <button id="buttonSave" onClick={this.postTemplate}>
-                Save
-              </button>
             </div>
             <div className="templateEdit">
               <div className="startDate">
@@ -122,6 +125,9 @@ export class Template extends Component {
                   />
                 
               </form>
+              <button id="buttonSave" onClick={this.postTemplate}>
+                Save
+              </button>
             </div>
           </main>
         </div>

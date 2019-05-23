@@ -2,6 +2,47 @@
     margin: 0 auto;
     margin-top: 5rem;
     padding: 1rem;
-    max-width: 30%;
+    max-width: 35rem;
     border: 1px solid black;
+    border-radius: 20px;
+    font-family: "Poppins";
+
+    @media(max-width: 500px){
+    max-width: 95%;
+    }
+}
+
+.instructions{
+    font-family: "Poppins";
+}
+
+.billing-container {
+    height: 100vh;
+    
+    &:hover .billing-button {
+        background: #3270eb;
+    }
+}
+
+
+
+.billing-button {
+    margin: 2% auto 0;
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    opacity: 0.7;
+
+    &:hover {
+        background: #3270eb;
+        border-color: white;
+        cursor: pointer;
+        opacity: 1;
+    }
 }

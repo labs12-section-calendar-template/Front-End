@@ -1,6 +1,9 @@
 import React from "react";
-import "./MarketingStyles.css";
-import placeHolder from "../../extras/filler.jpg";
+import "../../App.scss";
+import { Link } from "react-router-dom";
+import iphonex from "../../extras/iphone-screen-cap.gif"
+import desktop from "../../extras/desktop-screen-cap.gif"
+
 
 const MarketingPage = () => {
   return (
@@ -12,7 +15,9 @@ const MarketingPage = () => {
             Calendr is the easiest way for users/groups to plan, manage and
             visualize their work
           </p>
-          <button className="marketingButton">Sign Up</button>
+            <Link to="/login">
+            <button className="marketingButton">Sign Up</button>
+          </Link>
         </div>
       </header>
 
@@ -21,72 +26,71 @@ const MarketingPage = () => {
           <div className="card">
             <h2>With Calendr, group calendars are just one piece</h2>
             <p>
-              lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-              aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.
+              With Calendr, group calendars can help you and your organization 
+              stay organized by planning events according to a particular template
+              that the admin creates. 
             </p>
           </div>
+          
           <img
-            className="placeholder"
-            src={placeHolder}
+            className="placeholder iphoneX"
+            src={iphonex}
             alt="something random"
           />
         </div>
 
         <div className="middle-section-top">
-          <h2>Using Calendr, you can...</h2>
+          <h2>Membership pricing</h2>
           <div className="card-container">
             <div className="card">
-              <h4>Switch between templates</h4>
+              <h4>Basic Membership</h4>
+              <h5> Free </h5>
               <p>
-                lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                  Ability to create one group
               </p>
+              <p>
+                  Includes all main features
+              </p>
+              <p>
+                Get to know Calendr risk-free
+              </p>
+              <Link to="/login">
+                <button className="marketingButton">Sign Up Now </button>
+              </Link>
             </div>
 
-            <div className="card">
-              <h4>See what events your group added</h4>
-              <p>
-                lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
+            <div className="card premium">
+              <h4>Premium Membership</h4>
+              <h5>9.99 / month</h5>
+                <p>
+                  Ability to create up to 5 total groups 
+                </p>
+                <p>
+                    Includes all main features
+                </p>
+                <p>
+                  Manage multiple groups and templates
+                </p>
+              <Link to="/login">
+                <button className="marketingButton">Sign Up Now </button>
+              </Link>
             </div>
 
-            <div className="card">
-              <h4>Have it all integrated with one calendar</h4>
-              <p>
-                lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
           </div>
         </div>
 
         <div className="middle-section-bottom">
           <img
-            className="placeholder"
-            src={placeHolder}
+            className="placeholder desktop"
+            src={desktop}
             alt="something random"
           />
           <div className="card">
             <h2> A group calendar with custom templates to fit your needs </h2>
             <p>
-              lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-              aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.
+              Custom templates within Calendr is a key feature that helps your organization, 
+              letting you know what events are going to occur according to the templates you've 
+              created and selected to display on your calendar.
             </p>
           </div>
         </div>
@@ -96,10 +100,11 @@ const MarketingPage = () => {
         <div>
           <h2> Give Calendr a try</h2>
           <p>
-            lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis aute
-            irure dolor in reprehenderit.
+            Try Calendr now for FREE you won't be disappointed!
           </p>
-          <button>Sign Up </button>
+          <Link to="/login">
+            <button className="marketingButton">Sign Up </button>
+          </Link>
         </div>
       </div>
 

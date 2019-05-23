@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import './Users.css'
 import MainNavBar from './MainNavBar';
 
 // const url = 'https://calendrserver.herokuapp.com/'

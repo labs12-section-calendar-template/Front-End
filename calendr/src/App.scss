@@ -1,0 +1,42 @@
+.App {
+  text-align: center;
+}
+
+// MarketingStyles Styling Folder
+@import './components/general/MarketingStyles.scss';
+
+// Login Styling Folder
+@import './components/login/Login.scss';
+
+// NavBar Styling Folder
+@import './components/general/NavBar.scss';
+
+// Home Styling Folder
+@import './components/homePage/home/Home.scss';
+
+
+
+// SideBar Styling Folder
+@import './components/homePage/Side.scss';
+
+// GeneralCalendar Styling Folder
+@import './components/calendar/GeneralCalendar.scss';
+
+// Group Styling Folder
+@import './components/homePage/group/Group.scss';
+
+// Template Styling Folder
+@import './components/homePage/template/Template.scss';
+
+// EventStyles Styling Folder
+@import './components/homePage/event/EventStyles.scss';
+
+// memberHome Styling Folder
+@import './components/homePage/member/memberHome.scss';
+
+// memberCalendar Styling Folder
+
+
+
+// // Billing Styling Folder
+// @import './components/billing/Billing.scss';

@@ -1,0 +1,255 @@
+
+
+.popup-overlay{
+    position: fixed; 
+    top: 0px; bottom: 0px; left: 0px; right: 0px; 
+    background: rgba(0, 0, 0, 0.5); 
+    display: flex; 
+    z-index: 999;
+  }
+  
+  .popup-content{
+    position: relative; 
+    background: rgb(255, 255, 255); 
+    width: 70%; 
+    margin: auto; 
+    border: 1px solid rgb(187, 187, 187); 
+    padding: 5px;
+    overflow-y: scroll;
+  }
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  
+  @media(max-width:500px){
+    .popup-content{
+      width: 100%; 
+    }
+  }
+  
+  .event-view-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    font-family: "Poppins";
+    width: 100%;
+    align-content: center;
+
+    &:hover .save-event-button {
+      background: #3270eb;
+  }
+    
+  }
+  
+  /* .event-details {
+    font-size: 22px;
+  } */
+  /* .weekday-container {
+    width: 375px;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 5% auto
+  }
+  
+  @media(max-width: 500px){
+    .weekday-container{
+      width: 100%;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+  } */
+  /* 
+  .weekday {
+    background: #3270eb;
+    border-radius: 13px;
+    -moz-border-radius: 13px;
+    -webkit-border-radius: 18px;
+    color: white;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 36px;
+    margin-right: 5px;
+    text-align: center;
+    width: 36px;
+    font-size: 15px;
+    border: 0.5px solid black;
+  } */
+  /* .weekday:hover {
+    background: #f36d13;
+    cursor: pointer;
+    cursor: hand;
+  } */
+  .top-section {
+    display: flex;
+    justify-content: center;
+    margin-top: 8%;
+  }
+  /* .selected-container {
+    margin: 0 auto;
+    width: 375px;
+  }
+  
+  @media(max-width: 500px){
+    .selected-container{
+     width: 0;
+    }
+  } */
+  
+  .selected {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 0% 2%;
+    height: 6.1rem;
+    
+  }
+  
+  @media(max-width: 500px){
+    .selected{
+      flex-direction: column;
+      margin-bottom: 1.5rem;
+    }
+  }
+  
+  .selected-day {
+    font-size: 22px;
+    margin:auto 0;
+  }
+  @media(max-width: 500px){
+    .selected-day{
+      flex-direction: column;
+      font-size: 15px;
+      margin-top: 3.5rem;
+    }
+  }
+  /* 
+  .active {
+    background-color: #f36d13;
+  } */
+  .time-input {
+    height: 15px;
+    margin-right: 8%;
+  }
+  
+  
+  .save-event-button{
+    /* margin-top: 5%; */
+   margin: 2% auto 0;
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    opacity: 0.7;
+    text-align: center;
+
+    &:hover {
+      background: #3270eb;
+      border-color: white;
+      cursor: pointer;
+      opacity: 1;
+  }
+  }
+  
+  .eventTitle, .description{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 2rem;
+  
+  }
+  
+  .description textarea{
+    height: 100px;
+    width: 305px;
+  }
+  .eventTitle input{
+    width: 305px;
+    height: 25px;
+  }
+  @media(max-width:500px){
+    .eventTitle input{
+      width: 180px;
+      height: 25px;
+    }
+  }
+  
+  @media(max-width:500px){
+    .description textarea{
+      width: 180px;
+      height: 50px;
+    }
+  }
+  
+  .eventDetails{
+    display: flex;
+    flex-direction: column;
+    margin-top: 7%;
+  }
+  
+  .eventDetails input{
+    width: 305px;
+    height: 25px;
+  }
+  
+  @media(max-width:500px){
+    .eventDetails input{
+      width: 180px;
+      height: 25px;
+    }
+  }
+  
+  .details, .title{
+    font-size: 1.5rem;
+  }
+  
+  .close-popup{
+    margin-right: 95%;
+    font-size: 1.5rem;
+    color: #3270eb;
+    cursor: pointer;
+  }
+  
+  .selected .ant-time-picker {
+    margin: .5rem;
+  }
+  
+  .ant-time-picker-clock-icon {
+    line-height: 2;
+  }
+  
+  .allEvents{
+  display: flex;
+  justify-content: space-evenly;
+  margin-top:4px;
+
+
+  }
+  .event{
+    width: 20%;
+    border: 1px solid black;
+    margin: 1rem;
+    white-space: wrap;
+    overflow-y: scroll;
+    height: 13rem;
+    padding:.2rem .7rem 0;
+
+    .event-icons{
+      position: relative;
+      display: flex;
+      justify-content: flex-end;
+      i{
+        margin: 0 0 0 5px;
+
+      }
+    }
+    h5{
+      font-size: 1.6rem;
+    }
+
+  }

@@ -1,20 +1,40 @@
 .navBarContainer{
     background-color: #3270eb;
-    padding: .9rem;
+    padding: .5rem;
+    position: relative;
+    width:100vw;
 }
 .margin{
     display: flex;    
     justify-content: space-between;
+    align-items: center;
 }
 img{
     width:7rem;
     height:5%;
     margin-left:2%;
+
+    @media(max-width: 500px){
+        margin-left: 0;
+    }
+}
+.calendrTitleContainer{
+    display:flex;
+    align-items: center;
+    position: absolute;
+    z-index: 100;
+    right:44%;
+    left:44%;
 }
 .calendrTitle{
     font-size: 2.2rem;
     color: white;
+    display: flex;
+    width:14vw;
+    position: absolute;
+    z-index: 100;
     margin:auto;
+    font-family: "Poppins"
 }
 
 .nav-buttons{
@@ -37,9 +57,10 @@ img{
 .navbuttonLink{
     color:white;
     outline:none;
-    padding:.8rem 1rem;    
+   // padding:.8rem 1rem;    
     border-radius:1rem;
-    text-decoration: underline;
+    text-decoration: none;
+    font-family: "Poppins"
 }
 
 .logout {
@@ -55,6 +76,21 @@ img{
     }
 }
 
+
+
+
+// max-800
+@media(max-width:800px){
+    .calendrTitle{
+        visibility: hidden;
+    }
+    }
+
+
+
+
+    
+// max-500
 @media (max-width: 500px){
     .NavLinkB{
         margin:0 .2rem;
