@@ -1,15 +1,23 @@
 #navIcon{
     position: absolute;
     left: 1rem;
-    top: 13rem;
+    top: 11rem;
     display: flex;
-  
+    background-color: white;
+    opacity: .8;
     p {
         font-size: 1.2rem;
         margin: 0;
+        font-weight: bolder;
     }
     .fa-bars{
         padding: 0
+    }
+    @media(max-width: 500px){
+        position: absolute;
+        left: 1rem;
+        top: 9rem;
+        display: flex;
     }
 }
 
@@ -23,7 +31,7 @@
     border-radius: 10px;
     z-index: 10;
     padding:0 1rem;
-    top:14.95rem;
+    top:14.75rem;
     height: 0vh;
     width: 14.5rem;
     margin-left: .6rem;
@@ -43,7 +51,7 @@
     border-radius: 10px;
     z-index: 10;
     padding:0 1rem;
-    top:14.95rem;
+    top:14.75rem;
     height:32.8rem;
     width: 14.5rem;
     margin-left: .6rem;
@@ -184,7 +192,7 @@
 
     @media(max-width: 500px){
     display: inline-block;
-    position: fixed;
+    
     left: 1%;
     top: 15%;
     z-index: 1;
@@ -213,6 +221,7 @@
 
 .groupNameTemplate{
     display:flex;
+    flex-direction: column;
     align-items: center;
 }
 
