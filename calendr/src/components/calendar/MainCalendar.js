@@ -154,6 +154,7 @@ export class MainCalendar extends Component {
     })});
   }
 
+
   // Takes in the selectEvents and confirms if a template isChecked or not
   singleCheck = event => {
     let eventsArray = [];

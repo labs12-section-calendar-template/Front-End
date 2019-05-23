@@ -19,7 +19,7 @@ export class SideBar extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
     this.getGroup();
   }
 
@@ -29,9 +29,6 @@ export class SideBar extends Component {
     }
   }
 
-  componentWillUnmount(){
-    this.getGroup();
-  }
   
   getGroup = () => {
     let userId = localStorage.getItem('userId')
@@ -53,8 +50,8 @@ export class SideBar extends Component {
   }
 
   getGroupById = (something) => {
-    
-    axiosCustom.get(`/groups/${something}`)
+
+    axiosCustom.get(`/groups/${something}`, {headers: { Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         groupName: res.data.name,

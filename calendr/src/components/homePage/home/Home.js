@@ -43,8 +43,7 @@ export class Home extends Component {
   getTemplate = event => {
     let urlPath = window.location.pathname;
     let lateNight = urlPath.split('/')
-    axiosCustom
-      .get(`/groups/${lateNight[2]}/templates`)
+    axios.get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`, {headers: { Authorization: localStorage.getItem('jwt')}})
       .then(res => {
         this.setState({
           templates: res.data,

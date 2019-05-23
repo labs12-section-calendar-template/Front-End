@@ -21,12 +21,6 @@ export class SideBarSlide extends Component {
 
   componentDidMount(){
     this.getGroup();
-    
-    // if(this.state.groupName.length < 0){
-    //   window.location = '/'
-    // }else{
-    //   window.location = '/home'
-    // }
   }
 
   componentDidUpdate = (prevProps) => {
@@ -38,7 +32,7 @@ export class SideBarSlide extends Component {
   getGroup = () => {
     let userId = localStorage.getItem('userId')
     let groupId = localStorage.getItem("group_id")
-    axiosCustom.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`, {headers: { Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         group_id: groupId,
@@ -56,7 +50,7 @@ export class SideBarSlide extends Component {
 
   getGroupById = (something) => {
     
-    axiosCustom.get(`${process.env.REACT_APP_API}/groups/${something}`)
+    axios.get(`${process.env.REACT_APP_API}/groups/${something}`, {headers: { Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         groupName: res.data.name,
