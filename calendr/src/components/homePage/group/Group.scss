@@ -3,42 +3,21 @@
     justify-content: center;
     align-items: center;
     opacity: .8;
+    background-color: #F4F4F4;
+    height: 100vh;
 
     @media(max-width: 500px){
         flex-direction: column;
     }
 }
 
-.groupHeader {
-    display: flex;
-    justify-content: center;
-
-    button {
-        margin-top: 15px;
-        width: 200px;
-        height: 40px;
-        border-radius: 14px;
-        font-size: 20px;
-        font-family: "Quicksand";
-        font-weight: bold;
-
-        &:hover{
-            border: 1px solid #3270eb;
-            color: #3270eb;
-            cursor: pointer
-        }
-        
-    }
-}
-
-
-
-
 .boxing{
-    border: 1px solid black;
-    margin:4rem 1rem 0 1rem;
+    
+    box-shadow: 1px 1px 5px #3270eb, -1px -1px 5px #3270eb;
+    margin:0 1rem 0 1rem;
     background-color:white;
     border-radius: 20px; 
+    height: 60vh;
 
     @media(max-width: 500px){
         margin: 3rem;
@@ -49,13 +28,15 @@
     margin: 1.5rem 0;
     font-size: 2.7rem;
     font-family: "Poppins";
+    color: #00539C; //princess blue ftw
+   
 }
 
 .groupDescription{
     font-size:1rem;
     width:80%;
     margin:auto;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid #3270eb;
     padding-bottom:.3rem;
     font-family: "Poppins";
 }
@@ -73,22 +54,26 @@
     width:15rem;
     height:2rem;
     border-radius:7px;
-    border:1px solid black;
+    border:1px solid #3270eb;
 }
 .formButton{
-    width:9rem;
-    height:2rem;
-    border-radius:6px;
-    margin-top:1rem;
+    margin: 2% auto 0;
+    padding: 10px 65px;
+    border-radius: 5px;
     font-size: 15px;
     font-family: "Quicksand";
     font-weight: bold;
-    margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    opacity: 0.7;
 
     &:hover{
+        background: #3270eb;
+        border-color: white;
         cursor: pointer;
-        border: 1px solid #f36d13;
-        color: #f36d13;
+        opacity: 1;
     }
 }
 

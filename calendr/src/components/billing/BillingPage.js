@@ -12,14 +12,14 @@ class BillingPage extends React.Component {
     }
     render() { 
         return ( 
-         <>
+         <div className='billing-container'>
          <MainNavBar logOff={this.props.logOff} />
          <br/>
          <br/>
          <br/>
          <div className= "instructions">
             <h3>
-                  Here's what's included in the $9.99/Month Premium Plan:
+                  Here's What's Included for $9.99:
             </h3>
               
             <h4>Ability to add up to 5 groups.</h4>
@@ -34,7 +34,7 @@ class BillingPage extends React.Component {
           </Elements>
         </div>
       </StripeProvider>
-      </>
+      </div>
          );
     }
 }
