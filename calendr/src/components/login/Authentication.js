@@ -1,10 +1,5 @@
 import React, { Component } from 'react';
 import queryString from 'query-string';
-// import axios from 'axios';
-
-// const url = "http://localhost:3000/";
-// const localGoogle = 'http://localhost:3300/auth/google';
-// const deployedGoogle = 'https://calendrserver.herokuapp.com/auth/google';
 
 const Authentication = App => Login =>
     class extends Component {
@@ -21,7 +16,6 @@ const Authentication = App => Login =>
         // componentWillMount sets authentication items to localStorage
     componentWillMount(){
         let query = queryString.parse(this.props.location.search);
-    
         if (query.token) {
           console.log(query.token)
           window.localStorage.setItem("jwt", query.token);

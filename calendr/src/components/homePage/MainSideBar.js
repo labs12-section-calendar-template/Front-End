@@ -122,9 +122,9 @@ export class MainSideBar extends Component {
           <p className='buttonDescriptions'>Add Template</p>
         </div>
            <h5 className='buttonTitles'>Templates</h5>
-            <div >
-                {this.props.templates.map((template) => {            
-                    return <div className="template-list-items" key={template.id} value = {template.id}>
+            <div>
+                {this.props.templates.map(template => {
+                  return <div key={template.id} value = {template.id} className="template-list-items">
                   <input
                   className="each-template-input"
                   type="checkbox"

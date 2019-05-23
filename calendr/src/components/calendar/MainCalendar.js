@@ -19,13 +19,21 @@ export class MainCalendar extends Component {
       template_id: [],
       templates: [],
       sortedStartTimes: [],
-
-      colors:['purple', 'teal', 'white', 'red', 'green', 'darkorchid']
+      colors:['purple', 'teal', 'dodgerblue', 'darkorchid', 'red', 'green'],
+      deleteAll: false,
+      // all of this state below needs to be passed down to events.js and further
+      startTime: 0,
+      endTime: 0,
+      startDate: '',
+      endDate: '',
+      sum: '',
+      repeat: 1
     };
   }
-  
+
   componentDidMount() {
     this.getTemplateData();
+    this.getTemplateById();
   }
 
   // Get template by its corresponding group id
@@ -99,9 +107,6 @@ export class MainCalendar extends Component {
       .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
         let events = res.data
-        // let eventTimes = res.data.map(event => {
-        //   return event.startTime
-        // })
 
         let sortedTime = events.sort((a, b) => {
           if(a.startTime > b.startTime){
@@ -186,6 +191,52 @@ export class MainCalendar extends Component {
       }
     })
   }
+
+   // StartTime handle change setting startTime to state
+  handleStartTimeChange = (time) => {
+    this.setState({ startTime: time })
+  }
+  
+  // EndTime handle change setting endTime to state 
+  handleEndTimeChange = (time) => {
+    this.setState({ endTime: time })
+  }
+
+  handleChange = event => {
+
+    this.setState({
+      [event.target.name]: event.target.value
+    });
+
+  };
+
+  // gets the events created to cover multiple weeks 
+  getTemplateById = () => {
+    let id = localStorage.getItem('template_id')
+    axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
+      .then(res => {
+        let urlPath = window.location.pathname.split('/')[3]
+        console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
+        console.log(res.data.endDate)
+        console.log(urlPath)
+        this.setState({
+          startDate: res.data.startDate,
+          endDate: res.data.endDate,
+          sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
+
+        })
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
+
+  setStateToEmpty = () => {
+    this.setState({
+      repeat: 1
+    })
+  }
+
   
   // Renders all weeks that populate the calendr
   renderWeeks() {
@@ -213,6 +264,18 @@ export class MainCalendar extends Component {
           month={month}
           deleteEvent={this.deleteEvent}
           getEvents={this.getEvents}
+          check = {this.state.check} 
+          startTime = {this.state.startTime} 
+          endTime = {this.state.endTime} 
+          startDate = {this.state.startDate} 
+          endDate = {this.state.endDate} 
+          sum = {this.state.sum}
+          repeat = {this.state.repeat}
+
+          handleChange = {this.handleChange} 
+          handleStartTimeChange = {this.handleStartTimeChange} 
+          handleEndTimeChange = {this.handleEndTimeChange}
+          setStateToEmpty = {this.setStateToEmpty}
         />
       );
 
@@ -248,7 +311,6 @@ export class MainCalendar extends Component {
       </span>
     );
   }
-  
 
   render() {
     // console.log(this.state.events)
@@ -256,15 +318,15 @@ export class MainCalendar extends Component {
     return (
     <div>
       <MainNavBar logOff={this.props.logOff}/>
-        <MainSideBar colors={this.state.colors} singleCheck = {this.singleCheck} templates = {this.state.templates}/>
+        <MainSideBar singleCheck = {this.singleCheck} templates = {this.state.templates} colors={this.state.colors} />
       <div className="wholeCalendar">
       <div className='wholeCal'>
         <div className="padding"></div>
         <p>Click a date to add an event.</p>
       <div className="arrowsAndMonth">
-        <div className="arrow fa fa-angle-left" onClick={this.previous}/>
+        <div className="arrow fa fa-angle-left leftArrow" onClick={this.previous}/>
         <div>{this.renderMonthLabel()}</div>
-        <div className="arrow fa fa-angle-right" onClick={this.next} />
+        <div className="arrow fa fa-angle-right rightArrow" onClick={this.next} />
         </div>
         <DayNames />
         <div>{this.renderWeeks()}</div>

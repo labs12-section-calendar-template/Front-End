@@ -27,8 +27,20 @@ class Week extends React.Component {
                 day={day} 
                 key={day.date} 
                 templates = {this.props.templates}
-                colors={this.props.colors}
                 getEvents={this.props.getEvents}
+                colors={this.props.colors} 
+                check = {this.props.check} 
+                startTime = {this.props.startTime} 
+                endTime = {this.props.endTime} 
+                startDate = {this.props.startDate} 
+                endDate = {this.props.endDate} 
+                sum = {this.props.sum}
+                repeat = {this.props.repeat}
+
+                handleChange = {this.props.handleChange} 
+                handleStartTimeChange = {this.props.handleStartTimeChange} 
+                handleEndTimeChange = {this.props.handleEndTimeChange}
+                setStateToEmpty = {this.props.setStateToEmpty}
                 />
         ))}
       </div>

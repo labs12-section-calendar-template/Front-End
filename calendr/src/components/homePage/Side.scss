@@ -5,22 +5,29 @@
 
 .navDiv {
     display: flex;
-    flex-direction: row;
     justify-content: center;
-    align-items: center;
-    background:rgba(32, 31, 31, 0.904);
-    height: 0vh;
-    transition: .5s ease-in;
+    background:rgba(235, 162, 162, 0.904);
+    transition: .75s ease-in;
     overflow: hidden;
-    display: none;
+    position: fixed;
+    border-radius: 10px;
+    z-index: 10;
+    padding:0 1rem;
+    top:17.7rem;
+    height: 0vh;
+    width: 14.5rem;
+    margin-left: .6rem;
+    overflow-y: scroll;
+    box-shadow: inset 1px 1px 5px black,
+    inset -1px -1px 5px black;
 }
 
 
 .navOpen{
     display: flex;
     justify-content: center;
-    background:rgba(235, 162, 162, 0.904);
-    transition: .5s ease-in;
+    background: #e3f3f3;
+    transition: .75s ease-in;
     overflow: hidden;
     position: fixed;
     border-radius: 10px;
@@ -28,6 +35,7 @@
     padding:0 1rem;
     top:17.7rem;
     height:32.8rem;
+    width: 14.5rem;
     margin-left: .6rem;
     overflow-y: scroll;
     box-shadow: inset 1px 1px 5px black,
@@ -99,16 +107,6 @@
             color: #f36d13;
         }
     }
-    .buttonTitles{
-        font-size: 1.2rem;
-        text-align: start;
-        margin:0;
-        
-        @media(max-width: 500px){
-            font-size: 1rem;
-            color: white;
-        }
-    }
 
     .template-list-items{
         display: flex;
@@ -129,6 +127,20 @@
                 font-weight: bolder;
             }
 
+
+            @media(max-width: 500px){
+                color: white;
+                }
+        }
+    }
+
+    .buttonTitles{
+        font-size: 1.2rem;
+        text-align: start;
+        margin:0;
+        @media(max-width: 500px){
+            font-size: 1rem;
+            color: white;
         }
     }
 

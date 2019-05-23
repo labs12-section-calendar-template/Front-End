@@ -147,14 +147,35 @@ h4{
 }
 
 .placeholder {
-  height: 300px;
-  width: 500px;
-  border-radius: 5px;
+  width: 375px;
+  border-radius: 4rem;
+}
+
+.desktop{
+  border-radius: 10px;
+  border: 2px solid #9D9E9E;
+  width: 650px;
+}
+@media(max-width: 800px){
+  .iphoneX{
+    height: 520px;
+  }
+  .desktop{
+    width: 570px;
+    height: 300px;
+  }
 }
 
 @media (max-width: 500px) {
   .placeholder {
     width: 95%;
+  }
+  .iphoneX{
+    height: 455px;
+  }
+  .desktop{
+    height: 225px;
+    margin-bottom: 1.5rem;
   }
 }
 

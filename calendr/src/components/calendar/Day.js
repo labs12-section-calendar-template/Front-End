@@ -31,19 +31,17 @@ class Day extends React.Component {
        }
     });
     const { day: { date, number } } = this.props;
-
-    
     return (
       <>
         <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
 
-              {filteredEvent.map((event, i) => {
+            {filteredEvent.map((event) => {
                 return <div className='event-div'>
-               <li style={{color:this.props.colors[event.template_id % 6]}}></li>
-               <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}-{event.title}</p>
+               <li style={{color:this.props.colors[event.template_id % 6]}}/>
+               <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
                </div>
-              })}
+            })}
               
             </div>
           <div className="dayNumber">
@@ -63,11 +61,22 @@ class Day extends React.Component {
 
               <Event 
               colors={this.props.colors}
-              check={this.state.check} 
               history={this.props.history} 
               events={this.props.events}
               deleteEvent={this.props.deleteEvent}
               getEvents={this.props.getEvents}
+              check = {this.state.check} 
+              startTime = {this.props.startTime} 
+              endTime = {this.props.endTime} 
+              startDate = {this.props.startDate} 
+              endDate = {this.props.endDate} 
+              sum = {this.props.sum}
+              repeat = {this.props.repeat}
+
+              handleChange = {this.props.handleChange} 
+              handleStartTimeChange = {this.props.handleStartTimeChange} 
+              handleEndTimeChange = {this.props.handleEndTimeChange}
+              setStateToEmpty = {this.props.setStateToEmpty}
               />
             
             </div>
