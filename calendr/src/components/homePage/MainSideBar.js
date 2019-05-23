@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 
 export class MainSideBar extends Component {
@@ -134,7 +134,10 @@ export class MainSideBar extends Component {
                   value={template.id}
                   onClick={this.props.singleCheck}
                   />    
-                  <h5 className="each-template-name" style={{color:this.props.colors[template.id % 6]}}  onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
+                  <NavLink className="each-template-name" 
+                  style={{color:this.props.colors[template.id % 6]}}  
+                  onClick={() => {this.switchTemplate(template.id)}}
+                  >{template.title}</NavLink>
           
                 </div>
                 })} 
