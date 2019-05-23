@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
 import { toast } from "react-toastify";
+import axiosCustom from "../../../axiosCustom";
 
 class Event extends React.Component {
   constructor(props) {
@@ -137,7 +138,7 @@ class Event extends React.Component {
     toast.success('Your events are loading')
     for (let i = 0; i <= sum; i++) {
       console.log(this.props.sum)
-      axios
+      axiosCustom
         .post(
           `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
@@ -155,7 +156,7 @@ class Event extends React.Component {
     }
     } else {
 
-      axios
+      axiosCustom
         .post(
           `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
@@ -164,7 +165,8 @@ class Event extends React.Component {
             description,
             date: moment(this.props.check).format('YYYY-MM-DD'),
             repeat: false
-          })
+          }
+          )
         .then(res => {
           this.props.getEvents(temppId) 
           toast.success('Your event was added!')
@@ -180,7 +182,7 @@ class Event extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <button className='close-popup' onClick={this.toggleClose}>X</button>
+            <h3 className='close-popup' onClick={this.toggleClose}>X</h3>
             <EventBox events={this.props.events}
                       deleteEvent={this.props.deleteEvent}
             />
@@ -237,7 +239,7 @@ class Event extends React.Component {
           </div>
 
           <button
-            className="save-event-button"
+            className="save-event-button" 
             onClick={() => {
               this.addEvent();
               this.props.history.push(`/template/calendr/${localStorage.getItem('template_id')}`)

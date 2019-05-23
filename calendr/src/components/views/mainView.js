@@ -45,7 +45,6 @@ class mainView extends React.Component {
 
         <Route
           path="/memberhome"
-          exact
           render={(...props) => <MemberHome logOff={this.props.logOff} {...props} />}
         />
 
@@ -62,7 +61,9 @@ class mainView extends React.Component {
          render={(...props) =>  <MainCalendar logOff={this.props.logOff} {...props} />} />
       
 
-        <Route path="/template/edit/:id" component={TemplateEdit} />
+        <Route path="/template/edit/:id"
+        exact 
+        render={(...props) => <TemplateEdit logOff={this.props.logOff} {...props} />}/>
         <Route path="/event/edit/:id" component={EventEdit} />
          <Route exact path="/event" component={MainCalendar} />
         {/* <Route path="/event/:date" component={Event} /> */}

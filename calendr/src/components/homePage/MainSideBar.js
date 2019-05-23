@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import axios from 'axios';
+import axiosCustom from '.././../axiosCustom';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter, NavLink } from 'react-router-dom';
@@ -14,13 +14,57 @@ export class MainSideBar extends Component {
       group_id:[],
       modalOpen: false,
       templates:[],
-      navBar: false
+      navBar: false,
+      groups: []
     }
   }
 
   // mounting getGroup
   componentDidMount(){
     this.getGroup();
+  }
+
+  componentDidUpdate = (prevProps) => {
+    if(prevProps.match.url !== this.props.match.url) {
+      this.getGroup()
+    }
+  }
+
+  componentWillUnmount(){
+    this.getGroup();
+  }
+  
+  getGroup = () => {
+    let userId = localStorage.getItem('userId')
+    let groupId = localStorage.getItem("group_id")
+    axiosCustom.get(`/users/${userId}/groups`, { headers:{Authorization: localStorage.getItem('jwt')}},)
+    .then(res => {
+      this.setState({
+        group_id: groupId,
+        groups: res.data
+      })
+      this.getGroupById(groupId)
+      console.log(groupId)
+      console.log(res.data)
+    
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+  getGroupById = (something) => {
+    
+    axiosCustom.get(`/groups/${something}`)
+    .then(res => {
+      this.setState({
+        groupName: res.data.name,
+        joinCode: res.data.joinCode,
+      })
+  })
+  .catch(err => {
+    console.log(err)
+  })
   }
 
   // sideBar nav toggle on and off 
@@ -40,23 +84,23 @@ export class MainSideBar extends Component {
 }
   
   // get group information for display purposes 
-  getGroup = () => {
-    let userId = localStorage.getItem('userId')
-    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
-    .then(res => {
-      this.setState({
-        group_id:res.data[0].id,
-        groupName: res.data[0].name,
-        joinCode: res.data[0].joinCode,
-      })
+  // getGroup = () => {
+  //   let userId = localStorage.getItem('userId')
+  //   axiosCustom.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+  //   .then(res => {
+  //     this.setState({
+  //       group_id:res.data[0].id,
+  //       groupName: res.data[0].name,
+  //       joinCode: res.data[0].joinCode,
+  //     })
 
       
-      window.localStorage.setItem("group_id", this.state.group_id)
-    })
-    .catch(err => {
-      console.error(err)
-    })
-  }
+  //     window.localStorage.setItem("group_id", this.state.group_id)
+  //   })
+  //   .catch(err => {
+  //     console.error(err)
+  //   })
+  // }
 
   // onClick funtion to redirect to add template
   circleAddTemplate = () => {
@@ -77,12 +121,10 @@ export class MainSideBar extends Component {
   }
 
   // probably not needed
-  toggleSelectedTemplates = () => {
-    // if(null){
-
-    // }else{
-
-    // }
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.value]: e.target.name
+    })
   }
 
   // takeMeToTemplate = (event) => {
@@ -103,7 +145,7 @@ export class MainSideBar extends Component {
     return (
       <>
       <div className = "header">
-        <div onClick = {this.navAppear} id="navIcon"><i className = "fa fa-bars" aria-hidden="true"/></div>
+        <div id="navIcon"><i onClick = {this.navAppear} className = "fa fa-bars" aria-hidden="true"/><p>Menu</p></div>
             <div className = {this.state.navBar ? "navDiv":"navOpen"}>
                 
         <div className="homePageStyles">
@@ -129,10 +171,11 @@ export class MainSideBar extends Component {
                   className="each-template-input"
                   type="checkbox"
                   name={template.id}
-                  checked={template.isChecked > 0}
+                  checked={template.isChecked > 0 } 
                   check={template.isChecked}
                   value={template.id}
                   onClick={this.props.singleCheck}
+                  onChange = {this.onChangeHandler}
                   />    
                   <NavLink className="each-template-name" 
                   style={{color:this.props.colors[template.id % 6]}}  

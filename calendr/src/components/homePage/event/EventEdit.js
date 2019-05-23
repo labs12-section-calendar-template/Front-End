@@ -9,7 +9,7 @@ import moment from "moment";
 import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
-import queryString from 'query-string';
+import axiosCustom from '../../../axiosCustom'
 import { toast } from "react-toastify";
 
 class EventEdit extends React.Component {
@@ -93,7 +93,7 @@ class EventEdit extends React.Component {
   // gets the template information based on the group to be used for getTemplateById
   getTemplateId = event => {
     let group_id = localStorage.getItem("group_id");
-    axios
+    axiosCustom
       .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
       .then(res => {
         let tempIds = res.data.map(data => {
@@ -114,7 +114,7 @@ class EventEdit extends React.Component {
   // gets the events created to cover multiple weeks 
   getTemplateById = () => {
     let id = localStorage.getItem('template_id')
-    axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
+    axiosCustom.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         let urlPath = document.referrer.split('/')[5]
         console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
@@ -151,7 +151,7 @@ class EventEdit extends React.Component {
     for (let i = 0; i <= sum; i++) {
         urlPath += 1
       console.log(this.state.sum)
-      axios
+      axiosCustom
         .put(
           `${process.env.REACT_APP_API}/events/${urlPath-1}`, {
             startTime: newStart,
@@ -169,7 +169,7 @@ class EventEdit extends React.Component {
     }
     } else if (this.state.repeat === 1 && eventRepeat === 0){
 
-      axios
+      axiosCustom
         .put(
           `${process.env.REACT_APP_API}/events/${urlPath}`, {
             startTime: newStart,
@@ -184,7 +184,7 @@ class EventEdit extends React.Component {
         })
         .catch(err => console.log(err));
       } else {
-        axios
+        axiosCustom
         .put(
           `${process.env.REACT_APP_API}/events/${urlPath}`, {
             startTime: newStart,
@@ -209,7 +209,7 @@ class EventEdit extends React.Component {
       <>
         <div className="event-view-wrapper">
           <div className="event-view-container">
-            <button className='close-popup' onClick={this.toggleClose}>X</button>
+            <h3 className='close-popup' onClick={this.toggleClose}>X</h3>
             <h1>Update Your Event Below</h1>
             <div
               className="top-section"

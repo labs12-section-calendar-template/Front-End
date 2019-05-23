@@ -73,7 +73,7 @@ export class MemberCalendar extends Component {
   render() {
     return (
       <>
-      <div className = "rapper">
+      <div className = "wrapper">
         
       <MemberSideBar singleCheck = {this.props.singleCheck} group = {this.props.group} templates = {this.props.templates} />
       

@@ -5,6 +5,7 @@ import axios from 'axios';
 import MainNavBar from '../../general/MainNavBar'
 import moment from 'moment';
 import { toast } from 'react-toastify';
+import axiosCustom from '../../../axiosCustom';
 
 export class TemplateEdit extends Component {
   constructor(props) {
@@ -44,10 +45,13 @@ updateTemplate = (e) => {
   let id = this.props.match.params.id
   let { title, description, startDate, endDate } = this.state;
   console.log(this.state.group_id)
-  if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
-    toast('Please enter all fields to create a template')
+  if(title < 1 || description < 1) {
+    toast.error('Please enter all fields to create a template')
+  } else if(startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD')) {
+   toast.error('Please input the date fields correctly')
   } else {
-axios
+
+axiosCustom
   .put(`${process.env.REACT_APP_API}/templates/${id}`,{
     title,
     description,
@@ -58,9 +62,11 @@ axios
     console.log('IT WORKED')
     console.log(res.data)
     window.location=`/home/${letMeBack}`;
+    toast.success('Template updated')
   })
   .catch(err => {
     console.log(err)
+    toast.error('There was an error updating your template')
   })
 }
 }
@@ -94,8 +100,8 @@ cancel = () => {
 
   render() {
     return (
-    <div>
-      <MainNavBar/>
+    <div className='template-edit-container'>
+      <MainNavBar logOff={this.props.logOff}/>
       <div className="templateCreation">
         <aside className="groupTemplateInfo">
           <SideBar /> 
@@ -103,10 +109,6 @@ cancel = () => {
         <main className="templateMain">
           <div className='templateTitle'>
             <h1>Update Template</h1>
-           <div className="cancel-save">
-              <button id="buttonSaveCancel" onClick={this.updateTemplate}>Update</button>
-              <button id="buttonSaveCancel" onClick={this.cancel}>Cancel</button>
-            </div>
           </div>
           <div className='templateEdit'>
           <div className="startDate">
@@ -143,6 +145,9 @@ cancel = () => {
                     name="description"
                     />
               </form>
+              <div className="cancel-save">
+              <button id="buttonSaveCancel" onClick={this.updateTemplate}>Update</button>
+            </div>
           </div>
         </main>
       </div>

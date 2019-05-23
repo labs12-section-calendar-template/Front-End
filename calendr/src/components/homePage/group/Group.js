@@ -3,6 +3,7 @@ import "../../../App.scss"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import MainNavBar from '../../general/MainNavBar'
+import axiosCustom from '../../../axiosCustom'
 
 export class Group extends Component {
   constructor(props){
@@ -10,15 +11,33 @@ export class Group extends Component {
     this.state={
         joinCode: '',
         createdCode: '',
-        name: ''
+        name: '',
+        groups: []
     }
+  }
+
+  componentDidMount() {
+    this.getGroup();
+  }
+
+  getGroup = () => {
+    let userId = localStorage.getItem('userId')
+    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+    .then(res => {
+      this.setState({
+        groups:res.data,
+      })
+    })
+    .catch(err => {
+      console.error(err)
+    })
   }
 
   // Join group based on the joinCode
     joinGroup = event => {
       event.preventDefault();
       let user_id = localStorage.getItem('userId')
-      axios
+      axiosCustom
         .post(`${process.env.REACT_APP_API}/groups/getby/${user_id}`, {
           joinCode: this.state.joinCode
         }).then(res => {
@@ -28,7 +47,7 @@ export class Group extends Component {
           window.location = '/memberhome'
         }).catch(err => {
           console.error(err, 'there was an error')
-          toast('There was an error joining a group. Please use a valid join code.')
+          toast.error('There was an error joining a group. Please use a valid join code.')
         })
     }
     // Create a group with a name and joinCode
@@ -37,12 +56,16 @@ export class Group extends Component {
       let { name } = this.state
       let {joinCode} = this.state.createdCode
       let user_id = localStorage.getItem('userId')
-      if (!name || !joinCode) {
-        toast('Please Enter a Group Name and a Join Code.')
+      if(this.state.groups.length >= 5) {
+        toast.error('You already have 5 groups')
       }
-      axios
+      else if (!name || !joinCode) {
+        toast.error('Please Enter a Group Name and a Join Code.')
+      }
+      axiosCustom
         .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {
+          
           window.localStorage.setItem("group_id", res.data.id)
           console.log(res.data);
           if(this.state.createdCode !== null && this.state.name !== null){
@@ -50,6 +73,7 @@ export class Group extends Component {
           }else{
             alert('Fill out all fields')
           }
+          toast.success('Group Created')
         })
         .catch(err => {
           console.log(err);
@@ -68,14 +92,12 @@ export class Group extends Component {
     return (
       <>
       <MainNavBar logOff={this.props.logOff}/>
-      <div className = "groupHeader">
-         
-      </div>
       <div className="groupContainer">
         <div className="createGroup boxing">
             <h2 className="joinCreateGroup">Create Group</h2>
             <p className="groupDescription">You must be a Gold Tier Member to create more than one group</p>
           <form className="formGroup">
+          <br/>
             <h3>Enter Group Name</h3>
             <input
             className="groupInput"
@@ -102,10 +124,14 @@ export class Group extends Component {
         <div className="joinGroup boxing">
 
             <h2 className="joinCreateGroup">Join Group</h2>
-            <p className="groupDescription">After you join a group you will be able to see all events created by the owner of that group</p>
+            <p className="groupDescription">Join a group to see all the events created by the admin of that group</p>
+            <br/>
+          
+           
 
            <form className="formGroup">
               <h3>Enter 4-8 digit Join Code</h3>
+              <br/>
                 <input
                 className="groupInput"
                 onChange={this.handleInputChange}
@@ -114,6 +140,8 @@ export class Group extends Component {
                 name="joinCode" 
                 type="number"
                 />
+                 <br/>
+                 <br/>
                 <button onClick = {this.joinGroup} className="formButton">Join</button>
                 
            </form>

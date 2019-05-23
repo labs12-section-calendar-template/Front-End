@@ -8,6 +8,7 @@ import MainSideBar from '../homePage/MainSideBar'
 import MainNavBar from '../general/MainNavBar'
 import { withRouter } from 'react-router-dom'
 import { toast } from "react-toastify";
+import axiosCustom from '../../axiosCustom'
 
 export class MainCalendar extends Component {
   constructor(props) {
@@ -39,8 +40,7 @@ export class MainCalendar extends Component {
   // Get template by its corresponding group id
   getTemplateData = event => {
     let group_id = localStorage.getItem("group_id");
-    axios
-      .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
+    axiosCustom.get(`${process.env.REACT_APP_API}/groups/${group_id}/templates` )
       .then(res => {
         //returns all templates
         let templates = res.data
@@ -51,7 +51,7 @@ export class MainCalendar extends Component {
         }
         console.log(templates)
         //returns the id of the very last template in the array
-        let value = res.data[res.data.length - 1].id;
+        // let value = res.data[res.data.length - 1].id;
         //returns an array of all template IDS
         let tempIds = res.data.map(data => {
           return data.id;
@@ -84,7 +84,7 @@ export class MainCalendar extends Component {
   deleteEvent = (e, id) => {
     // e.preventDefault();
     let groupID = localStorage.getItem('group_id')
-    axios
+    axiosCustom
       .delete(`${process.env.REACT_APP_API}/events/${id}`)
       .then(res => {
         console.log("event deleted");
@@ -103,7 +103,7 @@ export class MainCalendar extends Component {
   };
 
   getEvents = value => {
-    return new Promise ((resolve, reject) => { axios
+    return new Promise ((resolve, reject) => { axiosCustom
       .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
       .then(res => {
         let events = res.data
@@ -132,7 +132,7 @@ export class MainCalendar extends Component {
   // Gets all events for the template id. To be run when a toggle is clicked
   selectEvents = (id) => {
     return new Promise((resolve, reject) => { 
-    axios
+    axiosCustom
       .get(`${process.env.REACT_APP_API}/templates/${id}/events`)
       .then(res => {
       let events = res.data
@@ -153,6 +153,7 @@ export class MainCalendar extends Component {
       reject(err);
     })});
   }
+
 
   // Takes in the selectEvents and confirms if a template isChecked or not
   singleCheck = event => {
@@ -213,7 +214,7 @@ export class MainCalendar extends Component {
   // gets the events created to cover multiple weeks 
   getTemplateById = () => {
     let id = localStorage.getItem('template_id')
-    axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
+    axiosCustom.get(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         let urlPath = window.location.pathname.split('/')[3]
         console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
@@ -338,3 +339,6 @@ export class MainCalendar extends Component {
 }
 
 export default withRouter(MainCalendar);
+
+
+
