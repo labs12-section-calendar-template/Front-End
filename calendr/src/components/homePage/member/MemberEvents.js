@@ -25,7 +25,7 @@ class MemberEvents extends React.Component {
               
                         {this.props.events && this.props.events.map(event => {
                               console.log(event) 
-          if (urlPath[2] === moment.parseZone(event.date).format('YYYY-MM-DD') && event) {
+                        if (urlPath[2] === moment.parseZone(event.date).format('YYYY-MM-DD') && event) {
             
                             return  <div key={event.id} className="event">
                                   <h5>{event.title}</h5><br />
@@ -34,8 +34,8 @@ class MemberEvents extends React.Component {
                                 <p>{event.startTime} - {event.endTime}</p>
                             </div>
 
-           } else {
-                                return <h2>You're Group's Template Has No Events Today</h2>
+                            } else {
+                                return <h2>You have No Events Today</h2>
                             }
                              
                         })}
