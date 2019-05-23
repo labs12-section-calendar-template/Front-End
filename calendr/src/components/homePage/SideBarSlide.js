@@ -71,6 +71,10 @@ export class SideBarSlide extends Component {
     window.location = '/template'
   }
 
+  groupPage = () =>{
+    window.location='/'
+  }
+
   removeUsers = () => {
     window.location = '/users'
   }
@@ -135,13 +139,15 @@ export class SideBarSlide extends Component {
       </div>
         ))}
         </div>
-          
-       
-       
-            <h5 className='buttonTitles'>Templates</h5>
+        
+          <h5 className='buttonTitles'>Templates</h5>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
           <p className='buttonDescriptions'>Add Template</p>
+        </div>
+        <div className='buttonBox'>
+        <i className="fas fa-plus-circle" onClick={this.groupPage}/>
+          <p className='buttonDescriptions'>Create/Join Group</p>
         </div>
       </div>
       <Popup open={this.state.modalOpen} id="groupEditPopup">
