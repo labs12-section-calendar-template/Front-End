@@ -135,7 +135,7 @@ Installing this project involves a couple steps. First, Node.js needs to be inst
 
  ## Environment Variables
 
-To use the app properly, please set up environment variables on your end. In Front-End, an .env file is provided in the root of the directory. Please move this file inside of the calendr directory, right below src. Additionally, in the root of the Backend 
+To use the app properly, please set up environment variables on your end. In Front-End, an .env file is provided in the root of the directory. Please move this file inside of the calendr directory, right below the src folder. Additionally, in the root of the Backend 
 directory, create a .env file with the text below:
 
 ```
