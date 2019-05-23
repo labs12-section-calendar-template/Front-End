@@ -45,7 +45,7 @@ export class GroupEdit extends Component {
   // removes all information on group including templates and events
   deleteGroup = e => {
     e.preventDefault();
-    axios.delete(`${process.env.REACT_APP_API}/groups/${this.props.group_id}, { headers:{Authorization: localStorage.getItem('jwt')}},`)
+    axios.delete(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`, { headers: {Authorization: localStorage.getItem('jwt')}})
       .then(res => {
         console.log("group deleted");
         if(this.props.groups.length === 1) {

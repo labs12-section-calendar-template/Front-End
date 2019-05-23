@@ -59,10 +59,11 @@ export class Group extends Component {
       if(this.state.groups.length >= 5) {
         toast.error('You already have 5 groups')
       }
+      else if (!name || !createdCode){
+        toast.error('Please enter a name and join code!')
+      }
       else if (name.length < 3 || createdCode.length < 4 || createdCode.length > 8) {
         toast.error('The group name needs to be greater than 3 and the Joincode needs to be between 4 and 8 numbers.')
-      } else if (!name || !createdCode){
-        toast.error('Please enter a name and join code!')
       }
       axiosCustom
         .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
