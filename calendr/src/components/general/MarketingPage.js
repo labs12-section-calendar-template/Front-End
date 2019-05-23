@@ -1,6 +1,6 @@
 import React from "react";
 import "../../App.scss";
-import placeHolder from "../../extras/filler.jpg";
+import { Link } from "react-router-dom";
 import iphonex from "../../extras/iphone-screen-cap.gif"
 import desktop from "../../extras/desktop-screen-cap.gif"
 
@@ -14,7 +14,9 @@ const MarketingPage = () => {
             Calendr is the easiest way for users/groups to plan, manage and
             visualize their work
           </p>
-          <button className="marketingButton">Sign Up</button>
+            <Link to="/login">
+            <button className="marketingButton">Sign Up</button>
+          </Link>
         </div>
       </header>
 
@@ -30,33 +32,20 @@ const MarketingPage = () => {
               est laborum.
             </p>
           </div>
-
-          <img
-            className="placeholder iphoneX"
-            src={iphonex}
-            alt="something random"
-          />
           
-          {/* <div className="iphoneContainer">
           <img
             className="placeholder iphoneX"
             src={iphonex}
             alt="something random"
           />
-          <img
-            className="screenCap"
-            src={screenCap1}
-            alt="something random"
-          />
-          </div> */}
-
         </div>
 
         <div className="middle-section-top">
-          <h2>Using Calendr, you can...</h2>
+          <h2>Membership pricing</h2>
           <div className="card-container">
             <div className="card">
-              <h4>Switch between templates</h4>
+              <h4>Free Membership</h4>
+              <h5> Free </h5>
               <p>
                 lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
                 aute irure dolor in reprehenderit in voluptate velit esse cillum
@@ -64,10 +53,14 @@ const MarketingPage = () => {
                 cupidatat non proident, sunt in culpa qui officia deserunt
                 mollit anim id est laborum.
               </p>
+              <Link to="/login">
+                <button className="marketingButton" href="/login">Sign Up Now </button>
+              </Link>
             </div>
 
             <div className="card">
-              <h4>See what events your group added</h4>
+              <h4>Premium Membership</h4>
+              <h5>9.99 / month</h5>
               <p>
                 lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
                 aute irure dolor in reprehenderit in voluptate velit esse cillum
@@ -75,18 +68,11 @@ const MarketingPage = () => {
                 cupidatat non proident, sunt in culpa qui officia deserunt
                 mollit anim id est laborum.
               </p>
+              <Link to="/login">
+                <button className="marketingButton" href="/login">Sign Up Now </button>
+              </Link>
             </div>
 
-            <div className="card">
-              <h4>Have it all integrated with one calendar</h4>
-              <p>
-                lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
-            </div>
           </div>
         </div>
 
@@ -116,7 +102,9 @@ const MarketingPage = () => {
             lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis aute
             irure dolor in reprehenderit.
           </p>
-          <button href="/login">Sign Up </button>
+          <Link to="/login">
+            <button className="marketingButton">Sign Up </button>
+          </Link>
         </div>
       </div>
 
