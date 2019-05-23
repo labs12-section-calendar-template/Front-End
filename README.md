@@ -156,7 +156,11 @@ Feel free to let us know about new and innovative features you would like to hav
 product. Please contact the contributors of this app on their social media accounts at the top of this
 page.
 
+## Pull Requests
 
+Please submit a pull request with your changes after carefully reviewing and testing your code.
+Make sure to update the README.md file with the details of your code. Remember to follow the 
+Contributor Covenant and MIT License guidelines when adding your changes to our app.
 
 ## Attribution 
 
