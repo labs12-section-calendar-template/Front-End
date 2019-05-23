@@ -13,7 +13,7 @@
 <br>
 <br>
 
-[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://en.wikipedia.org/wiki/MIT_License)    [![Netlify Status](https://api.netlify.com/api/v1/badges/97d60185-6561-4760-8da7-d65bd8f824ba/deploy-status)](https://app.netlify.com/sites/calendr/deploys)    [![React badge](https://img.shields.io/badge/react-v16.8.6-blue.svg)](https://reactjs.org/)   [![moment badge](https://img.shields.io/badge/moment.js-v2.24.0-orange.svg)](https://momentjs.com/)[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
+[![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://en.wikipedia.org/wiki/MIT_License)    [![Netlify Status](https://api.netlify.com/api/v1/badges/97d60185-6561-4760-8da7-d65bd8f824ba/deploy-status)](https://app.netlify.com/sites/calendr/deploys)    [![React badge](https://img.shields.io/badge/react-v16.8.6-blue.svg)](https://reactjs.org/)   [![moment badge](https://img.shields.io/badge/moment.js-v2.24.0-orange.svg)](https://momentjs.com/)  [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v1.4%20adopted-ff69b4.svg)](code-of-conduct.md)
 
 
 
@@ -145,3 +145,5 @@ NODE_ENV=development
 FRONT_END_URL=http://localhost:3000
 
 ```
+
+## Backend documentation can be found here: [Back end](https://github.com/labs12-section-calendar-template/Backend)
