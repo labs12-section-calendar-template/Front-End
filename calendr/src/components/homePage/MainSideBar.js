@@ -145,7 +145,7 @@ export class MainSideBar extends Component {
     return (
       <>
       <div className = "header">
-        <div onClick = {this.navAppear} id="navIcon"><i className = "fa fa-bars" aria-hidden="true"/></div>
+        <div id="navIcon"><i onClick = {this.navAppear} className = "fa fa-bars" aria-hidden="true"/><p>Menu</p></div>
             <div className = {this.state.navBar ? "navDiv":"navOpen"}>
                 
         <div className="homePageStyles">

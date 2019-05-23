@@ -28,8 +28,10 @@ export class Template extends Component {
     let group_id = localStorage.getItem("group_id");
     console.log(group_id);
     let { title, description, startDate, endDate } = this.state;
-     if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
-      toast('Please enter all fields to create a template')
+    if(title < 1 || description < 1) {
+      toast.error('Please enter all fields to create a template')
+    } else if(startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD')) {
+     toast.error('Please input the date fields correctly')
     } else {
     axiosCustom.post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
@@ -44,9 +46,11 @@ export class Template extends Component {
         });
        localStorage.setItem('template_id', res.data.id)
        window.location = `/template/calendr/${res.data.id}`;
+      
       })
       .catch(err => {
         console.log(err);
+        toast.error('There was an error creating your template')
       });
     }
   };
@@ -74,7 +78,7 @@ export class Template extends Component {
 
   render() {
     return (
-      <div>
+      <div className='template-container'>
         <MainNavBar logOff = {this.props.logOff}/>
         <div className="templateCreation">
           <aside className="groupTemplateInfo">
@@ -83,10 +87,6 @@ export class Template extends Component {
           <main className="templateMain">
             <div className="templateTitle">
               <h1>Template Creation</h1>
-
-              <button id="buttonSave" onClick={this.postTemplate}>
-                Save
-              </button>
             </div>
             <div className="templateEdit">
               <div className="startDate">
@@ -125,6 +125,9 @@ export class Template extends Component {
                   />
                 
               </form>
+              <button id="buttonSave" onClick={this.postTemplate}>
+                Save
+              </button>
             </div>
           </main>
         </div>

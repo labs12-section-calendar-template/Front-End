@@ -1,8 +1,19 @@
+.template-container {
+    &:hover #buttonSave {
+        background: #3270eb;
+    }
+}
+
+.template-edit-container {
+    &:hover #buttonSaveCancel {
+        background: #3270eb;
+    }
+}
+
 .templateCreation{
     display: flex;
     flex-direction: row;
     justify-content: center;
-
 }
 
 .groupTemplateInfo{
@@ -37,12 +48,8 @@
 .cancel-save{
     display:flex;
     
+    
 }
-
- #buttonSaveCancel{
-    padding:.7rem 1rem;
-    margin-left: 4%;
- }
 
  .startDate{
      display: flex;
@@ -95,6 +102,51 @@ font-size: 1.5rem;
         list-style-type: none;
     }
 }
+
+#buttonSave{
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    margin-top: 2%;
+    opacity: 0.7;
+
+    &:hover {
+        background: #3270eb;
+        border-color: white;
+        cursor: pointer;
+        opacity: 1;
+    }
+}
+
+#buttonSaveCancel{
+    margin: 2% auto 0;
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    opacity: 0.7;
+
+    &:hover {
+        background: #3270eb;
+        border-color: white;
+        cursor: pointer;
+        opacity: 1;
+    }
+  
+ }
+
+
   
 
 

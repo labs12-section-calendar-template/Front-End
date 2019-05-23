@@ -87,7 +87,7 @@ export class SideBar extends Component {
     }
   }
 
-  something = (event) => {
+  showGroupName = (event) => {
     let groups = this.state.groups
     groups.forEach(group => {
     if(event.target.attributes.value.value == group.id) {
@@ -112,7 +112,7 @@ export class SideBar extends Component {
         <div>
         <h5 className='buttonTitles'>Groups</h5>
        {this.state.groups.map(group => (
-      <div key={group.id} value={group.id} className="groupName" onClick={this.something} >
+      <div key={group.id} value={group.id} className="groupName" onClick={this.showGroupName} >
     {group.name}
       </div>
         ))}

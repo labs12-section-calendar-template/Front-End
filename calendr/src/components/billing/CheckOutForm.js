@@ -61,9 +61,10 @@ class CheckOutForm extends React.Component {
         return ( 
 
           <div className="checkout">
+          
             <p>Ready to complete your transaction?</p>
             <CardElement/>
-            <button onClick={this.submit}>Submit</button>
+            <button className='billing-button' onClick={this.submit}>Submit</button>
           </div>
 
          );

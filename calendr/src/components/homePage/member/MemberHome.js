@@ -23,6 +23,21 @@ class MemberHome extends React.Component {
     // Mounts getGroup and checkUsersGroups
     componentDidMount(){
         this.getGroup()
+        this.getUsersGroup()
+    }
+
+
+    getUsersGroup = () => {
+      let userId = localStorage.getItem('userId')
+      axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+      .then(res => {
+        this.setState({
+          usersGroups:res.data,
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
     }
 
     // Allows a member to join a group

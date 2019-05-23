@@ -58,6 +58,7 @@ export class Home extends Component {
 
   // onClick redirect to edit window for templates
   edit = (e, id) => {
+    e.stopPropagation();
     window.location = `/template/edit/${id}`;
   };
 
@@ -101,9 +102,10 @@ export class Home extends Component {
   render() {
     if (this.state.templates.length < 1) {
       return (
-        <div>
+        <div className='home-container'>
           <MainNavBar logOff={this.props.logOff} />
           <SideBar />
+          <SideBarSlide />
           <Link className="buttonLink" to="/template">
             <button className="firstTemplateButton">
               Create your first template
@@ -128,11 +130,11 @@ export class Home extends Component {
                   </Link>
                   <div className="iconsForTemplates">
                     <i
-                      className="far fa-edit iconSize"
+                      className="far fa-edit iconSizeEdit"
                       onClick={e => this.edit(e, template.id)}
                     />
                     <i
-                      className="fas fa-trash iconSize"
+                      className="fas fa-trash iconSizeDelete"
                       onClick={e => this.deleteTemplate(e, template.id)}
                     />
                   </div>

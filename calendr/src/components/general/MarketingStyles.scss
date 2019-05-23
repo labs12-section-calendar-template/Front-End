@@ -15,12 +15,12 @@ h2 {
 }
 @media(max-width: 800px){
     h2{
-        font-size: 32px;
+        font-size: 2.5rem;
     }
   }
 @media(max-width: 500px){
     h2{
-        font-size: 25px;
+        font-size: 2.1rem;
     }
 }
 
@@ -56,10 +56,6 @@ h4{
   opacity: 1;
 }
 
-:hover .marketingButton {
-  background: #3270eb;
-}
-
 .marketing-container {
   font-family: "Poppins";
   margin: 0 auto;
@@ -92,11 +88,18 @@ h4{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    margin: 5% 0;
+
+    .marketingButton{
+      width: 16rem;
+      margin: 0 auto;
+    }
 }
 @media(max-width: 800px){
     .card-container{
       width: 100%;
       flex-direction: column;
+      margin-bottom: 5%;
     }
   }
 @media(max-width: 500px){
@@ -104,6 +107,7 @@ h4{
       width: 100%;
       flex-direction: column;
       padding: 0;
+      margin-bottom: 5%;
     }
   }
 
@@ -112,11 +116,22 @@ h4{
   width: 600px;
   flex-direction: column;
   font-size: 18px;
+
+  h4{
+    font-size: 1.7rem;
+  }
+
+  h5{
+    font-weight: bold;
+    color: #3270eb;
+    font-size: 1.4rem;
+  }
 }
 
 @media(max-width: 500px){
     .card{
       width: 100%;
+      margin-top: 4%;
     }
 }
 
@@ -147,19 +162,41 @@ h4{
 }
 
 .placeholder {
-  height: 300px;
-  width: 500px;
-  border-radius: 5px;
+  width: 375px;
+  border-radius: 4rem;
+}
+
+.desktop{
+  border-radius: 10px;
+  border: 2px solid #9D9E9E;
+  width: 650px;
+}
+@media(max-width: 800px){
+  .iphoneX{
+    height: 520px;
+  }
+  .desktop{
+    width: 570px;
+    height: 300px;
+    margin-bottom: 5%;
+  }
 }
 
 @media (max-width: 500px) {
   .placeholder {
     width: 95%;
   }
+  .iphoneX{
+    height: 455px;
+  }
+  .desktop{
+    height: 225px;
+    margin-bottom: 1.5rem;
+  }
 }
 
 .middle-section-top {
-  padding-top: 10%;
+  padding-top: 8%;
 }
 
 .middle-section-bottom {
