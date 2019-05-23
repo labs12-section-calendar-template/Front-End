@@ -54,13 +54,13 @@ export class Group extends Component {
     postGroup = e => {
       e.preventDefault();
       let { name } = this.state
-      let {createdCode} = this.state.createdCode
+      let { createdCode } = this.state
       let user_id = localStorage.getItem('userId')
       if(this.state.groups.length >= 5) {
         toast.error('You already have 5 groups')
       }
       else if (name.length < 3 || createdCode.length < 4 || createdCode.length > 8) {
-        toast.error('Joincode needs to be between 4 and 8 numbers, and name needs to be greater than 3!')
+        toast.error('The group name needs to be greater than 3 and the Joincode needs to be between 4 and 8 numbers.')
       } else if (!name || !createdCode){
         toast.error('Please enter a name and join code!')
       }
