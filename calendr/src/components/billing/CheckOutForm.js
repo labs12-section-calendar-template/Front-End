@@ -1,6 +1,7 @@
 import React from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
 import axiosCustom from '../../axiosCustom';
+import axios from 'axios';
 import { toast } from 'react-toastify';
 // import ColumnGroup from 'antd/lib/table/ColumnGroup';
 
@@ -19,7 +20,7 @@ class CheckOutForm extends React.Component {
 
     getUserMembershipStatus = () => {
       let UserId = localStorage.getItem('userId')
-      axiosCustom.get(`${process.env.REACT_APP_API}/users/${UserId}`)
+      axios.get(`${process.env.REACT_APP_API}/users/${UserId}`, { headers:{Authorization: localStorage.getItem('jwt')}},)
       .then(res => {
        this.setState({
          premiumStatus: res.data.premiumStatus
