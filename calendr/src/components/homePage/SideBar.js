@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
 import '../../App.scss'
+import axiosCustom from '.././../axiosCustom'
 
 
 ///////////////////   URL => HOME      ///////////////////////
@@ -19,14 +19,8 @@ export class SideBar extends Component {
     }
   }
 
-  componentDidMount(){
+  componentDidMount = () => {
     this.getGroup();
-    
-    // if(this.state.groupName.length < 0){
-    //   window.location = '/'
-    // }else{
-    //   window.location = '/home'
-    // }
   }
 
   componentDidUpdate = (prevProps) => {
@@ -34,11 +28,12 @@ export class SideBar extends Component {
       this.getGroup()
     }
   }
+
   
   getGroup = () => {
     let userId = localStorage.getItem('userId')
     let groupId = localStorage.getItem("group_id")
-    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+    axiosCustom.get(`/users/${userId}/groups`, { headers:{Authorization: localStorage.getItem('jwt')}},)
     .then(res => {
       this.setState({
         group_id: groupId,
@@ -55,8 +50,8 @@ export class SideBar extends Component {
   }
 
   getGroupById = (something) => {
-    
-    axios.get(`${process.env.REACT_APP_API}/groups/${something}`)
+
+    axiosCustom.get(`/groups/${something}`, {headers: { Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         groupName: res.data.name,
@@ -95,8 +90,8 @@ export class SideBar extends Component {
   showGroupName = (event) => {
     let groups = this.state.groups
     groups.forEach(group => {
-    if(event.target.attributes.getNamedItem('value').value == group.id) {
-      window.localStorage.setItem("group_id", event.target.attributes.getNamedItem('value').value)
+    if(event.target.attributes.value.value == group.id) {
+      window.localStorage.setItem("group_id", event.target.attributes.value.value)
     this.props.history.push(`/home/${group.id}`)
  
     } 

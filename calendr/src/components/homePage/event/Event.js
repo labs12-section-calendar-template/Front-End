@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
 import { toast } from "react-toastify";
+import axiosCustom from "../../../axiosCustom";
 
 class Event extends React.Component {
   constructor(props) {
@@ -137,7 +138,7 @@ class Event extends React.Component {
     toast.success('Your events are loading')
     for (let i = 0; i <= sum; i++) {
       console.log(this.props.sum)
-      axios
+      axiosCustom
         .post(
           `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
@@ -155,7 +156,7 @@ class Event extends React.Component {
     }
     } else {
 
-      axios
+      axiosCustom
         .post(
           `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
@@ -164,7 +165,8 @@ class Event extends React.Component {
             description,
             date: moment(this.props.check).format('YYYY-MM-DD'),
             repeat: false
-          })
+          }
+          )
         .then(res => {
           this.props.getEvents(temppId) 
           toast.success('Your event was added!')

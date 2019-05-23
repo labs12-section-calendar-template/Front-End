@@ -7,6 +7,7 @@ import axios from "axios";
 import MainNavBar from "../../general/MainNavBar";
 import { toast } from "react-toastify";
 import moment from 'moment';
+import axiosCustom from '../../../axiosCustom';
 
 export class Template extends Component {
   constructor(props) {
@@ -32,8 +33,7 @@ export class Template extends Component {
     } else if(startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD')) {
      toast.error('Please input the date fields correctly')
     } else {
-    axios
-      .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
+    axiosCustom.post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
         description,
         startDate,

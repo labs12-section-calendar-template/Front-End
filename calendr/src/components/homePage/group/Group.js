@@ -3,6 +3,7 @@ import "../../../App.scss"
 import axios from 'axios'
 import { toast } from 'react-toastify'
 import MainNavBar from '../../general/MainNavBar'
+import axiosCustom from '../../../axiosCustom'
 
 export class Group extends Component {
   constructor(props){
@@ -36,7 +37,7 @@ export class Group extends Component {
     joinGroup = event => {
       event.preventDefault();
       let user_id = localStorage.getItem('userId')
-      axios
+      axiosCustom
         .post(`${process.env.REACT_APP_API}/groups/getby/${user_id}`, {
           joinCode: this.state.joinCode
         }).then(res => {
@@ -61,7 +62,7 @@ export class Group extends Component {
       else if (!name || !joinCode) {
         toast.error('Please Enter a Group Name and a Join Code.')
       }
-      axios
+      axiosCustom
         .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
         .then(res => {
           

@@ -34,24 +34,32 @@ class Day extends React.Component {
         
        }
     });
+
     const { day: { date, number } } = this.props;
     return (
       <>
         <div className="day" key={date.toString()} onClick = {this.toggleOpen}>
             <div className="eventInfo">
-              {filteredEvent.length < 3 ? filteredEvent.map((event) => {
-                return <div className='event-div'>
-              <li style={{color:this.props.colors[event.template_id % 6]}}/>
-              <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
-              </div>
-              })
-              :
-              filteredEvent.splice(0, 3).map((event) => {
-              return <div className='event-div'>
-              <li style={{color:this.props.colors[event.template_id % 6]}}/>
-              <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
-              </div>
-              })}
+
+            
+            {filteredEvent.length < 3 ? filteredEvent.map((event) => {
+                return <div key = {event.id} className='event-div'>
+               <li style={{color:this.props.colors[event.template_id % 6]}}/>
+               <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
+               </div> 
+            }) 
+            :
+            <div className = "test">
+            {filteredEvent.splice(0, 2).map((event) => {
+              return <div key = {event.id}>
+             <li style={{color:this.props.colors[event.template_id % 6]}}/>
+             <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
+             </div> 
+            })}
+            {filteredEvent.length > 2 && <p>{filteredEvent.length} more events...</p>}
+            
+            </div>
+          }
               
             </div>
           <div className="dayNumber">
