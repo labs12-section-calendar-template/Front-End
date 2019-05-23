@@ -1,8 +1,8 @@
 import React from 'react'
-// import { NavLink, Route, withRouter } from 'react-router-dom';
+import { NavLink, Route, withRouter } from 'react-router-dom';
 import moment from 'moment';
-// import Popup from 'reactjs-popup';
-// import Event from '../homePage/event/Event';
+import Popup from 'reactjs-popup';
+import EventBox from '../event/EventBox';
 
 
 class MemberDay extends React.Component {
@@ -13,6 +13,11 @@ class MemberDay extends React.Component {
       check: moment(this.props.day.date._d).format('YYYY-MM-DD')
     }
   }
+  toggleOpen = (e) => {
+    e.preventDefault();
+    console.log(moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD"))
+    this.props.history.push(`/memberhome/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
+  };
 
 
   render() {
@@ -39,11 +44,28 @@ class MemberDay extends React.Component {
           </div>
 
         </div>
+        <Route
+         path={`/memberhome/${this.state.check}`}
+        render={() =>  (
+          <div className="popup-overlay">
+          <div className="popup-content modal-popup" 
+          onOpen={true}
+          onClose={() => {
+            this.props.history.push(`/memberhome`)
+            }}>
+          <EventBox events={this.props.events} history={this.props.history} />
+          </div>
+          </div>
+        )}
+        />
+
+      
+
 
       </>
     );
   }
 }
 
-export default MemberDay;
+export default withRouter(MemberDay);
 
