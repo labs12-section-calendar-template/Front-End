@@ -1,4 +1,4 @@
-# Front-End
+
 
 # Section Calendar Template Manager 
 
@@ -135,7 +135,7 @@ Installing this project involves a couple steps. First, Node.js needs to be inst
 
  ## Environment Variables
 
-To use the app properly, please set up environment variables on your end. In Front-End, an .env file is provided in the root of the directory. Please move this file inside of the calendr directory, right below src. Additionally, in the root of the Backend 
+To use the app properly, please set up environment variables on your end. In Front-End, an .env file is provided in the root of the directory. Please move this file inside of the calendr directory, right below the src folder. Additionally, in the root of the Backend 
 directory, create a .env file with the text below:
 
 ```
@@ -145,5 +145,26 @@ NODE_ENV=development
 FRONT_END_URL=http://localhost:3000
 
 ```
+
+# Contribution
+
+Please follow our guidelines when contributing to our product, [contribution conduct](./good-contributing.md)
+
+## Feature Requests
+
+Feel free to let us know about new and innovative features you would like to have added to our
+product. Please contact the contributors of this app on their social media accounts at the top of this
+page.
+
+## Pull Requests
+
+Please submit a pull request with your changes after carefully reviewing and testing your code.
+Make sure to update the README.md file with the details of your code. Remember to follow the 
+Contributor Covenant and MIT License guidelines when adding your changes to our app.
+
+## Attribution 
+
+
+ Contribution guidelines were adopted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
 ## Backend documentation can be found here: [Backend](https://github.com/labs12-section-calendar-template/Backend)
