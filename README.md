@@ -146,4 +146,9 @@ FRONT_END_URL=http://localhost:3000
 
 ```
 
+## Attribution 
+
+
+ Contribution guidelines were adopted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
+
 ## Backend documentation can be found here: [Backend](https://github.com/labs12-section-calendar-template/Backend)
