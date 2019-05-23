@@ -106,7 +106,7 @@ export class Home extends Component {
           <MainNavBar logOff={this.props.logOff} />
           <SideBar />
           <SideBarSlide />
-         <Link className="buttonLink" to="/template">
+          <Link className="buttonLink" to="/template">
             <button className="firstTemplateButton">
               Create your first template
             </button>

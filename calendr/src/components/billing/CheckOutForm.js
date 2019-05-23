@@ -55,7 +55,7 @@ class CheckOutForm extends React.Component {
     render() { 
       let groupId = localStorage.getItem('group_id')
       if(this.state.premiumStatus == true) {
-        return <h2>YOU HAVE ALREADY PAID FOR PREMIUM MEMBERSHIP. <br/>THANK YOU!</h2>
+        return <h2>YOU HAVE ALREADY PAID FOR PREMIUM MEMBERSHIP</h2>
       } else {
       if (this.state.complete) return <div><h1>Purchase Complete</h1> <button onClick={()=> { window.location=`/home/${groupId}`}}>Take Me Home</button> </div>
         return ( 
