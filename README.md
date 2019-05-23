@@ -146,6 +146,18 @@ FRONT_END_URL=http://localhost:3000
 
 ```
 
+# Contribution
+
+Please follow our guidelines when contributing to our product, [contribution conduct](./good-contributing.md)
+
+## Feature Requests
+
+Feel free to let us know about new and innovative features you would like to have added to our
+product. Please contact the contributors of this app on their social media accounts at the top of this
+page.
+
+
+
 ## Attribution 
 
 
