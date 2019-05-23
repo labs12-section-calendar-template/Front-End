@@ -22,7 +22,7 @@ export class Group extends Component {
 
   getGroup = () => {
     let userId = localStorage.getItem('userId')
-    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`)
+    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`, { headers:{Authorization: localStorage.getItem('jwt')}},)
     .then(res => {
       this.setState({
         groups:res.data,
