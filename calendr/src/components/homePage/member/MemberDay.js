@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Route } from 'react-router-dom';
+import { NavLink, Route, withRouter } from 'react-router-dom';
 import moment from 'moment';
 import Popup from 'reactjs-popup';
 // import Event from '../homePage/event/Event';
@@ -14,6 +14,11 @@ class MemberDay extends React.Component {
       check: moment(this.props.day.date._d).format('YYYY-MM-DD')
     }
   }
+  toggleOpen = (e) => {
+    e.preventDefault();
+    console.log(moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD"))
+    this.props.history.push(`/memberhome/${moment.parseZone(this.props.day.date._d).format("YYYY-MM-DD")}`);
+  };
 
   toggleOpen = (e) => {
     e.preventDefault();

@@ -131,6 +131,12 @@
             cursor: pointer;
             margin:auto .5rem;
             font-size: .9rem;
+            
+            &:focus{
+                font-size: 1.1rem;
+                font-weight: bolder;
+            }
+
 
             @media(max-width: 500px){
                 color: white;
