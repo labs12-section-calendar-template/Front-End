@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import "../../../App.scss";
 import { toast } from "react-toastify";
+import axiosCustom from "../../../axiosCustom"
 
 export class GroupEdit extends Component {
   constructor(props) {
@@ -25,7 +26,7 @@ export class GroupEdit extends Component {
     console.log(userId);
     console.log(this.state.joinCode);
     console.log(this.state.name);
-    axios
+    axiosCustom
       .put(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`, {
         name: this.state.name,
         user_id: userId
@@ -44,7 +45,7 @@ export class GroupEdit extends Component {
   // removes all information on group including templates and events
   deleteGroup = e => {
     e.preventDefault();
-    axios
+    axiosCustom
       .delete(`${process.env.REACT_APP_API}/groups/${this.props.group_id}`)
       .then(res => {
         console.log("group deleted");

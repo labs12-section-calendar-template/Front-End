@@ -7,6 +7,7 @@ import axios from "axios";
 import MainNavBar from "../../general/MainNavBar";
 import { toast } from "react-toastify";
 import moment from 'moment';
+import axiosCustom from '../../../axiosCustom';
 
 export class Template extends Component {
   constructor(props) {
@@ -30,8 +31,7 @@ export class Template extends Component {
      if(title < 1 || description < 1 || startDate !== moment(startDate).format('YYYY-MM-DD') || endDate !== moment(endDate).format('YYYY-MM-DD') ) {
       toast('Please enter all fields to create a template')
     } else {
-    axios
-      .post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
+    axiosCustom.post(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, {
         title,
         description,
         startDate,

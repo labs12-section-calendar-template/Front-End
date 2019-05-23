@@ -39,7 +39,7 @@ class Day extends React.Component {
             
 
             {filteredEvent.length < 3 ? filteredEvent.map((event) => {
-                return <div className='event-div'>
+                return <div key = {event.id} className='event-div'>
                <li style={{color:this.props.colors[event.template_id % 6]}}/>
                <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
                </div> 
@@ -47,12 +47,12 @@ class Day extends React.Component {
             :
             <div className = "test">
             {filteredEvent.splice(0, 2).map((event) => {
-              return <div>
+              return <div key = {event.id}>
              <li style={{color:this.props.colors[event.template_id % 6]}}/>
              <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
              </div> 
             })}
-            {filteredEvent.length > 2 && <v>{filteredEvent.length} more events...</v>}
+            {filteredEvent.length > 2 && <p>{filteredEvent.length} more events...</p>}
             
             </div>
           }

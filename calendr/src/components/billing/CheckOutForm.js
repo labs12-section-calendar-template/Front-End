@@ -1,6 +1,6 @@
 import React from 'react';
 import {CardElement, injectStripe} from 'react-stripe-elements';
-import axios from 'axios';
+import axiosCustom from '../../axiosCustom';
 import { toast } from 'react-toastify';
 // import ColumnGroup from 'antd/lib/table/ColumnGroup';
 
@@ -19,7 +19,7 @@ class CheckOutForm extends React.Component {
 
     getUserMembershipStatus = () => {
       let UserId = localStorage.getItem('userId')
-      axios.get(`${process.env.REACT_APP_API}/users/${UserId}`)
+      axiosCustom.get(`${process.env.REACT_APP_API}/users/${UserId}`)
       .then(res => {
        this.setState({
          premiumStatus: res.data.premiumStatus
@@ -39,7 +39,7 @@ class CheckOutForm extends React.Component {
     if(this.state.premiumStatus == true) {
       toast.error('Please enter a valid credit card')
     } else {
-    axios.post(`${process.env.REACT_APP_API}/charge/${UserId}`, {tokenId: token.id})
+    axiosCustom.post(`${process.env.REACT_APP_API}/charge/${UserId}`, {tokenId: token.id})
     .then(res => {
      this.setState({
        complete: true

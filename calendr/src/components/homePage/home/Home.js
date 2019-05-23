@@ -5,6 +5,7 @@ import SideBarSlide from "../SideBarSlide";
 import SideBar from "../SideBar";
 import MainNavBar from "../../general/MainNavBar";
 import axios from "axios";
+import axiosCustom from "../../../axiosCustom";
 import moment from "moment";
 import { toast } from 'react-toastify';
 
@@ -42,8 +43,8 @@ export class Home extends Component {
   getTemplate = event => {
     let urlPath = window.location.pathname;
     let lateNight = urlPath.split('/')
-    axios
-      .get(`${process.env.REACT_APP_API}/groups/${lateNight[2]}/templates`)
+    axiosCustom
+      .get(`/groups/${lateNight[2]}/templates`)
       .then(res => {
         this.setState({
           templates: res.data,
@@ -65,7 +66,7 @@ export class Home extends Component {
   deleteTemplate = (e, id) => {
     e.stopPropagation();
     let groupID = localStorage.getItem('group_id')
-    axios
+    axiosCustom
       .delete(`${process.env.REACT_APP_API}/templates/${id}`)
       .then(res => {
         console.log("template deleted");

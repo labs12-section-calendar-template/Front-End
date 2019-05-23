@@ -10,6 +10,7 @@ import { withRouter } from 'react-router-dom'
 // import EventToggle from "./EventToggle.js";
 import Selected from './Selected'
 import { toast } from "react-toastify";
+import axiosCustom from "../../../axiosCustom";
 
 class Event extends React.Component {
   constructor(props) {
@@ -131,15 +132,13 @@ class Event extends React.Component {
     let newEnd = moment(new Date(endTime)).format("LT")
     let urlPath = window.location.pathname.split('/')[3]
     let sum = moment.duration(moment(this.props.endDate).diff(moment(urlPath))).asWeeks()
-    let jwtoken = localStorage.getItem('jwt');
-    console.log(jwtoken)
     console.log("YOOO", sum, this.props.repeat)
     if(this.props.repeat === 1){
     console.log(newStart)
     toast.success('Your events are loading')
     for (let i = 0; i <= sum; i++) {
       console.log(this.props.sum)
-      axios
+      axiosCustom
         .post(
           `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
@@ -148,10 +147,7 @@ class Event extends React.Component {
             description,
             date: moment(this.props.check).add(i, 'week').format('YYYY-MM-DD'),
             repeat: true
-          },
-          { 
-            headers: { Authorization: jwtoken 
-          }})
+          })
         .then(res => {
           this.props.getEvents(temppId)
           this.props.setStateToEmpty() 
@@ -160,7 +156,7 @@ class Event extends React.Component {
     }
     } else {
 
-      axios
+      axiosCustom
         .post(
           `${process.env.REACT_APP_API}/templates/${temppId}/events`, {
             startTime: newStart,
@@ -169,9 +165,7 @@ class Event extends React.Component {
             description,
             date: moment(this.props.check).format('YYYY-MM-DD'),
             repeat: false
-          },
-          { 
-          headers: { Authorization: jwtoken}}
+          }
           )
         .then(res => {
           this.props.getEvents(temppId) 
