@@ -4,8 +4,6 @@ import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter, NavLink } from 'react-router-dom';
-import ReactTooltip from 'react-tooltip';
-
 
 
 export class MainSideBar extends Component {
@@ -133,14 +131,14 @@ export class MainSideBar extends Component {
   // sets template id in localStorage based on the one clicked
   switchTemplate = (templateId) => {
     localStorage.setItem('template_id', templateId)
-   // this.props.history.push(`/template/calendr/${templateId}`)
+    this.props.history.push(`/template/calendr/${templateId}`)
   }
 
   render() {
     return (
       <>
-       
        <ReactTooltip  data-effect='solid' data-className='tooltip' data-multiline='true' html={true} />
+
       <div className = "header">
         <div id="navIcon"><i onClick = {this.navAppear} className = "fa fa-bars" aria-hidden="true"/><p>Menu</p></div>
             <div className = {this.state.navBar ? "navDiv":"navOpen"}>
@@ -159,10 +157,7 @@ export class MainSideBar extends Component {
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
           <p className='buttonDescriptions'>Add Template</p>
         </div>
-           <h5 className='buttonTitles'>Templates  
-           <p data-tip="Check a box to toggle your events for the selected template. <br/>
-           Click a template name to add events to that specific template.">?</p> </h5>
-          
+           <h5 className='buttonTitles'>Templates</h5>
             <div>
                 {this.props.templates.map(template => {
                   return <div key={template.id} value = {template.id} className="template-list-items">
