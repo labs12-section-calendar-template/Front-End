@@ -245,7 +245,8 @@
     .event-icons{
       position: relative;
       display: flex;
-      justify-content: end;
+      justify-content: flex-end;
+      cursor: pointer;
       margin-left:70%;
       i{
         margin: 0 0 0 5px;
