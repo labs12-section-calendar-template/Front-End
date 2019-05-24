@@ -37,6 +37,7 @@ export class EventBox extends Component {
     return (
       
       <div className="allEvents">
+
       <ReactTooltip /> 
         {this.props.events && this.props.events.map(event => {
           if (moment.parseZone(urlPath[3]).format('YYYY-MM-DD') === moment.parseZone(event.date).format('YYYY-MM-DD')) {

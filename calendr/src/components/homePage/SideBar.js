@@ -104,6 +104,7 @@ export class SideBar extends Component {
   render() {
     return (
       <>
+      
       <ReactTooltip />
       <div className="desktopNav"> 
         <div className="homePageStyles">

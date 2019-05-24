@@ -140,6 +140,7 @@ export class MainSideBar extends Component {
     // console.log(this.props.templates)
     return (
       <>
+       
        <ReactTooltip data-effect='solid' data-className='tooltip' data-multiline='true' html={true} />
       <div className = "header">
         <div id="navIcon"><i onClick = {this.navAppear} className = "fa fa-bars" aria-hidden="true"/><p>Menu</p></div>
