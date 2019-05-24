@@ -66,6 +66,7 @@ class mainView extends React.Component {
         render={(...props) => <TemplateEdit logOff={this.props.logOff} {...props} />}/>
         <Route path="/event/edit/:id" component={EventEdit} />
          <Route exact path="/event" component={MainCalendar} />
+        
         {/* <Route path="/event/:date" component={Event} /> */}
         {/* <Route exact path="/ZechsHappyPlace" component={GeneralCalendar} /> */}
       </div>

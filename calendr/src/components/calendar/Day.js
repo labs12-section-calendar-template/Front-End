@@ -56,7 +56,7 @@ class Day extends React.Component {
              <p  key = {event.id} style={{ fontSize: "12px" }} className='hidden-text'>{event.startTime}- {event.title}</p>
              </div> 
             })}
-            {filteredEvent.length > 0 && <p>{filteredEvent.length} more events...</p>}
+            {filteredEvent.length > 0 && <p>{filteredEvent.length} more...</p>}
             
             </div>
           }

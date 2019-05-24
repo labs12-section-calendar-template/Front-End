@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
+import { Route, Link } from 'react-router-dom'
 import moment from 'moment';
 import axios from 'axios'
 import Popup from 'reactjs-popup'
@@ -19,15 +19,15 @@ export class EventBox extends Component {
     return divStyle
   }
 
-  editEvent = (e, id) => {
-    //Added the events repeat value to the end of the url to use in the update event function
-    console.log(e.target.attributes.value.value, true)
-    if(e.target.attributes.value.value == "true" || e.target.attributes.value.value == 1){
-      window.location = `/event/edit/${id}${1}`;
-    } else {
-      window.location = `/event/edit/${id}${0}`;
-    }
-  };
+  // editEvent = (e, id) => {
+  //   //Added the events repeat value to the end of the url to use in the update event function
+  //   console.log(e.target.attributes.value.value, true)
+  //   if(e.target.attributes.value.value == "true" || e.target.attributes.value.value == 1){
+  //     window.location = `/event/edit/${id}${1}`;
+  //   } else {
+  //     window.location = `/event/edit/${id}${0}`;
+  //   }
+  // };
 
   render() {
     console.log(this.props.events)
@@ -39,18 +39,17 @@ export class EventBox extends Component {
       <div className="allEvents">
       <ReactTooltip /> 
         {this.props.events && this.props.events.map(event => {
-          if (urlPath[3] === moment.parseZone(event.date).format('YYYY-MM-DD')) {
+          if (moment.parseZone(urlPath[3]).format('YYYY-MM-DD') === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             return <div key={event.id} className="event" style={this.borderColor(event.template_id)}>
                   
                   <div className="event-icons">
-              
+                  <Link to={event.repeat ? `/event/edit/${event.template_id}${1}` : `/event/edit/${event.template_id}${0}`}>
                     <i
                       className="far fa-edit iconSize"
                       value = {event.repeat}
-                      onClick={e => this.editEvent(e, event.id)}
                       data-tip='Update template'
                     />
-
+                  </Link>
                       <i
                       className="fas fa-trash iconSize"
                       value = {event.repeat}
@@ -67,6 +66,7 @@ export class EventBox extends Component {
             </div>
           }
         })}
+        
       </div>
     )
   }

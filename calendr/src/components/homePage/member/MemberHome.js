@@ -17,7 +17,8 @@ class MemberHome extends React.Component {
             joinCode: [],
             templates: [],
             events: [],
-            usersGroups: []
+            usersGroups: [],
+            colors:['purple', 'teal', 'dodgerblue', 'black', 'red', 'green']
         }
     }
 
@@ -145,11 +146,13 @@ class MemberHome extends React.Component {
      <MemberNavBar usersGroups = {this.state.usersGroups}/>
 
     <h1>View Your Group's Events Here</h1>
-    <MemberCalendar events = {this.state.events}
-                    templates = {this.state.templates}
-                    singleCheck = {this.singleCheck} 
-                    group = {this.state.group}
-                    />
+    <MemberCalendar
+     events = {this.state.events}
+     templates = {this.state.templates}
+     singleCheck = {this.singleCheck} 
+     group = {this.state.group}
+     colors={this.state.colors}
+     />
     </div> 
 
     );
