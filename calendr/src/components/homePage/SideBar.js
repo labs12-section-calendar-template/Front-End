@@ -105,7 +105,7 @@ export class SideBar extends Component {
     return (
       <>
       
-      <ReactTooltip />
+      <ReactTooltip/>
       <div className="desktopNav"> 
         <div className="homePageStyles">
         <div className="groupNameTemplate">

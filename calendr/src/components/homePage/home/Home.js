@@ -119,7 +119,7 @@ export class Home extends Component {
       return (
         <div className='home-container'>
           
-          <ReactTooltip />
+          <ReactTooltip/>
           <MainNavBar logOff={this.props.logOff} />
           <SideBarSlide />
           <SideBar />

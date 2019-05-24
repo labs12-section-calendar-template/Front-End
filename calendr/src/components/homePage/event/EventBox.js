@@ -38,7 +38,7 @@ export class EventBox extends Component {
       
       <div className="allEvents">
 
-      <ReactTooltip /> 
+      <ReactTooltip/> 
         {this.props.events && this.props.events.map(event => {
           if (moment.parseZone(urlPath[3]).format('YYYY-MM-DD') === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             return <div key={event.id} className="event" style={this.borderColor(event.template_id)}>
