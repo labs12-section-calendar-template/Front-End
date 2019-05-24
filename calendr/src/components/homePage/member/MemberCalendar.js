@@ -79,9 +79,9 @@ export class MemberCalendar extends Component {
       
       <div className="wholeCalendar">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="arrowsAndMonth-members">
-          <div className="arrow fa fa-angle-left" onClick={this.previous} />
+          <div className="leftArrow fa fa-angle-left" onClick={this.previous} />
           <div>{this.renderMonthLabel()}</div>
-          <div className="arrow fa fa-angle-right" onClick={this.next} />
+          <div className="rightArrow fa fa-angle-right" onClick={this.next} />
         </div>
         <DayNames />
         <div>{this.renderWeeks()}</div>
