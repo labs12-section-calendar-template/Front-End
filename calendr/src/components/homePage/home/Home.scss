@@ -1,5 +1,5 @@
 .home-container {
-
+    background-color: #F4F4F4; 
     height: 100vh;
     
     &:hover .firstTemplateButton {
@@ -73,7 +73,7 @@
     margin-right:.5rem;
     cursor: pointer;
     position: relative;
-        
+       height: 3vh; 
     }
 
 
@@ -108,24 +108,25 @@
     }
 
 
-// .iconSizeDelete {
-//     font-size:1rem;
-//     margin-right:.5rem;
-//     cursor: pointer;
-//     position: relative;
+.iconSizeDelete {
+    font-size:1rem;
+    margin-right:.5rem;
+    cursor: pointer;
+    position: relative;
+    height: 3vh;
+}
+    //     .delete-temp{
+    //         visibility: hidden;
+    //         position: absolute;
+    //         z-index: 10;
+    //         top: -3rem;
+    //         left: 1.3rem;
+    //     }
 
-//         .delete-temp{
-//             visibility: hidden;
-//             position: absolute;
-//             z-index: 10;
-//             top: -3rem;
-//             left: 1.3rem;
-//         }
-
-//         &:hover .delete-temp {
-//             visibility: visible;
-//         }
-//     }
+    //     &:hover .delete-temp {
+    //         visibility: visible;
+    //     }
+    // }
        
 
 //  .update-temp{

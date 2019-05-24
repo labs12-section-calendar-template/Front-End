@@ -3,11 +3,18 @@
     justify-content: center;
     align-items: center;
     opacity: .8;
-    background-color: #F4F4F4;
+    background-color: #F4F4F4; 
     height: 100vh;
 
     @media(max-width: 500px){
         flex-direction: column;
+    }
+}
+
+.edit-group-container {
+
+    &:hover .edit-submit-button {
+        background: #3270eb;
     }
 }
 
@@ -119,41 +126,50 @@
     }
 
     .edit-submit-button{
-        margin: 1rem;
-        width:9rem;
-        height:2rem;
-        border-radius:6px;
-        margin-top:1rem;
-        font-size: 15px;
-        font-family: "Quicksand";
-        font-weight: bold;
+    padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    margin-top: 2%;
+    opacity: 0.7;
         
         &:hover{
-            border: 1px solid #3270eb;
-            color: #3270eb;
+            background: #3270eb;
+            border-color: white;
             cursor: pointer;
+            opacity: 1;
         }
     }
     .edit-delete-group{
-        width:9rem;
-        height:2rem;
-        border-radius:6px;
-        margin-top:1rem;
-        font-size: 15px;
-        font-family: "Quicksand";
-        font-weight: bold;
+        padding: 10px 65px;
+    border-radius: 5px;
+    font-size: 15px;
+    font-family: "Quicksand";
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: white;
+    background: #f36d13;
+    margin-top: 10%;
+    opacity: 0.7;
 
         &:hover{
-            border: 1px solid #3270eb;
-            color: #3270eb;
+            background: #3270eb;
+            border-color: white;
             cursor: pointer;
+            opacity: 1;
         }
     }
     .editGroupInput{
         width: 20rem;
         height: 2rem;
         border-radius: 10px;
-        border: 2px solid black;
+        box-shadow: 1px 1px 5px #3270eb, -1px -1px 5px #3270eb;
         font-size: 1rem;
         font-family: "Poppins";
         outline: none;
@@ -161,21 +177,23 @@
 }
 
 .cancel-button{
-    width:9rem;
-    height:2rem;
-    border-radius:6px;
-    margin-top:1rem;
-    font-size: 15px;
-    font-family: "Quicksand";
-    font-weight: bold;
+    margin-right: 95%;
+    font-size: 1.5rem;
+    color: #3270eb;
+    cursor: pointer;
 
-    &:hover{
-        border: 1px solid #3270eb;
-        color: #3270eb;
-        cursor: pointer;
-    }
+    // &:hover{
+    //     background: #3270eb;
+    //     border-color: white;
+    //     cursor: pointer;
+    //     opacity: 1;
+    // }
 }
 
 .pop{
-    margin-top: 15rem;
+    margin-top: 10rem;
+}
+
+.name-text{
+   color: #00539C;
 }

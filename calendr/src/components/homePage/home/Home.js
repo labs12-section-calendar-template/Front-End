@@ -8,6 +8,8 @@ import axios from "axios";
 import axiosCustom from "../../../axiosCustom";
 import moment from "moment";
 import { toast } from 'react-toastify';
+import ReactTooltip from 'react-tooltip';
+
 
 export class Home extends Component {
   constructor(props) {
@@ -115,7 +117,8 @@ export class Home extends Component {
       );
     } else {
       return (
-        <div>
+        <div className='home-container'>
+          <ReactTooltip />
           <MainNavBar logOff={this.props.logOff} />
           <SideBarSlide />
           <SideBar />
@@ -132,10 +135,12 @@ export class Home extends Component {
                     <i
                       className="far fa-edit iconSizeEdit"
                       onClick={e => this.edit(e, template.id)}
+                      data-tip='Update template'
                     />
                     <i
                       className="fas fa-trash iconSizeDelete"
                       onClick={e => this.deleteTemplate(e, template.id)}
+                      data-tip='Delete template'
                     />
                   </div>
                 </div>

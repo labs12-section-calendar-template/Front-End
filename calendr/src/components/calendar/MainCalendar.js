@@ -20,7 +20,7 @@ export class MainCalendar extends Component {
       template_id: [],
       templates: [],
       sortedStartTimes: [],
-      colors:['purple', 'teal', 'dodgerblue', 'darkorchid', 'red', 'green'],
+      colors:['purple', 'teal', 'dodgerblue', 'black', 'red', 'green'],
       deleteAll: false,
       // all of this state below needs to be passed down to events.js and further
       startTime: 0,
@@ -40,6 +40,7 @@ export class MainCalendar extends Component {
   // Get template by its corresponding group id
   getTemplateData = event => {
     let group_id = localStorage.getItem("group_id");
+    let templateId = localStorage.getItem('template_id');
     axiosCustom.get(`${process.env.REACT_APP_API}/groups/${group_id}/templates` )
       .then(res => {
         //returns all templates
@@ -47,7 +48,11 @@ export class MainCalendar extends Component {
         if(templates.length > 0 ){
 
         
-        templates[0].isChecked = 1
+       // templates[0].isChecked = 1
+       // templates.forEach(temp => {
+       //   templates[0].isChecked = 0
+        //   temp.isChecked = 1
+        // })
         }
         console.log(templates)
         //returns the id of the very last template in the array
@@ -61,9 +66,14 @@ export class MainCalendar extends Component {
           template_id: tempIds[tempIds.length - 1],
           templates: templates
         }, () => { if(this.state.templates.length > 0 ){
-            this.selectEvents(this.state.templates[0].id)
-        }
-        });
+           this.selectEvents(templateId)
+            templates.forEach(temp => {
+              if(temp.id == templateId) {
+                temp.isChecked = 1
+              }
+           
+        })
+       }});
 
         // this.getEvents(value);
         // this.getEvents(value).then(res => {
