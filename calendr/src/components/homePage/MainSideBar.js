@@ -184,8 +184,8 @@ export class MainSideBar extends Component {
                   onClick={this.props.singleCheck}
                   onChange = {this.onChangeHandler}
                   />    
-                  <NavLink className="each-template-name" 
-                  activeClassName="active"
+                  <NavLink activeClassName="chosen" className="each-template-name" 
+                  
                   to={`/template/calendr/${template.id}`}
 
                   style={{color:this.props.colors[template.id % 6]}}  
