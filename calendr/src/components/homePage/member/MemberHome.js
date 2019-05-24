@@ -4,9 +4,10 @@ import MemberSideBar from './MemberSideBar';
 import MemberCalendar from './MemberCalendar'
 import '../../../App.scss'
 import { NavLink } from "react-router-dom";
-import logo from "../../../extras/CalendrWhite.png";
+// import logo from "../../../extras/CalendrWhite.png";
 import { toast } from 'react-toastify';
 import axiosCustom from '../../../axiosCustom';
+import MemberNavBar from './MemberNavBar';
 
 class MemberHome extends React.Component {
     constructor(props) {
@@ -139,32 +140,19 @@ class MemberHome extends React.Component {
 
 
     render() { 
-        return ( 
-          
-            
-        <div>
-            <div className="navBarContainer">
-    <div className="margin">
-        <img src={logo} alt="Logo"/>
-        <h1 className="calendrTitle">CALENDR</h1>
-      <div className="nav-buttons">
-      
-        <NavLink activeClassName="navbuttonLink" className="navbutton" to={this.state.usersGroups.length > 0 ? `/home/${this.state.usersGroups[0].id}` : '/' }>Home</NavLink>
-        <NavLink activeClassName="navbuttonLink" className="navbutton" to={`/`}>Create/Join</NavLink>
-        <div className="logout" onClick = {this.props.logOff}> Logout </div>
-      </div>
-    </div>
-    </div>
-            <h1>View Your Group's Events Here</h1>
+    return ( 
+    <div>
+     <MemberNavBar usersGroups = {this.state.usersGroups}/>
 
-            <MemberCalendar events = {this.state.events}
-                            templates = {this.state.templates}
-                            singleCheck = {this.singleCheck} 
-                            group = {this.state.group}
-                            />
-        </div> 
+    <h1>View Your Group's Events Here</h1>
+    <MemberCalendar events = {this.state.events}
+                    templates = {this.state.templates}
+                    singleCheck = {this.singleCheck} 
+                    group = {this.state.group}
+                    />
+    </div> 
 
-        );
+    );
     }
 
 }
