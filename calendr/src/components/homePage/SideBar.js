@@ -4,8 +4,6 @@ import GroupEdit from './group/GroupEdit'
 import { withRouter } from 'react-router-dom';
 import '../../App.scss'
 import axiosCustom from '.././../axiosCustom'
-import ReactTooltip from 'react-tooltip';
-
 
 
 ///////////////////   URL => HOME      ///////////////////////
@@ -104,12 +102,11 @@ export class SideBar extends Component {
   render() {
     return (
       <>
-      <ReactTooltip />
       <div className="desktopNav"> 
         <div className="homePageStyles">
         <div className="groupNameTemplate">
           <h2 className="GroupName">{this.state.groupName}</h2>
-          <i className="far fa-edit" data-tip='Update or Delete your group' onClick={this.toggleModal}/>
+          <i className="far fa-edit" onClick={this.toggleModal}/>
         </div>
           <p className='buttonDescriptions'>Join Code: {this.state.joinCode}</p>
         <div>

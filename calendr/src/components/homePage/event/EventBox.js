@@ -4,7 +4,6 @@ import moment from 'moment';
 import axios from 'axios'
 import Popup from 'reactjs-popup'
 import EventEdit from './EventEdit'
-import ReactTooltip from 'react-tooltip';
 
 
 
@@ -28,9 +27,7 @@ export class EventBox extends Component {
     let urlPath = window.location.pathname.split('/');
     console.log(urlPath)
     return (
-      
       <div className="allEvents">
-      <ReactTooltip /> 
         {this.props.events && this.props.events.map(event => {
           if (urlPath[3] === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             return <div key={event.id} className="event">
@@ -41,14 +38,12 @@ export class EventBox extends Component {
                       className="far fa-edit iconSize"
                       value = {event.repeat}
                       onClick={e => this.editEvent(e, event.id)}
-                      data-tip='Update template'
                     />
 
                       <i
                       className="fas fa-trash iconSize"
                       value = {event.repeat}
                       onClick={e => this.props.deleteEvent(e, event.id)}
-                      data-tip='Delete template'
                     />
 
                   </div>
