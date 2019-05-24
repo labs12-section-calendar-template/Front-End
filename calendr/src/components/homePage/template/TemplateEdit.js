@@ -22,23 +22,6 @@ this.state = {
     }
 }
 
-// Probably not needed
-getTemplate = event => {
-//   let group_id = localStorage.getItem("group_id")
-//   console.log(group_id)
-//   axios
-//     .get(`http://localhost:3300/groups/${group_id}/templates` )
-//     .then(res => {
-//       console.log(res.data);
-//       this.setState({
-//         templates: res.data
-//       })
-//     })
-//     .catch(err => {
-//       console.log(err);
-//     });
-}
-
 // updating template information
 updateTemplate = (e) => {
   let letMeBack = localStorage.getItem('group_id')
@@ -51,13 +34,13 @@ updateTemplate = (e) => {
    toast.error('Please input the date fields correctly')
   } else {
 
-axiosCustom
+axios
   .put(`${process.env.REACT_APP_API}/templates/${id[3]}`,{
     title,
     description,
     startDate,
     endDate,
-  })
+  },{ headers:{Authorization: localStorage.getItem('jwt')}})
   .then(res => {
     console.log('IT WORKED')
     console.log(res.data)
