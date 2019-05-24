@@ -4,7 +4,6 @@ import moment from 'moment';
 import axios from 'axios'
 import Popup from 'reactjs-popup'
 import EventEdit from './EventEdit'
-import ReactTooltip from 'react-tooltip';
 
 export class EventBox extends Component {
   constructor(props) {
@@ -35,9 +34,7 @@ export class EventBox extends Component {
     console.log(urlPath)
    
     return (
-      
       <div className="allEvents">
-      <ReactTooltip /> 
         {this.props.events && this.props.events.map(event => {
           if (moment.parseZone(urlPath[3]).format('YYYY-MM-DD') === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             return <div key={event.id} className="event" style={this.borderColor(event.template_id)}>
@@ -49,6 +46,7 @@ export class EventBox extends Component {
                       value = {event.repeat}
                       data-tip='Update event'
                       onClick = {(e) => this.editEvent(e, event.id)}
+
                     />
                   
                       <i
