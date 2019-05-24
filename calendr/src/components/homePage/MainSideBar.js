@@ -157,7 +157,7 @@ export class MainSideBar extends Component {
           
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" />
-          <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>
+          <p className='buttonDescriptions'>Invite to group<br/>Join Code {this.state.joinCode}</p>
         </div>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
@@ -177,7 +177,7 @@ export class MainSideBar extends Component {
                   onClick={this.props.singleCheck}
                   onChange = {this.onChangeHandler}
                   />    
-                  <NavLink className="each-template-name" 
+                  <NavLink className = {template.id == localStorage.getItem("template_id") ? "chosen" : "each-template-name"}
                   style={{color:this.props.colors[template.id % 6]}}  
                   onClick={() => {this.switchTemplate(template.id)}}
                   >{template.title}</NavLink>
