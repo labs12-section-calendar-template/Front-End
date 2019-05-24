@@ -3,7 +3,7 @@ import axiosCustom from '.././../axiosCustom';
 import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
-import { withRouter } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 
 
 export class MainSideBar extends Component {
@@ -158,7 +158,7 @@ export class MainSideBar extends Component {
           
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" />
-          <p className='buttonDescriptions'>Invite to groups<br/>Join Code {this.state.joinCode}</p>
+          <p className='buttonDescriptions'>Invite to group<br/>Join Code {this.state.joinCode}</p>
         </div>
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
@@ -178,11 +178,10 @@ export class MainSideBar extends Component {
                   onClick={this.props.singleCheck}
                   onChange = {this.onChangeHandler}
                   />    
-                  
-                  <h5 className="each-template-name" 
+                  <NavLink className = {template.id == localStorage.getItem("template_id") ? "chosen" : "each-template-name"}
                   style={{color:this.props.colors[template.id % 6]}}  
-                  onClick={() => {this.switchTemplate(template.id)}}>{template.title}</h5>
-
+                  onClick={() => {this.switchTemplate(template.id)}}
+                  >{template.title}</NavLink>
           
                 </div>
                 })} 
