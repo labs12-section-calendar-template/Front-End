@@ -2,9 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: .8;
-    background-color: #F4F4F4; 
-    height: 100vh;
+    opacity: .8; 
+    
 
     @media(max-width: 675px){
         flex-direction: column;
@@ -21,19 +20,18 @@
 .boxing{
     
     box-shadow: 1px 1px 5px #3270eb, -1px -1px 5px #3270eb;
-    margin:0 1rem 0 1rem;
+    margin:1rem 1rem 0 1rem;
     background-color:white;
     border-radius: 20px; 
-    height:49%;
+    height:70vh;
 
     @media(max-width: 675px){
         height: 70vh;
         margin: 3rem;
     }
     @media(max-width: 390px){
-        margin: 3rem;
-        position: relative;
-        top:10%;
+        margin: 1rem;
+        height:20%;
     }
     
 } 
