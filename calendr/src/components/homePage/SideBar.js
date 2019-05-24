@@ -113,7 +113,7 @@ export class SideBar extends Component {
         <h5 className='buttonTitles'>Groups</h5>
        {this.state.groups.map(group => (
       <div key={group.id} value={group.id} className="groupName" onClick={this.showGroupName} >
-    {group.name}
+        {group.name}
       </div>
         ))}
         </div>

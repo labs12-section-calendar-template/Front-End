@@ -71,58 +71,6 @@ class Event extends React.Component {
     this.props.history.push(`/template/calendr/${tempId}`);
   };
 
-  // // StartTime handle change setting startTime to state
-  // handleStartTimeChange = (time) => {
-  //   this.setState({ startTime: time })
-  // }
-  
-  // // EndTime handle change setting endTime to state 
-  // handleEndTimeChange = (time) => {
-  //   this.setState({ endTime: time })
-  // }
-
-  // // gets the template information based on the group to be used for getTemplateById
-  // getTemplateId = event => {
-  //   let group_id = localStorage.getItem("group_id");
-  //   axios
-  //     .get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`)
-  //     .then(res => {
-  //       let tempIds = res.data.map(data => {
-  //         return data.id;
-  //       });
-
-  //       console.log(group_id);
-  //       this.setState({
-  //         template_id: tempIds[tempIds.length - 1]
-  //       });
-  //       // this.getTemplateById()
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
-  // };
-
-  // // gets the events created to cover multiple weeks 
-  // getTemplateById = () => {
-  //   let id = localStorage.getItem('template_id')
-  //   axios.get(`${process.env.REACT_APP_API}/templates/${id}`)
-  //     .then(res => {
-  //       let urlPath = window.location.pathname.split('/')[3]
-  //       console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())
-  //       console.log(res.data.endDate)
-  //       console.log(urlPath)
-  //       this.setState({
-  //         startDate: res.data.startDate,
-  //         endDate: res.data.endDate,
-  //         sum: moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks()
-
-  //       })
-  //     })
-  //     .catch(err => {
-  //       console.log(err)
-  //     })
-  // }
-
   // // adding event, add a single event or add events coving the total length of the template
   addEvent = () => {
     let temppId = localStorage.getItem('template_id')
@@ -183,8 +131,10 @@ class Event extends React.Component {
         <div className="event-view-wrapper">
           <div className="event-view-container">
             <h3 className='close-popup' onClick={this.toggleClose}>X</h3>
+            
             <EventBox events={this.props.events}
                       deleteEvent={this.props.deleteEvent}
+                      colors={this.props.colors}
             />
             <div
               className="top-section"

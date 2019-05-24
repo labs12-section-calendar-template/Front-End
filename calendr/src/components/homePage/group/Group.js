@@ -57,7 +57,7 @@ export class Group extends Component {
       let { createdCode } = this.state
       let user_id = localStorage.getItem('userId')
       if(this.state.groups.length >= 5) {
-        toast.error('You already have 5 groups')
+        toast.error('You can not create more than 5 groups')
       }
       else if (!name || !createdCode){
         toast.error('Please enter a name and join code!')
@@ -65,20 +65,24 @@ export class Group extends Component {
       else if (name.length < 3 || createdCode.length < 4 || createdCode.length > 8) {
         toast.error('The group name needs to be greater than 3 and the Joincode needs to be between 4 and 8 numbers.')
       }
-      axiosCustom
-        .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, { user_id, name, joinCode: this.state.createdCode }) // <== this needs to be createCode
+      axios
+        .post(`${process.env.REACT_APP_API}/users/${user_id}/groups`, 
+        { user_id, name, joinCode: this.state.createdCode },
+        { headers:{Authorization: localStorage.getItem('jwt')}}) // <== this needs to be createCode
         .then(res => {
           
           window.localStorage.setItem("group_id", res.data.id)
           console.log(res.data);
           if(this.state.createdCode !== null && this.state.name !== null){
             window.location=`/home/${res.data.id}`
-          }else{
+          }
+          else{
             alert('Fill out all fields')
           }
           toast.success('Group Created')
         })
         .catch(err => {
+          toast.error('You need to be a premium status member')
           console.log(err);
         });
     };
@@ -100,7 +104,7 @@ export class Group extends Component {
             <h2 className="joinCreateGroup">Create Group</h2>
             <p className="groupDescription">You must be a Gold Tier Member to create more than one group</p>
           <form className="formGroup">
-          <br/>
+          
             <h3>Enter Group Name</h3>
             <input
             className="groupInput"
@@ -128,13 +132,13 @@ export class Group extends Component {
 
             <h2 className="joinCreateGroup">Join Group</h2>
             <p className="groupDescription">Join a group to see all the events created by the admin of that group</p>
-            <br/>
+          
           
            
 
            <form className="formGroup">
               <h3>Enter 4-8 digit Join Code</h3>
-              <br/>
+              
                 <input
                 className="groupInput"
                 onChange={this.handleInputChange}
@@ -143,8 +147,6 @@ export class Group extends Component {
                 name="joinCode" 
                 type="number"
                 />
-                 <br/>
-                 <br/>
                 <button onClick = {this.joinGroup} className="formButton">Join</button>
                 
            </form>

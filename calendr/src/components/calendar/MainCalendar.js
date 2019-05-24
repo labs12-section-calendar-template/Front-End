@@ -40,7 +40,8 @@ export class MainCalendar extends Component {
   // Get template by its corresponding group id
   getTemplateData = event => {
     let group_id = localStorage.getItem("group_id");
-    axiosCustom.get(`${process.env.REACT_APP_API}/groups/${group_id}/templates` )
+    let templateId = localStorage.getItem("template_id");
+    axios.get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, { headers:{Authorization: localStorage.getItem('jwt')}} )
       .then(res => {
         //returns all templates
         let templates = res.data
@@ -61,9 +62,13 @@ export class MainCalendar extends Component {
           template_id: tempIds[tempIds.length - 1],
           templates: templates
         }, () => { if(this.state.templates.length > 0 ){
-            this.selectEvents(this.state.templates[0].id)
-        }
-        });
+           this.selectEvents(templateId)
+            templates.forEach(temp => {
+              if(temp.id == templateId) {
+                temp.isChecked = 1
+              }
+        })
+       }});
 
         // this.getEvents(value);
         // this.getEvents(value).then(res => {
@@ -103,8 +108,8 @@ export class MainCalendar extends Component {
   };
 
   getEvents = value => {
-    return new Promise ((resolve, reject) => { axiosCustom
-      .get(`${process.env.REACT_APP_API}/templates/${value}/events`)
+    return new Promise ((resolve, reject) => { 
+      axios.get(`${process.env.REACT_APP_API}/templates/${value}/events`, { headers:{Authorization: localStorage.getItem('jwt')}})
       .then(res => {
         let events = res.data
 
@@ -132,8 +137,7 @@ export class MainCalendar extends Component {
   // Gets all events for the template id. To be run when a toggle is clicked
   selectEvents = (id) => {
     return new Promise((resolve, reject) => { 
-    axiosCustom
-      .get(`${process.env.REACT_APP_API}/templates/${id}/events`)
+    axios.get(`${process.env.REACT_APP_API}/templates/${id}/events`, { headers:{Authorization: localStorage.getItem('jwt')}})
       .then(res => {
       let events = res.data
       console.log(res.data)
@@ -214,7 +218,7 @@ export class MainCalendar extends Component {
   // gets the events created to cover multiple weeks 
   getTemplateById = () => {
     let id = localStorage.getItem('template_id')
-    axiosCustom.get(`${process.env.REACT_APP_API}/templates/${id}`)
+    axios.get(`${process.env.REACT_APP_API}/templates/${id}`, { headers:{Authorization: localStorage.getItem('jwt')}})
       .then(res => {
         let urlPath = window.location.pathname.split('/')[3]
         console.log(moment.duration(moment(res.data.endDate).diff(moment(urlPath))).asWeeks())

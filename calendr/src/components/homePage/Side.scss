@@ -31,13 +31,16 @@
     border-radius: 10px;
     z-index: 10;
     padding:0 1rem;
-    top:14.75rem;
+    top:14.1rem;
     height: 0vh;
     width: 14.5rem;
     margin-left: .6rem;
     overflow-y: scroll;
     box-shadow: inset 1px 1px 5px black,
     inset -1px -1px 5px black;
+    @media(max-width: 500px){
+        width: 12rem;
+    }
 }
 
 
@@ -51,19 +54,19 @@
     border-radius: 10px;
     z-index: 10;
     padding:0 1rem;
-    top:14.75rem;
+    top:14.1rem;
     height:32.8rem;
     width: 14.5rem;
     margin-left: .6rem;
     overflow-y: scroll;
     box-shadow: inset 1px 1px 5px black,
     inset -1px -1px 5px black;
+    opacity: .9;
 
 @media(max-width: 500px){
     justify-content: flex-start;
-    background: #3270eb;
     height: 65vh;
-    width: 55%;
+    width: 12rem;
     transition: margin-left .5s;
     overflow: hidden;
     position: fixed;
@@ -93,21 +96,12 @@
         margin: 1.5rem 0 0 0;
     }
 
-    .groupNameTemplate{
-        @media(max-width: 500px){
-        &:hover{
-            cursor: pointer;
-           }
-        }
-    }
-
     .GroupName{
         margin:0 .2rem 0 0;
         font-size:1.8rem;
 
         @media(max-width: 500px){
             font-size: 1.2rem;
-            color: white;
         }
     }
 
@@ -120,7 +114,8 @@
         padding: 0 1rem;
         border: none;
         color: #3270eb;
-
+        font-size: 1.1rem;
+        height:1.8rem;
         &:hover{
             cursor: pointer;
             color: #f36d13;
@@ -138,7 +133,6 @@
         margin:0;
         @media(max-width: 500px){
             font-size: 1rem;
-            color: white;
         }
     }
 
@@ -149,7 +143,6 @@
         align-items: center;
         @media(max-width: 500px){
             font-size: .8rem;
-            color: white;
         }
     }
 }
@@ -183,13 +176,14 @@
 
 .fa-edit{
     font-size: 1rem;
-    margin-right: .5rem;
+    margin:0 .5rem auto 0;
     transition: .5s ease-in;
     overflow: hidden;
     cursor: pointer;
-
 }
-
+.fa-trash{
+    margin-right:.5rem;
+}
 .template-list-items{
     display: flex;
     margin-bottom:.4rem;
@@ -203,15 +197,16 @@
         cursor: pointer;
         margin:auto .5rem;
         font-size: .9rem;
-
+        
         @media(max-width: 500px){
-            color: white;
+            color: black;
             }
     }
-}
-.chosen{
-    font-size: 1.1rem;
-    font-weight: bolder;
+    .chosen{
+        font-size: 1.1rem;
+        font-weight: bolder;
+        text-decoration: underline;
+    }
 }
 
 .desktopNav{
@@ -227,10 +222,21 @@
 
 .groupNameTemplate{
     display:flex;
-    flex-direction: column;
     align-items: center;
+    @media(max-width: 500px){
+    &:hover{
+        cursor: pointer;
+        }
+    }
 }
-
+.groupNameMemberTemplate{
+    flex-direction: column;
+    @media(max-width: 500px){
+    &:hover{
+        cursor: pointer;
+        }
+    }
+}
 .allTemps{
     font-size: 1.4rem;
 
@@ -243,9 +249,7 @@
     border-radius: 50%;
     display: flex;
     align-items: center;
-    @media(max-width: 500px){
-        color: white;
-    }
+
     
 }
 .fa-plus-circle:hover{

@@ -2,11 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: .8;
-    background-color: #F4F4F4;
-    height: 100vh;
+    opacity: .8; 
+    
 
-    @media(max-width: 500px){
+    @media(max-width: 675px){
         flex-direction: column;
     }
 }
@@ -14,14 +13,27 @@
 .boxing{
     
     box-shadow: 1px 1px 5px #3270eb, -1px -1px 5px #3270eb;
-    margin:0 1rem 0 1rem;
+    margin:1rem;
+    margin-top:5rem;
     background-color:white;
     border-radius: 20px; 
-    height: 60vh;
-
-    @media(max-width: 500px){
-        margin: 3rem;
+    height:23rem;
+    display: flex;
+    flex-direction: column;
+    @media(max-width: 1099px){
+        height: 25rem;
     }
+    @media(max-width: 801px){
+        height: 30rem;
+        
+    }
+    @media(max-width: 675px){
+        height: 25rem;
+    }
+    @media(max-width: 390px){
+        height:20%;
+    }
+    
 } 
 
 .joinCreateGroup{
@@ -35,7 +47,7 @@
 .groupDescription{
     font-size:1rem;
     width:80%;
-    margin:auto;
+    margin:0 auto auto;
     border-bottom: 2px solid #3270eb;
     padding-bottom:.3rem;
     font-family: "Poppins";
@@ -57,7 +69,7 @@
     border:1px solid #3270eb;
 }
 .formButton{
-    margin: 2% auto 0;
+    margin: 2% auto 1rem;
     padding: 10px 65px;
     border-radius: 5px;
     font-size: 15px;
@@ -78,11 +90,7 @@
 }
 
 @media (max-width: 1099px) {
-    .boxing{
-        height:47%;
-    } 
-    
-    .groupDescription{
+  .groupDescription{
         padding-bottom:2rem;
     }
     .formButton{
