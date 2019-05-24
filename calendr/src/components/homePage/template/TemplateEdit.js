@@ -42,7 +42,7 @@ getTemplate = event => {
 // updating template information
 updateTemplate = (e) => {
   let letMeBack = localStorage.getItem('group_id')
-  let id = this.props.match.params.id
+  let id = window.location.pathname.split('/')
   let { title, description, startDate, endDate } = this.state;
   console.log(this.state.group_id)
   if(title < 1 || description < 1) {
@@ -52,7 +52,7 @@ updateTemplate = (e) => {
   } else {
 
 axiosCustom
-  .put(`${process.env.REACT_APP_API}/templates/${id}`,{
+  .put(`${process.env.REACT_APP_API}/templates/${id[3]}`,{
     title,
     description,
     startDate,
