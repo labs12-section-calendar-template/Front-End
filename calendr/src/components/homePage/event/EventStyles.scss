@@ -10,7 +10,7 @@
   
   .popup-content{
     position: relative; 
-    background: rgb(255, 255, 255); 
+    background: #f3f3f3; 
     width: 70%; 
     margin: auto; 
     border: 1px solid rgb(187, 187, 187); 
@@ -135,7 +135,7 @@
   
   .save-event-button{
     /* margin-top: 5%; */
-   margin: 2% auto 0;
+    margin: 2% auto 2rem;
     padding: 10px 65px;
     border-radius: 5px;
     font-size: 15px;
@@ -236,11 +236,13 @@
     flex-direction: column;
     align-items: flex-start;
     width: 11rem;
-    border: 1px solid black;
     overflow-y: scroll;
-    height: 13rem;
+    height: 14rem;
     padding:.2rem .7rem 0;
     margin:.5rem;
+    background: white;
+    
+    
 
     .event-icons{
       position: relative;

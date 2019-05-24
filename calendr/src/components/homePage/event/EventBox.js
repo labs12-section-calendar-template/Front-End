@@ -6,12 +6,18 @@ import Popup from 'reactjs-popup'
 import EventEdit from './EventEdit'
 import ReactTooltip from 'react-tooltip';
 
-
-
 export class EventBox extends Component {
   constructor(props) {
     super(props);
   } 
+
+  borderColor = (id) => {
+    let divStyle = {
+      border: `1px solid ${this.props.colors[id % 6]}`,
+      boxShadow: `1px 1px 3px ${this.props.colors[id % 6]}, 1px 1px 3px ${this.props.colors[id % 6]} inset`
+    };
+    return divStyle
+  }
 
   editEvent = (e, id) => {
     //Added the events repeat value to the end of the url to use in the update event function
@@ -27,13 +33,14 @@ export class EventBox extends Component {
     console.log(this.props.events)
     let urlPath = window.location.pathname.split('/');
     console.log(urlPath)
+   
     return (
       
       <div className="allEvents">
       <ReactTooltip /> 
         {this.props.events && this.props.events.map(event => {
           if (urlPath[3] === moment.parseZone(event.date).format('YYYY-MM-DD')) {
-            return <div key={event.id} className="event">
+            return <div key={event.id} className="event" style={this.borderColor(event.template_id)}>
                   
                   <div className="event-icons">
               

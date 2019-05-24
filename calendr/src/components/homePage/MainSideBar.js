@@ -159,10 +159,9 @@ export class MainSideBar extends Component {
         </div>
           
           
-        <div className='buttonBox'>
-        <i className="fas fa-plus-circle" />
-          <p className='buttonDescriptions'>Invite to group<br/>Join Code {this.state.joinCode}</p>
-        </div>
+        
+        <p>Join Code: {this.state.joinCode}</p>
+        
         <div className='buttonBox'>
         <i className="fas fa-plus-circle" onClick={this.circleAddTemplate}/>
           <p className='buttonDescriptions'>Add Template</p>
