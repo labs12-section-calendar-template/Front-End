@@ -30,7 +30,7 @@ export class MemberSideBar extends Component {
         
         <div className={this.state.modalOpen ? "memberNavDiv": "memberNavOpen"}>
         <div className="homePageStyles">
-        <div className="groupNameTemplate">
+        <div className="groupNameTemplate groupNameMemberTemplate">
           <h5 className='GroupName'>Group Name</h5>
             <div className='buttonBox'>
                 <h3 className = "GroupName">{this.props.group.name}</h3>

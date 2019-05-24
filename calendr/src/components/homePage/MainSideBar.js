@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import axiosCustom from '.././../axiosCustom';
+import axios from 'axios';
 import Popup from 'reactjs-popup';
 import GroupEdit from './group/GroupEdit'
 import { withRouter, NavLink } from 'react-router-dom';
@@ -39,7 +40,7 @@ export class MainSideBar extends Component {
   getGroup = () => {
     let userId = localStorage.getItem('userId')
     let groupId = localStorage.getItem("group_id")
-    axiosCustom.get(`/users/${userId}/groups`, { headers:{Authorization: localStorage.getItem('jwt')}},)
+    axios.get(`${process.env.REACT_APP_API}/users/${userId}/groups`, { headers:{ Authorization: localStorage.getItem('jwt') }})
     .then(res => {
       this.setState({
         group_id: groupId,
@@ -57,7 +58,7 @@ export class MainSideBar extends Component {
 
   getGroupById = (something) => {
     
-    axiosCustom.get(`/groups/${something}`)
+    axios.get(`${process.env.REACT_APP_API}/groups/${something}`, { headers:{Authorization: localStorage.getItem('jwt')}})
     .then(res => {
       this.setState({
         groupName: res.data.name,

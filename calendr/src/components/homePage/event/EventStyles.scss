@@ -227,23 +227,27 @@
   display: flex;
   justify-content: space-evenly;
   margin-top:4px;
+  flex-wrap: wrap;
 
 
   }
   .event{
-    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 11rem;
     border: 1px solid black;
-    margin: 1rem;
-    white-space: wrap;
     overflow-y: scroll;
     height: 13rem;
     padding:.2rem .7rem 0;
+    margin:.5rem;
 
     .event-icons{
       position: relative;
       display: flex;
       justify-content: flex-end;
       cursor: pointer;
+      margin-left:70%;
       i{
         margin: 0 0 0 5px;
 
