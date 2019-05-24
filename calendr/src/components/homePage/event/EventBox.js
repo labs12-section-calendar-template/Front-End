@@ -19,15 +19,15 @@ export class EventBox extends Component {
     return divStyle
   }
 
-  // editEvent = (e, id) => {
-  //   //Added the events repeat value to the end of the url to use in the update event function
-  //   console.log(e.target.attributes.value.value, true)
-  //   if(e.target.attributes.value.value == "true" || e.target.attributes.value.value == 1){
-  //     window.location = `/event/edit/${id}${1}`;
-  //   } else {
-  //     window.location = `/event/edit/${id}${0}`;
-  //   }
-  // };
+  editEvent = (e, id) => {
+    //Added the events repeat value to the end of the url to use in the update event function
+    console.log(e.target.attributes.value.value, true)
+    if(e.target.attributes.value.value == "true" || e.target.attributes.value.value == 1){
+      window.location = `/event/edit/${id}${1}`;
+    } else {
+      window.location = `/event/edit/${id}${0}`;
+    }
+  };
 
   render() {
     console.log(this.props.events)
@@ -43,13 +43,14 @@ export class EventBox extends Component {
             return <div key={event.id} className="event" style={this.borderColor(event.template_id)}>
                   
                   <div className="event-icons">
-                  <Link to={event.repeat ? `/event/edit/${event.template_id}${1}` : `/event/edit/${event.template_id}${0}`}>
+                  
                     <i
                       className="far fa-edit iconSize"
                       value = {event.repeat}
                       data-tip='Update event'
+                      onClick = {(e) => this.editEvent(e, event.id)}
                     />
-                  </Link>
+                  
                       <i
                       className="fas fa-trash iconSize"
                       value = {event.repeat}
