@@ -128,13 +128,6 @@ export class MainSideBar extends Component {
     })
   }
 
-  // takeMeToTemplate = (event) => {
-  // let mikesEasy = event.target.attributes.value.value
-  // console.log(event.target.attributes.value.value)
-  // localStorage.setItem('template_id', mikesEasy)
-  // window.location=`/template/calendr/${mikesEasy}`
-  // }
-
   // sets template id in localStorage based on the one clicked
   switchTemplate = (templateId) => {
     localStorage.setItem('template_id', templateId)
