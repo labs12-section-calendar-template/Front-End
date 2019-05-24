@@ -40,6 +40,7 @@ export class MainCalendar extends Component {
   // Get template by its corresponding group id
   getTemplateData = event => {
     let group_id = localStorage.getItem("group_id");
+    let templateId = localStorage.getItem("template_id");
     axios.get(`${process.env.REACT_APP_API}/groups/${group_id}/templates`, { headers:{Authorization: localStorage.getItem('jwt')}} )
       .then(res => {
         //returns all templates
@@ -70,7 +71,6 @@ export class MainCalendar extends Component {
               if(temp.id == templateId) {
                 temp.isChecked = 1
               }
-           
         })
        }});
 
