@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import iphonex from "../../extras/iphone-screen-cap.gif"
 import desktop from "../../extras/desktop-screen-cap.gif"
 
+
 const MarketingPage = () => {
   return (
     <div className="marketing-container">
@@ -25,11 +26,9 @@ const MarketingPage = () => {
           <div className="card">
             <h2>With Calendr, group calendars are just one piece</h2>
             <p>
-              lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-              aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.
+              With Calendr, group calendars can help you and your organization 
+              stay organized by planning events according to a particular template
+              that the admin creates. 
             </p>
           </div>
           
@@ -44,32 +43,36 @@ const MarketingPage = () => {
           <h2>Membership pricing</h2>
           <div className="card-container">
             <div className="card">
-              <h4>Free Membership</h4>
+              <h4>Basic Membership</h4>
               <h5> Free </h5>
               <p>
-                lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
+                  Ability to create one group
+              </p>
+              <p>
+                  Includes all main features
+              </p>
+              <p>
+                Get to know Calendr risk-free
               </p>
               <Link to="/login">
-                <button className="marketingButton" href="/login">Sign Up Now </button>
+                <button className="marketingButton">Sign Up Now </button>
               </Link>
             </div>
 
-            <div className="card">
+            <div className="card premium">
               <h4>Premium Membership</h4>
               <h5>9.99 / month</h5>
-              <p>
-                lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-                aute irure dolor in reprehenderit in voluptate velit esse cillum
-                dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-                cupidatat non proident, sunt in culpa qui officia deserunt
-                mollit anim id est laborum.
-              </p>
+                <p>
+                  Ability to create up to 5 total groups 
+                </p>
+                <p>
+                    Includes all main features
+                </p>
+                <p>
+                  Manage multiple groups and templates
+                </p>
               <Link to="/login">
-                <button className="marketingButton" href="/login">Sign Up Now </button>
+                <button className="marketingButton">Sign Up Now </button>
               </Link>
             </div>
 
@@ -85,11 +88,9 @@ const MarketingPage = () => {
           <div className="card">
             <h2> A group calendar with custom templates to fit your needs </h2>
             <p>
-              lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis
-              aute irure dolor in reprehenderit in voluptate velit esse cillum
-              dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-              non proident, sunt in culpa qui officia deserunt mollit anim id
-              est laborum.
+              Custom templates within Calendr is a key feature that helps your organization, 
+              letting you know what events are going to occur according to the templates you've 
+              created and selected to display on your calendar.
             </p>
           </div>
         </div>
@@ -99,8 +100,7 @@ const MarketingPage = () => {
         <div>
           <h2> Give Calendr a try</h2>
           <p>
-            lorem ipsum dolor sit amet, consectetur adipisicing elit, Duis aute
-            irure dolor in reprehenderit.
+            Try Calendr now for FREE you won't be disappointed!
           </p>
           <Link to="/login">
             <button className="marketingButton">Sign Up </button>

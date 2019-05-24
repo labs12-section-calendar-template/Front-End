@@ -65,16 +65,17 @@ export class GroupEdit extends Component {
 
   render() {
     console.log(this.props.group_id);
-
+ 
     return (
+      <div className='edit-group-container'>
       <div className="popup-overlay">
         <div className="popup-content">
+        <h3 className="cancel-button" onClick={this.props.toggleModal}>
+              X
+            </h3>
           <div className="pop">
-            <button className="cancel-button" onClick={this.props.toggleModal}>
-              Cancel
-            </button>
             <form className="editGroupName">
-              <h2>Enter new group name</h2>
+              <h2 className='name-text'>Enter new group name</h2>
               <input
                 className="editNameInput editGroupInput"
                 type="text"
@@ -95,6 +96,7 @@ export class GroupEdit extends Component {
             </form>
           </div>
         </div>
+      </div>
       </div>
     );
   }

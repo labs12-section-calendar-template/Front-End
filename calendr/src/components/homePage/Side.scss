@@ -123,8 +123,9 @@
         }
     }
 
-
     .buttonTitles{
+        display: flex;
+        width: 100%;
         font-size: 1.2rem;
         text-align: start;
         margin:0;
@@ -132,7 +133,20 @@
             font-size: 1rem;
             color: white;
         }
+
+        p{
+            justify-self: flex-end;
+            text-align: left;
+            margin-left: 1rem;
+            padding: 0 .4rem;
+            font-size: 14px;
+            border: 1px solid rgba($color: #000000, $alpha: .3);
+            border-radius: 50%;
+            
+        }
+
     }
+   
 
     .buttonDescriptions{
         font-size:1rem;
