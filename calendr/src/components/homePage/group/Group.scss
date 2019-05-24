@@ -6,7 +6,7 @@
     background-color: #F4F4F4; 
     height: 100vh;
 
-    @media(max-width: 500px){
+    @media(max-width: 675px){
         flex-direction: column;
     }
 }
@@ -27,11 +27,8 @@
     height:49%;
 
     @media(max-width: 675px){
-        height: 60vh;
-    }
-    @media(max-width: 500px){
-        margin: 3rem;
         height: 70vh;
+        margin: 3rem;
     }
     @media(max-width: 390px){
         margin: 3rem;
@@ -74,7 +71,7 @@
     border:1px solid #3270eb;
 }
 .formButton{
-    margin: 2% auto 0;
+    margin: 2% auto 1rem;
     padding: 10px 65px;
     border-radius: 5px;
     font-size: 15px;

@@ -185,6 +185,7 @@ class Event extends React.Component {
             <h3 className='close-popup' onClick={this.toggleClose}>X</h3>
             <EventBox events={this.props.events}
                       deleteEvent={this.props.deleteEvent}
+                      colors={this.props.colors}
             />
             <div
               className="top-section"
