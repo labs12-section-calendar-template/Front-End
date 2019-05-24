@@ -93,14 +93,6 @@
         margin: 1.5rem 0 0 0;
     }
 
-    .groupNameTemplate{
-        @media(max-width: 500px){
-        &:hover{
-            cursor: pointer;
-           }
-        }
-    }
-
     .GroupName{
         margin:0 .2rem 0 0;
         font-size:1.8rem;
@@ -183,13 +175,14 @@
 
 .fa-edit{
     font-size: 1rem;
-    margin-right: .5rem;
+    margin:0 .5rem auto 0;
     transition: .5s ease-in;
     overflow: hidden;
     cursor: pointer;
-
 }
-
+.fa-trash{
+    margin-right:.5rem;
+}
 .template-list-items{
     display: flex;
     margin-bottom:.4rem;
@@ -227,10 +220,21 @@
 
 .groupNameTemplate{
     display:flex;
-    flex-direction: column;
     align-items: center;
+    @media(max-width: 500px){
+    &:hover{
+        cursor: pointer;
+        }
+    }
 }
-
+.groupNameMemberTemplate{
+    flex-direction: column;
+    @media(max-width: 500px){
+    &:hover{
+        cursor: pointer;
+        }
+    }
+}
 .allTemps{
     font-size: 1.4rem;
 
