@@ -137,11 +137,10 @@ export class MainSideBar extends Component {
   }
 
   render() {
-    // console.log(this.props.templates)
     return (
       <>
        
-       <ReactTooltip data-effect='solid' data-className='tooltip' data-multiline='true' html={true} />
+       <ReactTooltip  data-effect='solid' data-className='tooltip' data-multiline='true' html={true} />
       <div className = "header">
         <div id="navIcon"><i onClick = {this.navAppear} className = "fa fa-bars" aria-hidden="true"/><p>Menu</p></div>
             <div className = {this.state.navBar ? "navDiv":"navOpen"}>
