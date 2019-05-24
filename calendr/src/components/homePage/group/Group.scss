@@ -20,17 +20,24 @@
 .boxing{
     
     box-shadow: 1px 1px 5px #3270eb, -1px -1px 5px #3270eb;
-    margin:1rem 1rem 0 1rem;
+    margin:1rem;
+    margin-top:5rem;
     background-color:white;
     border-radius: 20px; 
-    height:70vh;
-
+    height:23rem;
+    display: flex;
+    flex-direction: column;
+    @media(max-width: 1099px){
+        height: 25rem;
+    }
+    @media(max-width: 801px){
+        height: 30rem;
+        
+    }
     @media(max-width: 675px){
-        height: 70vh;
-        margin: 3rem;
+        height: 25rem;
     }
     @media(max-width: 390px){
-        margin: 1rem;
         height:20%;
     }
     
@@ -47,7 +54,7 @@
 .groupDescription{
     font-size:1rem;
     width:80%;
-    margin:auto;
+    margin:0 auto auto;
     border-bottom: 2px solid #3270eb;
     padding-bottom:.3rem;
     font-family: "Poppins";
