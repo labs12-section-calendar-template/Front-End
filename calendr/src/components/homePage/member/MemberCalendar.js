@@ -53,13 +53,15 @@ export class MemberCalendar extends Component {
     const { month } = this.state;
   // Pulls in weeks and loops over until calendar is complete 
     while (!done) {
-      weeks.push(<MemberWeek 
-                  key={date} 
-                  date={date.clone()} 
-                  month={month}
-                  events = {this.props.events}
-                  templates = {this.props.events}
-                  />);
+      weeks.push(
+      <MemberWeek 
+       key={date} 
+       date={date.clone()} 
+       month={month}
+       events = {this.props.events}
+       templates = {this.props.events}
+       colors={this.props.colors}
+       />);
 
       date.add(1, "week");
 
@@ -75,7 +77,12 @@ export class MemberCalendar extends Component {
       <>
       <div className = "wrapper">
         
-      <MemberSideBar singleCheck = {this.props.singleCheck} group = {this.props.group} templates = {this.props.templates} />
+      <MemberSideBar 
+      singleCheck = {this.props.singleCheck} 
+      group = {this.props.group} 
+      templates = {this.props.templates} 
+      colors={this.props.colors}
+      />
       
       <div className="wholeCalendar">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }} className="arrowsAndMonth-members">

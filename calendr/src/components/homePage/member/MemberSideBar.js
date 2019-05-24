@@ -21,6 +21,11 @@ export class MemberSideBar extends Component {
       })
     }
   }
+  onChangeHandler = (e) => {
+    this.setState({
+      [e.target.value]: e.target.name
+    })
+  }
 
   render() {
     return (
@@ -42,6 +47,7 @@ export class MemberSideBar extends Component {
                   {return <div key={template.id} 
                   value = {template.id} className="template-list-items">
                   <input
+                  onChange = {this.onChangeHandler}
                   className="each-template-input"
                   type="checkbox"
                   name={template.id}
@@ -49,10 +55,11 @@ export class MemberSideBar extends Component {
                   value={template.id}
                   onClick={this.props.singleCheck}
                   />    
-                  <NavLink className="each-template-name" 
-                  //style={{color:this.props.colors[template.id % 6]}}  
+                  <div
+                  className="each-template-name" 
+                  style={{color:this.props.colors[template.id % 6]}}  
                   onClick={() => {this.switchTemplate(template.id)}}
-                  >{template.title}</NavLink>
+                  >{template.title}</div>
                 </div>
                 })} 
                 </div>

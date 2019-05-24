@@ -37,6 +37,7 @@ class EventEdit extends React.Component {
     this.getTemplateId();
     this.getTemplateById();
     this.getFullWeek(this.props.match.params.date);
+    console.log(this.props.events)
   }
 
   // gets the full week starting from monday when a day is clicked on
@@ -151,6 +152,7 @@ class EventEdit extends React.Component {
     for (let i = 0; i <= sum; i++) {
         urlPath += 1
       console.log(this.state.sum)
+      
       axiosCustom
         .put(
           `${process.env.REACT_APP_API}/events/${urlPath-1}`, {

@@ -16,7 +16,7 @@ class MemberNavBar extends React.Component {
           window.location=`/memberhome`
         }}/>
         <div className="calendrTitleContainer">
-        <h1 className="calendrTitle">CALENDR</h1>
+        <h1 className="calendrTitle memberNavTitle">CALENDR</h1>
         </div>
       <div className="nav-buttons">
         <NavLink activeClassName="navbuttonLink" className="navbutton" to={this.props.usersGroups.length > 0 ? `/home/${group_id}` : '/' }>Home</NavLink>

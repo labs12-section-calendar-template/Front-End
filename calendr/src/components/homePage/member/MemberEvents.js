@@ -12,7 +12,13 @@ class MemberEvents extends React.Component {
     toggleClose = () => {
       this.props.history.push('/memberhome')
     }
-
+    borderColor = (id) => {
+        let divStyle = {
+          border: `1px solid ${this.props.colors[id % 6]}`,
+          boxShadow: `1px 1px 3px ${this.props.colors[id % 6]}, 1px 1px 3px ${this.props.colors[id % 6]} inset`
+        };
+        return divStyle
+      }
     render() {
         let urlPath = window.location.pathname.split('/');
         return (
@@ -21,23 +27,20 @@ class MemberEvents extends React.Component {
                 <div className="event-view-container">
                     <h3 className='close-popup' onClick={this.toggleClose}>X</h3>
 
-                    <div>
+                    <div className="allMemberEvents">
               
                         {this.props.events && this.props.events.map(event => {
                               console.log(event) 
                         if (moment.parseZone(urlPath[2]).format('YYYY-MM-DD') === moment.parseZone(event.date).format('YYYY-MM-DD')) {
             
-                            return  <div key={event.id} className="event">
+                            return  <div key={event.id} className="event" style={this.borderColor(event.template_id)}>
                                         <h5>{event.title}</h5><br />
                                         <p>{event.description}</p><br />
                                         <p>{moment.parseZone(event.date).format('dddd, MMM Do')}</p>
                                         <p>{event.startTime} - {event.endTime}</p>
                                     </div>
 
-                            } else {
-                                return <h2>You have No Events Today</h2>
-                            }
-                             
+                            } 
                         })}
                     </div>
                 </div>
