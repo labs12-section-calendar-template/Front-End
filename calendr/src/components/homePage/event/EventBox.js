@@ -47,14 +47,14 @@ export class EventBox extends Component {
                     <i
                       className="far fa-edit iconSize"
                       value = {event.repeat}
-                      data-tip='Update template'
+                      data-tip='Update event'
                     />
                   </Link>
                       <i
                       className="fas fa-trash iconSize"
                       value = {event.repeat}
                       onClick={e => this.props.deleteEvent(e, event.id)}
-                      data-tip='Delete template'
+                      data-tip='Delete event'
                     />
 
                   </div>

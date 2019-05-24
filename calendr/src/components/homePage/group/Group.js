@@ -104,7 +104,7 @@ export class Group extends Component {
             <h2 className="joinCreateGroup">Create Group</h2>
             <p className="groupDescription">You must be a Gold Tier Member to create more than one group</p>
           <form className="formGroup">
-          <br/>
+          
             <h3>Enter Group Name</h3>
             <input
             className="groupInput"
@@ -132,13 +132,13 @@ export class Group extends Component {
 
             <h2 className="joinCreateGroup">Join Group</h2>
             <p className="groupDescription">Join a group to see all the events created by the admin of that group</p>
-            <br/>
+          
           
            
 
            <form className="formGroup">
               <h3>Enter 4-8 digit Join Code</h3>
-              <br/>
+              
                 <input
                 className="groupInput"
                 onChange={this.handleInputChange}
@@ -147,8 +147,6 @@ export class Group extends Component {
                 name="joinCode" 
                 type="number"
                 />
-                 <br/>
-                 <br/>
                 <button onClick = {this.joinGroup} className="formButton">Join</button>
                 
            </form>

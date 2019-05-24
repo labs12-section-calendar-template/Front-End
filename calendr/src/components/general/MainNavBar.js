@@ -35,9 +35,11 @@ class MainNavBar extends React.Component {
   return (
     <div className="navBarContainer">
     <div className="margin">
+    <div>
         <img src={logo} alt="Logo" style={{cursor: 'pointer'}} onClick={() => {
           window.location=`/home/${takeMeHome}`
         }}/>
+        </div>
         <div className="calendrTitleContainer">
         <h1 className="calendrTitle">CALENDR</h1>
         </div>
