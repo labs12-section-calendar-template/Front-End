@@ -8,6 +8,7 @@ class MemberNavBar extends React.Component {
 
   render(){
     console.log(this.props.usersGroups)
+    let group_id = localStorage.getItem('group_id')
   return (
     <div className="navBarContainer">
     <div className="margin">
@@ -18,7 +19,7 @@ class MemberNavBar extends React.Component {
         <h1 className="calendrTitle">CALENDR</h1>
         </div>
       <div className="nav-buttons">
-        <NavLink activeClassName="navbuttonLink" className="navbutton" to={this.props.usersGroups.length > 0 ? `/memberhome` : '/' }>Home</NavLink>
+        <NavLink activeClassName="navbuttonLink" className="navbutton" to={this.props.usersGroups.length > 0 ? `/home/${group_id}` : '/' }>Home</NavLink>
         <NavLink activeClassName="navbuttonLink" className="navbutton" to={`/`}>Create/Join</NavLink>
         <div className="logout" onClick = {this.props.logOff}> Logout </div>
       </div>
